@@ -193,29 +193,81 @@ export const QuotesApiFactory = function (configuration?: Configuration, basePat
         /**
          * This API creates an FX quote for a currency pair according to the desired lock period and conversion schedule. The FX rate provided by this API includes the Nium markup and can be utilized for any FX conversion within the quote\'s validity period.
          * @summary Create Quote
-         * @param {string} clientHashId Unique identifier of the client.
-         * @param {QuoteCreationRequest} quoteCreationRequest quoteCreationRequest
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {QuotesApiCreateQuoteRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createQuote(clientHashId: string, quoteCreationRequest: QuoteCreationRequest, xRequestId?: string, options?: any): AxiosPromise<QuoteCreationResponse> {
-            return localVarFp.createQuote(clientHashId, quoteCreationRequest, xRequestId, options).then((request) => request(axios, basePath));
+        createQuote(requestParameters: QuotesApiCreateQuoteRequest, options?: RawAxiosRequestConfig): AxiosPromise<QuoteCreationResponse> {
+            return localVarFp.createQuote(requestParameters.clientHashId, requestParameters.quoteCreationRequest, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows to fetch a quote. A quote is used to identify the exchange rate, and associated markup and fees.
          * @summary Fetch Quote by ID
-         * @param {string} clientHashId Unique identifier of the client.
-         * @param {string} quoteId 
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {QuotesApiFetchQuoteRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchQuote(clientHashId: string, quoteId: string, xRequestId?: string, options?: any): AxiosPromise<QuoteCreationResponse> {
-            return localVarFp.fetchQuote(clientHashId, quoteId, xRequestId, options).then((request) => request(axios, basePath));
+        fetchQuote(requestParameters: QuotesApiFetchQuoteRequest, options?: RawAxiosRequestConfig): AxiosPromise<QuoteCreationResponse> {
+            return localVarFp.fetchQuote(requestParameters.clientHashId, requestParameters.quoteId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for createQuote operation in QuotesApi.
+ * @export
+ * @interface QuotesApiCreateQuoteRequest
+ */
+export interface QuotesApiCreateQuoteRequest {
+    /**
+     * Unique identifier of the client.
+     * @type {string}
+     * @memberof QuotesApiCreateQuote
+     */
+    readonly clientHashId: string
+
+    /**
+     * quoteCreationRequest
+     * @type {QuoteCreationRequest}
+     * @memberof QuotesApiCreateQuote
+     */
+    readonly quoteCreationRequest: QuoteCreationRequest
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof QuotesApiCreateQuote
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for fetchQuote operation in QuotesApi.
+ * @export
+ * @interface QuotesApiFetchQuoteRequest
+ */
+export interface QuotesApiFetchQuoteRequest {
+    /**
+     * Unique identifier of the client.
+     * @type {string}
+     * @memberof QuotesApiFetchQuote
+     */
+    readonly clientHashId: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof QuotesApiFetchQuote
+     */
+    readonly quoteId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof QuotesApiFetchQuote
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * QuotesApi - object-oriented interface
@@ -227,29 +279,25 @@ export class QuotesApi extends BaseAPI {
     /**
      * This API creates an FX quote for a currency pair according to the desired lock period and conversion schedule. The FX rate provided by this API includes the Nium markup and can be utilized for any FX conversion within the quote\'s validity period.
      * @summary Create Quote
-     * @param {string} clientHashId Unique identifier of the client.
-     * @param {QuoteCreationRequest} quoteCreationRequest quoteCreationRequest
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {QuotesApiCreateQuoteRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof QuotesApi
      */
-    public createQuote(clientHashId: string, quoteCreationRequest: QuoteCreationRequest, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return QuotesApiFp(this.configuration).createQuote(clientHashId, quoteCreationRequest, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public createQuote(requestParameters: QuotesApiCreateQuoteRequest, options?: RawAxiosRequestConfig) {
+        return QuotesApiFp(this.configuration).createQuote(requestParameters.clientHashId, requestParameters.quoteCreationRequest, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows to fetch a quote. A quote is used to identify the exchange rate, and associated markup and fees.
      * @summary Fetch Quote by ID
-     * @param {string} clientHashId Unique identifier of the client.
-     * @param {string} quoteId 
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {QuotesApiFetchQuoteRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof QuotesApi
      */
-    public fetchQuote(clientHashId: string, quoteId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return QuotesApiFp(this.configuration).fetchQuote(clientHashId, quoteId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public fetchQuote(requestParameters: QuotesApiFetchQuoteRequest, options?: RawAxiosRequestConfig) {
+        return QuotesApiFp(this.configuration).fetchQuote(requestParameters.clientHashId, requestParameters.quoteId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

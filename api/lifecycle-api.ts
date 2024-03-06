@@ -1317,238 +1317,900 @@ export const LifecycleApiFactory = function (configuration?: Configuration, base
         /**
          * This API allows you to activate a card after delivery to the customer.
          * @summary Activate Card V2
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-         * @param {ActivateCardRequestV2DTO} activateCardRequestV2DTO Activate card request
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {LifecycleApiActivateCardRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        activateCard(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, activateCardRequestV2DTO: ActivateCardRequestV2DTO, xRequestId?: string, options?: any): AxiosPromise<ActivateCardResponseV2DTO> {
-            return localVarFp.activateCard(clientHashId, customerHashId, walletHashId, cardHashId, activateCardRequestV2DTO, xRequestId, options).then((request) => request(axios, basePath));
+        activateCard(requestParameters: LifecycleApiActivateCardRequest, options?: RawAxiosRequestConfig): AxiosPromise<ActivateCardResponseV2DTO> {
+            return localVarFp.activateCard(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.activateCardRequestV2DTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to activate a card after delivery to a customer.
          * @summary Activate Card
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {LifecycleApiActivateCard1Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        activateCard1(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: any): AxiosPromise<ActivateCardResponseDTO> {
-            return localVarFp.activateCard1(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(axios, basePath));
+        activateCard1(requestParameters: LifecycleApiActivateCard1Request, options?: RawAxiosRequestConfig): AxiosPromise<ActivateCardResponseDTO> {
+            return localVarFp.activateCard1(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to issue a card for a customer.   >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Add Card V2](ref:addcardv2) is the latest version of this API.
          * @summary Add Card
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {AddCardRequest} addCardRequest addCardRequest
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {LifecycleApiAddCardRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addCard(clientHashId: string, customerHashId: string, walletHashId: string, addCardRequest: AddCardRequest, xRequestId?: string, options?: any): AxiosPromise<AddCardResponseDTO> {
-            return localVarFp.addCard(clientHashId, customerHashId, walletHashId, addCardRequest, xRequestId, options).then((request) => request(axios, basePath));
+        addCard(requestParameters: LifecycleApiAddCardRequest, options?: RawAxiosRequestConfig): AxiosPromise<AddCardResponseDTO> {
+            return localVarFp.addCard(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.addCardRequest, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to issue a card for a customer.
          * @summary Add Card V2
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {AddCardV2Request} addCardV2Request The request body to add a new card.
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {LifecycleApiAddCardV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addCardV2(clientHashId: string, customerHashId: string, walletHashId: string, addCardV2Request: AddCardV2Request, xRequestId?: string, options?: any): AxiosPromise<AddCardV2ResponseDTO> {
-            return localVarFp.addCardV2(clientHashId, customerHashId, walletHashId, addCardV2Request, xRequestId, options).then((request) => request(axios, basePath));
+        addCardV2(requestParameters: LifecycleApiAddCardV2Request, options?: RawAxiosRequestConfig): AxiosPromise<AddCardV2ResponseDTO> {
+            return localVarFp.addCardV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.addCardV2Request, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API is used to assign a card to a customer. In this use case, the client has an unassigned card with him/her. The client hands over the card to the customer and assigns it to him/her.
          * @summary Assign Card
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {AssignCardDTO} assignCardDTO assignCardDTO
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {LifecycleApiAssignCardRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignCard(clientHashId: string, customerHashId: string, walletHashId: string, assignCardDTO: AssignCardDTO, xRequestId?: string, options?: any): AxiosPromise<CardAssignResponseDTO> {
-            return localVarFp.assignCard(clientHashId, customerHashId, walletHashId, assignCardDTO, xRequestId, options).then((request) => request(axios, basePath));
+        assignCard(requestParameters: LifecycleApiAssignCardRequest, options?: RawAxiosRequestConfig): AxiosPromise<CardAssignResponseDTO> {
+            return localVarFp.assignCard(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.assignCardDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * Use this API to block and replace a card.
          * @summary Block and Replace Card
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-         * @param {BlockAndReplaceCardRequestDTO} blockAndReplaceCardRequestDTO A card can be blocked and replaced using the Block And Replace Card API.
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {LifecycleApiBlockAndReplaceCardV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        blockAndReplaceCardV2(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, blockAndReplaceCardRequestDTO: BlockAndReplaceCardRequestDTO, xRequestId?: string, options?: any): AxiosPromise<BlockAndReplaceCardResponseDTO> {
-            return localVarFp.blockAndReplaceCardV2(clientHashId, customerHashId, walletHashId, cardHashId, blockAndReplaceCardRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        blockAndReplaceCardV2(requestParameters: LifecycleApiBlockAndReplaceCardV2Request, options?: RawAxiosRequestConfig): AxiosPromise<BlockAndReplaceCardResponseDTO> {
+            return localVarFp.blockAndReplaceCardV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.blockAndReplaceCardRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API helps you perform the following operations: Permanent block card Temporary block card Unblock card.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. For a temporary lock and unlock, [Lock/Unlock Card API](ref:lockunlockcardv2) is the latest version of this API. For a permanent block and replacing the card, [Block and Replace API](ref:blockandreplacecardv2) is the latest version of this API.
          * @summary Block/Unblock Cards
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-         * @param {BlockCodeDTO} blockCodeDTO blockCode
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {LifecycleApiBlockUnblockCardsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        blockUnblockCards(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, blockCodeDTO: BlockCodeDTO, xRequestId?: string, options?: any): AxiosPromise<BlockCodeCardResponseDTO> {
-            return localVarFp.blockUnblockCards(clientHashId, customerHashId, walletHashId, cardHashId, blockCodeDTO, xRequestId, options).then((request) => request(axios, basePath));
+        blockUnblockCards(requestParameters: LifecycleApiBlockUnblockCardsRequest, options?: RawAxiosRequestConfig): AxiosPromise<BlockCodeCardResponseDTO> {
+            return localVarFp.blockUnblockCards(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.blockCodeDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch the card details of a particular card.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Card Details V2](ref:carddetailsv2) is the latest version of this API.
          * @summary Card Details
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {LifecycleApiCardDetailsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cardDetails(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: any): AxiosPromise<CardResponseDTO> {
-            return localVarFp.cardDetails(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(axios, basePath));
+        cardDetails(requestParameters: LifecycleApiCardDetailsRequest, options?: RawAxiosRequestConfig): AxiosPromise<CardResponseDTO> {
+            return localVarFp.cardDetails(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to get details about a card.
          * @summary Card Details V2
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {LifecycleApiCardDetailsV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cardDetailsV2(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: any): AxiosPromise<CardDetails> {
-            return localVarFp.cardDetailsV2(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(axios, basePath));
+        cardDetailsV2(requestParameters: LifecycleApiCardDetailsV2Request, options?: RawAxiosRequestConfig): AxiosPromise<CardDetails> {
+            return localVarFp.cardDetailsV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API will return all the cards issued, for a given wallet.
          * @summary Card List
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {LifecycleApiCardListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cardList(clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, options?: any): AxiosPromise<{ [key: string]: object; }> {
-            return localVarFp.cardList(clientHashId, customerHashId, walletHashId, xRequestId, options).then((request) => request(axios, basePath));
+        cardList(requestParameters: LifecycleApiCardListRequest, options?: RawAxiosRequestConfig): AxiosPromise<{ [key: string]: object; }> {
+            return localVarFp.cardList(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API returns all the cards issued for a given customer wallet.
          * @summary Card List V2
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} [childCustomerHashId] This field refers to a unique identifier, known as the customerHashId, assigned to an individual customer who is associated with a corporate customer at the parent level. This identifier distinguishes and tracks the child-level customer within a given client\&#39;s program. By utilizing this identifier, it becomes possible to establish and maintain the appropriate linkage between the child customer and their parent corporate customer, ensuring accurate association and management of customer data.
-         * @param {number} [page] This field accepts the page number to be returned. The acceptable values are 0-N.  This field works with size field such that total number of records/size of each page &#x3D; number of pages(N).  This field can then give a particular page.
-         * @param {number} [size] This field accepts the number of elements per page.
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {LifecycleApiCardListV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cardListV2(clientHashId: string, customerHashId: string, walletHashId: string, childCustomerHashId?: string, page?: number, size?: number, xRequestId?: string, options?: any): AxiosPromise<PageResponseCardDetails> {
-            return localVarFp.cardListV2(clientHashId, customerHashId, walletHashId, childCustomerHashId, page, size, xRequestId, options).then((request) => request(axios, basePath));
+        cardListV2(requestParameters: LifecycleApiCardListV2Request, options?: RawAxiosRequestConfig): AxiosPromise<PageResponseCardDetails> {
+            return localVarFp.cardListV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.childCustomerHashId, requestParameters.page, requestParameters.size, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * Use this API to fetch card widget url and token for Non-PCI DSS compliant Clients
          * @summary Get Card Details Widget
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-         * @param {CardWidgetTokenRequestDTO} cardWidgetTokenRequestDTO 
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {LifecycleApiGetCardWidgetRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCardWidget(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, cardWidgetTokenRequestDTO: CardWidgetTokenRequestDTO, xRequestId?: string, options?: any): AxiosPromise<CardWidgetTokenResponse> {
-            return localVarFp.getCardWidget(clientHashId, customerHashId, walletHashId, cardHashId, cardWidgetTokenRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        getCardWidget(requestParameters: LifecycleApiGetCardWidgetRequest, options?: RawAxiosRequestConfig): AxiosPromise<CardWidgetTokenResponse> {
+            return localVarFp.getCardWidget(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.cardWidgetTokenRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * Use this API for issuing a card replacement.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. For a permanent block and replacing the card, [Block and Replace API](ref:blockandreplacecardv2) is the latest version of this API.
          * @summary Issue Replacement Card
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-         * @param {ReplaceCardRequest} replaceCardRequest A card can be replaced using the Replace Card API only if it is permanently blocked. A permanently blocked card cannot be replaced on the same date as date of issuance. For example, a customer issued a card today and request to block the card permanently, on the same day. However, a customer may not call the Replace Card API to issue a replacement on the same date.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {LifecycleApiIssueReplacementCardRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        issueReplacementCard(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, replaceCardRequest: ReplaceCardRequest, xRequestId?: string, options?: any): AxiosPromise<AddCardResponseDTO> {
-            return localVarFp.issueReplacementCard(clientHashId, customerHashId, walletHashId, cardHashId, replaceCardRequest, xRequestId, options).then((request) => request(axios, basePath));
+        issueReplacementCard(requestParameters: LifecycleApiIssueReplacementCardRequest, options?: RawAxiosRequestConfig): AxiosPromise<AddCardResponseDTO> {
+            return localVarFp.issueReplacementCard(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.replaceCardRequest, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to temporarily lock or unlock a card.
          * @summary Lock/Unlock Cards
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-         * @param {LockStatusUpdateRequestDTO} lockStatusUpdateRequestDTO lockStatusUpdateRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {LifecycleApiLockUnlockCardV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        lockUnlockCardV2(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, lockStatusUpdateRequestDTO: LockStatusUpdateRequestDTO, xRequestId?: string, options?: any): AxiosPromise<LockStatusUpdateResponseDTO> {
-            return localVarFp.lockUnlockCardV2(clientHashId, customerHashId, walletHashId, cardHashId, lockStatusUpdateRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        lockUnlockCardV2(requestParameters: LifecycleApiLockUnlockCardV2Request, options?: RawAxiosRequestConfig): AxiosPromise<LockStatusUpdateResponseDTO> {
+            return localVarFp.lockUnlockCardV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.lockStatusUpdateRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * Use this API for card renewal.
          * @summary Renew Card
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-         * @param {RenewCardRequest} renewCardRequest A card can be renewed using the Renew Card API on or before 45 days from the expiration date.
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {LifecycleApiRenewCardRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        renewCard(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, renewCardRequest: RenewCardRequest, xRequestId?: string, options?: any): AxiosPromise<string> {
-            return localVarFp.renewCard(clientHashId, customerHashId, walletHashId, cardHashId, renewCardRequest, xRequestId, options).then((request) => request(axios, basePath));
+        renewCard(requestParameters: LifecycleApiRenewCardRequest, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.renewCard(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.renewCardRequest, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to update the contact information of the cardholder.
          * @summary Update Card Details V2
-         * @param {string} clientHashId clientHashId
-         * @param {string} customerHashId customerHashId
-         * @param {string} walletHashId walletHashId
-         * @param {string} cardHashId cardHashId
-         * @param {UpdateContactInfoRequestDTO} updateContactInfoRequestDTO updateContactInfoRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {LifecycleApiUpdateCardDetailsV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateCardDetailsV2(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, updateContactInfoRequestDTO: UpdateContactInfoRequestDTO, xRequestId?: string, options?: any): AxiosPromise<ApiResponse2> {
-            return localVarFp.updateCardDetailsV2(clientHashId, customerHashId, walletHashId, cardHashId, updateContactInfoRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        updateCardDetailsV2(requestParameters: LifecycleApiUpdateCardDetailsV2Request, options?: RawAxiosRequestConfig): AxiosPromise<ApiResponse2> {
+            return localVarFp.updateCardDetailsV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.updateContactInfoRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for activateCard operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiActivateCardRequest
+ */
+export interface LifecycleApiActivateCardRequest {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof LifecycleApiActivateCard
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof LifecycleApiActivateCard
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof LifecycleApiActivateCard
+     */
+    readonly walletHashId: string
+
+    /**
+     * The unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof LifecycleApiActivateCard
+     */
+    readonly cardHashId: string
+
+    /**
+     * Activate card request
+     * @type {ActivateCardRequestV2DTO}
+     * @memberof LifecycleApiActivateCard
+     */
+    readonly activateCardRequestV2DTO: ActivateCardRequestV2DTO
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof LifecycleApiActivateCard
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for activateCard1 operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiActivateCard1Request
+ */
+export interface LifecycleApiActivateCard1Request {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof LifecycleApiActivateCard1
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof LifecycleApiActivateCard1
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof LifecycleApiActivateCard1
+     */
+    readonly walletHashId: string
+
+    /**
+     * The unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof LifecycleApiActivateCard1
+     */
+    readonly cardHashId: string
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof LifecycleApiActivateCard1
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for addCard operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiAddCardRequest
+ */
+export interface LifecycleApiAddCardRequest {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof LifecycleApiAddCard
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof LifecycleApiAddCard
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof LifecycleApiAddCard
+     */
+    readonly walletHashId: string
+
+    /**
+     * addCardRequest
+     * @type {AddCardRequest}
+     * @memberof LifecycleApiAddCard
+     */
+    readonly addCardRequest: AddCardRequest
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof LifecycleApiAddCard
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for addCardV2 operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiAddCardV2Request
+ */
+export interface LifecycleApiAddCardV2Request {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof LifecycleApiAddCardV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof LifecycleApiAddCardV2
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof LifecycleApiAddCardV2
+     */
+    readonly walletHashId: string
+
+    /**
+     * The request body to add a new card.
+     * @type {AddCardV2Request}
+     * @memberof LifecycleApiAddCardV2
+     */
+    readonly addCardV2Request: AddCardV2Request
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof LifecycleApiAddCardV2
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for assignCard operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiAssignCardRequest
+ */
+export interface LifecycleApiAssignCardRequest {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof LifecycleApiAssignCard
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof LifecycleApiAssignCard
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof LifecycleApiAssignCard
+     */
+    readonly walletHashId: string
+
+    /**
+     * assignCardDTO
+     * @type {AssignCardDTO}
+     * @memberof LifecycleApiAssignCard
+     */
+    readonly assignCardDTO: AssignCardDTO
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof LifecycleApiAssignCard
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for blockAndReplaceCardV2 operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiBlockAndReplaceCardV2Request
+ */
+export interface LifecycleApiBlockAndReplaceCardV2Request {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof LifecycleApiBlockAndReplaceCardV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof LifecycleApiBlockAndReplaceCardV2
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof LifecycleApiBlockAndReplaceCardV2
+     */
+    readonly walletHashId: string
+
+    /**
+     * The unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof LifecycleApiBlockAndReplaceCardV2
+     */
+    readonly cardHashId: string
+
+    /**
+     * A card can be blocked and replaced using the Block And Replace Card API.
+     * @type {BlockAndReplaceCardRequestDTO}
+     * @memberof LifecycleApiBlockAndReplaceCardV2
+     */
+    readonly blockAndReplaceCardRequestDTO: BlockAndReplaceCardRequestDTO
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof LifecycleApiBlockAndReplaceCardV2
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for blockUnblockCards operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiBlockUnblockCardsRequest
+ */
+export interface LifecycleApiBlockUnblockCardsRequest {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof LifecycleApiBlockUnblockCards
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof LifecycleApiBlockUnblockCards
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof LifecycleApiBlockUnblockCards
+     */
+    readonly walletHashId: string
+
+    /**
+     * The unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof LifecycleApiBlockUnblockCards
+     */
+    readonly cardHashId: string
+
+    /**
+     * blockCode
+     * @type {BlockCodeDTO}
+     * @memberof LifecycleApiBlockUnblockCards
+     */
+    readonly blockCodeDTO: BlockCodeDTO
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof LifecycleApiBlockUnblockCards
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for cardDetails operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiCardDetailsRequest
+ */
+export interface LifecycleApiCardDetailsRequest {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof LifecycleApiCardDetails
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof LifecycleApiCardDetails
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof LifecycleApiCardDetails
+     */
+    readonly walletHashId: string
+
+    /**
+     * The unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof LifecycleApiCardDetails
+     */
+    readonly cardHashId: string
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof LifecycleApiCardDetails
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for cardDetailsV2 operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiCardDetailsV2Request
+ */
+export interface LifecycleApiCardDetailsV2Request {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof LifecycleApiCardDetailsV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof LifecycleApiCardDetailsV2
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof LifecycleApiCardDetailsV2
+     */
+    readonly walletHashId: string
+
+    /**
+     * The unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof LifecycleApiCardDetailsV2
+     */
+    readonly cardHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof LifecycleApiCardDetailsV2
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for cardList operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiCardListRequest
+ */
+export interface LifecycleApiCardListRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof LifecycleApiCardList
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof LifecycleApiCardList
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof LifecycleApiCardList
+     */
+    readonly walletHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof LifecycleApiCardList
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for cardListV2 operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiCardListV2Request
+ */
+export interface LifecycleApiCardListV2Request {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof LifecycleApiCardListV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof LifecycleApiCardListV2
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof LifecycleApiCardListV2
+     */
+    readonly walletHashId: string
+
+    /**
+     * This field refers to a unique identifier, known as the customerHashId, assigned to an individual customer who is associated with a corporate customer at the parent level. This identifier distinguishes and tracks the child-level customer within a given client\&#39;s program. By utilizing this identifier, it becomes possible to establish and maintain the appropriate linkage between the child customer and their parent corporate customer, ensuring accurate association and management of customer data.
+     * @type {string}
+     * @memberof LifecycleApiCardListV2
+     */
+    readonly childCustomerHashId?: string
+
+    /**
+     * This field accepts the page number to be returned. The acceptable values are 0-N.  This field works with size field such that total number of records/size of each page &#x3D; number of pages(N).  This field can then give a particular page.
+     * @type {number}
+     * @memberof LifecycleApiCardListV2
+     */
+    readonly page?: number
+
+    /**
+     * This field accepts the number of elements per page.
+     * @type {number}
+     * @memberof LifecycleApiCardListV2
+     */
+    readonly size?: number
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof LifecycleApiCardListV2
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for getCardWidget operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiGetCardWidgetRequest
+ */
+export interface LifecycleApiGetCardWidgetRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof LifecycleApiGetCardWidget
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof LifecycleApiGetCardWidget
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof LifecycleApiGetCardWidget
+     */
+    readonly walletHashId: string
+
+    /**
+     * Unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof LifecycleApiGetCardWidget
+     */
+    readonly cardHashId: string
+
+    /**
+     * 
+     * @type {CardWidgetTokenRequestDTO}
+     * @memberof LifecycleApiGetCardWidget
+     */
+    readonly cardWidgetTokenRequestDTO: CardWidgetTokenRequestDTO
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof LifecycleApiGetCardWidget
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for issueReplacementCard operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiIssueReplacementCardRequest
+ */
+export interface LifecycleApiIssueReplacementCardRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof LifecycleApiIssueReplacementCard
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof LifecycleApiIssueReplacementCard
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof LifecycleApiIssueReplacementCard
+     */
+    readonly walletHashId: string
+
+    /**
+     * Unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof LifecycleApiIssueReplacementCard
+     */
+    readonly cardHashId: string
+
+    /**
+     * A card can be replaced using the Replace Card API only if it is permanently blocked. A permanently blocked card cannot be replaced on the same date as date of issuance. For example, a customer issued a card today and request to block the card permanently, on the same day. However, a customer may not call the Replace Card API to issue a replacement on the same date.
+     * @type {ReplaceCardRequest}
+     * @memberof LifecycleApiIssueReplacementCard
+     */
+    readonly replaceCardRequest: ReplaceCardRequest
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof LifecycleApiIssueReplacementCard
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for lockUnlockCardV2 operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiLockUnlockCardV2Request
+ */
+export interface LifecycleApiLockUnlockCardV2Request {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof LifecycleApiLockUnlockCardV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof LifecycleApiLockUnlockCardV2
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof LifecycleApiLockUnlockCardV2
+     */
+    readonly walletHashId: string
+
+    /**
+     * The unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof LifecycleApiLockUnlockCardV2
+     */
+    readonly cardHashId: string
+
+    /**
+     * lockStatusUpdateRequestDTO
+     * @type {LockStatusUpdateRequestDTO}
+     * @memberof LifecycleApiLockUnlockCardV2
+     */
+    readonly lockStatusUpdateRequestDTO: LockStatusUpdateRequestDTO
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof LifecycleApiLockUnlockCardV2
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for renewCard operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiRenewCardRequest
+ */
+export interface LifecycleApiRenewCardRequest {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof LifecycleApiRenewCard
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof LifecycleApiRenewCard
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof LifecycleApiRenewCard
+     */
+    readonly walletHashId: string
+
+    /**
+     * The unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof LifecycleApiRenewCard
+     */
+    readonly cardHashId: string
+
+    /**
+     * A card can be renewed using the Renew Card API on or before 45 days from the expiration date.
+     * @type {RenewCardRequest}
+     * @memberof LifecycleApiRenewCard
+     */
+    readonly renewCardRequest: RenewCardRequest
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof LifecycleApiRenewCard
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for updateCardDetailsV2 operation in LifecycleApi.
+ * @export
+ * @interface LifecycleApiUpdateCardDetailsV2Request
+ */
+export interface LifecycleApiUpdateCardDetailsV2Request {
+    /**
+     * clientHashId
+     * @type {string}
+     * @memberof LifecycleApiUpdateCardDetailsV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * customerHashId
+     * @type {string}
+     * @memberof LifecycleApiUpdateCardDetailsV2
+     */
+    readonly customerHashId: string
+
+    /**
+     * walletHashId
+     * @type {string}
+     * @memberof LifecycleApiUpdateCardDetailsV2
+     */
+    readonly walletHashId: string
+
+    /**
+     * cardHashId
+     * @type {string}
+     * @memberof LifecycleApiUpdateCardDetailsV2
+     */
+    readonly cardHashId: string
+
+    /**
+     * updateContactInfoRequestDTO
+     * @type {UpdateContactInfoRequestDTO}
+     * @memberof LifecycleApiUpdateCardDetailsV2
+     */
+    readonly updateContactInfoRequestDTO: UpdateContactInfoRequestDTO
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof LifecycleApiUpdateCardDetailsV2
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * LifecycleApi - object-oriented interface
@@ -1560,266 +2222,193 @@ export class LifecycleApi extends BaseAPI {
     /**
      * This API allows you to activate a card after delivery to the customer.
      * @summary Activate Card V2
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-     * @param {ActivateCardRequestV2DTO} activateCardRequestV2DTO Activate card request
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {LifecycleApiActivateCardRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public activateCard(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, activateCardRequestV2DTO: ActivateCardRequestV2DTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).activateCard(clientHashId, customerHashId, walletHashId, cardHashId, activateCardRequestV2DTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public activateCard(requestParameters: LifecycleApiActivateCardRequest, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).activateCard(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.activateCardRequestV2DTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to activate a card after delivery to a customer.
      * @summary Activate Card
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {LifecycleApiActivateCard1Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public activateCard1(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).activateCard1(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public activateCard1(requestParameters: LifecycleApiActivateCard1Request, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).activateCard1(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to issue a card for a customer.   >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Add Card V2](ref:addcardv2) is the latest version of this API.
      * @summary Add Card
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {AddCardRequest} addCardRequest addCardRequest
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {LifecycleApiAddCardRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public addCard(clientHashId: string, customerHashId: string, walletHashId: string, addCardRequest: AddCardRequest, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).addCard(clientHashId, customerHashId, walletHashId, addCardRequest, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public addCard(requestParameters: LifecycleApiAddCardRequest, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).addCard(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.addCardRequest, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to issue a card for a customer.
      * @summary Add Card V2
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {AddCardV2Request} addCardV2Request The request body to add a new card.
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {LifecycleApiAddCardV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public addCardV2(clientHashId: string, customerHashId: string, walletHashId: string, addCardV2Request: AddCardV2Request, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).addCardV2(clientHashId, customerHashId, walletHashId, addCardV2Request, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public addCardV2(requestParameters: LifecycleApiAddCardV2Request, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).addCardV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.addCardV2Request, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API is used to assign a card to a customer. In this use case, the client has an unassigned card with him/her. The client hands over the card to the customer and assigns it to him/her.
      * @summary Assign Card
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {AssignCardDTO} assignCardDTO assignCardDTO
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {LifecycleApiAssignCardRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public assignCard(clientHashId: string, customerHashId: string, walletHashId: string, assignCardDTO: AssignCardDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).assignCard(clientHashId, customerHashId, walletHashId, assignCardDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public assignCard(requestParameters: LifecycleApiAssignCardRequest, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).assignCard(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.assignCardDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * Use this API to block and replace a card.
      * @summary Block and Replace Card
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-     * @param {BlockAndReplaceCardRequestDTO} blockAndReplaceCardRequestDTO A card can be blocked and replaced using the Block And Replace Card API.
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {LifecycleApiBlockAndReplaceCardV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public blockAndReplaceCardV2(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, blockAndReplaceCardRequestDTO: BlockAndReplaceCardRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).blockAndReplaceCardV2(clientHashId, customerHashId, walletHashId, cardHashId, blockAndReplaceCardRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public blockAndReplaceCardV2(requestParameters: LifecycleApiBlockAndReplaceCardV2Request, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).blockAndReplaceCardV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.blockAndReplaceCardRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API helps you perform the following operations: Permanent block card Temporary block card Unblock card.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. For a temporary lock and unlock, [Lock/Unlock Card API](ref:lockunlockcardv2) is the latest version of this API. For a permanent block and replacing the card, [Block and Replace API](ref:blockandreplacecardv2) is the latest version of this API.
      * @summary Block/Unblock Cards
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-     * @param {BlockCodeDTO} blockCodeDTO blockCode
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {LifecycleApiBlockUnblockCardsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public blockUnblockCards(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, blockCodeDTO: BlockCodeDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).blockUnblockCards(clientHashId, customerHashId, walletHashId, cardHashId, blockCodeDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public blockUnblockCards(requestParameters: LifecycleApiBlockUnblockCardsRequest, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).blockUnblockCards(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.blockCodeDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch the card details of a particular card.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Card Details V2](ref:carddetailsv2) is the latest version of this API.
      * @summary Card Details
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {LifecycleApiCardDetailsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public cardDetails(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).cardDetails(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public cardDetails(requestParameters: LifecycleApiCardDetailsRequest, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).cardDetails(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to get details about a card.
      * @summary Card Details V2
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {LifecycleApiCardDetailsV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public cardDetailsV2(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).cardDetailsV2(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public cardDetailsV2(requestParameters: LifecycleApiCardDetailsV2Request, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).cardDetailsV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API will return all the cards issued, for a given wallet.
      * @summary Card List
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {LifecycleApiCardListRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public cardList(clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).cardList(clientHashId, customerHashId, walletHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public cardList(requestParameters: LifecycleApiCardListRequest, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).cardList(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API returns all the cards issued for a given customer wallet.
      * @summary Card List V2
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} [childCustomerHashId] This field refers to a unique identifier, known as the customerHashId, assigned to an individual customer who is associated with a corporate customer at the parent level. This identifier distinguishes and tracks the child-level customer within a given client\&#39;s program. By utilizing this identifier, it becomes possible to establish and maintain the appropriate linkage between the child customer and their parent corporate customer, ensuring accurate association and management of customer data.
-     * @param {number} [page] This field accepts the page number to be returned. The acceptable values are 0-N.  This field works with size field such that total number of records/size of each page &#x3D; number of pages(N).  This field can then give a particular page.
-     * @param {number} [size] This field accepts the number of elements per page.
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {LifecycleApiCardListV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public cardListV2(clientHashId: string, customerHashId: string, walletHashId: string, childCustomerHashId?: string, page?: number, size?: number, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).cardListV2(clientHashId, customerHashId, walletHashId, childCustomerHashId, page, size, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public cardListV2(requestParameters: LifecycleApiCardListV2Request, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).cardListV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.childCustomerHashId, requestParameters.page, requestParameters.size, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * Use this API to fetch card widget url and token for Non-PCI DSS compliant Clients
      * @summary Get Card Details Widget
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-     * @param {CardWidgetTokenRequestDTO} cardWidgetTokenRequestDTO 
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {LifecycleApiGetCardWidgetRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public getCardWidget(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, cardWidgetTokenRequestDTO: CardWidgetTokenRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).getCardWidget(clientHashId, customerHashId, walletHashId, cardHashId, cardWidgetTokenRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public getCardWidget(requestParameters: LifecycleApiGetCardWidgetRequest, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).getCardWidget(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.cardWidgetTokenRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * Use this API for issuing a card replacement.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. For a permanent block and replacing the card, [Block and Replace API](ref:blockandreplacecardv2) is the latest version of this API.
      * @summary Issue Replacement Card
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-     * @param {ReplaceCardRequest} replaceCardRequest A card can be replaced using the Replace Card API only if it is permanently blocked. A permanently blocked card cannot be replaced on the same date as date of issuance. For example, a customer issued a card today and request to block the card permanently, on the same day. However, a customer may not call the Replace Card API to issue a replacement on the same date.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {LifecycleApiIssueReplacementCardRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public issueReplacementCard(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, replaceCardRequest: ReplaceCardRequest, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).issueReplacementCard(clientHashId, customerHashId, walletHashId, cardHashId, replaceCardRequest, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public issueReplacementCard(requestParameters: LifecycleApiIssueReplacementCardRequest, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).issueReplacementCard(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.replaceCardRequest, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to temporarily lock or unlock a card.
      * @summary Lock/Unlock Cards
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-     * @param {LockStatusUpdateRequestDTO} lockStatusUpdateRequestDTO lockStatusUpdateRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {LifecycleApiLockUnlockCardV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public lockUnlockCardV2(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, lockStatusUpdateRequestDTO: LockStatusUpdateRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).lockUnlockCardV2(clientHashId, customerHashId, walletHashId, cardHashId, lockStatusUpdateRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public lockUnlockCardV2(requestParameters: LifecycleApiLockUnlockCardV2Request, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).lockUnlockCardV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.lockStatusUpdateRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * Use this API for card renewal.
      * @summary Renew Card
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-     * @param {RenewCardRequest} renewCardRequest A card can be renewed using the Renew Card API on or before 45 days from the expiration date.
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {LifecycleApiRenewCardRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public renewCard(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, renewCardRequest: RenewCardRequest, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).renewCard(clientHashId, customerHashId, walletHashId, cardHashId, renewCardRequest, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public renewCard(requestParameters: LifecycleApiRenewCardRequest, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).renewCard(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.renewCardRequest, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to update the contact information of the cardholder.
      * @summary Update Card Details V2
-     * @param {string} clientHashId clientHashId
-     * @param {string} customerHashId customerHashId
-     * @param {string} walletHashId walletHashId
-     * @param {string} cardHashId cardHashId
-     * @param {UpdateContactInfoRequestDTO} updateContactInfoRequestDTO updateContactInfoRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {LifecycleApiUpdateCardDetailsV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LifecycleApi
      */
-    public updateCardDetailsV2(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, updateContactInfoRequestDTO: UpdateContactInfoRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return LifecycleApiFp(this.configuration).updateCardDetailsV2(clientHashId, customerHashId, walletHashId, cardHashId, updateContactInfoRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public updateCardDetailsV2(requestParameters: LifecycleApiUpdateCardDetailsV2Request, options?: RawAxiosRequestConfig) {
+        return LifecycleApiFp(this.configuration).updateCardDetailsV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.updateContactInfoRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

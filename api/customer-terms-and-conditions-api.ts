@@ -185,29 +185,81 @@ export const CustomerTermsAndConditionsApiFactory = function (configuration?: Co
         /**
          * This API updates the Terms and Conditions acceptance status for a customer
          * @summary Accept Terms and Conditions
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {TermsAndConditionsRequestDTO} termsAndConditionsRequestDTO termsAndConditionsRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerTermsAndConditionsApiAcceptTermsandConditionsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        acceptTermsandConditions(clientHashId: string, customerHashId: string, termsAndConditionsRequestDTO: TermsAndConditionsRequestDTO, xRequestId?: string, options?: any): AxiosPromise<TermsAndConditionsAcceptResponseDTO> {
-            return localVarFp.acceptTermsandConditions(clientHashId, customerHashId, termsAndConditionsRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        acceptTermsandConditions(requestParameters: CustomerTermsAndConditionsApiAcceptTermsandConditionsRequest, options?: RawAxiosRequestConfig): AxiosPromise<TermsAndConditionsAcceptResponseDTO> {
+            return localVarFp.acceptTermsandConditions(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.termsAndConditionsRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch the mandatory Terms and Conditions for individual customer onboarding. Refer to the [T&C flow chart](/apis/docs/customer-life-cycle#terms-and-conditions) for more details.
          * @summary Terms and Conditions
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerTermsAndConditionsApiTermsandConditionsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        termsandConditions(clientHashId: string, xRequestId?: string, options?: any): AxiosPromise<TermsAndConditionsResponseDTO> {
-            return localVarFp.termsandConditions(clientHashId, xRequestId, options).then((request) => request(axios, basePath));
+        termsandConditions(requestParameters: CustomerTermsAndConditionsApiTermsandConditionsRequest, options?: RawAxiosRequestConfig): AxiosPromise<TermsAndConditionsResponseDTO> {
+            return localVarFp.termsandConditions(requestParameters.clientHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for acceptTermsandConditions operation in CustomerTermsAndConditionsApi.
+ * @export
+ * @interface CustomerTermsAndConditionsApiAcceptTermsandConditionsRequest
+ */
+export interface CustomerTermsAndConditionsApiAcceptTermsandConditionsRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerTermsAndConditionsApiAcceptTermsandConditions
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerTermsAndConditionsApiAcceptTermsandConditions
+     */
+    readonly customerHashId: string
+
+    /**
+     * termsAndConditionsRequestDTO
+     * @type {TermsAndConditionsRequestDTO}
+     * @memberof CustomerTermsAndConditionsApiAcceptTermsandConditions
+     */
+    readonly termsAndConditionsRequestDTO: TermsAndConditionsRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerTermsAndConditionsApiAcceptTermsandConditions
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for termsandConditions operation in CustomerTermsAndConditionsApi.
+ * @export
+ * @interface CustomerTermsAndConditionsApiTermsandConditionsRequest
+ */
+export interface CustomerTermsAndConditionsApiTermsandConditionsRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerTermsAndConditionsApiTermsandConditions
+     */
+    readonly clientHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerTermsAndConditionsApiTermsandConditions
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * CustomerTermsAndConditionsApi - object-oriented interface
@@ -219,29 +271,25 @@ export class CustomerTermsAndConditionsApi extends BaseAPI {
     /**
      * This API updates the Terms and Conditions acceptance status for a customer
      * @summary Accept Terms and Conditions
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {TermsAndConditionsRequestDTO} termsAndConditionsRequestDTO termsAndConditionsRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerTermsAndConditionsApiAcceptTermsandConditionsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerTermsAndConditionsApi
      */
-    public acceptTermsandConditions(clientHashId: string, customerHashId: string, termsAndConditionsRequestDTO: TermsAndConditionsRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerTermsAndConditionsApiFp(this.configuration).acceptTermsandConditions(clientHashId, customerHashId, termsAndConditionsRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public acceptTermsandConditions(requestParameters: CustomerTermsAndConditionsApiAcceptTermsandConditionsRequest, options?: RawAxiosRequestConfig) {
+        return CustomerTermsAndConditionsApiFp(this.configuration).acceptTermsandConditions(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.termsAndConditionsRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch the mandatory Terms and Conditions for individual customer onboarding. Refer to the [T&C flow chart](/apis/docs/customer-life-cycle#terms-and-conditions) for more details.
      * @summary Terms and Conditions
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerTermsAndConditionsApiTermsandConditionsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerTermsAndConditionsApi
      */
-    public termsandConditions(clientHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerTermsAndConditionsApiFp(this.configuration).termsandConditions(clientHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public termsandConditions(requestParameters: CustomerTermsAndConditionsApiTermsandConditionsRequest, options?: RawAxiosRequestConfig) {
+        return CustomerTermsAndConditionsApiFp(this.configuration).termsandConditions(requestParameters.clientHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

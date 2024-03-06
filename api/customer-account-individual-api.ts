@@ -598,104 +598,330 @@ export const CustomerAccountIndividualApiFactory = function (configuration?: Con
         /**
          * This API allows you to register a customer with a wallet in NIUM\'s cards platform.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Unified Add Customer](ref:unifiedaddcustomer) is the latest version of this API.
          * @summary Add Customer
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {CustomerDataRequestDTO} customerDataRequestDTO customerDataRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerAccountIndividualApiAddCustomerRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addCustomer(clientHashId: string, customerDataRequestDTO: CustomerDataRequestDTO, xRequestId?: string, options?: any): AxiosPromise<CustomerDetailResponseDTO> {
-            return localVarFp.addCustomer(clientHashId, customerDataRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        addCustomer(requestParameters: CustomerAccountIndividualApiAddCustomerRequest, options?: RawAxiosRequestConfig): AxiosPromise<CustomerDetailResponseDTO> {
+            return localVarFp.addCustomer(requestParameters.clientHashId, requestParameters.customerDataRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API will create customers using minimal data, the rest of the partial data will be pulled via MyInfo etc. which is locked and cannot be edited and further rest fields can be updated using Customer Update API.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Unified Add Customer](ref:unifiedaddcustomer) is the latest version of this API.
          * @summary Add Customer Using MyInfo [SG]
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {CustomerDataExternalRequestDTO} customerDataExternalRequestDTO customerDataExternalRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerAccountIndividualApiAddCustomerUsingMyInfoSGRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addCustomerUsingMyInfoSG(clientHashId: string, customerDataExternalRequestDTO: CustomerDataExternalRequestDTO, xRequestId?: string, options?: any): AxiosPromise<CustomerDataExternalResponseDTO> {
-            return localVarFp.addCustomerUsingMyInfoSG(clientHashId, customerDataExternalRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        addCustomerUsingMyInfoSG(requestParameters: CustomerAccountIndividualApiAddCustomerUsingMyInfoSGRequest, options?: RawAxiosRequestConfig): AxiosPromise<CustomerDataExternalResponseDTO> {
+            return localVarFp.addCustomerUsingMyInfoSG(requestParameters.clientHashId, requestParameters.customerDataExternalRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          *   >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Unified Add Customer](ref:unifiedaddcustomer) is the latest version of this API.
          * @summary Add Customer Using e-Document Verification
-         * @param {string} clientHashId clientHashId
-         * @param {EVerifyCustomerRegistrationRequestDTO} eVerifyCustomerRegistrationRequestDTO requestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerAccountIndividualApiAddCustomerUsingeDocumentVerificationRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addCustomerUsingeDocumentVerification(clientHashId: string, eVerifyCustomerRegistrationRequestDTO: EVerifyCustomerRegistrationRequestDTO, xRequestId?: string, options?: any): AxiosPromise<AddCustomerResponseDTO> {
-            return localVarFp.addCustomerUsingeDocumentVerification(clientHashId, eVerifyCustomerRegistrationRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        addCustomerUsingeDocumentVerification(requestParameters: CustomerAccountIndividualApiAddCustomerUsingeDocumentVerificationRequest, options?: RawAxiosRequestConfig): AxiosPromise<AddCustomerResponseDTO> {
+            return localVarFp.addCustomerUsingeDocumentVerification(requestParameters.clientHashId, requestParameters.eVerifyCustomerRegistrationRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to update the customer details subject to the following constraints: 1. If compliance status equals to COMPLETED. You can only update email, mobile, delivery address details, and correspondence address details. You may NOT update the billing address. 2. In other cases, you may update any of the fields. At least one key-value pair is needed in the request body of this API.
          * @summary Customer Update
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
-         * @param {UpdateCustomerDTO} [updateCustomerDTO] Customer update request
+         * @param {CustomerAccountIndividualApiCustomerUpdateRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        customerUpdate(clientHashId: string, customerHashId: string, xRequestId?: string, updateCustomerDTO?: UpdateCustomerDTO, options?: any): AxiosPromise<UpdateCustomerResponseDTO> {
-            return localVarFp.customerUpdate(clientHashId, customerHashId, xRequestId, updateCustomerDTO, options).then((request) => request(axios, basePath));
+        customerUpdate(requestParameters: CustomerAccountIndividualApiCustomerUpdateRequest, options?: RawAxiosRequestConfig): AxiosPromise<UpdateCustomerResponseDTO> {
+            return localVarFp.customerUpdate(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, requestParameters.updateCustomerDTO, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch details of RFI raised as part of Individual customer onboarding.
          * @summary Fetch Individual Customer RFI Details
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerAccountIndividualApiFetchIndividualCustomerRFIDetailsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchIndividualCustomerRFIDetails(clientHashId: string, customerHashId: string, xRequestId?: string, options?: any): AxiosPromise<Array<CustomerRfiDetailsResponse>> {
-            return localVarFp.fetchIndividualCustomerRFIDetails(clientHashId, customerHashId, xRequestId, options).then((request) => request(axios, basePath));
+        fetchIndividualCustomerRFIDetails(requestParameters: CustomerAccountIndividualApiFetchIndividualCustomerRFIDetailsRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<CustomerRfiDetailsResponse>> {
+            return localVarFp.fetchIndividualCustomerRFIDetails(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to respond to an RFI raised by NIUM compliance team. You may use this API to respond to an RFI for data or documents when the customer\'s compliance status is RFI_REQUESTED.
          * @summary Respond to RFI
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {UploadRfiDocumentRequestDto} uploadRfiDocumentRequestDto RFI response object
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerAccountIndividualApiRespondtoRFIRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        respondtoRFI(clientHashId: string, customerHashId: string, uploadRfiDocumentRequestDto: UploadRfiDocumentRequestDto, xRequestId?: string, options?: any): AxiosPromise<UploadRfiDetailsResponseDto> {
-            return localVarFp.respondtoRFI(clientHashId, customerHashId, uploadRfiDocumentRequestDto, xRequestId, options).then((request) => request(axios, basePath));
+        respondtoRFI(requestParameters: CustomerAccountIndividualApiRespondtoRFIRequest, options?: RawAxiosRequestConfig): AxiosPromise<UploadRfiDetailsResponseDto> {
+            return localVarFp.respondtoRFI(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.uploadRfiDocumentRequestDto, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API onboards customers based on their client configuration and preference.   >ℹ️ INFO   The \'childMustHaveParent\' setting can be optionally set to \'true\' for Payroll and Spend and Management clients, and it should be set to \'false\' for all other clients.   For details, see [Parent-child hierarchy](doc:parent-child-hierarchy).
          * @summary Unified Add Customer
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {UnifiedAddCustomerRequest} requestDto Add individual customer
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerAccountIndividualApiUnifiedAddCustomerRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        unifiedAddCustomer(clientHashId: string, requestDto: UnifiedAddCustomerRequest, xRequestId?: string, options?: any): AxiosPromise<AddCustomerResponseDTO> {
-            return localVarFp.unifiedAddCustomer(clientHashId, requestDto, xRequestId, options).then((request) => request(axios, basePath));
+        unifiedAddCustomer(requestParameters: CustomerAccountIndividualApiUnifiedAddCustomerRequest, options?: RawAxiosRequestConfig): AxiosPromise<AddCustomerResponseDTO> {
+            return localVarFp.unifiedAddCustomer(requestParameters.clientHashId, requestParameters.requestDto, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows to upload documents necessary for customer onboarding. Refer to the RFI details on required documents.
          * @summary Upload Document
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {ComplianceDocumentDTO} complianceDocumentDTO Compliance documents
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerAccountIndividualApiUploadDocumentRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadDocument(clientHashId: string, customerHashId: string, complianceDocumentDTO: ComplianceDocumentDTO, xRequestId?: string, options?: any): AxiosPromise<ComplianceDocumentResponseDTO> {
-            return localVarFp.uploadDocument(clientHashId, customerHashId, complianceDocumentDTO, xRequestId, options).then((request) => request(axios, basePath));
+        uploadDocument(requestParameters: CustomerAccountIndividualApiUploadDocumentRequest, options?: RawAxiosRequestConfig): AxiosPromise<ComplianceDocumentResponseDTO> {
+            return localVarFp.uploadDocument(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.complianceDocumentDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for addCustomer operation in CustomerAccountIndividualApi.
+ * @export
+ * @interface CustomerAccountIndividualApiAddCustomerRequest
+ */
+export interface CustomerAccountIndividualApiAddCustomerRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiAddCustomer
+     */
+    readonly clientHashId: string
+
+    /**
+     * customerDataRequestDTO
+     * @type {CustomerDataRequestDTO}
+     * @memberof CustomerAccountIndividualApiAddCustomer
+     */
+    readonly customerDataRequestDTO: CustomerDataRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiAddCustomer
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for addCustomerUsingMyInfoSG operation in CustomerAccountIndividualApi.
+ * @export
+ * @interface CustomerAccountIndividualApiAddCustomerUsingMyInfoSGRequest
+ */
+export interface CustomerAccountIndividualApiAddCustomerUsingMyInfoSGRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiAddCustomerUsingMyInfoSG
+     */
+    readonly clientHashId: string
+
+    /**
+     * customerDataExternalRequestDTO
+     * @type {CustomerDataExternalRequestDTO}
+     * @memberof CustomerAccountIndividualApiAddCustomerUsingMyInfoSG
+     */
+    readonly customerDataExternalRequestDTO: CustomerDataExternalRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiAddCustomerUsingMyInfoSG
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for addCustomerUsingeDocumentVerification operation in CustomerAccountIndividualApi.
+ * @export
+ * @interface CustomerAccountIndividualApiAddCustomerUsingeDocumentVerificationRequest
+ */
+export interface CustomerAccountIndividualApiAddCustomerUsingeDocumentVerificationRequest {
+    /**
+     * clientHashId
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiAddCustomerUsingeDocumentVerification
+     */
+    readonly clientHashId: string
+
+    /**
+     * requestDTO
+     * @type {EVerifyCustomerRegistrationRequestDTO}
+     * @memberof CustomerAccountIndividualApiAddCustomerUsingeDocumentVerification
+     */
+    readonly eVerifyCustomerRegistrationRequestDTO: EVerifyCustomerRegistrationRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiAddCustomerUsingeDocumentVerification
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for customerUpdate operation in CustomerAccountIndividualApi.
+ * @export
+ * @interface CustomerAccountIndividualApiCustomerUpdateRequest
+ */
+export interface CustomerAccountIndividualApiCustomerUpdateRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiCustomerUpdate
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiCustomerUpdate
+     */
+    readonly customerHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiCustomerUpdate
+     */
+    readonly xRequestId?: string
+
+    /**
+     * Customer update request
+     * @type {UpdateCustomerDTO}
+     * @memberof CustomerAccountIndividualApiCustomerUpdate
+     */
+    readonly updateCustomerDTO?: UpdateCustomerDTO
+}
+
+/**
+ * Request parameters for fetchIndividualCustomerRFIDetails operation in CustomerAccountIndividualApi.
+ * @export
+ * @interface CustomerAccountIndividualApiFetchIndividualCustomerRFIDetailsRequest
+ */
+export interface CustomerAccountIndividualApiFetchIndividualCustomerRFIDetailsRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiFetchIndividualCustomerRFIDetails
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiFetchIndividualCustomerRFIDetails
+     */
+    readonly customerHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiFetchIndividualCustomerRFIDetails
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for respondtoRFI operation in CustomerAccountIndividualApi.
+ * @export
+ * @interface CustomerAccountIndividualApiRespondtoRFIRequest
+ */
+export interface CustomerAccountIndividualApiRespondtoRFIRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiRespondtoRFI
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiRespondtoRFI
+     */
+    readonly customerHashId: string
+
+    /**
+     * RFI response object
+     * @type {UploadRfiDocumentRequestDto}
+     * @memberof CustomerAccountIndividualApiRespondtoRFI
+     */
+    readonly uploadRfiDocumentRequestDto: UploadRfiDocumentRequestDto
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiRespondtoRFI
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for unifiedAddCustomer operation in CustomerAccountIndividualApi.
+ * @export
+ * @interface CustomerAccountIndividualApiUnifiedAddCustomerRequest
+ */
+export interface CustomerAccountIndividualApiUnifiedAddCustomerRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiUnifiedAddCustomer
+     */
+    readonly clientHashId: string
+
+    /**
+     * Add individual customer
+     * @type {UnifiedAddCustomerRequest}
+     * @memberof CustomerAccountIndividualApiUnifiedAddCustomer
+     */
+    readonly requestDto: UnifiedAddCustomerRequest
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiUnifiedAddCustomer
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for uploadDocument operation in CustomerAccountIndividualApi.
+ * @export
+ * @interface CustomerAccountIndividualApiUploadDocumentRequest
+ */
+export interface CustomerAccountIndividualApiUploadDocumentRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiUploadDocument
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiUploadDocument
+     */
+    readonly customerHashId: string
+
+    /**
+     * Compliance documents
+     * @type {ComplianceDocumentDTO}
+     * @memberof CustomerAccountIndividualApiUploadDocument
+     */
+    readonly complianceDocumentDTO: ComplianceDocumentDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountIndividualApiUploadDocument
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * CustomerAccountIndividualApi - object-oriented interface
@@ -707,116 +933,97 @@ export class CustomerAccountIndividualApi extends BaseAPI {
     /**
      * This API allows you to register a customer with a wallet in NIUM\'s cards platform.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Unified Add Customer](ref:unifiedaddcustomer) is the latest version of this API.
      * @summary Add Customer
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {CustomerDataRequestDTO} customerDataRequestDTO customerDataRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerAccountIndividualApiAddCustomerRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountIndividualApi
      */
-    public addCustomer(clientHashId: string, customerDataRequestDTO: CustomerDataRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountIndividualApiFp(this.configuration).addCustomer(clientHashId, customerDataRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public addCustomer(requestParameters: CustomerAccountIndividualApiAddCustomerRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountIndividualApiFp(this.configuration).addCustomer(requestParameters.clientHashId, requestParameters.customerDataRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API will create customers using minimal data, the rest of the partial data will be pulled via MyInfo etc. which is locked and cannot be edited and further rest fields can be updated using Customer Update API.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Unified Add Customer](ref:unifiedaddcustomer) is the latest version of this API.
      * @summary Add Customer Using MyInfo [SG]
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {CustomerDataExternalRequestDTO} customerDataExternalRequestDTO customerDataExternalRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerAccountIndividualApiAddCustomerUsingMyInfoSGRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountIndividualApi
      */
-    public addCustomerUsingMyInfoSG(clientHashId: string, customerDataExternalRequestDTO: CustomerDataExternalRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountIndividualApiFp(this.configuration).addCustomerUsingMyInfoSG(clientHashId, customerDataExternalRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public addCustomerUsingMyInfoSG(requestParameters: CustomerAccountIndividualApiAddCustomerUsingMyInfoSGRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountIndividualApiFp(this.configuration).addCustomerUsingMyInfoSG(requestParameters.clientHashId, requestParameters.customerDataExternalRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      *   >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Unified Add Customer](ref:unifiedaddcustomer) is the latest version of this API.
      * @summary Add Customer Using e-Document Verification
-     * @param {string} clientHashId clientHashId
-     * @param {EVerifyCustomerRegistrationRequestDTO} eVerifyCustomerRegistrationRequestDTO requestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerAccountIndividualApiAddCustomerUsingeDocumentVerificationRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountIndividualApi
      */
-    public addCustomerUsingeDocumentVerification(clientHashId: string, eVerifyCustomerRegistrationRequestDTO: EVerifyCustomerRegistrationRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountIndividualApiFp(this.configuration).addCustomerUsingeDocumentVerification(clientHashId, eVerifyCustomerRegistrationRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public addCustomerUsingeDocumentVerification(requestParameters: CustomerAccountIndividualApiAddCustomerUsingeDocumentVerificationRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountIndividualApiFp(this.configuration).addCustomerUsingeDocumentVerification(requestParameters.clientHashId, requestParameters.eVerifyCustomerRegistrationRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to update the customer details subject to the following constraints: 1. If compliance status equals to COMPLETED. You can only update email, mobile, delivery address details, and correspondence address details. You may NOT update the billing address. 2. In other cases, you may update any of the fields. At least one key-value pair is needed in the request body of this API.
      * @summary Customer Update
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
-     * @param {UpdateCustomerDTO} [updateCustomerDTO] Customer update request
+     * @param {CustomerAccountIndividualApiCustomerUpdateRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountIndividualApi
      */
-    public customerUpdate(clientHashId: string, customerHashId: string, xRequestId?: string, updateCustomerDTO?: UpdateCustomerDTO, options?: RawAxiosRequestConfig) {
-        return CustomerAccountIndividualApiFp(this.configuration).customerUpdate(clientHashId, customerHashId, xRequestId, updateCustomerDTO, options).then((request) => request(this.axios, this.basePath));
+    public customerUpdate(requestParameters: CustomerAccountIndividualApiCustomerUpdateRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountIndividualApiFp(this.configuration).customerUpdate(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, requestParameters.updateCustomerDTO, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch details of RFI raised as part of Individual customer onboarding.
      * @summary Fetch Individual Customer RFI Details
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerAccountIndividualApiFetchIndividualCustomerRFIDetailsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountIndividualApi
      */
-    public fetchIndividualCustomerRFIDetails(clientHashId: string, customerHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountIndividualApiFp(this.configuration).fetchIndividualCustomerRFIDetails(clientHashId, customerHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public fetchIndividualCustomerRFIDetails(requestParameters: CustomerAccountIndividualApiFetchIndividualCustomerRFIDetailsRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountIndividualApiFp(this.configuration).fetchIndividualCustomerRFIDetails(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to respond to an RFI raised by NIUM compliance team. You may use this API to respond to an RFI for data or documents when the customer\'s compliance status is RFI_REQUESTED.
      * @summary Respond to RFI
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {UploadRfiDocumentRequestDto} uploadRfiDocumentRequestDto RFI response object
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerAccountIndividualApiRespondtoRFIRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountIndividualApi
      */
-    public respondtoRFI(clientHashId: string, customerHashId: string, uploadRfiDocumentRequestDto: UploadRfiDocumentRequestDto, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountIndividualApiFp(this.configuration).respondtoRFI(clientHashId, customerHashId, uploadRfiDocumentRequestDto, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public respondtoRFI(requestParameters: CustomerAccountIndividualApiRespondtoRFIRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountIndividualApiFp(this.configuration).respondtoRFI(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.uploadRfiDocumentRequestDto, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API onboards customers based on their client configuration and preference.   >ℹ️ INFO   The \'childMustHaveParent\' setting can be optionally set to \'true\' for Payroll and Spend and Management clients, and it should be set to \'false\' for all other clients.   For details, see [Parent-child hierarchy](doc:parent-child-hierarchy).
      * @summary Unified Add Customer
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {UnifiedAddCustomerRequest} requestDto Add individual customer
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerAccountIndividualApiUnifiedAddCustomerRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountIndividualApi
      */
-    public unifiedAddCustomer(clientHashId: string, requestDto: UnifiedAddCustomerRequest, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountIndividualApiFp(this.configuration).unifiedAddCustomer(clientHashId, requestDto, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public unifiedAddCustomer(requestParameters: CustomerAccountIndividualApiUnifiedAddCustomerRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountIndividualApiFp(this.configuration).unifiedAddCustomer(requestParameters.clientHashId, requestParameters.requestDto, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows to upload documents necessary for customer onboarding. Refer to the RFI details on required documents.
      * @summary Upload Document
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {ComplianceDocumentDTO} complianceDocumentDTO Compliance documents
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerAccountIndividualApiUploadDocumentRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountIndividualApi
      */
-    public uploadDocument(clientHashId: string, customerHashId: string, complianceDocumentDTO: ComplianceDocumentDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountIndividualApiFp(this.configuration).uploadDocument(clientHashId, customerHashId, complianceDocumentDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public uploadDocument(requestParameters: CustomerAccountIndividualApiUploadDocumentRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountIndividualApiFp(this.configuration).uploadDocument(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.complianceDocumentDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

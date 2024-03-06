@@ -235,34 +235,116 @@ export const RatesApiFactory = function (configuration?: Configuration, basePath
         /**
          * This API will retrieve aggregated time series of historical exchange rate.
          * @summary Fetch historic aggregated exchange rates
-         * @param {string} sourceCurrencyCode This field contains the 3-letter [currency-and-country-codes](https://docs.nium.com/apis/docs/currency-and-country-codes).
-         * @param {string} destinationCurrencyCode This field contains the 3-letter [currency-and-country-codes](https://docs.nium.com/apis/docs/currency-and-country-codes).
-         * @param {string} [authorization] 
-         * @param {string} [csrfToken] 
-         * @param {string} [start] The start timestamp used to filter the aggregated time series. Must be in the format \&#39;yyyy-mm-ddTHH:MM:SSZ\&#39;.
-         * @param {string} [end] The end timestamp used to filter the aggregated time series. Must be in the format \&#39;yyyy-mm-ddTHH:MM:SSZ\&#39;.
-         * @param {Window} [window] Specifies the field by which the results should be grouped.
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {RatesApiAggregatedExchangeRatesRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        aggregatedExchangeRates(sourceCurrencyCode: string, destinationCurrencyCode: string, authorization?: string, csrfToken?: string, start?: string, end?: string, window?: Window, xRequestId?: string, options?: any): AxiosPromise<ExchangeRatesGetResponse> {
-            return localVarFp.aggregatedExchangeRates(sourceCurrencyCode, destinationCurrencyCode, authorization, csrfToken, start, end, window, xRequestId, options).then((request) => request(axios, basePath));
+        aggregatedExchangeRates(requestParameters: RatesApiAggregatedExchangeRatesRequest, options?: RawAxiosRequestConfig): AxiosPromise<ExchangeRatesGetResponse> {
+            return localVarFp.aggregatedExchangeRates(requestParameters.sourceCurrencyCode, requestParameters.destinationCurrencyCode, requestParameters.authorization, requestParameters.csrfToken, requestParameters.start, requestParameters.end, requestParameters.window, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API fetches the interbank FX rate for a currency pair. Note that the rate provided does not include the Nium markup.
          * @summary Exchange Rate V2
-         * @param {string} sourceCurrencyCode This field contains the 3-letter [ISO-4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) for the source amount.
-         * @param {string} destinationCurrencyCode This field contains the 3-letter [ISO-4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) for the destination amount.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {RatesApiExchangeRateV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        exchangeRateV2(sourceCurrencyCode: string, destinationCurrencyCode: string, xRequestId?: string, options?: any): AxiosPromise<ExchangeRateV2ResponseDto> {
-            return localVarFp.exchangeRateV2(sourceCurrencyCode, destinationCurrencyCode, xRequestId, options).then((request) => request(axios, basePath));
+        exchangeRateV2(requestParameters: RatesApiExchangeRateV2Request, options?: RawAxiosRequestConfig): AxiosPromise<ExchangeRateV2ResponseDto> {
+            return localVarFp.exchangeRateV2(requestParameters.sourceCurrencyCode, requestParameters.destinationCurrencyCode, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for aggregatedExchangeRates operation in RatesApi.
+ * @export
+ * @interface RatesApiAggregatedExchangeRatesRequest
+ */
+export interface RatesApiAggregatedExchangeRatesRequest {
+    /**
+     * This field contains the 3-letter [currency-and-country-codes](https://docs.nium.com/apis/docs/currency-and-country-codes).
+     * @type {string}
+     * @memberof RatesApiAggregatedExchangeRates
+     */
+    readonly sourceCurrencyCode: string
+
+    /**
+     * This field contains the 3-letter [currency-and-country-codes](https://docs.nium.com/apis/docs/currency-and-country-codes).
+     * @type {string}
+     * @memberof RatesApiAggregatedExchangeRates
+     */
+    readonly destinationCurrencyCode: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof RatesApiAggregatedExchangeRates
+     */
+    readonly authorization?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof RatesApiAggregatedExchangeRates
+     */
+    readonly csrfToken?: string
+
+    /**
+     * The start timestamp used to filter the aggregated time series. Must be in the format \&#39;yyyy-mm-ddTHH:MM:SSZ\&#39;.
+     * @type {string}
+     * @memberof RatesApiAggregatedExchangeRates
+     */
+    readonly start?: string
+
+    /**
+     * The end timestamp used to filter the aggregated time series. Must be in the format \&#39;yyyy-mm-ddTHH:MM:SSZ\&#39;.
+     * @type {string}
+     * @memberof RatesApiAggregatedExchangeRates
+     */
+    readonly end?: string
+
+    /**
+     * Specifies the field by which the results should be grouped.
+     * @type {Window}
+     * @memberof RatesApiAggregatedExchangeRates
+     */
+    readonly window?: Window
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof RatesApiAggregatedExchangeRates
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for exchangeRateV2 operation in RatesApi.
+ * @export
+ * @interface RatesApiExchangeRateV2Request
+ */
+export interface RatesApiExchangeRateV2Request {
+    /**
+     * This field contains the 3-letter [ISO-4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) for the source amount.
+     * @type {string}
+     * @memberof RatesApiExchangeRateV2
+     */
+    readonly sourceCurrencyCode: string
+
+    /**
+     * This field contains the 3-letter [ISO-4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) for the destination amount.
+     * @type {string}
+     * @memberof RatesApiExchangeRateV2
+     */
+    readonly destinationCurrencyCode: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof RatesApiExchangeRateV2
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * RatesApi - object-oriented interface
@@ -274,34 +356,25 @@ export class RatesApi extends BaseAPI {
     /**
      * This API will retrieve aggregated time series of historical exchange rate.
      * @summary Fetch historic aggregated exchange rates
-     * @param {string} sourceCurrencyCode This field contains the 3-letter [currency-and-country-codes](https://docs.nium.com/apis/docs/currency-and-country-codes).
-     * @param {string} destinationCurrencyCode This field contains the 3-letter [currency-and-country-codes](https://docs.nium.com/apis/docs/currency-and-country-codes).
-     * @param {string} [authorization] 
-     * @param {string} [csrfToken] 
-     * @param {string} [start] The start timestamp used to filter the aggregated time series. Must be in the format \&#39;yyyy-mm-ddTHH:MM:SSZ\&#39;.
-     * @param {string} [end] The end timestamp used to filter the aggregated time series. Must be in the format \&#39;yyyy-mm-ddTHH:MM:SSZ\&#39;.
-     * @param {Window} [window] Specifies the field by which the results should be grouped.
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {RatesApiAggregatedExchangeRatesRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RatesApi
      */
-    public aggregatedExchangeRates(sourceCurrencyCode: string, destinationCurrencyCode: string, authorization?: string, csrfToken?: string, start?: string, end?: string, window?: Window, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return RatesApiFp(this.configuration).aggregatedExchangeRates(sourceCurrencyCode, destinationCurrencyCode, authorization, csrfToken, start, end, window, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public aggregatedExchangeRates(requestParameters: RatesApiAggregatedExchangeRatesRequest, options?: RawAxiosRequestConfig) {
+        return RatesApiFp(this.configuration).aggregatedExchangeRates(requestParameters.sourceCurrencyCode, requestParameters.destinationCurrencyCode, requestParameters.authorization, requestParameters.csrfToken, requestParameters.start, requestParameters.end, requestParameters.window, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API fetches the interbank FX rate for a currency pair. Note that the rate provided does not include the Nium markup.
      * @summary Exchange Rate V2
-     * @param {string} sourceCurrencyCode This field contains the 3-letter [ISO-4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) for the source amount.
-     * @param {string} destinationCurrencyCode This field contains the 3-letter [ISO-4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) for the destination amount.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {RatesApiExchangeRateV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RatesApi
      */
-    public exchangeRateV2(sourceCurrencyCode: string, destinationCurrencyCode: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return RatesApiFp(this.configuration).exchangeRateV2(sourceCurrencyCode, destinationCurrencyCode, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public exchangeRateV2(requestParameters: RatesApiExchangeRateV2Request, options?: RawAxiosRequestConfig) {
+        return RatesApiFp(this.configuration).exchangeRateV2(requestParameters.sourceCurrencyCode, requestParameters.destinationCurrencyCode, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

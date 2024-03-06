@@ -207,33 +207,109 @@ export const OpenBankingOnboardingApiFactory = function (configuration?: Configu
         /**
          * This API allows Client to get the account details using the customer\'s consent Id for open banking, as part of the AIS flow.
          * @summary Account Details By Customer Consent ID.
-         * @param {string} accountConsentId accountConsentId
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {OpenBankingOnboardingApiAccountDetailsByCustomerConsentIDRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        accountDetailsByCustomerConsentID(accountConsentId: string, clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, options?: any): AxiosPromise<ConsentDetailsResponse> {
-            return localVarFp.accountDetailsByCustomerConsentID(accountConsentId, clientHashId, customerHashId, walletHashId, xRequestId, options).then((request) => request(axios, basePath));
+        accountDetailsByCustomerConsentID(requestParameters: OpenBankingOnboardingApiAccountDetailsByCustomerConsentIDRequest, options?: RawAxiosRequestConfig): AxiosPromise<ConsentDetailsResponse> {
+            return localVarFp.accountDetailsByCustomerConsentID(requestParameters.accountConsentId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows Client to fetch payment details using system reference number of the transaction, as part of the Open Banking PIS flow and based on customer\'s consent.
          * @summary Payment Details by System Reference Number
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} systemReferenceNumber systemReferenceNumber
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {OpenBankingOnboardingApiPaymentDetailsbySystemReferenceNumberRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        paymentDetailsbySystemReferenceNumber(clientHashId: string, customerHashId: string, systemReferenceNumber: string, walletHashId: string, xRequestId?: string, options?: any): AxiosPromise<OpenBankingPaymentResponseDTO> {
-            return localVarFp.paymentDetailsbySystemReferenceNumber(clientHashId, customerHashId, systemReferenceNumber, walletHashId, xRequestId, options).then((request) => request(axios, basePath));
+        paymentDetailsbySystemReferenceNumber(requestParameters: OpenBankingOnboardingApiPaymentDetailsbySystemReferenceNumberRequest, options?: RawAxiosRequestConfig): AxiosPromise<OpenBankingPaymentResponseDTO> {
+            return localVarFp.paymentDetailsbySystemReferenceNumber(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.systemReferenceNumber, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for accountDetailsByCustomerConsentID operation in OpenBankingOnboardingApi.
+ * @export
+ * @interface OpenBankingOnboardingApiAccountDetailsByCustomerConsentIDRequest
+ */
+export interface OpenBankingOnboardingApiAccountDetailsByCustomerConsentIDRequest {
+    /**
+     * accountConsentId
+     * @type {string}
+     * @memberof OpenBankingOnboardingApiAccountDetailsByCustomerConsentID
+     */
+    readonly accountConsentId: string
+
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof OpenBankingOnboardingApiAccountDetailsByCustomerConsentID
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof OpenBankingOnboardingApiAccountDetailsByCustomerConsentID
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof OpenBankingOnboardingApiAccountDetailsByCustomerConsentID
+     */
+    readonly walletHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof OpenBankingOnboardingApiAccountDetailsByCustomerConsentID
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for paymentDetailsbySystemReferenceNumber operation in OpenBankingOnboardingApi.
+ * @export
+ * @interface OpenBankingOnboardingApiPaymentDetailsbySystemReferenceNumberRequest
+ */
+export interface OpenBankingOnboardingApiPaymentDetailsbySystemReferenceNumberRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof OpenBankingOnboardingApiPaymentDetailsbySystemReferenceNumber
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof OpenBankingOnboardingApiPaymentDetailsbySystemReferenceNumber
+     */
+    readonly customerHashId: string
+
+    /**
+     * systemReferenceNumber
+     * @type {string}
+     * @memberof OpenBankingOnboardingApiPaymentDetailsbySystemReferenceNumber
+     */
+    readonly systemReferenceNumber: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof OpenBankingOnboardingApiPaymentDetailsbySystemReferenceNumber
+     */
+    readonly walletHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof OpenBankingOnboardingApiPaymentDetailsbySystemReferenceNumber
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * OpenBankingOnboardingApi - object-oriented interface
@@ -245,33 +321,25 @@ export class OpenBankingOnboardingApi extends BaseAPI {
     /**
      * This API allows Client to get the account details using the customer\'s consent Id for open banking, as part of the AIS flow.
      * @summary Account Details By Customer Consent ID.
-     * @param {string} accountConsentId accountConsentId
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {OpenBankingOnboardingApiAccountDetailsByCustomerConsentIDRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OpenBankingOnboardingApi
      */
-    public accountDetailsByCustomerConsentID(accountConsentId: string, clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return OpenBankingOnboardingApiFp(this.configuration).accountDetailsByCustomerConsentID(accountConsentId, clientHashId, customerHashId, walletHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public accountDetailsByCustomerConsentID(requestParameters: OpenBankingOnboardingApiAccountDetailsByCustomerConsentIDRequest, options?: RawAxiosRequestConfig) {
+        return OpenBankingOnboardingApiFp(this.configuration).accountDetailsByCustomerConsentID(requestParameters.accountConsentId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows Client to fetch payment details using system reference number of the transaction, as part of the Open Banking PIS flow and based on customer\'s consent.
      * @summary Payment Details by System Reference Number
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} systemReferenceNumber systemReferenceNumber
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {OpenBankingOnboardingApiPaymentDetailsbySystemReferenceNumberRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OpenBankingOnboardingApi
      */
-    public paymentDetailsbySystemReferenceNumber(clientHashId: string, customerHashId: string, systemReferenceNumber: string, walletHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return OpenBankingOnboardingApiFp(this.configuration).paymentDetailsbySystemReferenceNumber(clientHashId, customerHashId, systemReferenceNumber, walletHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public paymentDetailsbySystemReferenceNumber(requestParameters: OpenBankingOnboardingApiPaymentDetailsbySystemReferenceNumberRequest, options?: RawAxiosRequestConfig) {
+        return OpenBankingOnboardingApiFp(this.configuration).paymentDetailsbySystemReferenceNumber(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.systemReferenceNumber, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

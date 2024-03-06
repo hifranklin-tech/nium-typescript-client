@@ -8,4 +8,5 @@ openapi-generator generate \
   --additional-properties="withSeparateModelsAndApi=true" \
   --additional-properties="npmName=nium-client" \
   --additional-properties="apiPackage=api" \
-  --additional-properties="modelPackage=model"g
+  --additional-properties="modelPackage=model" \
+  --additional-properties="useSingleRequestParameter=true" \

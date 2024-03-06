@@ -528,91 +528,377 @@ export const CustomerVirtualAccountsApiFactory = function (configuration?: Confi
         /**
          * This API allows you to download an account ownership certificate.
          * @summary Account Ownership Certificate
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} [currencies] This field accepts the list of currencies in 3-letter [ISO-4217 transaction currency code](https://docs.nium.com/apis/docs/currency-and-country-codes) for which the account ownership certificate to be generated. If no currencies are being sent in query param then account ownership certificate will be generated for all the currencies enabled to the customer.
-         * @param {boolean} [currentAccountBalance] This field will display the account balance of the customer as on date
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {CustomerVirtualAccountsApiAccountOwnershipCertificateRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        accountOwnershipCertificate(clientHashId: string, customerHashId: string, currencies?: string, currentAccountBalance?: boolean, xRequestId?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.accountOwnershipCertificate(clientHashId, customerHashId, currencies, currentAccountBalance, xRequestId, options).then((request) => request(axios, basePath));
+        accountOwnershipCertificate(requestParameters: CustomerVirtualAccountsApiAccountOwnershipCertificateRequest, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.accountOwnershipCertificate(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.currencies, requestParameters.currentAccountBalance, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to assign virtual account numbers to customer for specific source.
          * @summary Assign Payment ID
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {PaymentIdRequestDTO2} paymentIdRequestDTO2 paymentIdRequestDTO2
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerVirtualAccountsApiAssignPaymentIDRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignPaymentID(clientHashId: string, customerHashId: string, walletHashId: string, paymentIdRequestDTO2: PaymentIdRequestDTO2, xRequestId?: string, options?: any): AxiosPromise<PaymentIdResponseDTO2> {
-            return localVarFp.assignPaymentID(clientHashId, customerHashId, walletHashId, paymentIdRequestDTO2, xRequestId, options).then((request) => request(axios, basePath));
+        assignPaymentID(requestParameters: CustomerVirtualAccountsApiAssignPaymentIDRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaymentIdResponseDTO2> {
+            return localVarFp.assignPaymentID(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.paymentIdRequestDTO2, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to add, update, delete client tags against each virtual account.
          * @summary Manage Virtual Account Tags
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {PaymentIdTagRequestDTO} paymentIdTagRequestDTO tags
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerVirtualAccountsApiManageVirtualAccountTagsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        manageVirtualAccountTags(clientHashId: string, customerHashId: string, walletHashId: string, paymentIdTagRequestDTO: PaymentIdTagRequestDTO, xRequestId?: string, options?: any): AxiosPromise<PaymentIdCientTagsResponseDTO> {
-            return localVarFp.manageVirtualAccountTags(clientHashId, customerHashId, walletHashId, paymentIdTagRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        manageVirtualAccountTags(requestParameters: CustomerVirtualAccountsApiManageVirtualAccountTagsRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaymentIdCientTagsResponseDTO> {
+            return localVarFp.manageVirtualAccountTags(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.paymentIdTagRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch virtual accounts assigned to a customer\'s wallet.   ⚠️ WARNING   > To access updated functionality and features we recommed using the latest version of this API [Virtual Account Details V2](/apis/reference/virtualaccountdetailsv2). Eventually, this API version will be deprecated and becomes unsupported.
          * @summary Virtual Account Details
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated and shared before API handshake.
-         * @param {string} walletHashId Unique wallet identifier generated and shared before API handshake.
-         * @param {string} [currencyCode] 
-         * @param {string} [endDate] 
-         * @param {VirtualAccountDetailsOrderEnum} [order] 
-         * @param {number} [page] 
-         * @param {VirtualAccountDetailsPropertyEnum} [property] 
-         * @param {number} [size] 
-         * @param {string} [startDate] 
-         * @param {string} [tagKey] 
-         * @param {string} [tagValue] 
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerVirtualAccountsApiVirtualAccountDetailsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        virtualAccountDetails(clientHashId: string, customerHashId: string, walletHashId: string, currencyCode?: string, endDate?: string, order?: VirtualAccountDetailsOrderEnum, page?: number, property?: VirtualAccountDetailsPropertyEnum, size?: number, startDate?: string, tagKey?: string, tagValue?: string, xRequestId?: string, options?: any): AxiosPromise<Array<WalletPaymentIdsResponseDTO>> {
-            return localVarFp.virtualAccountDetails(clientHashId, customerHashId, walletHashId, currencyCode, endDate, order, page, property, size, startDate, tagKey, tagValue, xRequestId, options).then((request) => request(axios, basePath));
+        virtualAccountDetails(requestParameters: CustomerVirtualAccountsApiVirtualAccountDetailsRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<WalletPaymentIdsResponseDTO>> {
+            return localVarFp.virtualAccountDetails(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.currencyCode, requestParameters.endDate, requestParameters.order, requestParameters.page, requestParameters.property, requestParameters.size, requestParameters.startDate, requestParameters.tagKey, requestParameters.tagValue, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch virtual accounts assigned to a customer\'s wallet.
          * @summary Virtual Account Details V2
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated and shared before API handshake.
-         * @param {string} walletHashId Unique wallet identifier generated and shared before API handshake.
-         * @param {string} [currencyCode] 
-         * @param {string} [endDate] 
-         * @param {VirtualAccountDetailsV2OrderEnum} [order] 
-         * @param {number} [page] 
-         * @param {VirtualAccountDetailsV2PropertyEnum} [property] 
-         * @param {number} [size] 
-         * @param {string} [startDate] 
-         * @param {string} [tagKey] 
-         * @param {string} [tagValue] 
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerVirtualAccountsApiVirtualAccountDetailsV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        virtualAccountDetailsV2(clientHashId: string, customerHashId: string, walletHashId: string, currencyCode?: string, endDate?: string, order?: VirtualAccountDetailsV2OrderEnum, page?: number, property?: VirtualAccountDetailsV2PropertyEnum, size?: number, startDate?: string, tagKey?: string, tagValue?: string, xRequestId?: string, options?: any): AxiosPromise<VirtualAccountResponseDTO> {
-            return localVarFp.virtualAccountDetailsV2(clientHashId, customerHashId, walletHashId, currencyCode, endDate, order, page, property, size, startDate, tagKey, tagValue, xRequestId, options).then((request) => request(axios, basePath));
+        virtualAccountDetailsV2(requestParameters: CustomerVirtualAccountsApiVirtualAccountDetailsV2Request, options?: RawAxiosRequestConfig): AxiosPromise<VirtualAccountResponseDTO> {
+            return localVarFp.virtualAccountDetailsV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.currencyCode, requestParameters.endDate, requestParameters.order, requestParameters.page, requestParameters.property, requestParameters.size, requestParameters.startDate, requestParameters.tagKey, requestParameters.tagValue, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for accountOwnershipCertificate operation in CustomerVirtualAccountsApi.
+ * @export
+ * @interface CustomerVirtualAccountsApiAccountOwnershipCertificateRequest
+ */
+export interface CustomerVirtualAccountsApiAccountOwnershipCertificateRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiAccountOwnershipCertificate
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiAccountOwnershipCertificate
+     */
+    readonly customerHashId: string
+
+    /**
+     * This field accepts the list of currencies in 3-letter [ISO-4217 transaction currency code](https://docs.nium.com/apis/docs/currency-and-country-codes) for which the account ownership certificate to be generated. If no currencies are being sent in query param then account ownership certificate will be generated for all the currencies enabled to the customer.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiAccountOwnershipCertificate
+     */
+    readonly currencies?: string
+
+    /**
+     * This field will display the account balance of the customer as on date
+     * @type {boolean}
+     * @memberof CustomerVirtualAccountsApiAccountOwnershipCertificate
+     */
+    readonly currentAccountBalance?: boolean
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiAccountOwnershipCertificate
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for assignPaymentID operation in CustomerVirtualAccountsApi.
+ * @export
+ * @interface CustomerVirtualAccountsApiAssignPaymentIDRequest
+ */
+export interface CustomerVirtualAccountsApiAssignPaymentIDRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiAssignPaymentID
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiAssignPaymentID
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiAssignPaymentID
+     */
+    readonly walletHashId: string
+
+    /**
+     * paymentIdRequestDTO2
+     * @type {PaymentIdRequestDTO2}
+     * @memberof CustomerVirtualAccountsApiAssignPaymentID
+     */
+    readonly paymentIdRequestDTO2: PaymentIdRequestDTO2
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiAssignPaymentID
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for manageVirtualAccountTags operation in CustomerVirtualAccountsApi.
+ * @export
+ * @interface CustomerVirtualAccountsApiManageVirtualAccountTagsRequest
+ */
+export interface CustomerVirtualAccountsApiManageVirtualAccountTagsRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiManageVirtualAccountTags
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiManageVirtualAccountTags
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiManageVirtualAccountTags
+     */
+    readonly walletHashId: string
+
+    /**
+     * tags
+     * @type {PaymentIdTagRequestDTO}
+     * @memberof CustomerVirtualAccountsApiManageVirtualAccountTags
+     */
+    readonly paymentIdTagRequestDTO: PaymentIdTagRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiManageVirtualAccountTags
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for virtualAccountDetails operation in CustomerVirtualAccountsApi.
+ * @export
+ * @interface CustomerVirtualAccountsApiVirtualAccountDetailsRequest
+ */
+export interface CustomerVirtualAccountsApiVirtualAccountDetailsRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetails
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetails
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetails
+     */
+    readonly walletHashId: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetails
+     */
+    readonly currencyCode?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetails
+     */
+    readonly endDate?: string
+
+    /**
+     * 
+     * @type {'DESC' | 'ASC'}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetails
+     */
+    readonly order?: VirtualAccountDetailsOrderEnum
+
+    /**
+     * 
+     * @type {number}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetails
+     */
+    readonly page?: number
+
+    /**
+     * 
+     * @type {'createdAt'}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetails
+     */
+    readonly property?: VirtualAccountDetailsPropertyEnum
+
+    /**
+     * 
+     * @type {number}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetails
+     */
+    readonly size?: number
+
+    /**
+     * 
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetails
+     */
+    readonly startDate?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetails
+     */
+    readonly tagKey?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetails
+     */
+    readonly tagValue?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetails
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for virtualAccountDetailsV2 operation in CustomerVirtualAccountsApi.
+ * @export
+ * @interface CustomerVirtualAccountsApiVirtualAccountDetailsV2Request
+ */
+export interface CustomerVirtualAccountsApiVirtualAccountDetailsV2Request {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetailsV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetailsV2
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetailsV2
+     */
+    readonly walletHashId: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetailsV2
+     */
+    readonly currencyCode?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetailsV2
+     */
+    readonly endDate?: string
+
+    /**
+     * 
+     * @type {'DESC' | 'ASC'}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetailsV2
+     */
+    readonly order?: VirtualAccountDetailsV2OrderEnum
+
+    /**
+     * 
+     * @type {number}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetailsV2
+     */
+    readonly page?: number
+
+    /**
+     * 
+     * @type {'createdAt'}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetailsV2
+     */
+    readonly property?: VirtualAccountDetailsV2PropertyEnum
+
+    /**
+     * 
+     * @type {number}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetailsV2
+     */
+    readonly size?: number
+
+    /**
+     * 
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetailsV2
+     */
+    readonly startDate?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetailsV2
+     */
+    readonly tagKey?: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetailsV2
+     */
+    readonly tagValue?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerVirtualAccountsApiVirtualAccountDetailsV2
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * CustomerVirtualAccountsApi - object-oriented interface
@@ -624,97 +910,61 @@ export class CustomerVirtualAccountsApi extends BaseAPI {
     /**
      * This API allows you to download an account ownership certificate.
      * @summary Account Ownership Certificate
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} [currencies] This field accepts the list of currencies in 3-letter [ISO-4217 transaction currency code](https://docs.nium.com/apis/docs/currency-and-country-codes) for which the account ownership certificate to be generated. If no currencies are being sent in query param then account ownership certificate will be generated for all the currencies enabled to the customer.
-     * @param {boolean} [currentAccountBalance] This field will display the account balance of the customer as on date
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {CustomerVirtualAccountsApiAccountOwnershipCertificateRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerVirtualAccountsApi
      */
-    public accountOwnershipCertificate(clientHashId: string, customerHashId: string, currencies?: string, currentAccountBalance?: boolean, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerVirtualAccountsApiFp(this.configuration).accountOwnershipCertificate(clientHashId, customerHashId, currencies, currentAccountBalance, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public accountOwnershipCertificate(requestParameters: CustomerVirtualAccountsApiAccountOwnershipCertificateRequest, options?: RawAxiosRequestConfig) {
+        return CustomerVirtualAccountsApiFp(this.configuration).accountOwnershipCertificate(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.currencies, requestParameters.currentAccountBalance, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to assign virtual account numbers to customer for specific source.
      * @summary Assign Payment ID
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {PaymentIdRequestDTO2} paymentIdRequestDTO2 paymentIdRequestDTO2
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerVirtualAccountsApiAssignPaymentIDRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerVirtualAccountsApi
      */
-    public assignPaymentID(clientHashId: string, customerHashId: string, walletHashId: string, paymentIdRequestDTO2: PaymentIdRequestDTO2, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerVirtualAccountsApiFp(this.configuration).assignPaymentID(clientHashId, customerHashId, walletHashId, paymentIdRequestDTO2, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public assignPaymentID(requestParameters: CustomerVirtualAccountsApiAssignPaymentIDRequest, options?: RawAxiosRequestConfig) {
+        return CustomerVirtualAccountsApiFp(this.configuration).assignPaymentID(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.paymentIdRequestDTO2, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to add, update, delete client tags against each virtual account.
      * @summary Manage Virtual Account Tags
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {PaymentIdTagRequestDTO} paymentIdTagRequestDTO tags
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerVirtualAccountsApiManageVirtualAccountTagsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerVirtualAccountsApi
      */
-    public manageVirtualAccountTags(clientHashId: string, customerHashId: string, walletHashId: string, paymentIdTagRequestDTO: PaymentIdTagRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerVirtualAccountsApiFp(this.configuration).manageVirtualAccountTags(clientHashId, customerHashId, walletHashId, paymentIdTagRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public manageVirtualAccountTags(requestParameters: CustomerVirtualAccountsApiManageVirtualAccountTagsRequest, options?: RawAxiosRequestConfig) {
+        return CustomerVirtualAccountsApiFp(this.configuration).manageVirtualAccountTags(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.paymentIdTagRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch virtual accounts assigned to a customer\'s wallet.   ⚠️ WARNING   > To access updated functionality and features we recommed using the latest version of this API [Virtual Account Details V2](/apis/reference/virtualaccountdetailsv2). Eventually, this API version will be deprecated and becomes unsupported.
      * @summary Virtual Account Details
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated and shared before API handshake.
-     * @param {string} walletHashId Unique wallet identifier generated and shared before API handshake.
-     * @param {string} [currencyCode] 
-     * @param {string} [endDate] 
-     * @param {VirtualAccountDetailsOrderEnum} [order] 
-     * @param {number} [page] 
-     * @param {VirtualAccountDetailsPropertyEnum} [property] 
-     * @param {number} [size] 
-     * @param {string} [startDate] 
-     * @param {string} [tagKey] 
-     * @param {string} [tagValue] 
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerVirtualAccountsApiVirtualAccountDetailsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerVirtualAccountsApi
      */
-    public virtualAccountDetails(clientHashId: string, customerHashId: string, walletHashId: string, currencyCode?: string, endDate?: string, order?: VirtualAccountDetailsOrderEnum, page?: number, property?: VirtualAccountDetailsPropertyEnum, size?: number, startDate?: string, tagKey?: string, tagValue?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerVirtualAccountsApiFp(this.configuration).virtualAccountDetails(clientHashId, customerHashId, walletHashId, currencyCode, endDate, order, page, property, size, startDate, tagKey, tagValue, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public virtualAccountDetails(requestParameters: CustomerVirtualAccountsApiVirtualAccountDetailsRequest, options?: RawAxiosRequestConfig) {
+        return CustomerVirtualAccountsApiFp(this.configuration).virtualAccountDetails(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.currencyCode, requestParameters.endDate, requestParameters.order, requestParameters.page, requestParameters.property, requestParameters.size, requestParameters.startDate, requestParameters.tagKey, requestParameters.tagValue, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch virtual accounts assigned to a customer\'s wallet.
      * @summary Virtual Account Details V2
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated and shared before API handshake.
-     * @param {string} walletHashId Unique wallet identifier generated and shared before API handshake.
-     * @param {string} [currencyCode] 
-     * @param {string} [endDate] 
-     * @param {VirtualAccountDetailsV2OrderEnum} [order] 
-     * @param {number} [page] 
-     * @param {VirtualAccountDetailsV2PropertyEnum} [property] 
-     * @param {number} [size] 
-     * @param {string} [startDate] 
-     * @param {string} [tagKey] 
-     * @param {string} [tagValue] 
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerVirtualAccountsApiVirtualAccountDetailsV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerVirtualAccountsApi
      */
-    public virtualAccountDetailsV2(clientHashId: string, customerHashId: string, walletHashId: string, currencyCode?: string, endDate?: string, order?: VirtualAccountDetailsV2OrderEnum, page?: number, property?: VirtualAccountDetailsV2PropertyEnum, size?: number, startDate?: string, tagKey?: string, tagValue?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerVirtualAccountsApiFp(this.configuration).virtualAccountDetailsV2(clientHashId, customerHashId, walletHashId, currencyCode, endDate, order, page, property, size, startDate, tagKey, tagValue, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public virtualAccountDetailsV2(requestParameters: CustomerVirtualAccountsApiVirtualAccountDetailsV2Request, options?: RawAxiosRequestConfig) {
+        return CustomerVirtualAccountsApiFp(this.configuration).virtualAccountDetailsV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.currencyCode, requestParameters.endDate, requestParameters.order, requestParameters.page, requestParameters.property, requestParameters.size, requestParameters.startDate, requestParameters.tagKey, requestParameters.tagValue, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

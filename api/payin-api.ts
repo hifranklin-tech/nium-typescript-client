@@ -192,30 +192,88 @@ export const PayinApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary Simulate Funding Instrument Status Update (Sandbox Testing)
-         * @param {string} clientHashId clientHashId
-         * @param {string} customerHashId customerHashId
-         * @param {string} fundingInstrumentId fundingInstrumentId
-         * @param {FundingInstrumentStatusUpdateRequestDTO} fundingInstrumentStatusUpdateRequestDTO fundingInstrumentStatusUpdateRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {PayinApiSimulateFundingInstrumentStatusUpdateRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        simulateFundingInstrumentStatusUpdate(clientHashId: string, customerHashId: string, fundingInstrumentId: string, fundingInstrumentStatusUpdateRequestDTO: FundingInstrumentStatusUpdateRequestDTO, xRequestId?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.simulateFundingInstrumentStatusUpdate(clientHashId, customerHashId, fundingInstrumentId, fundingInstrumentStatusUpdateRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        simulateFundingInstrumentStatusUpdate(requestParameters: PayinApiSimulateFundingInstrumentStatusUpdateRequest, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.simulateFundingInstrumentStatusUpdate(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.fundingInstrumentId, requestParameters.fundingInstrumentStatusUpdateRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API can be used in \'Sandbox testing\' to simulate inward receive transaction and credit funds into the wallet for testing purposes.  >ℹ️ INFO  >This API is for testing purpose only and not to be used in production. >Use a unique bankReferenceNumber for every new simulated receive payment transaction request.
          * @summary Simulate Receive Transaction
-         * @param {InwardPaymentManualRequestDTO} inwardPaymentManualRequestDTO inwardPaymentManualRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {PayinApiSimulatereceivepaymentRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        simulatereceivepayment(inwardPaymentManualRequestDTO: InwardPaymentManualRequestDTO, xRequestId?: string, options?: any): AxiosPromise<PayinApiResponse2> {
-            return localVarFp.simulatereceivepayment(inwardPaymentManualRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        simulatereceivepayment(requestParameters: PayinApiSimulatereceivepaymentRequest, options?: RawAxiosRequestConfig): AxiosPromise<PayinApiResponse2> {
+            return localVarFp.simulatereceivepayment(requestParameters.inwardPaymentManualRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for simulateFundingInstrumentStatusUpdate operation in PayinApi.
+ * @export
+ * @interface PayinApiSimulateFundingInstrumentStatusUpdateRequest
+ */
+export interface PayinApiSimulateFundingInstrumentStatusUpdateRequest {
+    /**
+     * clientHashId
+     * @type {string}
+     * @memberof PayinApiSimulateFundingInstrumentStatusUpdate
+     */
+    readonly clientHashId: string
+
+    /**
+     * customerHashId
+     * @type {string}
+     * @memberof PayinApiSimulateFundingInstrumentStatusUpdate
+     */
+    readonly customerHashId: string
+
+    /**
+     * fundingInstrumentId
+     * @type {string}
+     * @memberof PayinApiSimulateFundingInstrumentStatusUpdate
+     */
+    readonly fundingInstrumentId: string
+
+    /**
+     * fundingInstrumentStatusUpdateRequestDTO
+     * @type {FundingInstrumentStatusUpdateRequestDTO}
+     * @memberof PayinApiSimulateFundingInstrumentStatusUpdate
+     */
+    readonly fundingInstrumentStatusUpdateRequestDTO: FundingInstrumentStatusUpdateRequestDTO
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof PayinApiSimulateFundingInstrumentStatusUpdate
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for simulatereceivepayment operation in PayinApi.
+ * @export
+ * @interface PayinApiSimulatereceivepaymentRequest
+ */
+export interface PayinApiSimulatereceivepaymentRequest {
+    /**
+     * inwardPaymentManualRequestDTO
+     * @type {InwardPaymentManualRequestDTO}
+     * @memberof PayinApiSimulatereceivepayment
+     */
+    readonly inwardPaymentManualRequestDTO: InwardPaymentManualRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof PayinApiSimulatereceivepayment
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * PayinApi - object-oriented interface
@@ -227,30 +285,25 @@ export class PayinApi extends BaseAPI {
     /**
      * 
      * @summary Simulate Funding Instrument Status Update (Sandbox Testing)
-     * @param {string} clientHashId clientHashId
-     * @param {string} customerHashId customerHashId
-     * @param {string} fundingInstrumentId fundingInstrumentId
-     * @param {FundingInstrumentStatusUpdateRequestDTO} fundingInstrumentStatusUpdateRequestDTO fundingInstrumentStatusUpdateRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {PayinApiSimulateFundingInstrumentStatusUpdateRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PayinApi
      */
-    public simulateFundingInstrumentStatusUpdate(clientHashId: string, customerHashId: string, fundingInstrumentId: string, fundingInstrumentStatusUpdateRequestDTO: FundingInstrumentStatusUpdateRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return PayinApiFp(this.configuration).simulateFundingInstrumentStatusUpdate(clientHashId, customerHashId, fundingInstrumentId, fundingInstrumentStatusUpdateRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public simulateFundingInstrumentStatusUpdate(requestParameters: PayinApiSimulateFundingInstrumentStatusUpdateRequest, options?: RawAxiosRequestConfig) {
+        return PayinApiFp(this.configuration).simulateFundingInstrumentStatusUpdate(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.fundingInstrumentId, requestParameters.fundingInstrumentStatusUpdateRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API can be used in \'Sandbox testing\' to simulate inward receive transaction and credit funds into the wallet for testing purposes.  >ℹ️ INFO  >This API is for testing purpose only and not to be used in production. >Use a unique bankReferenceNumber for every new simulated receive payment transaction request.
      * @summary Simulate Receive Transaction
-     * @param {InwardPaymentManualRequestDTO} inwardPaymentManualRequestDTO inwardPaymentManualRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {PayinApiSimulatereceivepaymentRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PayinApi
      */
-    public simulatereceivepayment(inwardPaymentManualRequestDTO: InwardPaymentManualRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return PayinApiFp(this.configuration).simulatereceivepayment(inwardPaymentManualRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public simulatereceivepayment(requestParameters: PayinApiSimulatereceivepaymentRequest, options?: RawAxiosRequestConfig) {
+        return PayinApiFp(this.configuration).simulatereceivepayment(requestParameters.inwardPaymentManualRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

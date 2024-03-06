@@ -576,99 +576,387 @@ export const ReferenceDataApiFactory = function (configuration?: Configuration, 
         /**
          * This API allows you to fetch the bank details against the routing information.
          * @summary Fetch Bank Details using Routing Code
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} countryCode This field accepts the [2-letter ISO-2 country code](doc:currency-and-country-codes) of a beneficiary.
-         * @param {string} customerHashId This field accepts the unique customer identifier generated on customer creation.
-         * @param {string} routingCodeType This field accepts the routing code type 1. The possible values are: SWIFT for all cases where SWIFT is applicable IFSC (relevant for India) ACH CODE (relevant for USA) BSB CODE (relevant for Australia) SORT CODE (relevant for the UK) LOCATION ID (relevant for Nepal) BANK CODE (relevant for few countries including Canada, Hong Kong, Sri Lanka, South Korea, Pakistan, Brazil, and some more) TRANSIT NUMBER (relevant for Canada) BRANCH CODE (relevant for Sri Lanka, Vietnam, Brazil, Uruguay, Kenya and some more) Given that the routing_code_type_1 is a PATH parameter, apply URL encoding. For example, when you want to pass ACH CODE, after URL encoding you will pass it as ACH%20CODE
-         * @param {string} routingCodeValue This field accepts the routing code value 1. Refer to the [Examples of Routing Codes](/apis/docs/routing-codes#examples-of-routing-codes).
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ReferenceDataApiFetchBankDetailsusingRoutingCodeRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchBankDetailsusingRoutingCode(clientHashId: string, countryCode: string, customerHashId: string, routingCodeType: string, routingCodeValue: string, xRequestId?: string, options?: any): AxiosPromise<Resource> {
-            return localVarFp.fetchBankDetailsusingRoutingCode(clientHashId, countryCode, customerHashId, routingCodeType, routingCodeValue, xRequestId, options).then((request) => request(axios, basePath));
+        fetchBankDetailsusingRoutingCode(requestParameters: ReferenceDataApiFetchBankDetailsusingRoutingCodeRequest, options?: RawAxiosRequestConfig): AxiosPromise<Resource> {
+            return localVarFp.fetchBankDetailsusingRoutingCode(requestParameters.clientHashId, requestParameters.countryCode, requestParameters.customerHashId, requestParameters.routingCodeType, requestParameters.routingCodeValue, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API will allow you to fetch the supported corridors for remittance with details.
          * @summary Fetch Supported Corridors
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ReferenceDataApiFetchSupportedCorridorsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchSupportedCorridors(clientHashId: string, customerHashId: string, xRequestId?: string, options?: any): AxiosPromise<Resource> {
-            return localVarFp.fetchSupportedCorridors(clientHashId, customerHashId, xRequestId, options).then((request) => request(axios, basePath));
+        fetchSupportedCorridors(requestParameters: ReferenceDataApiFetchSupportedCorridorsRequest, options?: RawAxiosRequestConfig): AxiosPromise<Resource> {
+            return localVarFp.fetchSupportedCorridors(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API will allow you to fetch the supported corridors for remittance with details.
          * @summary Fetch Supported Corridors V2
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} [beneficiaryAccountType] This field accepts the beneficiary account type.
-         * @param {string} [clientType] This field accepts type of Client e.g. FI, NonFI, default NonFI.
-         * @param {string} [customerType] This field accepts the type of customer.
-         * @param {string} [destinationCountry] This field accepts the [2-letter ISO-2 destination country code](https://docs.nium.com/apis/docs/currency-and-country-codes).
-         * @param {string} [destinationCurrency] This field accepts the [3-letter ISO-4217 currency code](https://docs.nium.com/apis/docs/currency-and-country-codes) which will be used to filter the user selected currency and get the payout method.
-         * @param {string} [payoutMethod] This field accepts the different modes of payout.
-         * @param {string} [routingCodeType] This field determines the routing code type for the currency.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ReferenceDataApiFetchSupportedCorridorsV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchSupportedCorridorsV2(clientHashId: string, beneficiaryAccountType?: string, clientType?: string, customerType?: string, destinationCountry?: string, destinationCurrency?: string, payoutMethod?: string, routingCodeType?: string, xRequestId?: string, options?: any): AxiosPromise<Array<SupportedCorridorsResponseDTO>> {
-            return localVarFp.fetchSupportedCorridorsV2(clientHashId, beneficiaryAccountType, clientType, customerType, destinationCountry, destinationCurrency, payoutMethod, routingCodeType, xRequestId, options).then((request) => request(axios, basePath));
+        fetchSupportedCorridorsV2(requestParameters: ReferenceDataApiFetchSupportedCorridorsV2Request, options?: RawAxiosRequestConfig): AxiosPromise<Array<SupportedCorridorsResponseDTO>> {
+            return localVarFp.fetchSupportedCorridorsV2(requestParameters.clientHashId, requestParameters.beneficiaryAccountType, requestParameters.clientType, requestParameters.customerType, requestParameters.destinationCountry, requestParameters.destinationCurrency, requestParameters.payoutMethod, requestParameters.routingCodeType, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API will allow you to search the routing code details using bank name.
          * @summary Search Routing Code Using Bank Name
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} countryCode This field accepts the [2-letter ISO-2 country code](doc:currency-and-country-codes) for which routing code search is initiated.
-         * @param {SearchRoutingCodeUsingBankNameRoutingCodeTypeEnum} routingCodeType This field determines the routing code type for the search.
-         * @param {string} searchValue This field accepts the partial or full value of the Bank Name on which the search is initiated, for example, it could be DBS.
-         * @param {string} [bankCode] This field can accept the bank code of specified branch and country.
-         * @param {string} [bankName] This field can accept the bank name associated with country.
-         * @param {string} [currencyCode] This field accepts the [3-letter ISO-4217 currency code](doc:currency-and-country-codes) for which routing code search is to be initiated.
-         * @param {string} [payoutMethod] This field can accept the different modes of payout. This field can accept one of the following values: LOCAL SWIFT WALLET CARD PROXY(upcoming feature) Default value of the parameter is LOCAL.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ReferenceDataApiSearchRoutingCodeUsingBankNameRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchRoutingCodeUsingBankName(clientHashId: string, countryCode: string, routingCodeType: SearchRoutingCodeUsingBankNameRoutingCodeTypeEnum, searchValue: string, bankCode?: string, bankName?: string, currencyCode?: string, payoutMethod?: string, xRequestId?: string, options?: any): AxiosPromise<Array<PartialSearchBankNameResponseDTO>> {
-            return localVarFp.searchRoutingCodeUsingBankName(clientHashId, countryCode, routingCodeType, searchValue, bankCode, bankName, currencyCode, payoutMethod, xRequestId, options).then((request) => request(axios, basePath));
+        searchRoutingCodeUsingBankName(requestParameters: ReferenceDataApiSearchRoutingCodeUsingBankNameRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<PartialSearchBankNameResponseDTO>> {
+            return localVarFp.searchRoutingCodeUsingBankName(requestParameters.clientHashId, requestParameters.countryCode, requestParameters.routingCodeType, requestParameters.searchValue, requestParameters.bankCode, requestParameters.bankName, requestParameters.currencyCode, requestParameters.payoutMethod, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API will allow you to search the routing code details using branch name.
          * @summary Search Routing Code Using Branch Name
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} countryCode This field accepts the [2-letter ISO-2 country code](doc:currency-and-country-codes) for which routing code search is initiated.
-         * @param {SearchRoutingCodeUsingBranchNameRoutingCodeTypeEnum} routingCodeType This field determines the routing code type for the search.
-         * @param {string} searchValue This field accepts the partial or full value of the Bank Name on which the search is initiated, for example, it could be DBS.
-         * @param {string} [bankCode] This field can accept the bank code of specified branch and country.
-         * @param {string} [bankName] This field can accept the bank name associated with country.
-         * @param {string} [currencyCode] This field accepts the [3-letter ISO-4217 currency code](doc:currency-and-country-codes) for which routing code search is to be initiated.
-         * @param {string} [payoutMethod] This field can accept the different modes of payout. This field can accept one of the following values: LOCAL SWIFT WALLET CARD PROXY(upcoming feature) Default value of the parameter is LOCAL.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ReferenceDataApiSearchRoutingCodeUsingBranchNameRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchRoutingCodeUsingBranchName(clientHashId: string, countryCode: string, routingCodeType: SearchRoutingCodeUsingBranchNameRoutingCodeTypeEnum, searchValue: string, bankCode?: string, bankName?: string, currencyCode?: string, payoutMethod?: string, xRequestId?: string, options?: any): AxiosPromise<Array<PartialSearchBranchNameResponseDTO>> {
-            return localVarFp.searchRoutingCodeUsingBranchName(clientHashId, countryCode, routingCodeType, searchValue, bankCode, bankName, currencyCode, payoutMethod, xRequestId, options).then((request) => request(axios, basePath));
+        searchRoutingCodeUsingBranchName(requestParameters: ReferenceDataApiSearchRoutingCodeUsingBranchNameRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<PartialSearchBranchNameResponseDTO>> {
+            return localVarFp.searchRoutingCodeUsingBranchName(requestParameters.clientHashId, requestParameters.countryCode, requestParameters.routingCodeType, requestParameters.searchValue, requestParameters.bankCode, requestParameters.bankName, requestParameters.currencyCode, requestParameters.payoutMethod, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API will allow you to search the routing code details of a bank based on certain parameters - i.e., by using bank name or branch name. This API will help you to build a user experience where you can help your users to locate a specific routing code (that could be SWIFT, IFSC, SORT CODE, ACH CODE, etc., - see the list below) by using full or partial name search of bank name or branch name. For example, if your user is looking for SWIFT CODE for HSBC in the UK, then this API can be used to search for the SORT CODE by searching using the bank name.
          * @summary Search Routing Code (using bank name/branch name)
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {PartialSearchDTO} partialSearchDTO partialSearchDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ReferenceDataApiSearchRoutingCodeusingbanknamebranchnameRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchRoutingCodeusingbanknamebranchname(clientHashId: string, customerHashId: string, partialSearchDTO: PartialSearchDTO, xRequestId?: string, options?: any): AxiosPromise<Resource> {
-            return localVarFp.searchRoutingCodeusingbanknamebranchname(clientHashId, customerHashId, partialSearchDTO, xRequestId, options).then((request) => request(axios, basePath));
+        searchRoutingCodeusingbanknamebranchname(requestParameters: ReferenceDataApiSearchRoutingCodeusingbanknamebranchnameRequest, options?: RawAxiosRequestConfig): AxiosPromise<Resource> {
+            return localVarFp.searchRoutingCodeusingbanknamebranchname(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.partialSearchDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for fetchBankDetailsusingRoutingCode operation in ReferenceDataApi.
+ * @export
+ * @interface ReferenceDataApiFetchBankDetailsusingRoutingCodeRequest
+ */
+export interface ReferenceDataApiFetchBankDetailsusingRoutingCodeRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ReferenceDataApiFetchBankDetailsusingRoutingCode
+     */
+    readonly clientHashId: string
+
+    /**
+     * This field accepts the [2-letter ISO-2 country code](doc:currency-and-country-codes) of a beneficiary.
+     * @type {string}
+     * @memberof ReferenceDataApiFetchBankDetailsusingRoutingCode
+     */
+    readonly countryCode: string
+
+    /**
+     * This field accepts the unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof ReferenceDataApiFetchBankDetailsusingRoutingCode
+     */
+    readonly customerHashId: string
+
+    /**
+     * This field accepts the routing code type 1. The possible values are: SWIFT for all cases where SWIFT is applicable IFSC (relevant for India) ACH CODE (relevant for USA) BSB CODE (relevant for Australia) SORT CODE (relevant for the UK) LOCATION ID (relevant for Nepal) BANK CODE (relevant for few countries including Canada, Hong Kong, Sri Lanka, South Korea, Pakistan, Brazil, and some more) TRANSIT NUMBER (relevant for Canada) BRANCH CODE (relevant for Sri Lanka, Vietnam, Brazil, Uruguay, Kenya and some more) Given that the routing_code_type_1 is a PATH parameter, apply URL encoding. For example, when you want to pass ACH CODE, after URL encoding you will pass it as ACH%20CODE
+     * @type {string}
+     * @memberof ReferenceDataApiFetchBankDetailsusingRoutingCode
+     */
+    readonly routingCodeType: string
+
+    /**
+     * This field accepts the routing code value 1. Refer to the [Examples of Routing Codes](/apis/docs/routing-codes#examples-of-routing-codes).
+     * @type {string}
+     * @memberof ReferenceDataApiFetchBankDetailsusingRoutingCode
+     */
+    readonly routingCodeValue: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ReferenceDataApiFetchBankDetailsusingRoutingCode
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for fetchSupportedCorridors operation in ReferenceDataApi.
+ * @export
+ * @interface ReferenceDataApiFetchSupportedCorridorsRequest
+ */
+export interface ReferenceDataApiFetchSupportedCorridorsRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ReferenceDataApiFetchSupportedCorridors
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof ReferenceDataApiFetchSupportedCorridors
+     */
+    readonly customerHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ReferenceDataApiFetchSupportedCorridors
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for fetchSupportedCorridorsV2 operation in ReferenceDataApi.
+ * @export
+ * @interface ReferenceDataApiFetchSupportedCorridorsV2Request
+ */
+export interface ReferenceDataApiFetchSupportedCorridorsV2Request {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ReferenceDataApiFetchSupportedCorridorsV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * This field accepts the beneficiary account type.
+     * @type {string}
+     * @memberof ReferenceDataApiFetchSupportedCorridorsV2
+     */
+    readonly beneficiaryAccountType?: string
+
+    /**
+     * This field accepts type of Client e.g. FI, NonFI, default NonFI.
+     * @type {string}
+     * @memberof ReferenceDataApiFetchSupportedCorridorsV2
+     */
+    readonly clientType?: string
+
+    /**
+     * This field accepts the type of customer.
+     * @type {string}
+     * @memberof ReferenceDataApiFetchSupportedCorridorsV2
+     */
+    readonly customerType?: string
+
+    /**
+     * This field accepts the [2-letter ISO-2 destination country code](https://docs.nium.com/apis/docs/currency-and-country-codes).
+     * @type {string}
+     * @memberof ReferenceDataApiFetchSupportedCorridorsV2
+     */
+    readonly destinationCountry?: string
+
+    /**
+     * This field accepts the [3-letter ISO-4217 currency code](https://docs.nium.com/apis/docs/currency-and-country-codes) which will be used to filter the user selected currency and get the payout method.
+     * @type {string}
+     * @memberof ReferenceDataApiFetchSupportedCorridorsV2
+     */
+    readonly destinationCurrency?: string
+
+    /**
+     * This field accepts the different modes of payout.
+     * @type {string}
+     * @memberof ReferenceDataApiFetchSupportedCorridorsV2
+     */
+    readonly payoutMethod?: string
+
+    /**
+     * This field determines the routing code type for the currency.
+     * @type {string}
+     * @memberof ReferenceDataApiFetchSupportedCorridorsV2
+     */
+    readonly routingCodeType?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ReferenceDataApiFetchSupportedCorridorsV2
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for searchRoutingCodeUsingBankName operation in ReferenceDataApi.
+ * @export
+ * @interface ReferenceDataApiSearchRoutingCodeUsingBankNameRequest
+ */
+export interface ReferenceDataApiSearchRoutingCodeUsingBankNameRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBankName
+     */
+    readonly clientHashId: string
+
+    /**
+     * This field accepts the [2-letter ISO-2 country code](doc:currency-and-country-codes) for which routing code search is initiated.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBankName
+     */
+    readonly countryCode: string
+
+    /**
+     * This field determines the routing code type for the search.
+     * @type {'IFSC' | 'SWIFT' | 'ACH CODE' | 'BSB CODE' | 'SORT CODE' | 'BANK CODE' | 'LOCATION ID' | 'BRANCH CODE' | 'BRANCH NAME' | 'TRANSIT NUMBER'}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBankName
+     */
+    readonly routingCodeType: SearchRoutingCodeUsingBankNameRoutingCodeTypeEnum
+
+    /**
+     * This field accepts the partial or full value of the Bank Name on which the search is initiated, for example, it could be DBS.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBankName
+     */
+    readonly searchValue: string
+
+    /**
+     * This field can accept the bank code of specified branch and country.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBankName
+     */
+    readonly bankCode?: string
+
+    /**
+     * This field can accept the bank name associated with country.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBankName
+     */
+    readonly bankName?: string
+
+    /**
+     * This field accepts the [3-letter ISO-4217 currency code](doc:currency-and-country-codes) for which routing code search is to be initiated.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBankName
+     */
+    readonly currencyCode?: string
+
+    /**
+     * This field can accept the different modes of payout. This field can accept one of the following values: LOCAL SWIFT WALLET CARD PROXY(upcoming feature) Default value of the parameter is LOCAL.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBankName
+     */
+    readonly payoutMethod?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBankName
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for searchRoutingCodeUsingBranchName operation in ReferenceDataApi.
+ * @export
+ * @interface ReferenceDataApiSearchRoutingCodeUsingBranchNameRequest
+ */
+export interface ReferenceDataApiSearchRoutingCodeUsingBranchNameRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBranchName
+     */
+    readonly clientHashId: string
+
+    /**
+     * This field accepts the [2-letter ISO-2 country code](doc:currency-and-country-codes) for which routing code search is initiated.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBranchName
+     */
+    readonly countryCode: string
+
+    /**
+     * This field determines the routing code type for the search.
+     * @type {'IFSC' | 'SWIFT' | 'ACH CODE' | 'BSB CODE' | 'SORT CODE' | 'BANK CODE' | 'LOCATION ID' | 'BRANCH CODE' | 'BRANCH NAME' | 'TRANSIT NUMBER'}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBranchName
+     */
+    readonly routingCodeType: SearchRoutingCodeUsingBranchNameRoutingCodeTypeEnum
+
+    /**
+     * This field accepts the partial or full value of the Bank Name on which the search is initiated, for example, it could be DBS.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBranchName
+     */
+    readonly searchValue: string
+
+    /**
+     * This field can accept the bank code of specified branch and country.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBranchName
+     */
+    readonly bankCode?: string
+
+    /**
+     * This field can accept the bank name associated with country.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBranchName
+     */
+    readonly bankName?: string
+
+    /**
+     * This field accepts the [3-letter ISO-4217 currency code](doc:currency-and-country-codes) for which routing code search is to be initiated.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBranchName
+     */
+    readonly currencyCode?: string
+
+    /**
+     * This field can accept the different modes of payout. This field can accept one of the following values: LOCAL SWIFT WALLET CARD PROXY(upcoming feature) Default value of the parameter is LOCAL.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBranchName
+     */
+    readonly payoutMethod?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeUsingBranchName
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for searchRoutingCodeusingbanknamebranchname operation in ReferenceDataApi.
+ * @export
+ * @interface ReferenceDataApiSearchRoutingCodeusingbanknamebranchnameRequest
+ */
+export interface ReferenceDataApiSearchRoutingCodeusingbanknamebranchnameRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeusingbanknamebranchname
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeusingbanknamebranchname
+     */
+    readonly customerHashId: string
+
+    /**
+     * partialSearchDTO
+     * @type {PartialSearchDTO}
+     * @memberof ReferenceDataApiSearchRoutingCodeusingbanknamebranchname
+     */
+    readonly partialSearchDTO: PartialSearchDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ReferenceDataApiSearchRoutingCodeusingbanknamebranchname
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * ReferenceDataApi - object-oriented interface
@@ -680,107 +968,73 @@ export class ReferenceDataApi extends BaseAPI {
     /**
      * This API allows you to fetch the bank details against the routing information.
      * @summary Fetch Bank Details using Routing Code
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} countryCode This field accepts the [2-letter ISO-2 country code](doc:currency-and-country-codes) of a beneficiary.
-     * @param {string} customerHashId This field accepts the unique customer identifier generated on customer creation.
-     * @param {string} routingCodeType This field accepts the routing code type 1. The possible values are: SWIFT for all cases where SWIFT is applicable IFSC (relevant for India) ACH CODE (relevant for USA) BSB CODE (relevant for Australia) SORT CODE (relevant for the UK) LOCATION ID (relevant for Nepal) BANK CODE (relevant for few countries including Canada, Hong Kong, Sri Lanka, South Korea, Pakistan, Brazil, and some more) TRANSIT NUMBER (relevant for Canada) BRANCH CODE (relevant for Sri Lanka, Vietnam, Brazil, Uruguay, Kenya and some more) Given that the routing_code_type_1 is a PATH parameter, apply URL encoding. For example, when you want to pass ACH CODE, after URL encoding you will pass it as ACH%20CODE
-     * @param {string} routingCodeValue This field accepts the routing code value 1. Refer to the [Examples of Routing Codes](/apis/docs/routing-codes#examples-of-routing-codes).
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ReferenceDataApiFetchBankDetailsusingRoutingCodeRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReferenceDataApi
      */
-    public fetchBankDetailsusingRoutingCode(clientHashId: string, countryCode: string, customerHashId: string, routingCodeType: string, routingCodeValue: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ReferenceDataApiFp(this.configuration).fetchBankDetailsusingRoutingCode(clientHashId, countryCode, customerHashId, routingCodeType, routingCodeValue, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public fetchBankDetailsusingRoutingCode(requestParameters: ReferenceDataApiFetchBankDetailsusingRoutingCodeRequest, options?: RawAxiosRequestConfig) {
+        return ReferenceDataApiFp(this.configuration).fetchBankDetailsusingRoutingCode(requestParameters.clientHashId, requestParameters.countryCode, requestParameters.customerHashId, requestParameters.routingCodeType, requestParameters.routingCodeValue, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API will allow you to fetch the supported corridors for remittance with details.
      * @summary Fetch Supported Corridors
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ReferenceDataApiFetchSupportedCorridorsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReferenceDataApi
      */
-    public fetchSupportedCorridors(clientHashId: string, customerHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ReferenceDataApiFp(this.configuration).fetchSupportedCorridors(clientHashId, customerHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public fetchSupportedCorridors(requestParameters: ReferenceDataApiFetchSupportedCorridorsRequest, options?: RawAxiosRequestConfig) {
+        return ReferenceDataApiFp(this.configuration).fetchSupportedCorridors(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API will allow you to fetch the supported corridors for remittance with details.
      * @summary Fetch Supported Corridors V2
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} [beneficiaryAccountType] This field accepts the beneficiary account type.
-     * @param {string} [clientType] This field accepts type of Client e.g. FI, NonFI, default NonFI.
-     * @param {string} [customerType] This field accepts the type of customer.
-     * @param {string} [destinationCountry] This field accepts the [2-letter ISO-2 destination country code](https://docs.nium.com/apis/docs/currency-and-country-codes).
-     * @param {string} [destinationCurrency] This field accepts the [3-letter ISO-4217 currency code](https://docs.nium.com/apis/docs/currency-and-country-codes) which will be used to filter the user selected currency and get the payout method.
-     * @param {string} [payoutMethod] This field accepts the different modes of payout.
-     * @param {string} [routingCodeType] This field determines the routing code type for the currency.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ReferenceDataApiFetchSupportedCorridorsV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReferenceDataApi
      */
-    public fetchSupportedCorridorsV2(clientHashId: string, beneficiaryAccountType?: string, clientType?: string, customerType?: string, destinationCountry?: string, destinationCurrency?: string, payoutMethod?: string, routingCodeType?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ReferenceDataApiFp(this.configuration).fetchSupportedCorridorsV2(clientHashId, beneficiaryAccountType, clientType, customerType, destinationCountry, destinationCurrency, payoutMethod, routingCodeType, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public fetchSupportedCorridorsV2(requestParameters: ReferenceDataApiFetchSupportedCorridorsV2Request, options?: RawAxiosRequestConfig) {
+        return ReferenceDataApiFp(this.configuration).fetchSupportedCorridorsV2(requestParameters.clientHashId, requestParameters.beneficiaryAccountType, requestParameters.clientType, requestParameters.customerType, requestParameters.destinationCountry, requestParameters.destinationCurrency, requestParameters.payoutMethod, requestParameters.routingCodeType, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API will allow you to search the routing code details using bank name.
      * @summary Search Routing Code Using Bank Name
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} countryCode This field accepts the [2-letter ISO-2 country code](doc:currency-and-country-codes) for which routing code search is initiated.
-     * @param {SearchRoutingCodeUsingBankNameRoutingCodeTypeEnum} routingCodeType This field determines the routing code type for the search.
-     * @param {string} searchValue This field accepts the partial or full value of the Bank Name on which the search is initiated, for example, it could be DBS.
-     * @param {string} [bankCode] This field can accept the bank code of specified branch and country.
-     * @param {string} [bankName] This field can accept the bank name associated with country.
-     * @param {string} [currencyCode] This field accepts the [3-letter ISO-4217 currency code](doc:currency-and-country-codes) for which routing code search is to be initiated.
-     * @param {string} [payoutMethod] This field can accept the different modes of payout. This field can accept one of the following values: LOCAL SWIFT WALLET CARD PROXY(upcoming feature) Default value of the parameter is LOCAL.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ReferenceDataApiSearchRoutingCodeUsingBankNameRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReferenceDataApi
      */
-    public searchRoutingCodeUsingBankName(clientHashId: string, countryCode: string, routingCodeType: SearchRoutingCodeUsingBankNameRoutingCodeTypeEnum, searchValue: string, bankCode?: string, bankName?: string, currencyCode?: string, payoutMethod?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ReferenceDataApiFp(this.configuration).searchRoutingCodeUsingBankName(clientHashId, countryCode, routingCodeType, searchValue, bankCode, bankName, currencyCode, payoutMethod, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public searchRoutingCodeUsingBankName(requestParameters: ReferenceDataApiSearchRoutingCodeUsingBankNameRequest, options?: RawAxiosRequestConfig) {
+        return ReferenceDataApiFp(this.configuration).searchRoutingCodeUsingBankName(requestParameters.clientHashId, requestParameters.countryCode, requestParameters.routingCodeType, requestParameters.searchValue, requestParameters.bankCode, requestParameters.bankName, requestParameters.currencyCode, requestParameters.payoutMethod, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API will allow you to search the routing code details using branch name.
      * @summary Search Routing Code Using Branch Name
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} countryCode This field accepts the [2-letter ISO-2 country code](doc:currency-and-country-codes) for which routing code search is initiated.
-     * @param {SearchRoutingCodeUsingBranchNameRoutingCodeTypeEnum} routingCodeType This field determines the routing code type for the search.
-     * @param {string} searchValue This field accepts the partial or full value of the Bank Name on which the search is initiated, for example, it could be DBS.
-     * @param {string} [bankCode] This field can accept the bank code of specified branch and country.
-     * @param {string} [bankName] This field can accept the bank name associated with country.
-     * @param {string} [currencyCode] This field accepts the [3-letter ISO-4217 currency code](doc:currency-and-country-codes) for which routing code search is to be initiated.
-     * @param {string} [payoutMethod] This field can accept the different modes of payout. This field can accept one of the following values: LOCAL SWIFT WALLET CARD PROXY(upcoming feature) Default value of the parameter is LOCAL.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ReferenceDataApiSearchRoutingCodeUsingBranchNameRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReferenceDataApi
      */
-    public searchRoutingCodeUsingBranchName(clientHashId: string, countryCode: string, routingCodeType: SearchRoutingCodeUsingBranchNameRoutingCodeTypeEnum, searchValue: string, bankCode?: string, bankName?: string, currencyCode?: string, payoutMethod?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ReferenceDataApiFp(this.configuration).searchRoutingCodeUsingBranchName(clientHashId, countryCode, routingCodeType, searchValue, bankCode, bankName, currencyCode, payoutMethod, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public searchRoutingCodeUsingBranchName(requestParameters: ReferenceDataApiSearchRoutingCodeUsingBranchNameRequest, options?: RawAxiosRequestConfig) {
+        return ReferenceDataApiFp(this.configuration).searchRoutingCodeUsingBranchName(requestParameters.clientHashId, requestParameters.countryCode, requestParameters.routingCodeType, requestParameters.searchValue, requestParameters.bankCode, requestParameters.bankName, requestParameters.currencyCode, requestParameters.payoutMethod, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API will allow you to search the routing code details of a bank based on certain parameters - i.e., by using bank name or branch name. This API will help you to build a user experience where you can help your users to locate a specific routing code (that could be SWIFT, IFSC, SORT CODE, ACH CODE, etc., - see the list below) by using full or partial name search of bank name or branch name. For example, if your user is looking for SWIFT CODE for HSBC in the UK, then this API can be used to search for the SORT CODE by searching using the bank name.
      * @summary Search Routing Code (using bank name/branch name)
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {PartialSearchDTO} partialSearchDTO partialSearchDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ReferenceDataApiSearchRoutingCodeusingbanknamebranchnameRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReferenceDataApi
      */
-    public searchRoutingCodeusingbanknamebranchname(clientHashId: string, customerHashId: string, partialSearchDTO: PartialSearchDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ReferenceDataApiFp(this.configuration).searchRoutingCodeusingbanknamebranchname(clientHashId, customerHashId, partialSearchDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public searchRoutingCodeusingbanknamebranchname(requestParameters: ReferenceDataApiSearchRoutingCodeusingbanknamebranchnameRequest, options?: RawAxiosRequestConfig) {
+        return ReferenceDataApiFp(this.configuration).searchRoutingCodeusingbanknamebranchname(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.partialSearchDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

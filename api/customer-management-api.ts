@@ -724,127 +724,491 @@ export const CustomerManagementApiFactory = function (configuration?: Configurat
         /**
          * This API allows you to download an account statement.
          * @summary Account Statement
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} endDate End date for fetching the transaction details. The format for endDate is YYYY-MM-DD.
-         * @param {string} startDate From date for fetching the transaction details. The format for startDate is YYYY-MM-DD.
-         * @param {string} [currencies] This field accepts the list of currencies in 3-letter [ISO-4217 transaction currency code](https://docs.nium.com/apis/docs/currency-and-country-codes) for which the account statement to be generated. If no currencies are being sent in query param then statement will be generated for all the currencies enabled to the customer.
-         * @param {string} [fileType] This field accepts the file type of the account statement to be generated.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerManagementApiAccountStatementRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        accountStatement(clientHashId: string, customerHashId: string, endDate: string, startDate: string, currencies?: string, fileType?: string, xRequestId?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.accountStatement(clientHashId, customerHashId, endDate, startDate, currencies, fileType, xRequestId, options).then((request) => request(axios, basePath));
+        accountStatement(requestParameters: CustomerManagementApiAccountStatementRequest, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.accountStatement(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.endDate, requestParameters.startDate, requestParameters.currencies, requestParameters.fileType, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to permanently block or temporarily block/unblock a customer.
          * @summary Block/Unblock Customer
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {BlockCustomerRequestDTO} blockCustomerRequestDTO blockCustomerRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerManagementApiBlockUnblockCustomerRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        blockUnblockCustomer(clientHashId: string, customerHashId: string, blockCustomerRequestDTO: BlockCustomerRequestDTO, xRequestId?: string, options?: any): AxiosPromise<CustomerApiError> {
-            return localVarFp.blockUnblockCustomer(clientHashId, customerHashId, blockCustomerRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        blockUnblockCustomer(requestParameters: CustomerManagementApiBlockUnblockCustomerRequest, options?: RawAxiosRequestConfig): AxiosPromise<CustomerApiError> {
+            return localVarFp.blockUnblockCustomer(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.blockCustomerRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch details for a specific customer.   >⚠️ WARNING   To access updated functionality and features we recommed using the latest version of this API [Customer Details V2](/apis/reference/customerdetailsv2). In December 2023, this API version will be deprecated and becomes unsupported.
          * @summary Customer Details
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerManagementApiCustomerDetailsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        customerDetails(clientHashId: string, customerHashId: string, xRequestId?: string, options?: any): AxiosPromise<CustomerDetailResponse> {
-            return localVarFp.customerDetails(clientHashId, customerHashId, xRequestId, options).then((request) => request(axios, basePath));
+        customerDetails(requestParameters: CustomerManagementApiCustomerDetailsRequest, options?: RawAxiosRequestConfig): AxiosPromise<CustomerDetailResponse> {
+            return localVarFp.customerDetails(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch details for a specific customer.
          * @summary Customer Details V2
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerManagementApiCustomerDetailsV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        customerDetailsV2(clientHashId: string, customerHashId: string, xRequestId?: string, options?: any): AxiosPromise<CustomerDetailsResponseV2DTO> {
-            return localVarFp.customerDetailsV2(clientHashId, customerHashId, xRequestId, options).then((request) => request(axios, basePath));
+        customerDetailsV2(requestParameters: CustomerManagementApiCustomerDetailsV2Request, options?: RawAxiosRequestConfig): AxiosPromise<CustomerDetailsResponseV2DTO> {
+            return localVarFp.customerDetailsV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch the customers for the client. It also supports query parameters based filtering to fetch details of a customer with email or mobile.   >⚠️ WARNING   To access updated functionality and features we recommed using the latest version of this API [Customer List V2](/apis/reference/customerlistv2). In December 2023, this API version will be deprecated and becomes unsupported.
          * @summary Customer List
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} [email] This field accepts the email ID of the customer.
-         * @param {string} [mobile] This field accepts the mobile number of a customer--digits only--without the country code.
-         * @param {CustomerListOrderEnum} [order] This field accepts the order which can be ASC or DESC.
-         * @param {string} [page] This field accepts the page number to be returned. The acceptable values are 0-N.  This field works with size field such that total number of records/size of each page &#x3D; number of pages(N).  This field can then give a particular page.
-         * @param {string} [size] This field accepts the number of elements per page.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerManagementApiCustomerListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        customerList(clientHashId: string, email?: string, mobile?: string, order?: CustomerListOrderEnum, page?: string, size?: string, xRequestId?: string, options?: any): AxiosPromise<Array<CustomerDetailResponse>> {
-            return localVarFp.customerList(clientHashId, email, mobile, order, page, size, xRequestId, options).then((request) => request(axios, basePath));
+        customerList(requestParameters: CustomerManagementApiCustomerListRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<CustomerDetailResponse>> {
+            return localVarFp.customerList(requestParameters.clientHashId, requestParameters.email, requestParameters.mobile, requestParameters.order, requestParameters.page, requestParameters.size, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch customer lists under a client with optional search parameters.
          * @summary Customer List V2
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} [businessRegistrationNumber] This field accepts the business registration number of corporate customer.
-         * @param {string} [email] This field accepts the email ID of the customer.
-         * @param {string} [mobile] This field accepts the mobile number of a customer without the country code.
-         * @param {CustomerListV2OrderEnum} [order] This field accepts the order which can be ASC or DESC.
-         * @param {string} [page] This field accepts the page number to be returned. The acceptable values are 0-N.  This field works with size field such that total number of records/size of each page &#x3D; number of pages(N).  This field can then give a particular page.
-         * @param {string} [size] This field accepts the number of elements per page.
-         * @param {string} [tagKey] This parameter can filter the customers, based on the exact value of tagKey defined against customers. This can be used as an independent search parameter.
-         * @param {string} [tagValue] This parameter can filter the customers, based on the approximating value of tagValue(that may be mapped for a tagKey defined against customers). This can be used as an independent search parameter.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerManagementApiCustomerListV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        customerListV2(clientHashId: string, businessRegistrationNumber?: string, email?: string, mobile?: string, order?: CustomerListV2OrderEnum, page?: string, size?: string, tagKey?: string, tagValue?: string, xRequestId?: string, options?: any): AxiosPromise<PaginatedCustomerDetailsResponseV2DTO> {
-            return localVarFp.customerListV2(clientHashId, businessRegistrationNumber, email, mobile, order, page, size, tagKey, tagValue, xRequestId, options).then((request) => request(axios, basePath));
+        customerListV2(requestParameters: CustomerManagementApiCustomerListV2Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedCustomerDetailsResponseV2DTO> {
+            return localVarFp.customerListV2(requestParameters.clientHashId, requestParameters.businessRegistrationNumber, requestParameters.email, requestParameters.mobile, requestParameters.order, requestParameters.page, requestParameters.size, requestParameters.tagKey, requestParameters.tagValue, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch customer lists under a client with optional search parameters.
          * @summary Customer List V3
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} [businessRegistrationNumber] This field accepts the business registration number of corporate customer.
-         * @param {CustomerListV3CustomerTypeEnum} [customerType] This field accepts the type of customer.
-         * @param {string} [email] This field accepts the email ID of the customer.
-         * @param {string} [mobile] This field accepts the mobile number of a customer without the country code.
-         * @param {CustomerListV3OrderEnum} [order] This field accepts the order which can be ASC or DESC.
-         * @param {string} [page] This field accepts the page number to be returned. The acceptable values are 0-N.  This field works with size field such that total number of records/size of each page &#x3D; number of pages(N).  This field can then give a particular page.
-         * @param {string} [parentCustomerHashId] This field contains the unique parent customer identifier generated at the time of customer creation.
-         * @param {string} [size] This field accepts the number of elements per page.
-         * @param {string} [tagKey] This parameter can filter the customers, based on the exact value of tagKey defined against customers. This can be used as an independent search parameter.
-         * @param {string} [tagValue] This parameter can filter the customers, based on the approximating value of tagValue(that may be mapped for a tagKey defined against customers). This can be used as an independent search parameter.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerManagementApiCustomerListV3Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        customerListV3(clientHashId: string, businessRegistrationNumber?: string, customerType?: CustomerListV3CustomerTypeEnum, email?: string, mobile?: string, order?: CustomerListV3OrderEnum, page?: string, parentCustomerHashId?: string, size?: string, tagKey?: string, tagValue?: string, xRequestId?: string, options?: any): AxiosPromise<PaginatedResponseDTOCustomerDetailsResponseV2DTO> {
-            return localVarFp.customerListV3(clientHashId, businessRegistrationNumber, customerType, email, mobile, order, page, parentCustomerHashId, size, tagKey, tagValue, xRequestId, options).then((request) => request(axios, basePath));
+        customerListV3(requestParameters: CustomerManagementApiCustomerListV3Request, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseDTOCustomerDetailsResponseV2DTO> {
+            return localVarFp.customerListV3(requestParameters.clientHashId, requestParameters.businessRegistrationNumber, requestParameters.customerType, requestParameters.email, requestParameters.mobile, requestParameters.order, requestParameters.page, requestParameters.parentCustomerHashId, requestParameters.size, requestParameters.tagKey, requestParameters.tagValue, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to add, update, and delete customer tags.
          * @summary Manage Customer Tags
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated during customer creation.
-         * @param {CustomerClientTagsRequestDTO} customerClientTagsRequestDTO tags
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerManagementApiManageCustomerTagsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        manageCustomerTags(clientHashId: string, customerHashId: string, customerClientTagsRequestDTO: CustomerClientTagsRequestDTO, xRequestId?: string, options?: any): AxiosPromise<CustomerClientTagsResponseDTO> {
-            return localVarFp.manageCustomerTags(clientHashId, customerHashId, customerClientTagsRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        manageCustomerTags(requestParameters: CustomerManagementApiManageCustomerTagsRequest, options?: RawAxiosRequestConfig): AxiosPromise<CustomerClientTagsResponseDTO> {
+            return localVarFp.manageCustomerTags(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.customerClientTagsRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for accountStatement operation in CustomerManagementApi.
+ * @export
+ * @interface CustomerManagementApiAccountStatementRequest
+ */
+export interface CustomerManagementApiAccountStatementRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerManagementApiAccountStatement
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerManagementApiAccountStatement
+     */
+    readonly customerHashId: string
+
+    /**
+     * End date for fetching the transaction details. The format for endDate is YYYY-MM-DD.
+     * @type {string}
+     * @memberof CustomerManagementApiAccountStatement
+     */
+    readonly endDate: string
+
+    /**
+     * From date for fetching the transaction details. The format for startDate is YYYY-MM-DD.
+     * @type {string}
+     * @memberof CustomerManagementApiAccountStatement
+     */
+    readonly startDate: string
+
+    /**
+     * This field accepts the list of currencies in 3-letter [ISO-4217 transaction currency code](https://docs.nium.com/apis/docs/currency-and-country-codes) for which the account statement to be generated. If no currencies are being sent in query param then statement will be generated for all the currencies enabled to the customer.
+     * @type {string}
+     * @memberof CustomerManagementApiAccountStatement
+     */
+    readonly currencies?: string
+
+    /**
+     * This field accepts the file type of the account statement to be generated.
+     * @type {string}
+     * @memberof CustomerManagementApiAccountStatement
+     */
+    readonly fileType?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerManagementApiAccountStatement
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for blockUnblockCustomer operation in CustomerManagementApi.
+ * @export
+ * @interface CustomerManagementApiBlockUnblockCustomerRequest
+ */
+export interface CustomerManagementApiBlockUnblockCustomerRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerManagementApiBlockUnblockCustomer
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerManagementApiBlockUnblockCustomer
+     */
+    readonly customerHashId: string
+
+    /**
+     * blockCustomerRequestDTO
+     * @type {BlockCustomerRequestDTO}
+     * @memberof CustomerManagementApiBlockUnblockCustomer
+     */
+    readonly blockCustomerRequestDTO: BlockCustomerRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerManagementApiBlockUnblockCustomer
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for customerDetails operation in CustomerManagementApi.
+ * @export
+ * @interface CustomerManagementApiCustomerDetailsRequest
+ */
+export interface CustomerManagementApiCustomerDetailsRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerDetails
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerDetails
+     */
+    readonly customerHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerDetails
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for customerDetailsV2 operation in CustomerManagementApi.
+ * @export
+ * @interface CustomerManagementApiCustomerDetailsV2Request
+ */
+export interface CustomerManagementApiCustomerDetailsV2Request {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerDetailsV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerDetailsV2
+     */
+    readonly customerHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerDetailsV2
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for customerList operation in CustomerManagementApi.
+ * @export
+ * @interface CustomerManagementApiCustomerListRequest
+ */
+export interface CustomerManagementApiCustomerListRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerList
+     */
+    readonly clientHashId: string
+
+    /**
+     * This field accepts the email ID of the customer.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerList
+     */
+    readonly email?: string
+
+    /**
+     * This field accepts the mobile number of a customer--digits only--without the country code.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerList
+     */
+    readonly mobile?: string
+
+    /**
+     * This field accepts the order which can be ASC or DESC.
+     * @type {'ASC' | 'DESC'}
+     * @memberof CustomerManagementApiCustomerList
+     */
+    readonly order?: CustomerListOrderEnum
+
+    /**
+     * This field accepts the page number to be returned. The acceptable values are 0-N.  This field works with size field such that total number of records/size of each page &#x3D; number of pages(N).  This field can then give a particular page.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerList
+     */
+    readonly page?: string
+
+    /**
+     * This field accepts the number of elements per page.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerList
+     */
+    readonly size?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerList
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for customerListV2 operation in CustomerManagementApi.
+ * @export
+ * @interface CustomerManagementApiCustomerListV2Request
+ */
+export interface CustomerManagementApiCustomerListV2Request {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * This field accepts the business registration number of corporate customer.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV2
+     */
+    readonly businessRegistrationNumber?: string
+
+    /**
+     * This field accepts the email ID of the customer.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV2
+     */
+    readonly email?: string
+
+    /**
+     * This field accepts the mobile number of a customer without the country code.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV2
+     */
+    readonly mobile?: string
+
+    /**
+     * This field accepts the order which can be ASC or DESC.
+     * @type {'ASC' | 'DESC'}
+     * @memberof CustomerManagementApiCustomerListV2
+     */
+    readonly order?: CustomerListV2OrderEnum
+
+    /**
+     * This field accepts the page number to be returned. The acceptable values are 0-N.  This field works with size field such that total number of records/size of each page &#x3D; number of pages(N).  This field can then give a particular page.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV2
+     */
+    readonly page?: string
+
+    /**
+     * This field accepts the number of elements per page.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV2
+     */
+    readonly size?: string
+
+    /**
+     * This parameter can filter the customers, based on the exact value of tagKey defined against customers. This can be used as an independent search parameter.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV2
+     */
+    readonly tagKey?: string
+
+    /**
+     * This parameter can filter the customers, based on the approximating value of tagValue(that may be mapped for a tagKey defined against customers). This can be used as an independent search parameter.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV2
+     */
+    readonly tagValue?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV2
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for customerListV3 operation in CustomerManagementApi.
+ * @export
+ * @interface CustomerManagementApiCustomerListV3Request
+ */
+export interface CustomerManagementApiCustomerListV3Request {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV3
+     */
+    readonly clientHashId: string
+
+    /**
+     * This field accepts the business registration number of corporate customer.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV3
+     */
+    readonly businessRegistrationNumber?: string
+
+    /**
+     * This field accepts the type of customer.
+     * @type {'INDIVIDUAL' | 'CORPORATE'}
+     * @memberof CustomerManagementApiCustomerListV3
+     */
+    readonly customerType?: CustomerListV3CustomerTypeEnum
+
+    /**
+     * This field accepts the email ID of the customer.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV3
+     */
+    readonly email?: string
+
+    /**
+     * This field accepts the mobile number of a customer without the country code.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV3
+     */
+    readonly mobile?: string
+
+    /**
+     * This field accepts the order which can be ASC or DESC.
+     * @type {'ASC' | 'DESC'}
+     * @memberof CustomerManagementApiCustomerListV3
+     */
+    readonly order?: CustomerListV3OrderEnum
+
+    /**
+     * This field accepts the page number to be returned. The acceptable values are 0-N.  This field works with size field such that total number of records/size of each page &#x3D; number of pages(N).  This field can then give a particular page.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV3
+     */
+    readonly page?: string
+
+    /**
+     * This field contains the unique parent customer identifier generated at the time of customer creation.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV3
+     */
+    readonly parentCustomerHashId?: string
+
+    /**
+     * This field accepts the number of elements per page.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV3
+     */
+    readonly size?: string
+
+    /**
+     * This parameter can filter the customers, based on the exact value of tagKey defined against customers. This can be used as an independent search parameter.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV3
+     */
+    readonly tagKey?: string
+
+    /**
+     * This parameter can filter the customers, based on the approximating value of tagValue(that may be mapped for a tagKey defined against customers). This can be used as an independent search parameter.
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV3
+     */
+    readonly tagValue?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerManagementApiCustomerListV3
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for manageCustomerTags operation in CustomerManagementApi.
+ * @export
+ * @interface CustomerManagementApiManageCustomerTagsRequest
+ */
+export interface CustomerManagementApiManageCustomerTagsRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerManagementApiManageCustomerTags
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated during customer creation.
+     * @type {string}
+     * @memberof CustomerManagementApiManageCustomerTags
+     */
+    readonly customerHashId: string
+
+    /**
+     * tags
+     * @type {CustomerClientTagsRequestDTO}
+     * @memberof CustomerManagementApiManageCustomerTags
+     */
+    readonly customerClientTagsRequestDTO: CustomerClientTagsRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerManagementApiManageCustomerTags
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * CustomerManagementApi - object-oriented interface
@@ -856,139 +1220,97 @@ export class CustomerManagementApi extends BaseAPI {
     /**
      * This API allows you to download an account statement.
      * @summary Account Statement
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} endDate End date for fetching the transaction details. The format for endDate is YYYY-MM-DD.
-     * @param {string} startDate From date for fetching the transaction details. The format for startDate is YYYY-MM-DD.
-     * @param {string} [currencies] This field accepts the list of currencies in 3-letter [ISO-4217 transaction currency code](https://docs.nium.com/apis/docs/currency-and-country-codes) for which the account statement to be generated. If no currencies are being sent in query param then statement will be generated for all the currencies enabled to the customer.
-     * @param {string} [fileType] This field accepts the file type of the account statement to be generated.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerManagementApiAccountStatementRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerManagementApi
      */
-    public accountStatement(clientHashId: string, customerHashId: string, endDate: string, startDate: string, currencies?: string, fileType?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerManagementApiFp(this.configuration).accountStatement(clientHashId, customerHashId, endDate, startDate, currencies, fileType, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public accountStatement(requestParameters: CustomerManagementApiAccountStatementRequest, options?: RawAxiosRequestConfig) {
+        return CustomerManagementApiFp(this.configuration).accountStatement(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.endDate, requestParameters.startDate, requestParameters.currencies, requestParameters.fileType, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to permanently block or temporarily block/unblock a customer.
      * @summary Block/Unblock Customer
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {BlockCustomerRequestDTO} blockCustomerRequestDTO blockCustomerRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerManagementApiBlockUnblockCustomerRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerManagementApi
      */
-    public blockUnblockCustomer(clientHashId: string, customerHashId: string, blockCustomerRequestDTO: BlockCustomerRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerManagementApiFp(this.configuration).blockUnblockCustomer(clientHashId, customerHashId, blockCustomerRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public blockUnblockCustomer(requestParameters: CustomerManagementApiBlockUnblockCustomerRequest, options?: RawAxiosRequestConfig) {
+        return CustomerManagementApiFp(this.configuration).blockUnblockCustomer(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.blockCustomerRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch details for a specific customer.   >⚠️ WARNING   To access updated functionality and features we recommed using the latest version of this API [Customer Details V2](/apis/reference/customerdetailsv2). In December 2023, this API version will be deprecated and becomes unsupported.
      * @summary Customer Details
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerManagementApiCustomerDetailsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerManagementApi
      */
-    public customerDetails(clientHashId: string, customerHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerManagementApiFp(this.configuration).customerDetails(clientHashId, customerHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public customerDetails(requestParameters: CustomerManagementApiCustomerDetailsRequest, options?: RawAxiosRequestConfig) {
+        return CustomerManagementApiFp(this.configuration).customerDetails(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch details for a specific customer.
      * @summary Customer Details V2
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerManagementApiCustomerDetailsV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerManagementApi
      */
-    public customerDetailsV2(clientHashId: string, customerHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerManagementApiFp(this.configuration).customerDetailsV2(clientHashId, customerHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public customerDetailsV2(requestParameters: CustomerManagementApiCustomerDetailsV2Request, options?: RawAxiosRequestConfig) {
+        return CustomerManagementApiFp(this.configuration).customerDetailsV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch the customers for the client. It also supports query parameters based filtering to fetch details of a customer with email or mobile.   >⚠️ WARNING   To access updated functionality and features we recommed using the latest version of this API [Customer List V2](/apis/reference/customerlistv2). In December 2023, this API version will be deprecated and becomes unsupported.
      * @summary Customer List
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} [email] This field accepts the email ID of the customer.
-     * @param {string} [mobile] This field accepts the mobile number of a customer--digits only--without the country code.
-     * @param {CustomerListOrderEnum} [order] This field accepts the order which can be ASC or DESC.
-     * @param {string} [page] This field accepts the page number to be returned. The acceptable values are 0-N.  This field works with size field such that total number of records/size of each page &#x3D; number of pages(N).  This field can then give a particular page.
-     * @param {string} [size] This field accepts the number of elements per page.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerManagementApiCustomerListRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerManagementApi
      */
-    public customerList(clientHashId: string, email?: string, mobile?: string, order?: CustomerListOrderEnum, page?: string, size?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerManagementApiFp(this.configuration).customerList(clientHashId, email, mobile, order, page, size, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public customerList(requestParameters: CustomerManagementApiCustomerListRequest, options?: RawAxiosRequestConfig) {
+        return CustomerManagementApiFp(this.configuration).customerList(requestParameters.clientHashId, requestParameters.email, requestParameters.mobile, requestParameters.order, requestParameters.page, requestParameters.size, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch customer lists under a client with optional search parameters.
      * @summary Customer List V2
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} [businessRegistrationNumber] This field accepts the business registration number of corporate customer.
-     * @param {string} [email] This field accepts the email ID of the customer.
-     * @param {string} [mobile] This field accepts the mobile number of a customer without the country code.
-     * @param {CustomerListV2OrderEnum} [order] This field accepts the order which can be ASC or DESC.
-     * @param {string} [page] This field accepts the page number to be returned. The acceptable values are 0-N.  This field works with size field such that total number of records/size of each page &#x3D; number of pages(N).  This field can then give a particular page.
-     * @param {string} [size] This field accepts the number of elements per page.
-     * @param {string} [tagKey] This parameter can filter the customers, based on the exact value of tagKey defined against customers. This can be used as an independent search parameter.
-     * @param {string} [tagValue] This parameter can filter the customers, based on the approximating value of tagValue(that may be mapped for a tagKey defined against customers). This can be used as an independent search parameter.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerManagementApiCustomerListV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerManagementApi
      */
-    public customerListV2(clientHashId: string, businessRegistrationNumber?: string, email?: string, mobile?: string, order?: CustomerListV2OrderEnum, page?: string, size?: string, tagKey?: string, tagValue?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerManagementApiFp(this.configuration).customerListV2(clientHashId, businessRegistrationNumber, email, mobile, order, page, size, tagKey, tagValue, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public customerListV2(requestParameters: CustomerManagementApiCustomerListV2Request, options?: RawAxiosRequestConfig) {
+        return CustomerManagementApiFp(this.configuration).customerListV2(requestParameters.clientHashId, requestParameters.businessRegistrationNumber, requestParameters.email, requestParameters.mobile, requestParameters.order, requestParameters.page, requestParameters.size, requestParameters.tagKey, requestParameters.tagValue, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch customer lists under a client with optional search parameters.
      * @summary Customer List V3
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} [businessRegistrationNumber] This field accepts the business registration number of corporate customer.
-     * @param {CustomerListV3CustomerTypeEnum} [customerType] This field accepts the type of customer.
-     * @param {string} [email] This field accepts the email ID of the customer.
-     * @param {string} [mobile] This field accepts the mobile number of a customer without the country code.
-     * @param {CustomerListV3OrderEnum} [order] This field accepts the order which can be ASC or DESC.
-     * @param {string} [page] This field accepts the page number to be returned. The acceptable values are 0-N.  This field works with size field such that total number of records/size of each page &#x3D; number of pages(N).  This field can then give a particular page.
-     * @param {string} [parentCustomerHashId] This field contains the unique parent customer identifier generated at the time of customer creation.
-     * @param {string} [size] This field accepts the number of elements per page.
-     * @param {string} [tagKey] This parameter can filter the customers, based on the exact value of tagKey defined against customers. This can be used as an independent search parameter.
-     * @param {string} [tagValue] This parameter can filter the customers, based on the approximating value of tagValue(that may be mapped for a tagKey defined against customers). This can be used as an independent search parameter.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerManagementApiCustomerListV3Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerManagementApi
      */
-    public customerListV3(clientHashId: string, businessRegistrationNumber?: string, customerType?: CustomerListV3CustomerTypeEnum, email?: string, mobile?: string, order?: CustomerListV3OrderEnum, page?: string, parentCustomerHashId?: string, size?: string, tagKey?: string, tagValue?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerManagementApiFp(this.configuration).customerListV3(clientHashId, businessRegistrationNumber, customerType, email, mobile, order, page, parentCustomerHashId, size, tagKey, tagValue, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public customerListV3(requestParameters: CustomerManagementApiCustomerListV3Request, options?: RawAxiosRequestConfig) {
+        return CustomerManagementApiFp(this.configuration).customerListV3(requestParameters.clientHashId, requestParameters.businessRegistrationNumber, requestParameters.customerType, requestParameters.email, requestParameters.mobile, requestParameters.order, requestParameters.page, requestParameters.parentCustomerHashId, requestParameters.size, requestParameters.tagKey, requestParameters.tagValue, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to add, update, and delete customer tags.
      * @summary Manage Customer Tags
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated during customer creation.
-     * @param {CustomerClientTagsRequestDTO} customerClientTagsRequestDTO tags
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerManagementApiManageCustomerTagsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerManagementApi
      */
-    public manageCustomerTags(clientHashId: string, customerHashId: string, customerClientTagsRequestDTO: CustomerClientTagsRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerManagementApiFp(this.configuration).manageCustomerTags(clientHashId, customerHashId, customerClientTagsRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public manageCustomerTags(requestParameters: CustomerManagementApiManageCustomerTagsRequest, options?: RawAxiosRequestConfig) {
+        return CustomerManagementApiFp(this.configuration).manageCustomerTags(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.customerClientTagsRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

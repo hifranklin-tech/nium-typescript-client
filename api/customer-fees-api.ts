@@ -132,19 +132,57 @@ export const CustomerFeesApiFactory = function (configuration?: Configuration, b
         /**
          * This API allows you to levy custom fee.   >⚠️ WARNING   >Consult with the Nium legal & compliance team and receive approval prior to charging any customer fees. Do not use this API to charge fees without explicit approval from Nium. Reach out to your Customer Success, Sales and Solution Engineering teams at Nium for further guidance. Any fees charged must be disclosed in the required customer terms and conditions as determined by Nium legal & compliance.
          * @summary Charge Fee
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {CustomFeeRequestDTO} customFeeRequestDTO customFeeRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerFeesApiChargeFeeRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        chargeFee(clientHashId: string, customerHashId: string, walletHashId: string, customFeeRequestDTO: CustomFeeRequestDTO, xRequestId?: string, options?: any): AxiosPromise<CustomFeeResponseDTO> {
-            return localVarFp.chargeFee(clientHashId, customerHashId, walletHashId, customFeeRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        chargeFee(requestParameters: CustomerFeesApiChargeFeeRequest, options?: RawAxiosRequestConfig): AxiosPromise<CustomFeeResponseDTO> {
+            return localVarFp.chargeFee(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.customFeeRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for chargeFee operation in CustomerFeesApi.
+ * @export
+ * @interface CustomerFeesApiChargeFeeRequest
+ */
+export interface CustomerFeesApiChargeFeeRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerFeesApiChargeFee
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerFeesApiChargeFee
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof CustomerFeesApiChargeFee
+     */
+    readonly walletHashId: string
+
+    /**
+     * customFeeRequestDTO
+     * @type {CustomFeeRequestDTO}
+     * @memberof CustomerFeesApiChargeFee
+     */
+    readonly customFeeRequestDTO: CustomFeeRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerFeesApiChargeFee
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * CustomerFeesApi - object-oriented interface
@@ -156,17 +194,13 @@ export class CustomerFeesApi extends BaseAPI {
     /**
      * This API allows you to levy custom fee.   >⚠️ WARNING   >Consult with the Nium legal & compliance team and receive approval prior to charging any customer fees. Do not use this API to charge fees without explicit approval from Nium. Reach out to your Customer Success, Sales and Solution Engineering teams at Nium for further guidance. Any fees charged must be disclosed in the required customer terms and conditions as determined by Nium legal & compliance.
      * @summary Charge Fee
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {CustomFeeRequestDTO} customFeeRequestDTO customFeeRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerFeesApiChargeFeeRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerFeesApi
      */
-    public chargeFee(clientHashId: string, customerHashId: string, walletHashId: string, customFeeRequestDTO: CustomFeeRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerFeesApiFp(this.configuration).chargeFee(clientHashId, customerHashId, walletHashId, customFeeRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public chargeFee(requestParameters: CustomerFeesApiChargeFeeRequest, options?: RawAxiosRequestConfig) {
+        return CustomerFeesApiFp(this.configuration).chargeFee(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.customFeeRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

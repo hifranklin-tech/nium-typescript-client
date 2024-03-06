@@ -173,27 +173,67 @@ export const ClientSettingsApiFactory = function (configuration?: Configuration,
         /**
          * This API will help you to fetch the configuration details of a client.
          * @summary Client Details
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ClientSettingsApiClientDetailsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        clientDetails(clientHashId: string, xRequestId?: string, options?: any): AxiosPromise<ClientDetailResponseDTO2> {
-            return localVarFp.clientDetails(clientHashId, xRequestId, options).then((request) => request(axios, basePath));
+        clientDetails(requestParameters: ClientSettingsApiClientDetailsRequest, options?: RawAxiosRequestConfig): AxiosPromise<ClientDetailResponseDTO2> {
+            return localVarFp.clientDetails(requestParameters.clientHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API provides all the fees that have been set at the client level by NIUM. Refer to the following [Fees User Guide](doc:fees) for the Glossary of Fees for pre-defined fees supported on the system
          * @summary Fee Details
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ClientSettingsApiFeeDetailsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        feeDetails(clientHashId: string, xRequestId?: string, options?: any): AxiosPromise<Array<ClientFeeDetailsResponseDTO>> {
-            return localVarFp.feeDetails(clientHashId, xRequestId, options).then((request) => request(axios, basePath));
+        feeDetails(requestParameters: ClientSettingsApiFeeDetailsRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<ClientFeeDetailsResponseDTO>> {
+            return localVarFp.feeDetails(requestParameters.clientHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for clientDetails operation in ClientSettingsApi.
+ * @export
+ * @interface ClientSettingsApiClientDetailsRequest
+ */
+export interface ClientSettingsApiClientDetailsRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ClientSettingsApiClientDetails
+     */
+    readonly clientHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ClientSettingsApiClientDetails
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for feeDetails operation in ClientSettingsApi.
+ * @export
+ * @interface ClientSettingsApiFeeDetailsRequest
+ */
+export interface ClientSettingsApiFeeDetailsRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ClientSettingsApiFeeDetails
+     */
+    readonly clientHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ClientSettingsApiFeeDetails
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * ClientSettingsApi - object-oriented interface
@@ -205,27 +245,25 @@ export class ClientSettingsApi extends BaseAPI {
     /**
      * This API will help you to fetch the configuration details of a client.
      * @summary Client Details
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ClientSettingsApiClientDetailsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ClientSettingsApi
      */
-    public clientDetails(clientHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ClientSettingsApiFp(this.configuration).clientDetails(clientHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public clientDetails(requestParameters: ClientSettingsApiClientDetailsRequest, options?: RawAxiosRequestConfig) {
+        return ClientSettingsApiFp(this.configuration).clientDetails(requestParameters.clientHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API provides all the fees that have been set at the client level by NIUM. Refer to the following [Fees User Guide](doc:fees) for the Glossary of Fees for pre-defined fees supported on the system
      * @summary Fee Details
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ClientSettingsApiFeeDetailsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ClientSettingsApi
      */
-    public feeDetails(clientHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ClientSettingsApiFp(this.configuration).feeDetails(clientHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public feeDetails(requestParameters: ClientSettingsApiFeeDetailsRequest, options?: RawAxiosRequestConfig) {
+        return ClientSettingsApiFp(this.configuration).feeDetails(requestParameters.clientHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

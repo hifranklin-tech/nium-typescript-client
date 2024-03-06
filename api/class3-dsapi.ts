@@ -343,58 +343,192 @@ export const Class3DSApiFactory = function (configuration?: Configuration, baseP
         /**
          * API allows to retrieve the status of passcode enrollments for all cards associated with wallet. Results can be filtered by `cardHashId`
          * @summary 3DS passcode enrollment status
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} [cardHashId] Unique card identifier generated while new/add-on card issuance.
-         * @param {string} [xRequestId] Please enter a unique UUID value
+         * @param {Class3DSApiPasscodeEnrollmentStatusRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        passcodeEnrollmentStatus(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId?: string, xRequestId?: string, options?: any): AxiosPromise<Array<PasscodeStatusDTO>> {
-            return localVarFp.passcodeEnrollmentStatus(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(axios, basePath));
+        passcodeEnrollmentStatus(requestParameters: Class3DSApiPasscodeEnrollmentStatusRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<PasscodeStatusDTO>> {
+            return localVarFp.passcodeEnrollmentStatus(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * API to notify Nium on success of OOB authentication
          * @summary Process OOB callback
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {OOBCallbackRequestDTO} oOBCallbackRequestDTO oobCallbackRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {Class3DSApiProcessOOBcallbackRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processOOBcallback(clientHashId: string, oOBCallbackRequestDTO: OOBCallbackRequestDTO, xRequestId?: string, options?: any): AxiosPromise<OOBCallbackResponseDTO> {
-            return localVarFp.processOOBcallback(clientHashId, oOBCallbackRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        processOOBcallback(requestParameters: Class3DSApiProcessOOBcallbackRequest, options?: RawAxiosRequestConfig): AxiosPromise<OOBCallbackResponseDTO> {
+            return localVarFp.processOOBcallback(requestParameters.clientHashId, requestParameters.oOBCallbackRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * API to notify Nium on success or failure of OOB authentication
          * @summary 3DS OOB Callback V2
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {OobCallbackRequestDTO} oobCallbackRequestDTO oobCallbackRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {Class3DSApiProcessOobCallbackV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processOobCallbackV2(clientHashId: string, oobCallbackRequestDTO: OobCallbackRequestDTO, xRequestId?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.processOobCallbackV2(clientHashId, oobCallbackRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        processOobCallbackV2(requestParameters: Class3DSApiProcessOobCallbackV2Request, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.processOobCallbackV2(requestParameters.clientHashId, requestParameters.oobCallbackRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * API to update the 3DS passcode for a specific card.
          * @summary Add or Update passcode
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-         * @param {PasscodeRequestDTO} passcodeRequestDTO passcodeRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {Class3DSApiSetPasscodeRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setPasscode(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, passcodeRequestDTO: PasscodeRequestDTO, xRequestId?: string, options?: any): AxiosPromise<PasscodeResponseDTO> {
-            return localVarFp.setPasscode(clientHashId, customerHashId, walletHashId, cardHashId, passcodeRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        setPasscode(requestParameters: Class3DSApiSetPasscodeRequest, options?: RawAxiosRequestConfig): AxiosPromise<PasscodeResponseDTO> {
+            return localVarFp.setPasscode(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.passcodeRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for passcodeEnrollmentStatus operation in Class3DSApi.
+ * @export
+ * @interface Class3DSApiPasscodeEnrollmentStatusRequest
+ */
+export interface Class3DSApiPasscodeEnrollmentStatusRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof Class3DSApiPasscodeEnrollmentStatus
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof Class3DSApiPasscodeEnrollmentStatus
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof Class3DSApiPasscodeEnrollmentStatus
+     */
+    readonly walletHashId: string
+
+    /**
+     * Unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof Class3DSApiPasscodeEnrollmentStatus
+     */
+    readonly cardHashId?: string
+
+    /**
+     * Please enter a unique UUID value
+     * @type {string}
+     * @memberof Class3DSApiPasscodeEnrollmentStatus
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for processOOBcallback operation in Class3DSApi.
+ * @export
+ * @interface Class3DSApiProcessOOBcallbackRequest
+ */
+export interface Class3DSApiProcessOOBcallbackRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof Class3DSApiProcessOOBcallback
+     */
+    readonly clientHashId: string
+
+    /**
+     * oobCallbackRequestDTO
+     * @type {OOBCallbackRequestDTO}
+     * @memberof Class3DSApiProcessOOBcallback
+     */
+    readonly oOBCallbackRequestDTO: OOBCallbackRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof Class3DSApiProcessOOBcallback
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for processOobCallbackV2 operation in Class3DSApi.
+ * @export
+ * @interface Class3DSApiProcessOobCallbackV2Request
+ */
+export interface Class3DSApiProcessOobCallbackV2Request {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof Class3DSApiProcessOobCallbackV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * oobCallbackRequestDTO
+     * @type {OobCallbackRequestDTO}
+     * @memberof Class3DSApiProcessOobCallbackV2
+     */
+    readonly oobCallbackRequestDTO: OobCallbackRequestDTO
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof Class3DSApiProcessOobCallbackV2
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for setPasscode operation in Class3DSApi.
+ * @export
+ * @interface Class3DSApiSetPasscodeRequest
+ */
+export interface Class3DSApiSetPasscodeRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof Class3DSApiSetPasscode
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof Class3DSApiSetPasscode
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof Class3DSApiSetPasscode
+     */
+    readonly walletHashId: string
+
+    /**
+     * Unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof Class3DSApiSetPasscode
+     */
+    readonly cardHashId: string
+
+    /**
+     * passcodeRequestDTO
+     * @type {PasscodeRequestDTO}
+     * @memberof Class3DSApiSetPasscode
+     */
+    readonly passcodeRequestDTO: PasscodeRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof Class3DSApiSetPasscode
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * Class3DSApi - object-oriented interface
@@ -406,62 +540,49 @@ export class Class3DSApi extends BaseAPI {
     /**
      * API allows to retrieve the status of passcode enrollments for all cards associated with wallet. Results can be filtered by `cardHashId`
      * @summary 3DS passcode enrollment status
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} [cardHashId] Unique card identifier generated while new/add-on card issuance.
-     * @param {string} [xRequestId] Please enter a unique UUID value
+     * @param {Class3DSApiPasscodeEnrollmentStatusRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof Class3DSApi
      */
-    public passcodeEnrollmentStatus(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return Class3DSApiFp(this.configuration).passcodeEnrollmentStatus(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public passcodeEnrollmentStatus(requestParameters: Class3DSApiPasscodeEnrollmentStatusRequest, options?: RawAxiosRequestConfig) {
+        return Class3DSApiFp(this.configuration).passcodeEnrollmentStatus(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * API to notify Nium on success of OOB authentication
      * @summary Process OOB callback
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {OOBCallbackRequestDTO} oOBCallbackRequestDTO oobCallbackRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {Class3DSApiProcessOOBcallbackRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof Class3DSApi
      */
-    public processOOBcallback(clientHashId: string, oOBCallbackRequestDTO: OOBCallbackRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return Class3DSApiFp(this.configuration).processOOBcallback(clientHashId, oOBCallbackRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public processOOBcallback(requestParameters: Class3DSApiProcessOOBcallbackRequest, options?: RawAxiosRequestConfig) {
+        return Class3DSApiFp(this.configuration).processOOBcallback(requestParameters.clientHashId, requestParameters.oOBCallbackRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * API to notify Nium on success or failure of OOB authentication
      * @summary 3DS OOB Callback V2
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {OobCallbackRequestDTO} oobCallbackRequestDTO oobCallbackRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {Class3DSApiProcessOobCallbackV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof Class3DSApi
      */
-    public processOobCallbackV2(clientHashId: string, oobCallbackRequestDTO: OobCallbackRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return Class3DSApiFp(this.configuration).processOobCallbackV2(clientHashId, oobCallbackRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public processOobCallbackV2(requestParameters: Class3DSApiProcessOobCallbackV2Request, options?: RawAxiosRequestConfig) {
+        return Class3DSApiFp(this.configuration).processOobCallbackV2(requestParameters.clientHashId, requestParameters.oobCallbackRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * API to update the 3DS passcode for a specific card.
      * @summary Add or Update passcode
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-     * @param {PasscodeRequestDTO} passcodeRequestDTO passcodeRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {Class3DSApiSetPasscodeRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof Class3DSApi
      */
-    public setPasscode(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, passcodeRequestDTO: PasscodeRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return Class3DSApiFp(this.configuration).setPasscode(clientHashId, customerHashId, walletHashId, cardHashId, passcodeRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public setPasscode(requestParameters: Class3DSApiSetPasscodeRequest, options?: RawAxiosRequestConfig) {
+        return Class3DSApiFp(this.configuration).setPasscode(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.passcodeRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

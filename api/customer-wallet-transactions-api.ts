@@ -690,121 +690,541 @@ export const CustomerWalletTransactionsApiFactory = function (configuration?: Co
         /**
          * This API allows you to download a receipt against each transaction.
          * @summary Download Transaction Receipt
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} transactionId Transaction Id is NIUM generated 36 character UUID which is unique, per transaction.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerWalletTransactionsApiDownloadTransactionReceiptRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadTransactionReceipt(clientHashId: string, customerHashId: string, transactionId: string, walletHashId: string, xRequestId?: string, options?: any): AxiosPromise<TransactionsReceiptDTO> {
-            return localVarFp.downloadTransactionReceipt(clientHashId, customerHashId, transactionId, walletHashId, xRequestId, options).then((request) => request(axios, basePath));
+        downloadTransactionReceipt(requestParameters: CustomerWalletTransactionsApiDownloadTransactionReceiptRequest, options?: RawAxiosRequestConfig): AxiosPromise<TransactionsReceiptDTO> {
+            return localVarFp.downloadTransactionReceipt(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.transactionId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to add, update, and delete transaction tags.
          * @summary Manage Transaction Tags
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} transactionId Unique transaction Identifier generated and shared before API handshake.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {TransactionClientTagsRequestDTO} transactionClientTagsRequestDTO tags
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerWalletTransactionsApiManageTransactionTagsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        manageTransactionTags(clientHashId: string, customerHashId: string, transactionId: string, walletHashId: string, transactionClientTagsRequestDTO: TransactionClientTagsRequestDTO, xRequestId?: string, options?: any): AxiosPromise<TransactionClientTagsResponseDTO> {
-            return localVarFp.manageTransactionTags(clientHashId, customerHashId, transactionId, walletHashId, transactionClientTagsRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        manageTransactionTags(requestParameters: CustomerWalletTransactionsApiManageTransactionTagsRequest, options?: RawAxiosRequestConfig): AxiosPromise<TransactionClientTagsResponseDTO> {
+            return localVarFp.manageTransactionTags(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.transactionId, requestParameters.walletHashId, requestParameters.transactionClientTagsRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to update a transaction with merchant location.
          * @summary Transaction Geo-Tagging
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} transactionId Transaction Id is NIUM generated 36 character UUID which is unique, per transaction.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {TransactionsLocationDTO} transactionsLocationDTO transactionsLocationDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerWalletTransactionsApiTransactionGeoTaggingRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        transactionGeoTagging(clientHashId: string, customerHashId: string, transactionId: string, walletHashId: string, transactionsLocationDTO: TransactionsLocationDTO, xRequestId?: string, options?: any): AxiosPromise<WalletApiError> {
-            return localVarFp.transactionGeoTagging(clientHashId, customerHashId, transactionId, walletHashId, transactionsLocationDTO, xRequestId, options).then((request) => request(axios, basePath));
+        transactionGeoTagging(requestParameters: CustomerWalletTransactionsApiTransactionGeoTaggingRequest, options?: RawAxiosRequestConfig): AxiosPromise<WalletApiError> {
+            return localVarFp.transactionGeoTagging(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.transactionId, requestParameters.walletHashId, requestParameters.transactionsLocationDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch transaction details for a customer.
          * @summary Transactions
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} [authCode] This parameter can be used to filter the transactions based on the authorization code. In case of fund wallet transactions you can provide the systemReferenceNumber as value.
-         * @param {string} [authCurrency] This parameter can filter the transactions based on auth currency and accepts 3-letter [ISO-4217 transaction currency code](https://docs.nium.com/apis/docs/currency-and-country-codes).
-         * @param {string} [businessTransaction] This parameter can filter the transactions based on businessTransaction flag.
-         * @param {string} [cardHashId] This field can apply the filter based on the unique card identifier generated during new/add-on card issuance.
-         * @param {string} [childCustomerHashId] This field contains the unique child customer identifier generated when new child customer created.
-         * @param {string} [endDate] End date for fetching the transaction details. The format for endDate is YYYY-MM-DD.
-         * @param {string} [mcc] This parameter can filter the transactions based on 4-digit Merchant Category Codes.
-         * @param {string} [merchantCategories] This parameter describes the merchant\&#39;s type of business product or service, also known as the Merchant Category Code (MCC) such as Airlines, Restaurants etc.
-         * @param {string} [merchantCity] This parameter can filter the transactions based on the merchant city field.
-         * @param {string} [merchantCountries] This parameter can filter the transactions based on comma-separated list of 2-letter ISO merchant countries.
-         * @param {string} [merchantCountry] This parameter can filter the transactions based on the merchant country field.
-         * @param {string} [merchantName] This parameter can filter the transactions based on the merchant name field.
-         * @param {TransactionsOrderEnum} [order] The sort order for the results.
-         * @param {number} [page] This API may have lot of data in response and supports pagination. Entire response data is divided into pages with size as the upper limit on the number of data. Integer values from 0 onwards are acceptable. Default page is 0.
-         * @param {string} [paymentInstrumentHashId] This parameter can filter the transactions based on comma-separated paymentInstrumentHashId.
-         * @param {string} [property] The field indicates the response parameter used to sort paginated data, with \&#39;createdAt\&#39; as the default parameter.
-         * @param {string} [settlementDate] This parameter can filter the transactions based on the settlement date of the transaction in format yyyyMMdd.
-         * @param {string} [settlementStatus] This parameter can filter the transactions based on settlement status. The detailed list of possible values is available in the response of this API.
-         * @param {number} [size] This will decide the number of elements per page. Typical values can be 1-20.
-         * @param {string} [startDate] From date for fetching the transaction details. The format for startDate is YYYY-MM-DD.
-         * @param {TransactionsStatusEnum} [status] This parameter can filter the transactions based on status. The detailed list of possible values is available in the response of this API.
-         * @param {string} [systemReferenceNumber] This parameter can be used to filter the transactions based on the systemReferenceNumber.
-         * @param {string} [systemTraceAuditNumber] This parameter can filter the transactions based on systemTraceAuditNumber.
-         * @param {string} [tagKey] This parameter can filter the transactions, based on the exact value of tagKey defined against transactions. This can be used as an independent search parameter.
-         * @param {string} [tagValue] This parameter can filter the transactions, based on the approximating value of tagValue(that may be mapped for a tagKey defined against transactions). This can be used as an independent search parameter.
-         * @param {string} [transactionCurrency] This field contains the 3-letter [ISO-4217 transaction currency code](https://www.iso.org/iso-4217-currency-codes.html).
-         * @param {string} [transactionType] This field contains the transaction can be one of the complete list of transactions mentioned in [Glossary of Transaction Types](https://docs.nium.com/baas/get-transactions#glossary-of-transaction-types).
-         * @param {string} [transactionsLabelsKey] This parameter can filter the transactions based on transactionsLabelsKey.
-         * @param {string} [transactionsLabelsValue] This parameter can filter the transactions based on transactionsLabelsValue.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerWalletTransactionsApiTransactionsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        transactions(clientHashId: string, customerHashId: string, walletHashId: string, authCode?: string, authCurrency?: string, businessTransaction?: string, cardHashId?: string, childCustomerHashId?: string, endDate?: string, mcc?: string, merchantCategories?: string, merchantCity?: string, merchantCountries?: string, merchantCountry?: string, merchantName?: string, order?: TransactionsOrderEnum, page?: number, paymentInstrumentHashId?: string, property?: string, settlementDate?: string, settlementStatus?: string, size?: number, startDate?: string, status?: TransactionsStatusEnum, systemReferenceNumber?: string, systemTraceAuditNumber?: string, tagKey?: string, tagValue?: string, transactionCurrency?: string, transactionType?: string, transactionsLabelsKey?: string, transactionsLabelsValue?: string, xRequestId?: string, options?: any): AxiosPromise<WalletTransactionsResponseDTO> {
-            return localVarFp.transactions(clientHashId, customerHashId, walletHashId, authCode, authCurrency, businessTransaction, cardHashId, childCustomerHashId, endDate, mcc, merchantCategories, merchantCity, merchantCountries, merchantCountry, merchantName, order, page, paymentInstrumentHashId, property, settlementDate, settlementStatus, size, startDate, status, systemReferenceNumber, systemTraceAuditNumber, tagKey, tagValue, transactionCurrency, transactionType, transactionsLabelsKey, transactionsLabelsValue, xRequestId, options).then((request) => request(axios, basePath));
+        transactions(requestParameters: CustomerWalletTransactionsApiTransactionsRequest, options?: RawAxiosRequestConfig): AxiosPromise<WalletTransactionsResponseDTO> {
+            return localVarFp.transactions(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.authCode, requestParameters.authCurrency, requestParameters.businessTransaction, requestParameters.cardHashId, requestParameters.childCustomerHashId, requestParameters.endDate, requestParameters.mcc, requestParameters.merchantCategories, requestParameters.merchantCity, requestParameters.merchantCountries, requestParameters.merchantCountry, requestParameters.merchantName, requestParameters.order, requestParameters.page, requestParameters.paymentInstrumentHashId, requestParameters.property, requestParameters.settlementDate, requestParameters.settlementStatus, requestParameters.size, requestParameters.startDate, requestParameters.status, requestParameters.systemReferenceNumber, requestParameters.systemTraceAuditNumber, requestParameters.tagKey, requestParameters.tagValue, requestParameters.transactionCurrency, requestParameters.transactionType, requestParameters.transactionsLabelsKey, requestParameters.transactionsLabelsValue, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to update a flag against each transaction signifying that the transaction is a business transaction.
          * @summary Update Business Transaction Flag
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} transactionId Transaction Id is NIUM generated 36 character UUID which is unique, per transaction.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {TransactionsBusinessDTO} transactionsBusinessDTO transactionsBusinessDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerWalletTransactionsApiUpdateBusinessTransactionFlagRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateBusinessTransactionFlag(clientHashId: string, customerHashId: string, transactionId: string, walletHashId: string, transactionsBusinessDTO: TransactionsBusinessDTO, xRequestId?: string, options?: any): AxiosPromise<WalletApiError> {
-            return localVarFp.updateBusinessTransactionFlag(clientHashId, customerHashId, transactionId, walletHashId, transactionsBusinessDTO, xRequestId, options).then((request) => request(axios, basePath));
+        updateBusinessTransactionFlag(requestParameters: CustomerWalletTransactionsApiUpdateBusinessTransactionFlagRequest, options?: RawAxiosRequestConfig): AxiosPromise<WalletApiError> {
+            return localVarFp.updateBusinessTransactionFlag(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.transactionId, requestParameters.walletHashId, requestParameters.transactionsBusinessDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to upload a receipt against each transaction.
          * @summary Upload Transaction Receipt
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} transactionId Transaction Id is NIUM generated 36 character UUID which is unique, per transaction.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {TransactionsReceiptDTO} transactionsReceiptDTO transactionReceipt
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerWalletTransactionsApiUploadTransactionReceiptRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadTransactionReceipt(clientHashId: string, customerHashId: string, transactionId: string, walletHashId: string, transactionsReceiptDTO: TransactionsReceiptDTO, xRequestId?: string, options?: any): AxiosPromise<WalletApiError> {
-            return localVarFp.uploadTransactionReceipt(clientHashId, customerHashId, transactionId, walletHashId, transactionsReceiptDTO, xRequestId, options).then((request) => request(axios, basePath));
+        uploadTransactionReceipt(requestParameters: CustomerWalletTransactionsApiUploadTransactionReceiptRequest, options?: RawAxiosRequestConfig): AxiosPromise<WalletApiError> {
+            return localVarFp.uploadTransactionReceipt(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.transactionId, requestParameters.walletHashId, requestParameters.transactionsReceiptDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for downloadTransactionReceipt operation in CustomerWalletTransactionsApi.
+ * @export
+ * @interface CustomerWalletTransactionsApiDownloadTransactionReceiptRequest
+ */
+export interface CustomerWalletTransactionsApiDownloadTransactionReceiptRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiDownloadTransactionReceipt
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiDownloadTransactionReceipt
+     */
+    readonly customerHashId: string
+
+    /**
+     * Transaction Id is NIUM generated 36 character UUID which is unique, per transaction.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiDownloadTransactionReceipt
+     */
+    readonly transactionId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiDownloadTransactionReceipt
+     */
+    readonly walletHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiDownloadTransactionReceipt
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for manageTransactionTags operation in CustomerWalletTransactionsApi.
+ * @export
+ * @interface CustomerWalletTransactionsApiManageTransactionTagsRequest
+ */
+export interface CustomerWalletTransactionsApiManageTransactionTagsRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiManageTransactionTags
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiManageTransactionTags
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique transaction Identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiManageTransactionTags
+     */
+    readonly transactionId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiManageTransactionTags
+     */
+    readonly walletHashId: string
+
+    /**
+     * tags
+     * @type {TransactionClientTagsRequestDTO}
+     * @memberof CustomerWalletTransactionsApiManageTransactionTags
+     */
+    readonly transactionClientTagsRequestDTO: TransactionClientTagsRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiManageTransactionTags
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for transactionGeoTagging operation in CustomerWalletTransactionsApi.
+ * @export
+ * @interface CustomerWalletTransactionsApiTransactionGeoTaggingRequest
+ */
+export interface CustomerWalletTransactionsApiTransactionGeoTaggingRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactionGeoTagging
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactionGeoTagging
+     */
+    readonly customerHashId: string
+
+    /**
+     * Transaction Id is NIUM generated 36 character UUID which is unique, per transaction.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactionGeoTagging
+     */
+    readonly transactionId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactionGeoTagging
+     */
+    readonly walletHashId: string
+
+    /**
+     * transactionsLocationDTO
+     * @type {TransactionsLocationDTO}
+     * @memberof CustomerWalletTransactionsApiTransactionGeoTagging
+     */
+    readonly transactionsLocationDTO: TransactionsLocationDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactionGeoTagging
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for transactions operation in CustomerWalletTransactionsApi.
+ * @export
+ * @interface CustomerWalletTransactionsApiTransactionsRequest
+ */
+export interface CustomerWalletTransactionsApiTransactionsRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly walletHashId: string
+
+    /**
+     * This parameter can be used to filter the transactions based on the authorization code. In case of fund wallet transactions you can provide the systemReferenceNumber as value.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly authCode?: string
+
+    /**
+     * This parameter can filter the transactions based on auth currency and accepts 3-letter [ISO-4217 transaction currency code](https://docs.nium.com/apis/docs/currency-and-country-codes).
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly authCurrency?: string
+
+    /**
+     * This parameter can filter the transactions based on businessTransaction flag.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly businessTransaction?: string
+
+    /**
+     * This field can apply the filter based on the unique card identifier generated during new/add-on card issuance.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly cardHashId?: string
+
+    /**
+     * This field contains the unique child customer identifier generated when new child customer created.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly childCustomerHashId?: string
+
+    /**
+     * End date for fetching the transaction details. The format for endDate is YYYY-MM-DD.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly endDate?: string
+
+    /**
+     * This parameter can filter the transactions based on 4-digit Merchant Category Codes.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly mcc?: string
+
+    /**
+     * This parameter describes the merchant\&#39;s type of business product or service, also known as the Merchant Category Code (MCC) such as Airlines, Restaurants etc.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly merchantCategories?: string
+
+    /**
+     * This parameter can filter the transactions based on the merchant city field.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly merchantCity?: string
+
+    /**
+     * This parameter can filter the transactions based on comma-separated list of 2-letter ISO merchant countries.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly merchantCountries?: string
+
+    /**
+     * This parameter can filter the transactions based on the merchant country field.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly merchantCountry?: string
+
+    /**
+     * This parameter can filter the transactions based on the merchant name field.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly merchantName?: string
+
+    /**
+     * The sort order for the results.
+     * @type {'ASC' | 'DESC'}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly order?: TransactionsOrderEnum
+
+    /**
+     * This API may have lot of data in response and supports pagination. Entire response data is divided into pages with size as the upper limit on the number of data. Integer values from 0 onwards are acceptable. Default page is 0.
+     * @type {number}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly page?: number
+
+    /**
+     * This parameter can filter the transactions based on comma-separated paymentInstrumentHashId.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly paymentInstrumentHashId?: string
+
+    /**
+     * The field indicates the response parameter used to sort paginated data, with \&#39;createdAt\&#39; as the default parameter.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly property?: string
+
+    /**
+     * This parameter can filter the transactions based on the settlement date of the transaction in format yyyyMMdd.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly settlementDate?: string
+
+    /**
+     * This parameter can filter the transactions based on settlement status. The detailed list of possible values is available in the response of this API.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly settlementStatus?: string
+
+    /**
+     * This will decide the number of elements per page. Typical values can be 1-20.
+     * @type {number}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly size?: number
+
+    /**
+     * From date for fetching the transaction details. The format for startDate is YYYY-MM-DD.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly startDate?: string
+
+    /**
+     * This parameter can filter the transactions based on status. The detailed list of possible values is available in the response of this API.
+     * @type {'NULL' | 'IN_PROGRESS' | 'ACTION_REQUIRED' | 'RFI_REQUESTED' | 'RFI_RESPONDED' | 'COMPLETED' | 'ERROR' | 'REJECT' | 'EXPIRED'}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly status?: TransactionsStatusEnum
+
+    /**
+     * This parameter can be used to filter the transactions based on the systemReferenceNumber.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly systemReferenceNumber?: string
+
+    /**
+     * This parameter can filter the transactions based on systemTraceAuditNumber.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly systemTraceAuditNumber?: string
+
+    /**
+     * This parameter can filter the transactions, based on the exact value of tagKey defined against transactions. This can be used as an independent search parameter.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly tagKey?: string
+
+    /**
+     * This parameter can filter the transactions, based on the approximating value of tagValue(that may be mapped for a tagKey defined against transactions). This can be used as an independent search parameter.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly tagValue?: string
+
+    /**
+     * This field contains the 3-letter [ISO-4217 transaction currency code](https://www.iso.org/iso-4217-currency-codes.html).
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly transactionCurrency?: string
+
+    /**
+     * This field contains the transaction can be one of the complete list of transactions mentioned in [Glossary of Transaction Types](https://docs.nium.com/baas/get-transactions#glossary-of-transaction-types).
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly transactionType?: string
+
+    /**
+     * This parameter can filter the transactions based on transactionsLabelsKey.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly transactionsLabelsKey?: string
+
+    /**
+     * This parameter can filter the transactions based on transactionsLabelsValue.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly transactionsLabelsValue?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiTransactions
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for updateBusinessTransactionFlag operation in CustomerWalletTransactionsApi.
+ * @export
+ * @interface CustomerWalletTransactionsApiUpdateBusinessTransactionFlagRequest
+ */
+export interface CustomerWalletTransactionsApiUpdateBusinessTransactionFlagRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiUpdateBusinessTransactionFlag
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiUpdateBusinessTransactionFlag
+     */
+    readonly customerHashId: string
+
+    /**
+     * Transaction Id is NIUM generated 36 character UUID which is unique, per transaction.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiUpdateBusinessTransactionFlag
+     */
+    readonly transactionId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiUpdateBusinessTransactionFlag
+     */
+    readonly walletHashId: string
+
+    /**
+     * transactionsBusinessDTO
+     * @type {TransactionsBusinessDTO}
+     * @memberof CustomerWalletTransactionsApiUpdateBusinessTransactionFlag
+     */
+    readonly transactionsBusinessDTO: TransactionsBusinessDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiUpdateBusinessTransactionFlag
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for uploadTransactionReceipt operation in CustomerWalletTransactionsApi.
+ * @export
+ * @interface CustomerWalletTransactionsApiUploadTransactionReceiptRequest
+ */
+export interface CustomerWalletTransactionsApiUploadTransactionReceiptRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiUploadTransactionReceipt
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiUploadTransactionReceipt
+     */
+    readonly customerHashId: string
+
+    /**
+     * Transaction Id is NIUM generated 36 character UUID which is unique, per transaction.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiUploadTransactionReceipt
+     */
+    readonly transactionId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiUploadTransactionReceipt
+     */
+    readonly walletHashId: string
+
+    /**
+     * transactionReceipt
+     * @type {TransactionsReceiptDTO}
+     * @memberof CustomerWalletTransactionsApiUploadTransactionReceipt
+     */
+    readonly transactionsReceiptDTO: TransactionsReceiptDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerWalletTransactionsApiUploadTransactionReceipt
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * CustomerWalletTransactionsApi - object-oriented interface
@@ -816,129 +1236,73 @@ export class CustomerWalletTransactionsApi extends BaseAPI {
     /**
      * This API allows you to download a receipt against each transaction.
      * @summary Download Transaction Receipt
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} transactionId Transaction Id is NIUM generated 36 character UUID which is unique, per transaction.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerWalletTransactionsApiDownloadTransactionReceiptRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerWalletTransactionsApi
      */
-    public downloadTransactionReceipt(clientHashId: string, customerHashId: string, transactionId: string, walletHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerWalletTransactionsApiFp(this.configuration).downloadTransactionReceipt(clientHashId, customerHashId, transactionId, walletHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public downloadTransactionReceipt(requestParameters: CustomerWalletTransactionsApiDownloadTransactionReceiptRequest, options?: RawAxiosRequestConfig) {
+        return CustomerWalletTransactionsApiFp(this.configuration).downloadTransactionReceipt(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.transactionId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to add, update, and delete transaction tags.
      * @summary Manage Transaction Tags
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} transactionId Unique transaction Identifier generated and shared before API handshake.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {TransactionClientTagsRequestDTO} transactionClientTagsRequestDTO tags
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerWalletTransactionsApiManageTransactionTagsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerWalletTransactionsApi
      */
-    public manageTransactionTags(clientHashId: string, customerHashId: string, transactionId: string, walletHashId: string, transactionClientTagsRequestDTO: TransactionClientTagsRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerWalletTransactionsApiFp(this.configuration).manageTransactionTags(clientHashId, customerHashId, transactionId, walletHashId, transactionClientTagsRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public manageTransactionTags(requestParameters: CustomerWalletTransactionsApiManageTransactionTagsRequest, options?: RawAxiosRequestConfig) {
+        return CustomerWalletTransactionsApiFp(this.configuration).manageTransactionTags(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.transactionId, requestParameters.walletHashId, requestParameters.transactionClientTagsRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to update a transaction with merchant location.
      * @summary Transaction Geo-Tagging
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} transactionId Transaction Id is NIUM generated 36 character UUID which is unique, per transaction.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {TransactionsLocationDTO} transactionsLocationDTO transactionsLocationDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerWalletTransactionsApiTransactionGeoTaggingRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerWalletTransactionsApi
      */
-    public transactionGeoTagging(clientHashId: string, customerHashId: string, transactionId: string, walletHashId: string, transactionsLocationDTO: TransactionsLocationDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerWalletTransactionsApiFp(this.configuration).transactionGeoTagging(clientHashId, customerHashId, transactionId, walletHashId, transactionsLocationDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public transactionGeoTagging(requestParameters: CustomerWalletTransactionsApiTransactionGeoTaggingRequest, options?: RawAxiosRequestConfig) {
+        return CustomerWalletTransactionsApiFp(this.configuration).transactionGeoTagging(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.transactionId, requestParameters.walletHashId, requestParameters.transactionsLocationDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch transaction details for a customer.
      * @summary Transactions
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} [authCode] This parameter can be used to filter the transactions based on the authorization code. In case of fund wallet transactions you can provide the systemReferenceNumber as value.
-     * @param {string} [authCurrency] This parameter can filter the transactions based on auth currency and accepts 3-letter [ISO-4217 transaction currency code](https://docs.nium.com/apis/docs/currency-and-country-codes).
-     * @param {string} [businessTransaction] This parameter can filter the transactions based on businessTransaction flag.
-     * @param {string} [cardHashId] This field can apply the filter based on the unique card identifier generated during new/add-on card issuance.
-     * @param {string} [childCustomerHashId] This field contains the unique child customer identifier generated when new child customer created.
-     * @param {string} [endDate] End date for fetching the transaction details. The format for endDate is YYYY-MM-DD.
-     * @param {string} [mcc] This parameter can filter the transactions based on 4-digit Merchant Category Codes.
-     * @param {string} [merchantCategories] This parameter describes the merchant\&#39;s type of business product or service, also known as the Merchant Category Code (MCC) such as Airlines, Restaurants etc.
-     * @param {string} [merchantCity] This parameter can filter the transactions based on the merchant city field.
-     * @param {string} [merchantCountries] This parameter can filter the transactions based on comma-separated list of 2-letter ISO merchant countries.
-     * @param {string} [merchantCountry] This parameter can filter the transactions based on the merchant country field.
-     * @param {string} [merchantName] This parameter can filter the transactions based on the merchant name field.
-     * @param {TransactionsOrderEnum} [order] The sort order for the results.
-     * @param {number} [page] This API may have lot of data in response and supports pagination. Entire response data is divided into pages with size as the upper limit on the number of data. Integer values from 0 onwards are acceptable. Default page is 0.
-     * @param {string} [paymentInstrumentHashId] This parameter can filter the transactions based on comma-separated paymentInstrumentHashId.
-     * @param {string} [property] The field indicates the response parameter used to sort paginated data, with \&#39;createdAt\&#39; as the default parameter.
-     * @param {string} [settlementDate] This parameter can filter the transactions based on the settlement date of the transaction in format yyyyMMdd.
-     * @param {string} [settlementStatus] This parameter can filter the transactions based on settlement status. The detailed list of possible values is available in the response of this API.
-     * @param {number} [size] This will decide the number of elements per page. Typical values can be 1-20.
-     * @param {string} [startDate] From date for fetching the transaction details. The format for startDate is YYYY-MM-DD.
-     * @param {TransactionsStatusEnum} [status] This parameter can filter the transactions based on status. The detailed list of possible values is available in the response of this API.
-     * @param {string} [systemReferenceNumber] This parameter can be used to filter the transactions based on the systemReferenceNumber.
-     * @param {string} [systemTraceAuditNumber] This parameter can filter the transactions based on systemTraceAuditNumber.
-     * @param {string} [tagKey] This parameter can filter the transactions, based on the exact value of tagKey defined against transactions. This can be used as an independent search parameter.
-     * @param {string} [tagValue] This parameter can filter the transactions, based on the approximating value of tagValue(that may be mapped for a tagKey defined against transactions). This can be used as an independent search parameter.
-     * @param {string} [transactionCurrency] This field contains the 3-letter [ISO-4217 transaction currency code](https://www.iso.org/iso-4217-currency-codes.html).
-     * @param {string} [transactionType] This field contains the transaction can be one of the complete list of transactions mentioned in [Glossary of Transaction Types](https://docs.nium.com/baas/get-transactions#glossary-of-transaction-types).
-     * @param {string} [transactionsLabelsKey] This parameter can filter the transactions based on transactionsLabelsKey.
-     * @param {string} [transactionsLabelsValue] This parameter can filter the transactions based on transactionsLabelsValue.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerWalletTransactionsApiTransactionsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerWalletTransactionsApi
      */
-    public transactions(clientHashId: string, customerHashId: string, walletHashId: string, authCode?: string, authCurrency?: string, businessTransaction?: string, cardHashId?: string, childCustomerHashId?: string, endDate?: string, mcc?: string, merchantCategories?: string, merchantCity?: string, merchantCountries?: string, merchantCountry?: string, merchantName?: string, order?: TransactionsOrderEnum, page?: number, paymentInstrumentHashId?: string, property?: string, settlementDate?: string, settlementStatus?: string, size?: number, startDate?: string, status?: TransactionsStatusEnum, systemReferenceNumber?: string, systemTraceAuditNumber?: string, tagKey?: string, tagValue?: string, transactionCurrency?: string, transactionType?: string, transactionsLabelsKey?: string, transactionsLabelsValue?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerWalletTransactionsApiFp(this.configuration).transactions(clientHashId, customerHashId, walletHashId, authCode, authCurrency, businessTransaction, cardHashId, childCustomerHashId, endDate, mcc, merchantCategories, merchantCity, merchantCountries, merchantCountry, merchantName, order, page, paymentInstrumentHashId, property, settlementDate, settlementStatus, size, startDate, status, systemReferenceNumber, systemTraceAuditNumber, tagKey, tagValue, transactionCurrency, transactionType, transactionsLabelsKey, transactionsLabelsValue, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public transactions(requestParameters: CustomerWalletTransactionsApiTransactionsRequest, options?: RawAxiosRequestConfig) {
+        return CustomerWalletTransactionsApiFp(this.configuration).transactions(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.authCode, requestParameters.authCurrency, requestParameters.businessTransaction, requestParameters.cardHashId, requestParameters.childCustomerHashId, requestParameters.endDate, requestParameters.mcc, requestParameters.merchantCategories, requestParameters.merchantCity, requestParameters.merchantCountries, requestParameters.merchantCountry, requestParameters.merchantName, requestParameters.order, requestParameters.page, requestParameters.paymentInstrumentHashId, requestParameters.property, requestParameters.settlementDate, requestParameters.settlementStatus, requestParameters.size, requestParameters.startDate, requestParameters.status, requestParameters.systemReferenceNumber, requestParameters.systemTraceAuditNumber, requestParameters.tagKey, requestParameters.tagValue, requestParameters.transactionCurrency, requestParameters.transactionType, requestParameters.transactionsLabelsKey, requestParameters.transactionsLabelsValue, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to update a flag against each transaction signifying that the transaction is a business transaction.
      * @summary Update Business Transaction Flag
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} transactionId Transaction Id is NIUM generated 36 character UUID which is unique, per transaction.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {TransactionsBusinessDTO} transactionsBusinessDTO transactionsBusinessDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerWalletTransactionsApiUpdateBusinessTransactionFlagRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerWalletTransactionsApi
      */
-    public updateBusinessTransactionFlag(clientHashId: string, customerHashId: string, transactionId: string, walletHashId: string, transactionsBusinessDTO: TransactionsBusinessDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerWalletTransactionsApiFp(this.configuration).updateBusinessTransactionFlag(clientHashId, customerHashId, transactionId, walletHashId, transactionsBusinessDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public updateBusinessTransactionFlag(requestParameters: CustomerWalletTransactionsApiUpdateBusinessTransactionFlagRequest, options?: RawAxiosRequestConfig) {
+        return CustomerWalletTransactionsApiFp(this.configuration).updateBusinessTransactionFlag(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.transactionId, requestParameters.walletHashId, requestParameters.transactionsBusinessDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to upload a receipt against each transaction.
      * @summary Upload Transaction Receipt
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} transactionId Transaction Id is NIUM generated 36 character UUID which is unique, per transaction.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {TransactionsReceiptDTO} transactionsReceiptDTO transactionReceipt
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerWalletTransactionsApiUploadTransactionReceiptRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerWalletTransactionsApi
      */
-    public uploadTransactionReceipt(clientHashId: string, customerHashId: string, transactionId: string, walletHashId: string, transactionsReceiptDTO: TransactionsReceiptDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerWalletTransactionsApiFp(this.configuration).uploadTransactionReceipt(clientHashId, customerHashId, transactionId, walletHashId, transactionsReceiptDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public uploadTransactionReceipt(requestParameters: CustomerWalletTransactionsApiUploadTransactionReceiptRequest, options?: RawAxiosRequestConfig) {
+        return CustomerWalletTransactionsApiFp(this.configuration).uploadTransactionReceipt(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.transactionId, requestParameters.walletHashId, requestParameters.transactionsReceiptDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

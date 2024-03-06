@@ -965,178 +965,618 @@ export const BeneficiaryApiFactory = function (configuration?: Configuration, ba
         /**
          * This API allows you to verify a beneficiary account details. > > ℹ️ INFO   >This API only supports account verification for certain destination corridors. >Refer to the   [Account verification user guide](/apis/docs/account-verification#supported-corridors-for-account-verification) for details.
          * @summary Account verification (Confirmation of Payee)
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {AccountValidationRequestDTO} accountValidationRequestDTO accountValidationRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {BeneficiaryApiAccountVerificationRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        accountVerification(clientHashId: string, customerHashId: string, accountValidationRequestDTO: AccountValidationRequestDTO, xRequestId?: string, options?: any): AxiosPromise<AccountValidationResponseDTO> {
-            return localVarFp.accountVerification(clientHashId, customerHashId, accountValidationRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        accountVerification(requestParameters: BeneficiaryApiAccountVerificationRequest, options?: RawAxiosRequestConfig): AxiosPromise<AccountValidationResponseDTO> {
+            return localVarFp.accountVerification(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.accountValidationRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to add a beneficiary to transfer funds.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Add Beneficiary V2](/apis/reference/addbeneficiaryv2) is the latest version of this API.
          * @summary Add Beneficiary
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {AddBeneficiaryRequest} addBeneficiaryRequest addBeneficiaryRequest
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {BeneficiaryApiAddBeneficiaryRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addBeneficiary(clientHashId: string, customerHashId: string, addBeneficiaryRequest: AddBeneficiaryRequest, xRequestId?: string, options?: any): AxiosPromise<Resource> {
-            return localVarFp.addBeneficiary(clientHashId, customerHashId, addBeneficiaryRequest, xRequestId, options).then((request) => request(axios, basePath));
+        addBeneficiary(requestParameters: BeneficiaryApiAddBeneficiaryRequest, options?: RawAxiosRequestConfig): AxiosPromise<Resource> {
+            return localVarFp.addBeneficiary(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.addBeneficiaryRequest, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to add a beneficiary to transfer funds.   > ⚠️ IMPORTANT    Some fields are conditional based on corridors. Use the [Beneficiary Validation Schema V2](/apis/reference/beneficiaryvalidationschemav2) with the currency code and payout method to determine if a field is required or not.
          * @summary Add Beneficiary V2
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {AddBeneficiaryRequestDTO} addBeneficiaryRequestDTO addBeneficiaryRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {BeneficiaryApiAddBeneficiaryV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addBeneficiaryV2(clientHashId: string, customerHashId: string, addBeneficiaryRequestDTO: AddBeneficiaryRequestDTO, xRequestId?: string, options?: any): AxiosPromise<BeneficiaryResponseDTO> {
-            return localVarFp.addBeneficiaryV2(clientHashId, customerHashId, addBeneficiaryRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        addBeneficiaryV2(requestParameters: BeneficiaryApiAddBeneficiaryV2Request, options?: RawAxiosRequestConfig): AxiosPromise<BeneficiaryResponseDTO> {
+            return localVarFp.addBeneficiaryV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.addBeneficiaryRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch beneficiary details of an individual beneficiary.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Beneficiary Details V2](/apis/reference/beneficiarydetailsv2) is the latest version of this API.
          * @summary Beneficiary Details
-         * @param {string} beneficiaryHashId Unique beneficiary hash ID.
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {BeneficiaryApiBeneficiaryDetailsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        beneficiaryDetails(beneficiaryHashId: string, clientHashId: string, customerHashId: string, xRequestId?: string, options?: any): AxiosPromise<Resource> {
-            return localVarFp.beneficiaryDetails(beneficiaryHashId, clientHashId, customerHashId, xRequestId, options).then((request) => request(axios, basePath));
+        beneficiaryDetails(requestParameters: BeneficiaryApiBeneficiaryDetailsRequest, options?: RawAxiosRequestConfig): AxiosPromise<Resource> {
+            return localVarFp.beneficiaryDetails(requestParameters.beneficiaryHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch beneficiary details of an individual beneficiary.
          * @summary Beneficiary Details V2
-         * @param {string} beneficiaryHashId Unique beneficiary hash ID.
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {BeneficiaryApiBeneficiaryDetailsV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        beneficiaryDetailsV2(beneficiaryHashId: string, clientHashId: string, customerHashId: string, xRequestId?: string, options?: any): AxiosPromise<BeneficiaryResponseDTO> {
-            return localVarFp.beneficiaryDetailsV2(beneficiaryHashId, clientHashId, customerHashId, xRequestId, options).then((request) => request(axios, basePath));
+        beneficiaryDetailsV2(requestParameters: BeneficiaryApiBeneficiaryDetailsV2Request, options?: RawAxiosRequestConfig): AxiosPromise<BeneficiaryResponseDTO> {
+            return localVarFp.beneficiaryDetailsV2(requestParameters.beneficiaryHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch beneficiary details.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Beneficiary List V2](/apis/reference/beneficiarylistv2) is the latest version of this API.
          * @summary Beneficiary List
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {Array<{ [key: string]: string; }>} [parameters] parameters
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {BeneficiaryApiBeneficiaryListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        beneficiaryList(clientHashId: string, customerHashId: string, parameters?: Array<{ [key: string]: string; }>, xRequestId?: string, options?: any): AxiosPromise<Resource> {
-            return localVarFp.beneficiaryList(clientHashId, customerHashId, parameters, xRequestId, options).then((request) => request(axios, basePath));
+        beneficiaryList(requestParameters: BeneficiaryApiBeneficiaryListRequest, options?: RawAxiosRequestConfig): AxiosPromise<Resource> {
+            return localVarFp.beneficiaryList(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.parameters, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch beneficiary details.
          * @summary Beneficiary List V2
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {Array<{ [key: string]: string; }>} [parameters] parameters
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {BeneficiaryApiBeneficiaryListV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        beneficiaryListV2(clientHashId: string, customerHashId: string, parameters?: Array<{ [key: string]: string; }>, xRequestId?: string, options?: any): AxiosPromise<Array<BeneficiaryResponseDTO>> {
-            return localVarFp.beneficiaryListV2(clientHashId, customerHashId, parameters, xRequestId, options).then((request) => request(axios, basePath));
+        beneficiaryListV2(requestParameters: BeneficiaryApiBeneficiaryListV2Request, options?: RawAxiosRequestConfig): AxiosPromise<Array<BeneficiaryResponseDTO>> {
+            return localVarFp.beneficiaryListV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.parameters, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API will allow you to fetch the validation schema for beneficiary validation details.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Beneficiary Validation Schema V2](/apis/reference/beneficiaryvalidationschemav2) is the latest version of this API.
          * @summary Beneficiary Validation Schema
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} currencyCode This field accepts the 3-letter [ISO-4217 currency code](doc:currency-and-country-codes).
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} [payoutMethod] This field can accept the different modes of payout.This field can accept one of the following values: 1.LOCAL 2.SWIFT 3.WALLET Default value of the parameter is LOCAL.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {BeneficiaryApiBeneficiaryValidationSchemaRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        beneficiaryValidationSchema(clientHashId: string, currencyCode: string, customerHashId: string, payoutMethod?: string, xRequestId?: string, options?: any): AxiosPromise<Resource> {
-            return localVarFp.beneficiaryValidationSchema(clientHashId, currencyCode, customerHashId, payoutMethod, xRequestId, options).then((request) => request(axios, basePath));
+        beneficiaryValidationSchema(requestParameters: BeneficiaryApiBeneficiaryValidationSchemaRequest, options?: RawAxiosRequestConfig): AxiosPromise<Resource> {
+            return localVarFp.beneficiaryValidationSchema(requestParameters.clientHashId, requestParameters.currencyCode, requestParameters.customerHashId, requestParameters.payoutMethod, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API will allow you to fetch the validation schema for beneficiary validation details.
          * @summary Beneficiary Validation Schema V2
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} currencyCode This field accepts the 3-letter [ISO-4217 currency code](doc:currency-and-country-codes).
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} [payoutMethod] This field can accept the different modes of payout.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {BeneficiaryApiBeneficiaryValidationSchemaV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        beneficiaryValidationSchemaV2(clientHashId: string, currencyCode: string, customerHashId: string, payoutMethod?: string, xRequestId?: string, options?: any): AxiosPromise<string> {
-            return localVarFp.beneficiaryValidationSchemaV2(clientHashId, currencyCode, customerHashId, payoutMethod, xRequestId, options).then((request) => request(axios, basePath));
+        beneficiaryValidationSchemaV2(requestParameters: BeneficiaryApiBeneficiaryValidationSchemaV2Request, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.beneficiaryValidationSchemaV2(requestParameters.clientHashId, requestParameters.currencyCode, requestParameters.customerHashId, requestParameters.payoutMethod, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to Validate Beneficiary Details.  >ℹ️ INFO   >This API only supports account verification for below destination corridors. >**For LOCAL payment method:** Vietnam (VN), Thailand (TH), India (IN), Pakistan(PK), Malaysia(MY), Indonesia (ID) >**For PROXY payment method:** Singapore (SG), India (IN), Malaysia(MY)
          * @summary Confirmation of Payee (Previous version)
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {BeneficiaryValidationRequestDTO} beneficiaryValidationRequestDTO beneficiaryValidationRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {BeneficiaryApiConfirmationofPayeeRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        confirmationofPayee(clientHashId: string, customerHashId: string, beneficiaryValidationRequestDTO: BeneficiaryValidationRequestDTO, xRequestId?: string, options?: any): AxiosPromise<BeneficiaryValidationResponseDTO> {
-            return localVarFp.confirmationofPayee(clientHashId, customerHashId, beneficiaryValidationRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        confirmationofPayee(requestParameters: BeneficiaryApiConfirmationofPayeeRequest, options?: RawAxiosRequestConfig): AxiosPromise<BeneficiaryValidationResponseDTO> {
+            return localVarFp.confirmationofPayee(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.beneficiaryValidationRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to delete a beneficiary.
          * @summary Delete Beneficiary
-         * @param {string} beneficiaryHashId Unique beneficiary hash ID.
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {BeneficiaryApiDeleteBeneficiaryRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteBeneficiary(beneficiaryHashId: string, clientHashId: string, customerHashId: string, xRequestId?: string, options?: any): AxiosPromise<Resource> {
-            return localVarFp.deleteBeneficiary(beneficiaryHashId, clientHashId, customerHashId, xRequestId, options).then((request) => request(axios, basePath));
+        deleteBeneficiary(requestParameters: BeneficiaryApiDeleteBeneficiaryRequest, options?: RawAxiosRequestConfig): AxiosPromise<Resource> {
+            return localVarFp.deleteBeneficiary(requestParameters.beneficiaryHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to update beneficiary details.
          * @summary Update Beneficiary
-         * @param {string} beneficiaryHashId Unique beneficiary hash ID.
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
-         * @param {AddBeneficiaryRequest} [addBeneficiaryRequest] Info:  Update Beneficiary API will be restricted when a remittance transaction for the beneficiary is Pending.
+         * @param {BeneficiaryApiUpdateBeneficiaryRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateBeneficiary(beneficiaryHashId: string, clientHashId: string, customerHashId: string, xRequestId?: string, addBeneficiaryRequest?: AddBeneficiaryRequest, options?: any): AxiosPromise<Resource> {
-            return localVarFp.updateBeneficiary(beneficiaryHashId, clientHashId, customerHashId, xRequestId, addBeneficiaryRequest, options).then((request) => request(axios, basePath));
+        updateBeneficiary(requestParameters: BeneficiaryApiUpdateBeneficiaryRequest, options?: RawAxiosRequestConfig): AxiosPromise<Resource> {
+            return localVarFp.updateBeneficiary(requestParameters.beneficiaryHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, requestParameters.addBeneficiaryRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to update beneficiary details.
          * @summary Update Beneficiary V2
-         * @param {string} beneficiaryHashId Unique beneficiary hash ID.
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
-         * @param {UpdateBeneficiaryRequestDTO} [updateBeneficiaryRequestDTO] Info:  Update Beneficiary API will be restricted when a remittance transaction for the beneficiary is Pending.
+         * @param {BeneficiaryApiUpdateBeneficiaryV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateBeneficiaryV2(beneficiaryHashId: string, clientHashId: string, customerHashId: string, xRequestId?: string, updateBeneficiaryRequestDTO?: UpdateBeneficiaryRequestDTO, options?: any): AxiosPromise<BeneficiaryResponseDTO> {
-            return localVarFp.updateBeneficiaryV2(beneficiaryHashId, clientHashId, customerHashId, xRequestId, updateBeneficiaryRequestDTO, options).then((request) => request(axios, basePath));
+        updateBeneficiaryV2(requestParameters: BeneficiaryApiUpdateBeneficiaryV2Request, options?: RawAxiosRequestConfig): AxiosPromise<BeneficiaryResponseDTO> {
+            return localVarFp.updateBeneficiaryV2(requestParameters.beneficiaryHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, requestParameters.updateBeneficiaryRequestDTO, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for accountVerification operation in BeneficiaryApi.
+ * @export
+ * @interface BeneficiaryApiAccountVerificationRequest
+ */
+export interface BeneficiaryApiAccountVerificationRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof BeneficiaryApiAccountVerification
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof BeneficiaryApiAccountVerification
+     */
+    readonly customerHashId: string
+
+    /**
+     * accountValidationRequestDTO
+     * @type {AccountValidationRequestDTO}
+     * @memberof BeneficiaryApiAccountVerification
+     */
+    readonly accountValidationRequestDTO: AccountValidationRequestDTO
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof BeneficiaryApiAccountVerification
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for addBeneficiary operation in BeneficiaryApi.
+ * @export
+ * @interface BeneficiaryApiAddBeneficiaryRequest
+ */
+export interface BeneficiaryApiAddBeneficiaryRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof BeneficiaryApiAddBeneficiary
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof BeneficiaryApiAddBeneficiary
+     */
+    readonly customerHashId: string
+
+    /**
+     * addBeneficiaryRequest
+     * @type {AddBeneficiaryRequest}
+     * @memberof BeneficiaryApiAddBeneficiary
+     */
+    readonly addBeneficiaryRequest: AddBeneficiaryRequest
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof BeneficiaryApiAddBeneficiary
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for addBeneficiaryV2 operation in BeneficiaryApi.
+ * @export
+ * @interface BeneficiaryApiAddBeneficiaryV2Request
+ */
+export interface BeneficiaryApiAddBeneficiaryV2Request {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof BeneficiaryApiAddBeneficiaryV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof BeneficiaryApiAddBeneficiaryV2
+     */
+    readonly customerHashId: string
+
+    /**
+     * addBeneficiaryRequestDTO
+     * @type {AddBeneficiaryRequestDTO}
+     * @memberof BeneficiaryApiAddBeneficiaryV2
+     */
+    readonly addBeneficiaryRequestDTO: AddBeneficiaryRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof BeneficiaryApiAddBeneficiaryV2
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for beneficiaryDetails operation in BeneficiaryApi.
+ * @export
+ * @interface BeneficiaryApiBeneficiaryDetailsRequest
+ */
+export interface BeneficiaryApiBeneficiaryDetailsRequest {
+    /**
+     * Unique beneficiary hash ID.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryDetails
+     */
+    readonly beneficiaryHashId: string
+
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryDetails
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryDetails
+     */
+    readonly customerHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryDetails
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for beneficiaryDetailsV2 operation in BeneficiaryApi.
+ * @export
+ * @interface BeneficiaryApiBeneficiaryDetailsV2Request
+ */
+export interface BeneficiaryApiBeneficiaryDetailsV2Request {
+    /**
+     * Unique beneficiary hash ID.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryDetailsV2
+     */
+    readonly beneficiaryHashId: string
+
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryDetailsV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryDetailsV2
+     */
+    readonly customerHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryDetailsV2
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for beneficiaryList operation in BeneficiaryApi.
+ * @export
+ * @interface BeneficiaryApiBeneficiaryListRequest
+ */
+export interface BeneficiaryApiBeneficiaryListRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryList
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryList
+     */
+    readonly customerHashId: string
+
+    /**
+     * parameters
+     * @type {Array<{ [key: string]: string; }>}
+     * @memberof BeneficiaryApiBeneficiaryList
+     */
+    readonly parameters?: Array<{ [key: string]: string; }>
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryList
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for beneficiaryListV2 operation in BeneficiaryApi.
+ * @export
+ * @interface BeneficiaryApiBeneficiaryListV2Request
+ */
+export interface BeneficiaryApiBeneficiaryListV2Request {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryListV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryListV2
+     */
+    readonly customerHashId: string
+
+    /**
+     * parameters
+     * @type {Array<{ [key: string]: string; }>}
+     * @memberof BeneficiaryApiBeneficiaryListV2
+     */
+    readonly parameters?: Array<{ [key: string]: string; }>
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryListV2
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for beneficiaryValidationSchema operation in BeneficiaryApi.
+ * @export
+ * @interface BeneficiaryApiBeneficiaryValidationSchemaRequest
+ */
+export interface BeneficiaryApiBeneficiaryValidationSchemaRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryValidationSchema
+     */
+    readonly clientHashId: string
+
+    /**
+     * This field accepts the 3-letter [ISO-4217 currency code](doc:currency-and-country-codes).
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryValidationSchema
+     */
+    readonly currencyCode: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryValidationSchema
+     */
+    readonly customerHashId: string
+
+    /**
+     * This field can accept the different modes of payout.This field can accept one of the following values: 1.LOCAL 2.SWIFT 3.WALLET Default value of the parameter is LOCAL.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryValidationSchema
+     */
+    readonly payoutMethod?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryValidationSchema
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for beneficiaryValidationSchemaV2 operation in BeneficiaryApi.
+ * @export
+ * @interface BeneficiaryApiBeneficiaryValidationSchemaV2Request
+ */
+export interface BeneficiaryApiBeneficiaryValidationSchemaV2Request {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryValidationSchemaV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * This field accepts the 3-letter [ISO-4217 currency code](doc:currency-and-country-codes).
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryValidationSchemaV2
+     */
+    readonly currencyCode: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryValidationSchemaV2
+     */
+    readonly customerHashId: string
+
+    /**
+     * This field can accept the different modes of payout.
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryValidationSchemaV2
+     */
+    readonly payoutMethod?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof BeneficiaryApiBeneficiaryValidationSchemaV2
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for confirmationofPayee operation in BeneficiaryApi.
+ * @export
+ * @interface BeneficiaryApiConfirmationofPayeeRequest
+ */
+export interface BeneficiaryApiConfirmationofPayeeRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof BeneficiaryApiConfirmationofPayee
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof BeneficiaryApiConfirmationofPayee
+     */
+    readonly customerHashId: string
+
+    /**
+     * beneficiaryValidationRequestDTO
+     * @type {BeneficiaryValidationRequestDTO}
+     * @memberof BeneficiaryApiConfirmationofPayee
+     */
+    readonly beneficiaryValidationRequestDTO: BeneficiaryValidationRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof BeneficiaryApiConfirmationofPayee
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for deleteBeneficiary operation in BeneficiaryApi.
+ * @export
+ * @interface BeneficiaryApiDeleteBeneficiaryRequest
+ */
+export interface BeneficiaryApiDeleteBeneficiaryRequest {
+    /**
+     * Unique beneficiary hash ID.
+     * @type {string}
+     * @memberof BeneficiaryApiDeleteBeneficiary
+     */
+    readonly beneficiaryHashId: string
+
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof BeneficiaryApiDeleteBeneficiary
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof BeneficiaryApiDeleteBeneficiary
+     */
+    readonly customerHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof BeneficiaryApiDeleteBeneficiary
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for updateBeneficiary operation in BeneficiaryApi.
+ * @export
+ * @interface BeneficiaryApiUpdateBeneficiaryRequest
+ */
+export interface BeneficiaryApiUpdateBeneficiaryRequest {
+    /**
+     * Unique beneficiary hash ID.
+     * @type {string}
+     * @memberof BeneficiaryApiUpdateBeneficiary
+     */
+    readonly beneficiaryHashId: string
+
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof BeneficiaryApiUpdateBeneficiary
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof BeneficiaryApiUpdateBeneficiary
+     */
+    readonly customerHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof BeneficiaryApiUpdateBeneficiary
+     */
+    readonly xRequestId?: string
+
+    /**
+     * Info:  Update Beneficiary API will be restricted when a remittance transaction for the beneficiary is Pending.
+     * @type {AddBeneficiaryRequest}
+     * @memberof BeneficiaryApiUpdateBeneficiary
+     */
+    readonly addBeneficiaryRequest?: AddBeneficiaryRequest
+}
+
+/**
+ * Request parameters for updateBeneficiaryV2 operation in BeneficiaryApi.
+ * @export
+ * @interface BeneficiaryApiUpdateBeneficiaryV2Request
+ */
+export interface BeneficiaryApiUpdateBeneficiaryV2Request {
+    /**
+     * Unique beneficiary hash ID.
+     * @type {string}
+     * @memberof BeneficiaryApiUpdateBeneficiaryV2
+     */
+    readonly beneficiaryHashId: string
+
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof BeneficiaryApiUpdateBeneficiaryV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof BeneficiaryApiUpdateBeneficiaryV2
+     */
+    readonly customerHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof BeneficiaryApiUpdateBeneficiaryV2
+     */
+    readonly xRequestId?: string
+
+    /**
+     * Info:  Update Beneficiary API will be restricted when a remittance transaction for the beneficiary is Pending.
+     * @type {UpdateBeneficiaryRequestDTO}
+     * @memberof BeneficiaryApiUpdateBeneficiaryV2
+     */
+    readonly updateBeneficiaryRequestDTO?: UpdateBeneficiaryRequestDTO
+}
 
 /**
  * BeneficiaryApi - object-oriented interface
@@ -1148,200 +1588,157 @@ export class BeneficiaryApi extends BaseAPI {
     /**
      * This API allows you to verify a beneficiary account details. > > ℹ️ INFO   >This API only supports account verification for certain destination corridors. >Refer to the   [Account verification user guide](/apis/docs/account-verification#supported-corridors-for-account-verification) for details.
      * @summary Account verification (Confirmation of Payee)
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {AccountValidationRequestDTO} accountValidationRequestDTO accountValidationRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {BeneficiaryApiAccountVerificationRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BeneficiaryApi
      */
-    public accountVerification(clientHashId: string, customerHashId: string, accountValidationRequestDTO: AccountValidationRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return BeneficiaryApiFp(this.configuration).accountVerification(clientHashId, customerHashId, accountValidationRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public accountVerification(requestParameters: BeneficiaryApiAccountVerificationRequest, options?: RawAxiosRequestConfig) {
+        return BeneficiaryApiFp(this.configuration).accountVerification(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.accountValidationRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to add a beneficiary to transfer funds.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Add Beneficiary V2](/apis/reference/addbeneficiaryv2) is the latest version of this API.
      * @summary Add Beneficiary
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {AddBeneficiaryRequest} addBeneficiaryRequest addBeneficiaryRequest
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {BeneficiaryApiAddBeneficiaryRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BeneficiaryApi
      */
-    public addBeneficiary(clientHashId: string, customerHashId: string, addBeneficiaryRequest: AddBeneficiaryRequest, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return BeneficiaryApiFp(this.configuration).addBeneficiary(clientHashId, customerHashId, addBeneficiaryRequest, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public addBeneficiary(requestParameters: BeneficiaryApiAddBeneficiaryRequest, options?: RawAxiosRequestConfig) {
+        return BeneficiaryApiFp(this.configuration).addBeneficiary(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.addBeneficiaryRequest, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to add a beneficiary to transfer funds.   > ⚠️ IMPORTANT    Some fields are conditional based on corridors. Use the [Beneficiary Validation Schema V2](/apis/reference/beneficiaryvalidationschemav2) with the currency code and payout method to determine if a field is required or not.
      * @summary Add Beneficiary V2
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {AddBeneficiaryRequestDTO} addBeneficiaryRequestDTO addBeneficiaryRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {BeneficiaryApiAddBeneficiaryV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BeneficiaryApi
      */
-    public addBeneficiaryV2(clientHashId: string, customerHashId: string, addBeneficiaryRequestDTO: AddBeneficiaryRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return BeneficiaryApiFp(this.configuration).addBeneficiaryV2(clientHashId, customerHashId, addBeneficiaryRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public addBeneficiaryV2(requestParameters: BeneficiaryApiAddBeneficiaryV2Request, options?: RawAxiosRequestConfig) {
+        return BeneficiaryApiFp(this.configuration).addBeneficiaryV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.addBeneficiaryRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch beneficiary details of an individual beneficiary.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Beneficiary Details V2](/apis/reference/beneficiarydetailsv2) is the latest version of this API.
      * @summary Beneficiary Details
-     * @param {string} beneficiaryHashId Unique beneficiary hash ID.
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {BeneficiaryApiBeneficiaryDetailsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BeneficiaryApi
      */
-    public beneficiaryDetails(beneficiaryHashId: string, clientHashId: string, customerHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return BeneficiaryApiFp(this.configuration).beneficiaryDetails(beneficiaryHashId, clientHashId, customerHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public beneficiaryDetails(requestParameters: BeneficiaryApiBeneficiaryDetailsRequest, options?: RawAxiosRequestConfig) {
+        return BeneficiaryApiFp(this.configuration).beneficiaryDetails(requestParameters.beneficiaryHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch beneficiary details of an individual beneficiary.
      * @summary Beneficiary Details V2
-     * @param {string} beneficiaryHashId Unique beneficiary hash ID.
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {BeneficiaryApiBeneficiaryDetailsV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BeneficiaryApi
      */
-    public beneficiaryDetailsV2(beneficiaryHashId: string, clientHashId: string, customerHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return BeneficiaryApiFp(this.configuration).beneficiaryDetailsV2(beneficiaryHashId, clientHashId, customerHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public beneficiaryDetailsV2(requestParameters: BeneficiaryApiBeneficiaryDetailsV2Request, options?: RawAxiosRequestConfig) {
+        return BeneficiaryApiFp(this.configuration).beneficiaryDetailsV2(requestParameters.beneficiaryHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch beneficiary details.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Beneficiary List V2](/apis/reference/beneficiarylistv2) is the latest version of this API.
      * @summary Beneficiary List
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {Array<{ [key: string]: string; }>} [parameters] parameters
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {BeneficiaryApiBeneficiaryListRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BeneficiaryApi
      */
-    public beneficiaryList(clientHashId: string, customerHashId: string, parameters?: Array<{ [key: string]: string; }>, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return BeneficiaryApiFp(this.configuration).beneficiaryList(clientHashId, customerHashId, parameters, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public beneficiaryList(requestParameters: BeneficiaryApiBeneficiaryListRequest, options?: RawAxiosRequestConfig) {
+        return BeneficiaryApiFp(this.configuration).beneficiaryList(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.parameters, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch beneficiary details.
      * @summary Beneficiary List V2
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {Array<{ [key: string]: string; }>} [parameters] parameters
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {BeneficiaryApiBeneficiaryListV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BeneficiaryApi
      */
-    public beneficiaryListV2(clientHashId: string, customerHashId: string, parameters?: Array<{ [key: string]: string; }>, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return BeneficiaryApiFp(this.configuration).beneficiaryListV2(clientHashId, customerHashId, parameters, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public beneficiaryListV2(requestParameters: BeneficiaryApiBeneficiaryListV2Request, options?: RawAxiosRequestConfig) {
+        return BeneficiaryApiFp(this.configuration).beneficiaryListV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.parameters, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API will allow you to fetch the validation schema for beneficiary validation details.  >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Beneficiary Validation Schema V2](/apis/reference/beneficiaryvalidationschemav2) is the latest version of this API.
      * @summary Beneficiary Validation Schema
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} currencyCode This field accepts the 3-letter [ISO-4217 currency code](doc:currency-and-country-codes).
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} [payoutMethod] This field can accept the different modes of payout.This field can accept one of the following values: 1.LOCAL 2.SWIFT 3.WALLET Default value of the parameter is LOCAL.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {BeneficiaryApiBeneficiaryValidationSchemaRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BeneficiaryApi
      */
-    public beneficiaryValidationSchema(clientHashId: string, currencyCode: string, customerHashId: string, payoutMethod?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return BeneficiaryApiFp(this.configuration).beneficiaryValidationSchema(clientHashId, currencyCode, customerHashId, payoutMethod, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public beneficiaryValidationSchema(requestParameters: BeneficiaryApiBeneficiaryValidationSchemaRequest, options?: RawAxiosRequestConfig) {
+        return BeneficiaryApiFp(this.configuration).beneficiaryValidationSchema(requestParameters.clientHashId, requestParameters.currencyCode, requestParameters.customerHashId, requestParameters.payoutMethod, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API will allow you to fetch the validation schema for beneficiary validation details.
      * @summary Beneficiary Validation Schema V2
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} currencyCode This field accepts the 3-letter [ISO-4217 currency code](doc:currency-and-country-codes).
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} [payoutMethod] This field can accept the different modes of payout.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {BeneficiaryApiBeneficiaryValidationSchemaV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BeneficiaryApi
      */
-    public beneficiaryValidationSchemaV2(clientHashId: string, currencyCode: string, customerHashId: string, payoutMethod?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return BeneficiaryApiFp(this.configuration).beneficiaryValidationSchemaV2(clientHashId, currencyCode, customerHashId, payoutMethod, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public beneficiaryValidationSchemaV2(requestParameters: BeneficiaryApiBeneficiaryValidationSchemaV2Request, options?: RawAxiosRequestConfig) {
+        return BeneficiaryApiFp(this.configuration).beneficiaryValidationSchemaV2(requestParameters.clientHashId, requestParameters.currencyCode, requestParameters.customerHashId, requestParameters.payoutMethod, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to Validate Beneficiary Details.  >ℹ️ INFO   >This API only supports account verification for below destination corridors. >**For LOCAL payment method:** Vietnam (VN), Thailand (TH), India (IN), Pakistan(PK), Malaysia(MY), Indonesia (ID) >**For PROXY payment method:** Singapore (SG), India (IN), Malaysia(MY)
      * @summary Confirmation of Payee (Previous version)
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {BeneficiaryValidationRequestDTO} beneficiaryValidationRequestDTO beneficiaryValidationRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {BeneficiaryApiConfirmationofPayeeRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BeneficiaryApi
      */
-    public confirmationofPayee(clientHashId: string, customerHashId: string, beneficiaryValidationRequestDTO: BeneficiaryValidationRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return BeneficiaryApiFp(this.configuration).confirmationofPayee(clientHashId, customerHashId, beneficiaryValidationRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public confirmationofPayee(requestParameters: BeneficiaryApiConfirmationofPayeeRequest, options?: RawAxiosRequestConfig) {
+        return BeneficiaryApiFp(this.configuration).confirmationofPayee(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.beneficiaryValidationRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to delete a beneficiary.
      * @summary Delete Beneficiary
-     * @param {string} beneficiaryHashId Unique beneficiary hash ID.
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {BeneficiaryApiDeleteBeneficiaryRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BeneficiaryApi
      */
-    public deleteBeneficiary(beneficiaryHashId: string, clientHashId: string, customerHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return BeneficiaryApiFp(this.configuration).deleteBeneficiary(beneficiaryHashId, clientHashId, customerHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public deleteBeneficiary(requestParameters: BeneficiaryApiDeleteBeneficiaryRequest, options?: RawAxiosRequestConfig) {
+        return BeneficiaryApiFp(this.configuration).deleteBeneficiary(requestParameters.beneficiaryHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to update beneficiary details.
      * @summary Update Beneficiary
-     * @param {string} beneficiaryHashId Unique beneficiary hash ID.
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
-     * @param {AddBeneficiaryRequest} [addBeneficiaryRequest] Info:  Update Beneficiary API will be restricted when a remittance transaction for the beneficiary is Pending.
+     * @param {BeneficiaryApiUpdateBeneficiaryRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BeneficiaryApi
      */
-    public updateBeneficiary(beneficiaryHashId: string, clientHashId: string, customerHashId: string, xRequestId?: string, addBeneficiaryRequest?: AddBeneficiaryRequest, options?: RawAxiosRequestConfig) {
-        return BeneficiaryApiFp(this.configuration).updateBeneficiary(beneficiaryHashId, clientHashId, customerHashId, xRequestId, addBeneficiaryRequest, options).then((request) => request(this.axios, this.basePath));
+    public updateBeneficiary(requestParameters: BeneficiaryApiUpdateBeneficiaryRequest, options?: RawAxiosRequestConfig) {
+        return BeneficiaryApiFp(this.configuration).updateBeneficiary(requestParameters.beneficiaryHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, requestParameters.addBeneficiaryRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to update beneficiary details.
      * @summary Update Beneficiary V2
-     * @param {string} beneficiaryHashId Unique beneficiary hash ID.
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
-     * @param {UpdateBeneficiaryRequestDTO} [updateBeneficiaryRequestDTO] Info:  Update Beneficiary API will be restricted when a remittance transaction for the beneficiary is Pending.
+     * @param {BeneficiaryApiUpdateBeneficiaryV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BeneficiaryApi
      */
-    public updateBeneficiaryV2(beneficiaryHashId: string, clientHashId: string, customerHashId: string, xRequestId?: string, updateBeneficiaryRequestDTO?: UpdateBeneficiaryRequestDTO, options?: RawAxiosRequestConfig) {
-        return BeneficiaryApiFp(this.configuration).updateBeneficiaryV2(beneficiaryHashId, clientHashId, customerHashId, xRequestId, updateBeneficiaryRequestDTO, options).then((request) => request(this.axios, this.basePath));
+    public updateBeneficiaryV2(requestParameters: BeneficiaryApiUpdateBeneficiaryV2Request, options?: RawAxiosRequestConfig) {
+        return BeneficiaryApiFp(this.configuration).updateBeneficiaryV2(requestParameters.beneficiaryHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, requestParameters.updateBeneficiaryRequestDTO, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

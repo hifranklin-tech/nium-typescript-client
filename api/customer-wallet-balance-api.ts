@@ -123,18 +123,50 @@ export const CustomerWalletBalanceApiFactory = function (configuration?: Configu
         /**
          * This API allows you to fetch balance for a specific wallet.
          * @summary Wallet Balance
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerWalletBalanceApiWalletBalanceRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        walletBalance(clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, options?: any): AxiosPromise<Array<WalletBalanceResponseDTO>> {
-            return localVarFp.walletBalance(clientHashId, customerHashId, walletHashId, xRequestId, options).then((request) => request(axios, basePath));
+        walletBalance(requestParameters: CustomerWalletBalanceApiWalletBalanceRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<WalletBalanceResponseDTO>> {
+            return localVarFp.walletBalance(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for walletBalance operation in CustomerWalletBalanceApi.
+ * @export
+ * @interface CustomerWalletBalanceApiWalletBalanceRequest
+ */
+export interface CustomerWalletBalanceApiWalletBalanceRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerWalletBalanceApiWalletBalance
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerWalletBalanceApiWalletBalance
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof CustomerWalletBalanceApiWalletBalance
+     */
+    readonly walletHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerWalletBalanceApiWalletBalance
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * CustomerWalletBalanceApi - object-oriented interface
@@ -146,16 +178,13 @@ export class CustomerWalletBalanceApi extends BaseAPI {
     /**
      * This API allows you to fetch balance for a specific wallet.
      * @summary Wallet Balance
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerWalletBalanceApiWalletBalanceRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerWalletBalanceApi
      */
-    public walletBalance(clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerWalletBalanceApiFp(this.configuration).walletBalance(clientHashId, customerHashId, walletHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public walletBalance(requestParameters: CustomerWalletBalanceApiWalletBalanceRequest, options?: RawAxiosRequestConfig) {
+        return CustomerWalletBalanceApiFp(this.configuration).walletBalance(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

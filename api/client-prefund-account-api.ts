@@ -310,51 +310,189 @@ export const ClientPrefundAccountApiFactory = function (configuration?: Configur
         /**
          * This API allows you to fetch the available prefund balance for a client.
          * @summary Client Prefund Balances
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ClientPrefundAccountApiClientPrefundBalancesRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        clientPrefundBalances(clientHashId: string, xRequestId?: string, options?: any): AxiosPromise<Array<AccountResponseDTO>> {
-            return localVarFp.clientPrefundBalances(clientHashId, xRequestId, options).then((request) => request(axios, basePath));
+        clientPrefundBalances(requestParameters: ClientPrefundAccountApiClientPrefundBalancesRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<AccountResponseDTO>> {
+            return localVarFp.clientPrefundBalances(requestParameters.clientHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows our clients to raise a prefund request in the system.
          * @summary Client Prefund Request
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {PrefundRequestDTO} prefundRequestDTO prefundRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ClientPrefundAccountApiClientPrefundRequestRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        clientPrefundRequest(clientHashId: string, prefundRequestDTO: PrefundRequestDTO, xRequestId?: string, options?: any): AxiosPromise<ClientPrefundResponseDTO> {
-            return localVarFp.clientPrefundRequest(clientHashId, prefundRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        clientPrefundRequest(requestParameters: ClientPrefundAccountApiClientPrefundRequestRequest, options?: RawAxiosRequestConfig): AxiosPromise<ClientPrefundResponseDTO> {
+            return localVarFp.clientPrefundRequest(requestParameters.clientHashId, requestParameters.prefundRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch the details of client prefund requests.
          * @summary Fetch Client Prefund Request
-         * @param {string} clientHashId Unique client Id assigned to the client during the onboarding process.
-         * @param {string} [amount] amount
-         * @param {string} [bankReferenceNumber] bankReferenceNumber
-         * @param {string} [currency] currency
-         * @param {string} [endDate] endDate
-         * @param {string} [order] The sort order for the results. Acceptable values are ASC or DESC. The default order value is DESC.
-         * @param {number} [page] This API may have lot of data in response and supports pagination. Entire response data is divided into pages with size as the upper limit on the number of data. Integer values from 0 onwards are acceptable. Default page is 0.
-         * @param {string} [prefundStatus] prefundStatus
-         * @param {number} [size] The upper limit on the number of items to be fetched with each call. Integer values from 1 onwards are acceptable. Default size is 20.
-         * @param {string} [startDate] startDate
-         * @param {string} [systemReferenceNumber] systemReferenceNumber
-         * @param {string} [uniquePayerId] uniquePayerId
-         * @param {string} [uniquePaymentId] uniquePaymentId
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ClientPrefundAccountApiFetchClientPrefundRequestRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchClientPrefundRequest(clientHashId: string, amount?: string, bankReferenceNumber?: string, currency?: string, endDate?: string, order?: string, page?: number, prefundStatus?: string, size?: number, startDate?: string, systemReferenceNumber?: string, uniquePayerId?: string, uniquePaymentId?: string, xRequestId?: string, options?: any): AxiosPromise<object> {
-            return localVarFp.fetchClientPrefundRequest(clientHashId, amount, bankReferenceNumber, currency, endDate, order, page, prefundStatus, size, startDate, systemReferenceNumber, uniquePayerId, uniquePaymentId, xRequestId, options).then((request) => request(axios, basePath));
+        fetchClientPrefundRequest(requestParameters: ClientPrefundAccountApiFetchClientPrefundRequestRequest, options?: RawAxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.fetchClientPrefundRequest(requestParameters.clientHashId, requestParameters.amount, requestParameters.bankReferenceNumber, requestParameters.currency, requestParameters.endDate, requestParameters.order, requestParameters.page, requestParameters.prefundStatus, requestParameters.size, requestParameters.startDate, requestParameters.systemReferenceNumber, requestParameters.uniquePayerId, requestParameters.uniquePaymentId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for clientPrefundBalances operation in ClientPrefundAccountApi.
+ * @export
+ * @interface ClientPrefundAccountApiClientPrefundBalancesRequest
+ */
+export interface ClientPrefundAccountApiClientPrefundBalancesRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ClientPrefundAccountApiClientPrefundBalances
+     */
+    readonly clientHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ClientPrefundAccountApiClientPrefundBalances
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for clientPrefundRequest operation in ClientPrefundAccountApi.
+ * @export
+ * @interface ClientPrefundAccountApiClientPrefundRequestRequest
+ */
+export interface ClientPrefundAccountApiClientPrefundRequestRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ClientPrefundAccountApiClientPrefundRequest
+     */
+    readonly clientHashId: string
+
+    /**
+     * prefundRequestDTO
+     * @type {PrefundRequestDTO}
+     * @memberof ClientPrefundAccountApiClientPrefundRequest
+     */
+    readonly prefundRequestDTO: PrefundRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ClientPrefundAccountApiClientPrefundRequest
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for fetchClientPrefundRequest operation in ClientPrefundAccountApi.
+ * @export
+ * @interface ClientPrefundAccountApiFetchClientPrefundRequestRequest
+ */
+export interface ClientPrefundAccountApiFetchClientPrefundRequestRequest {
+    /**
+     * Unique client Id assigned to the client during the onboarding process.
+     * @type {string}
+     * @memberof ClientPrefundAccountApiFetchClientPrefundRequest
+     */
+    readonly clientHashId: string
+
+    /**
+     * amount
+     * @type {string}
+     * @memberof ClientPrefundAccountApiFetchClientPrefundRequest
+     */
+    readonly amount?: string
+
+    /**
+     * bankReferenceNumber
+     * @type {string}
+     * @memberof ClientPrefundAccountApiFetchClientPrefundRequest
+     */
+    readonly bankReferenceNumber?: string
+
+    /**
+     * currency
+     * @type {string}
+     * @memberof ClientPrefundAccountApiFetchClientPrefundRequest
+     */
+    readonly currency?: string
+
+    /**
+     * endDate
+     * @type {string}
+     * @memberof ClientPrefundAccountApiFetchClientPrefundRequest
+     */
+    readonly endDate?: string
+
+    /**
+     * The sort order for the results. Acceptable values are ASC or DESC. The default order value is DESC.
+     * @type {string}
+     * @memberof ClientPrefundAccountApiFetchClientPrefundRequest
+     */
+    readonly order?: string
+
+    /**
+     * This API may have lot of data in response and supports pagination. Entire response data is divided into pages with size as the upper limit on the number of data. Integer values from 0 onwards are acceptable. Default page is 0.
+     * @type {number}
+     * @memberof ClientPrefundAccountApiFetchClientPrefundRequest
+     */
+    readonly page?: number
+
+    /**
+     * prefundStatus
+     * @type {string}
+     * @memberof ClientPrefundAccountApiFetchClientPrefundRequest
+     */
+    readonly prefundStatus?: string
+
+    /**
+     * The upper limit on the number of items to be fetched with each call. Integer values from 1 onwards are acceptable. Default size is 20.
+     * @type {number}
+     * @memberof ClientPrefundAccountApiFetchClientPrefundRequest
+     */
+    readonly size?: number
+
+    /**
+     * startDate
+     * @type {string}
+     * @memberof ClientPrefundAccountApiFetchClientPrefundRequest
+     */
+    readonly startDate?: string
+
+    /**
+     * systemReferenceNumber
+     * @type {string}
+     * @memberof ClientPrefundAccountApiFetchClientPrefundRequest
+     */
+    readonly systemReferenceNumber?: string
+
+    /**
+     * uniquePayerId
+     * @type {string}
+     * @memberof ClientPrefundAccountApiFetchClientPrefundRequest
+     */
+    readonly uniquePayerId?: string
+
+    /**
+     * uniquePaymentId
+     * @type {string}
+     * @memberof ClientPrefundAccountApiFetchClientPrefundRequest
+     */
+    readonly uniquePaymentId?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ClientPrefundAccountApiFetchClientPrefundRequest
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * ClientPrefundAccountApi - object-oriented interface
@@ -366,53 +504,37 @@ export class ClientPrefundAccountApi extends BaseAPI {
     /**
      * This API allows you to fetch the available prefund balance for a client.
      * @summary Client Prefund Balances
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ClientPrefundAccountApiClientPrefundBalancesRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ClientPrefundAccountApi
      */
-    public clientPrefundBalances(clientHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ClientPrefundAccountApiFp(this.configuration).clientPrefundBalances(clientHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public clientPrefundBalances(requestParameters: ClientPrefundAccountApiClientPrefundBalancesRequest, options?: RawAxiosRequestConfig) {
+        return ClientPrefundAccountApiFp(this.configuration).clientPrefundBalances(requestParameters.clientHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows our clients to raise a prefund request in the system.
      * @summary Client Prefund Request
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {PrefundRequestDTO} prefundRequestDTO prefundRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ClientPrefundAccountApiClientPrefundRequestRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ClientPrefundAccountApi
      */
-    public clientPrefundRequest(clientHashId: string, prefundRequestDTO: PrefundRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ClientPrefundAccountApiFp(this.configuration).clientPrefundRequest(clientHashId, prefundRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public clientPrefundRequest(requestParameters: ClientPrefundAccountApiClientPrefundRequestRequest, options?: RawAxiosRequestConfig) {
+        return ClientPrefundAccountApiFp(this.configuration).clientPrefundRequest(requestParameters.clientHashId, requestParameters.prefundRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch the details of client prefund requests.
      * @summary Fetch Client Prefund Request
-     * @param {string} clientHashId Unique client Id assigned to the client during the onboarding process.
-     * @param {string} [amount] amount
-     * @param {string} [bankReferenceNumber] bankReferenceNumber
-     * @param {string} [currency] currency
-     * @param {string} [endDate] endDate
-     * @param {string} [order] The sort order for the results. Acceptable values are ASC or DESC. The default order value is DESC.
-     * @param {number} [page] This API may have lot of data in response and supports pagination. Entire response data is divided into pages with size as the upper limit on the number of data. Integer values from 0 onwards are acceptable. Default page is 0.
-     * @param {string} [prefundStatus] prefundStatus
-     * @param {number} [size] The upper limit on the number of items to be fetched with each call. Integer values from 1 onwards are acceptable. Default size is 20.
-     * @param {string} [startDate] startDate
-     * @param {string} [systemReferenceNumber] systemReferenceNumber
-     * @param {string} [uniquePayerId] uniquePayerId
-     * @param {string} [uniquePaymentId] uniquePaymentId
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ClientPrefundAccountApiFetchClientPrefundRequestRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ClientPrefundAccountApi
      */
-    public fetchClientPrefundRequest(clientHashId: string, amount?: string, bankReferenceNumber?: string, currency?: string, endDate?: string, order?: string, page?: number, prefundStatus?: string, size?: number, startDate?: string, systemReferenceNumber?: string, uniquePayerId?: string, uniquePaymentId?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ClientPrefundAccountApiFp(this.configuration).fetchClientPrefundRequest(clientHashId, amount, bankReferenceNumber, currency, endDate, order, page, prefundStatus, size, startDate, systemReferenceNumber, uniquePayerId, uniquePaymentId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public fetchClientPrefundRequest(requestParameters: ClientPrefundAccountApiFetchClientPrefundRequestRequest, options?: RawAxiosRequestConfig) {
+        return ClientPrefundAccountApiFp(this.configuration).fetchClientPrefundRequest(requestParameters.clientHashId, requestParameters.amount, requestParameters.bankReferenceNumber, requestParameters.currency, requestParameters.endDate, requestParameters.order, requestParameters.page, requestParameters.prefundStatus, requestParameters.size, requestParameters.startDate, requestParameters.systemReferenceNumber, requestParameters.uniquePayerId, requestParameters.uniquePaymentId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

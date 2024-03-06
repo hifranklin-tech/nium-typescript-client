@@ -573,104 +573,376 @@ export const SecurityApiFactory = function (configuration?: Configuration, baseP
         /**
          * This API allows you to fetch the base-64 encoded ATM PIN for physical cards and virtual upgrade to physical in the production environment. This API does not work for virtual cards. This is allowed only for the EU and UK cards.
          * @summary Fetch ATM Pin
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {SecurityApiFetchATMPinRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchATMPin(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: any): AxiosPromise<FetchPinResponseDTO> {
-            return localVarFp.fetchATMPin(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(axios, basePath));
+        fetchATMPin(requestParameters: SecurityApiFetchATMPinRequest, options?: RawAxiosRequestConfig): AxiosPromise<FetchPinResponseDTO> {
+            return localVarFp.fetchATMPin(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch the base-64 encoded CVV2 and expiry for a card.   >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Fetch Card Data Encrypted](ref:fetchcarddataencryptedv2) is the latest version of this API.
          * @summary Fetch CVV2
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {SecurityApiFetchCVV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchCVV2(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: any): AxiosPromise<CvvResponseDTO> {
-            return localVarFp.fetchCVV2(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(axios, basePath));
+        fetchCVV2(requestParameters: SecurityApiFetchCVV2Request, options?: RawAxiosRequestConfig): AxiosPromise<CvvResponseDTO> {
+            return localVarFp.fetchCVV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch the unmasked card number, CVV2 and expiry (encrypted) for a card
          * @summary Fetch card data encrypted
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {SecurityApiFetchCardDataEncryptedV2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchCardDataEncryptedV2(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: any): AxiosPromise<RetrieveCardDetailsResponseDTO> {
-            return localVarFp.fetchCardDataEncryptedV2(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(axios, basePath));
+        fetchCardDataEncryptedV2(requestParameters: SecurityApiFetchCardDataEncryptedV2Request, options?: RawAxiosRequestConfig): AxiosPromise<RetrieveCardDetailsResponseDTO> {
+            return localVarFp.fetchCardDataEncryptedV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch the PIN status of an active card.
          * @summary Fetch Pin Status
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {SecurityApiFetchPinStatusRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchPinStatus(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: any): AxiosPromise<FetchPinStatusResponseDTO> {
-            return localVarFp.fetchPinStatus(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(axios, basePath));
+        fetchPinStatus(requestParameters: SecurityApiFetchPinStatusRequest, options?: RawAxiosRequestConfig): AxiosPromise<FetchPinStatusResponseDTO> {
+            return localVarFp.fetchPinStatus(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to set a new PIN or change the PIN for a card in the production environment. This API only applies to a physical card or a virtual card upgraded to a physical card. This is allowed only for cards issued in APAC, not for EU/UK cards.
          * @summary Set/Reset PIN
-         * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-         * @param {string} customerHashId The unique customer identifier generated on customer creation.
-         * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-         * @param {PinUpdateRequestDTO} pinUpdateRequestDTO pinUpdate
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {SecurityApiSetResetPINRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setResetPIN(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, pinUpdateRequestDTO: PinUpdateRequestDTO, xRequestId?: string, options?: any): AxiosPromise<PinUpdateResponseDTO> {
-            return localVarFp.setResetPIN(clientHashId, customerHashId, walletHashId, cardHashId, pinUpdateRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        setResetPIN(requestParameters: SecurityApiSetResetPINRequest, options?: RawAxiosRequestConfig): AxiosPromise<PinUpdateResponseDTO> {
+            return localVarFp.setResetPIN(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.pinUpdateRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to unblock PIN and reset retry count for a card. This API is only applicable for the APAC region.
          * @summary Unblock PIN
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-         * @param {string} [xRequestId] Please enter a unique UUID value
+         * @param {SecurityApiUnblockCardPINRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        unblockCardPIN(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: any): AxiosPromise<PinUpdateResponseDTO> {
-            return localVarFp.unblockCardPIN(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(axios, basePath));
+        unblockCardPIN(requestParameters: SecurityApiUnblockCardPINRequest, options?: RawAxiosRequestConfig): AxiosPromise<PinUpdateResponseDTO> {
+            return localVarFp.unblockCardPIN(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to unmask a card number before using it for an e-commerce transaction.   >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Fetch Card Data Encrypted](ref:fetchcarddataencryptedv2) is the latest version of this API.
          * @summary Unmask Card
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {SecurityApiUnmaskCardRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        unmaskCard(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: any): AxiosPromise<UnmaskCardResponseDTO> {
-            return localVarFp.unmaskCard(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(axios, basePath));
+        unmaskCard(requestParameters: SecurityApiUnmaskCardRequest, options?: RawAxiosRequestConfig): AxiosPromise<UnmaskCardResponseDTO> {
+            return localVarFp.unmaskCard(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for fetchATMPin operation in SecurityApi.
+ * @export
+ * @interface SecurityApiFetchATMPinRequest
+ */
+export interface SecurityApiFetchATMPinRequest {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof SecurityApiFetchATMPin
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof SecurityApiFetchATMPin
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof SecurityApiFetchATMPin
+     */
+    readonly walletHashId: string
+
+    /**
+     * The unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof SecurityApiFetchATMPin
+     */
+    readonly cardHashId: string
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof SecurityApiFetchATMPin
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for fetchCVV2 operation in SecurityApi.
+ * @export
+ * @interface SecurityApiFetchCVV2Request
+ */
+export interface SecurityApiFetchCVV2Request {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof SecurityApiFetchCVV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof SecurityApiFetchCVV2
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof SecurityApiFetchCVV2
+     */
+    readonly walletHashId: string
+
+    /**
+     * Unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof SecurityApiFetchCVV2
+     */
+    readonly cardHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof SecurityApiFetchCVV2
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for fetchCardDataEncryptedV2 operation in SecurityApi.
+ * @export
+ * @interface SecurityApiFetchCardDataEncryptedV2Request
+ */
+export interface SecurityApiFetchCardDataEncryptedV2Request {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof SecurityApiFetchCardDataEncryptedV2
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof SecurityApiFetchCardDataEncryptedV2
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof SecurityApiFetchCardDataEncryptedV2
+     */
+    readonly walletHashId: string
+
+    /**
+     * The unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof SecurityApiFetchCardDataEncryptedV2
+     */
+    readonly cardHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof SecurityApiFetchCardDataEncryptedV2
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for fetchPinStatus operation in SecurityApi.
+ * @export
+ * @interface SecurityApiFetchPinStatusRequest
+ */
+export interface SecurityApiFetchPinStatusRequest {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof SecurityApiFetchPinStatus
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof SecurityApiFetchPinStatus
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof SecurityApiFetchPinStatus
+     */
+    readonly walletHashId: string
+
+    /**
+     * The unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof SecurityApiFetchPinStatus
+     */
+    readonly cardHashId: string
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof SecurityApiFetchPinStatus
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for setResetPIN operation in SecurityApi.
+ * @export
+ * @interface SecurityApiSetResetPINRequest
+ */
+export interface SecurityApiSetResetPINRequest {
+    /**
+     * The unique client identifier generated and shared before the API handshake.
+     * @type {string}
+     * @memberof SecurityApiSetResetPIN
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof SecurityApiSetResetPIN
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof SecurityApiSetResetPIN
+     */
+    readonly walletHashId: string
+
+    /**
+     * The unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof SecurityApiSetResetPIN
+     */
+    readonly cardHashId: string
+
+    /**
+     * pinUpdate
+     * @type {PinUpdateRequestDTO}
+     * @memberof SecurityApiSetResetPIN
+     */
+    readonly pinUpdateRequestDTO: PinUpdateRequestDTO
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof SecurityApiSetResetPIN
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for unblockCardPIN operation in SecurityApi.
+ * @export
+ * @interface SecurityApiUnblockCardPINRequest
+ */
+export interface SecurityApiUnblockCardPINRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof SecurityApiUnblockCardPIN
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof SecurityApiUnblockCardPIN
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof SecurityApiUnblockCardPIN
+     */
+    readonly walletHashId: string
+
+    /**
+     * Unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof SecurityApiUnblockCardPIN
+     */
+    readonly cardHashId: string
+
+    /**
+     * Please enter a unique UUID value
+     * @type {string}
+     * @memberof SecurityApiUnblockCardPIN
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for unmaskCard operation in SecurityApi.
+ * @export
+ * @interface SecurityApiUnmaskCardRequest
+ */
+export interface SecurityApiUnmaskCardRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof SecurityApiUnmaskCard
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof SecurityApiUnmaskCard
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof SecurityApiUnmaskCard
+     */
+    readonly walletHashId: string
+
+    /**
+     * Unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof SecurityApiUnmaskCard
+     */
+    readonly cardHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof SecurityApiUnmaskCard
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * SecurityApi - object-oriented interface
@@ -682,114 +954,85 @@ export class SecurityApi extends BaseAPI {
     /**
      * This API allows you to fetch the base-64 encoded ATM PIN for physical cards and virtual upgrade to physical in the production environment. This API does not work for virtual cards. This is allowed only for the EU and UK cards.
      * @summary Fetch ATM Pin
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {SecurityApiFetchATMPinRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public fetchATMPin(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return SecurityApiFp(this.configuration).fetchATMPin(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public fetchATMPin(requestParameters: SecurityApiFetchATMPinRequest, options?: RawAxiosRequestConfig) {
+        return SecurityApiFp(this.configuration).fetchATMPin(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch the base-64 encoded CVV2 and expiry for a card.   >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Fetch Card Data Encrypted](ref:fetchcarddataencryptedv2) is the latest version of this API.
      * @summary Fetch CVV2
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {SecurityApiFetchCVV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public fetchCVV2(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return SecurityApiFp(this.configuration).fetchCVV2(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public fetchCVV2(requestParameters: SecurityApiFetchCVV2Request, options?: RawAxiosRequestConfig) {
+        return SecurityApiFp(this.configuration).fetchCVV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch the unmasked card number, CVV2 and expiry (encrypted) for a card
      * @summary Fetch card data encrypted
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {SecurityApiFetchCardDataEncryptedV2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public fetchCardDataEncryptedV2(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return SecurityApiFp(this.configuration).fetchCardDataEncryptedV2(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public fetchCardDataEncryptedV2(requestParameters: SecurityApiFetchCardDataEncryptedV2Request, options?: RawAxiosRequestConfig) {
+        return SecurityApiFp(this.configuration).fetchCardDataEncryptedV2(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch the PIN status of an active card.
      * @summary Fetch Pin Status
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {SecurityApiFetchPinStatusRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public fetchPinStatus(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return SecurityApiFp(this.configuration).fetchPinStatus(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public fetchPinStatus(requestParameters: SecurityApiFetchPinStatusRequest, options?: RawAxiosRequestConfig) {
+        return SecurityApiFp(this.configuration).fetchPinStatus(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to set a new PIN or change the PIN for a card in the production environment. This API only applies to a physical card or a virtual card upgraded to a physical card. This is allowed only for cards issued in APAC, not for EU/UK cards.
      * @summary Set/Reset PIN
-     * @param {string} clientHashId The unique client identifier generated and shared before the API handshake.
-     * @param {string} customerHashId The unique customer identifier generated on customer creation.
-     * @param {string} walletHashId The unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId The unique card identifier generated while new/add-on card issuance.
-     * @param {PinUpdateRequestDTO} pinUpdateRequestDTO pinUpdate
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {SecurityApiSetResetPINRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public setResetPIN(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, pinUpdateRequestDTO: PinUpdateRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return SecurityApiFp(this.configuration).setResetPIN(clientHashId, customerHashId, walletHashId, cardHashId, pinUpdateRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public setResetPIN(requestParameters: SecurityApiSetResetPINRequest, options?: RawAxiosRequestConfig) {
+        return SecurityApiFp(this.configuration).setResetPIN(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.pinUpdateRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to unblock PIN and reset retry count for a card. This API is only applicable for the APAC region.
      * @summary Unblock PIN
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-     * @param {string} [xRequestId] Please enter a unique UUID value
+     * @param {SecurityApiUnblockCardPINRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public unblockCardPIN(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return SecurityApiFp(this.configuration).unblockCardPIN(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public unblockCardPIN(requestParameters: SecurityApiUnblockCardPINRequest, options?: RawAxiosRequestConfig) {
+        return SecurityApiFp(this.configuration).unblockCardPIN(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to unmask a card number before using it for an e-commerce transaction.   >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. [Fetch Card Data Encrypted](ref:fetchcarddataencryptedv2) is the latest version of this API.
      * @summary Unmask Card
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {SecurityApiUnmaskCardRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public unmaskCard(clientHashId: string, customerHashId: string, walletHashId: string, cardHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return SecurityApiFp(this.configuration).unmaskCard(clientHashId, customerHashId, walletHashId, cardHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public unmaskCard(requestParameters: SecurityApiUnmaskCardRequest, options?: RawAxiosRequestConfig) {
+        return SecurityApiFp(this.configuration).unmaskCard(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.cardHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

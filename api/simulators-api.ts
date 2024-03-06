@@ -175,27 +175,67 @@ export const SimulatorsApiFactory = function (configuration?: Configuration, bas
         /**
          * This API is used to simulate the `Authorize` or `Authorization` card transaction type.
          * @summary Simulate Authorize Card Transaction
-         * @param {LocalIsoRequest} localIsoRequest message
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {SimulatorsApiSimulateAuthorizationRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        simulateAuthorization(localIsoRequest: LocalIsoRequest, xRequestId?: string, options?: any): AxiosPromise<LocalIsoResponse> {
-            return localVarFp.simulateAuthorization(localIsoRequest, xRequestId, options).then((request) => request(axios, basePath));
+        simulateAuthorization(requestParameters: SimulatorsApiSimulateAuthorizationRequest, options?: RawAxiosRequestConfig): AxiosPromise<LocalIsoResponse> {
+            return localVarFp.simulateAuthorization(requestParameters.localIsoRequest, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API can be used to run simulation of a given settlement transaction
          * @summary Simulate Settlement Transaction
-         * @param {SettlementRequestDTO} settlementRequestDTO settlementRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {SimulatorsApiSimulateClearingRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        simulateClearing(settlementRequestDTO: SettlementRequestDTO, xRequestId?: string, options?: any): AxiosPromise<string> {
-            return localVarFp.simulateClearing(settlementRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        simulateClearing(requestParameters: SimulatorsApiSimulateClearingRequest, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.simulateClearing(requestParameters.settlementRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for simulateAuthorization operation in SimulatorsApi.
+ * @export
+ * @interface SimulatorsApiSimulateAuthorizationRequest
+ */
+export interface SimulatorsApiSimulateAuthorizationRequest {
+    /**
+     * message
+     * @type {LocalIsoRequest}
+     * @memberof SimulatorsApiSimulateAuthorization
+     */
+    readonly localIsoRequest: LocalIsoRequest
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof SimulatorsApiSimulateAuthorization
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for simulateClearing operation in SimulatorsApi.
+ * @export
+ * @interface SimulatorsApiSimulateClearingRequest
+ */
+export interface SimulatorsApiSimulateClearingRequest {
+    /**
+     * settlementRequestDTO
+     * @type {SettlementRequestDTO}
+     * @memberof SimulatorsApiSimulateClearing
+     */
+    readonly settlementRequestDTO: SettlementRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof SimulatorsApiSimulateClearing
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * SimulatorsApi - object-oriented interface
@@ -207,27 +247,25 @@ export class SimulatorsApi extends BaseAPI {
     /**
      * This API is used to simulate the `Authorize` or `Authorization` card transaction type.
      * @summary Simulate Authorize Card Transaction
-     * @param {LocalIsoRequest} localIsoRequest message
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {SimulatorsApiSimulateAuthorizationRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SimulatorsApi
      */
-    public simulateAuthorization(localIsoRequest: LocalIsoRequest, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return SimulatorsApiFp(this.configuration).simulateAuthorization(localIsoRequest, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public simulateAuthorization(requestParameters: SimulatorsApiSimulateAuthorizationRequest, options?: RawAxiosRequestConfig) {
+        return SimulatorsApiFp(this.configuration).simulateAuthorization(requestParameters.localIsoRequest, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API can be used to run simulation of a given settlement transaction
      * @summary Simulate Settlement Transaction
-     * @param {SettlementRequestDTO} settlementRequestDTO settlementRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {SimulatorsApiSimulateClearingRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SimulatorsApi
      */
-    public simulateClearing(settlementRequestDTO: SettlementRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return SimulatorsApiFp(this.configuration).simulateClearing(settlementRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public simulateClearing(requestParameters: SimulatorsApiSimulateClearingRequest, options?: RawAxiosRequestConfig) {
+        return SimulatorsApiFp(this.configuration).simulateClearing(requestParameters.settlementRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

@@ -710,122 +710,410 @@ export const CustomerAccountCorporateApiFactory = function (configuration?: Conf
         /**
          * This API allows you to fetch both public and non-public exhaustive corporate details using business ID.  >ℹ️ INFO   >Every call for this API incurs a fee. Contact your Nium account manager to use it. This API only supports the corporate customer onboarding process. Avoid unnecessary API calls by using the throttling and debouncing techniques. This API should only be called after getting a successful response from [Public Corporate Details using Business ID API](/apis/reference/publiccorporatedetailsusingbusinessid).
          * @summary Exhaustive Corporate Details using Business ID
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} countryCode This field accepts the 2-letter [ISO-2 country code](https://nium-documents.s3-eu-west-1.amazonaws.com/spend-documents/Country+Code.pdf) of the corporate customer.
-         * @param {string} [searchReferenceId] This field accepts the search reference id of the corporate customer as received in response of public corporate details api.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerAccountCorporateApiExhaustiveCorporateDetailsUsingBusinessIDRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        exhaustiveCorporateDetailsUsingBusinessID(clientHashId: string, countryCode: string, searchReferenceId?: string, xRequestId?: string, options?: any): AxiosPromise<CorporateEnrichedDetailResponseDTO> {
-            return localVarFp.exhaustiveCorporateDetailsUsingBusinessID(clientHashId, countryCode, searchReferenceId, xRequestId, options).then((request) => request(axios, basePath));
+        exhaustiveCorporateDetailsUsingBusinessID(requestParameters: CustomerAccountCorporateApiExhaustiveCorporateDetailsUsingBusinessIDRequest, options?: RawAxiosRequestConfig): AxiosPromise<CorporateEnrichedDetailResponseDTO> {
+            return localVarFp.exhaustiveCorporateDetailsUsingBusinessID(requestParameters.clientHashId, requestParameters.countryCode, requestParameters.searchReferenceId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API returns the acceptable values for the `category` query param to be used as input in the corporate onboarding flow. Refer to the [Fetch Corporate Constants](doc:fetch-corporate-constants-api) user guide for details on usage instructions on this API.
          * @summary Fetch corporate constants
-         * @param {FetchCorporateConstantsUsingGETCategoryEnum} category This field is used to select one of the category used during corporate customer onboarding. The API response will return list of allowed values for the selected category.
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {FetchCorporateConstantsUsingGETRegionEnum} region The response will be filtered based on the value selected in this field for regulatory region of the customer.
-         * @param {FetchCorporateConstantsUsingGETTypeEnum} type Type of Customer being onboarded.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerAccountCorporateApiFetchCorporateConstantsUsingGETRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchCorporateConstantsUsingGET(category: FetchCorporateConstantsUsingGETCategoryEnum, clientHashId: string, region: FetchCorporateConstantsUsingGETRegionEnum, type: FetchCorporateConstantsUsingGETTypeEnum, xRequestId?: string, options?: any): AxiosPromise<AddCategoryResponseDTO> {
-            return localVarFp.fetchCorporateConstantsUsingGET(category, clientHashId, region, type, xRequestId, options).then((request) => request(axios, basePath));
+        fetchCorporateConstantsUsingGET(requestParameters: CustomerAccountCorporateApiFetchCorporateConstantsUsingGETRequest, options?: RawAxiosRequestConfig): AxiosPromise<AddCategoryResponseDTO> {
+            return localVarFp.fetchCorporateConstantsUsingGET(requestParameters.category, requestParameters.clientHashId, requestParameters.region, requestParameters.type, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch details of RFI raised as part of corporate customer onboarding.
          * @summary Fetch Corporate Customer RFI Details
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} [caseId] This field contains unique case ID generated and returned in Onboard API response.
-         * @param {string} [clientId] This field contains unique client ID generated and returned in Onboard API response.
-         * @param {string} [customerHashId] This field contains the customerHashId, For example, 909ffc5f-c8ab-4df0-bcb2-111fcdd6f735.
-         * @param {string} [region] This field contains the region code for which onboarding has been triggered, For example, AU, EU, UK, SG.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerAccountCorporateApiFetchCorporateCustomerRFIDetailsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchCorporateCustomerRFIDetails(clientHashId: string, caseId?: string, clientId?: string, customerHashId?: string, region?: string, xRequestId?: string, options?: any): AxiosPromise<ComplianceRFITemplateMetadataResponseDTO> {
-            return localVarFp.fetchCorporateCustomerRFIDetails(clientHashId, caseId, clientId, customerHashId, region, xRequestId, options).then((request) => request(axios, basePath));
+        fetchCorporateCustomerRFIDetails(requestParameters: CustomerAccountCorporateApiFetchCorporateCustomerRFIDetailsRequest, options?: RawAxiosRequestConfig): AxiosPromise<ComplianceRFITemplateMetadataResponseDTO> {
+            return localVarFp.fetchCorporateCustomerRFIDetails(requestParameters.clientHashId, requestParameters.caseId, requestParameters.clientId, requestParameters.customerHashId, requestParameters.region, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to onboard a corporate customer under existing client.
          * @summary Onboard Corporate Customer
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {CorporateCustomerRequestsDTO} corporateCustomerRequestsDTO corporateCustomerRequestsDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerAccountCorporateApiOnboardCorporateCustomerRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        onboardCorporateCustomer(clientHashId: string, corporateCustomerRequestsDTO: CorporateCustomerRequestsDTO, xRequestId?: string, options?: any): AxiosPromise<ProductCorporateCustomerResponseDTO> {
-            return localVarFp.onboardCorporateCustomer(clientHashId, corporateCustomerRequestsDTO, xRequestId, options).then((request) => request(axios, basePath));
+        onboardCorporateCustomer(requestParameters: CustomerAccountCorporateApiOnboardCorporateCustomerRequest, options?: RawAxiosRequestConfig): AxiosPromise<ProductCorporateCustomerResponseDTO> {
+            return localVarFp.onboardCorporateCustomer(requestParameters.clientHashId, requestParameters.corporateCustomerRequestsDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API will help you to fetch the publicly available corporate details using business Id.
          * @summary Public Corporate Details using Business ID
-         * @param {string} businessRegistrationNumber This field contains the business registration number of the entity.
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} countryCode This field contains the 2-letter [ISO-2 country code](doc:currency-and-country-codes).
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerAccountCorporateApiPublicCorporateDetailsUsingBusinessIDRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicCorporateDetailsUsingBusinessID(businessRegistrationNumber: string, clientHashId: string, countryCode: string, xRequestId?: string, options?: any): AxiosPromise<CorporateDetailResponseDTO> {
-            return localVarFp.publicCorporateDetailsUsingBusinessID(businessRegistrationNumber, clientHashId, countryCode, xRequestId, options).then((request) => request(axios, basePath));
+        publicCorporateDetailsUsingBusinessID(requestParameters: CustomerAccountCorporateApiPublicCorporateDetailsUsingBusinessIDRequest, options?: RawAxiosRequestConfig): AxiosPromise<CorporateDetailResponseDTO> {
+            return localVarFp.publicCorporateDetailsUsingBusinessID(requestParameters.businessRegistrationNumber, requestParameters.clientHashId, requestParameters.countryCode, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This api will be used to regenerate kyc url
          * @summary Regenerate KYC URL
-         * @param {string} clientHashId The unique client hash id of customer
-         * @param {string} customerHashId The unique customer hash id of customer
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {CustomerAccountCorporateApiRegenerateKYCURLRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        regenerateKYCURL(clientHashId: string, customerHashId: string, xRequestId?: string, options?: any): AxiosPromise<RegenerateUrlResponse> {
-            return localVarFp.regenerateKYCURL(clientHashId, customerHashId, xRequestId, options).then((request) => request(axios, basePath));
+        regenerateKYCURL(requestParameters: CustomerAccountCorporateApiRegenerateKYCURLRequest, options?: RawAxiosRequestConfig): AxiosPromise<RegenerateUrlResponse> {
+            return localVarFp.regenerateKYCURL(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to respond to an RFI raised for a corporate customer. You may use this API to respond to an RFI for data or documents when the corporate customer\'s compliance status is RFI_REQUESTED.
          * @summary Respond to RFI for Corporate Customer
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {RespondRfiRequestDTO} respondRfiRequestDTO respondRfiRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerAccountCorporateApiRespondtoRFIforCorporateCustomerRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        respondtoRFIforCorporateCustomer(clientHashId: string, respondRfiRequestDTO: RespondRfiRequestDTO, xRequestId?: string, options?: any): AxiosPromise<RespondRfiResponseDTO> {
-            return localVarFp.respondtoRFIforCorporateCustomer(clientHashId, respondRfiRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        respondtoRFIforCorporateCustomer(requestParameters: CustomerAccountCorporateApiRespondtoRFIforCorporateCustomerRequest, options?: RawAxiosRequestConfig): AxiosPromise<RespondRfiResponseDTO> {
+            return localVarFp.respondtoRFIforCorporateCustomer(requestParameters.clientHashId, requestParameters.respondRfiRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to update a corporate customer under existing client.
          * @summary Update Corporate Customer
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {CorporateCustomerRequestsDTO} corporateCustomerRequestsDTO updateCorporateCustomerRequestsDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerAccountCorporateApiUpdateCorporateCustomerUsingPOSTRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateCorporateCustomerUsingPOST(clientHashId: string, customerHashId: string, corporateCustomerRequestsDTO: CorporateCustomerRequestsDTO, xRequestId?: string, options?: any): AxiosPromise<UpdateCorporateKybResponseDTO> {
-            return localVarFp.updateCorporateCustomerUsingPOST(clientHashId, customerHashId, corporateCustomerRequestsDTO, xRequestId, options).then((request) => request(axios, basePath));
+        updateCorporateCustomerUsingPOST(requestParameters: CustomerAccountCorporateApiUpdateCorporateCustomerUsingPOSTRequest, options?: RawAxiosRequestConfig): AxiosPromise<UpdateCorporateKybResponseDTO> {
+            return localVarFp.updateCorporateCustomerUsingPOST(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.corporateCustomerRequestsDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to upload document for corporate customers.
          * @summary Upload Document for Corporate Customer
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {CorporateComplianceDocumentRequestDTO} corporateComplianceDocumentRequestDTO corporateComplianceDocumentRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerAccountCorporateApiUploadDocumentforCorporateCustomerRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadDocumentforCorporateCustomer(clientHashId: string, customerHashId: string, corporateComplianceDocumentRequestDTO: CorporateComplianceDocumentRequestDTO, xRequestId?: string, options?: any): AxiosPromise<CorporateComplianceDocumentResponseDTO> {
-            return localVarFp.uploadDocumentforCorporateCustomer(clientHashId, customerHashId, corporateComplianceDocumentRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        uploadDocumentforCorporateCustomer(requestParameters: CustomerAccountCorporateApiUploadDocumentforCorporateCustomerRequest, options?: RawAxiosRequestConfig): AxiosPromise<CorporateComplianceDocumentResponseDTO> {
+            return localVarFp.uploadDocumentforCorporateCustomer(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.corporateComplianceDocumentRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for exhaustiveCorporateDetailsUsingBusinessID operation in CustomerAccountCorporateApi.
+ * @export
+ * @interface CustomerAccountCorporateApiExhaustiveCorporateDetailsUsingBusinessIDRequest
+ */
+export interface CustomerAccountCorporateApiExhaustiveCorporateDetailsUsingBusinessIDRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiExhaustiveCorporateDetailsUsingBusinessID
+     */
+    readonly clientHashId: string
+
+    /**
+     * This field accepts the 2-letter [ISO-2 country code](https://nium-documents.s3-eu-west-1.amazonaws.com/spend-documents/Country+Code.pdf) of the corporate customer.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiExhaustiveCorporateDetailsUsingBusinessID
+     */
+    readonly countryCode: string
+
+    /**
+     * This field accepts the search reference id of the corporate customer as received in response of public corporate details api.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiExhaustiveCorporateDetailsUsingBusinessID
+     */
+    readonly searchReferenceId?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiExhaustiveCorporateDetailsUsingBusinessID
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for fetchCorporateConstantsUsingGET operation in CustomerAccountCorporateApi.
+ * @export
+ * @interface CustomerAccountCorporateApiFetchCorporateConstantsUsingGETRequest
+ */
+export interface CustomerAccountCorporateApiFetchCorporateConstantsUsingGETRequest {
+    /**
+     * This field is used to select one of the category used during corporate customer onboarding. The API response will return list of allowed values for the selected category.
+     * @type {'annualTurnover' | 'businessType' | 'countryName' | 'countryOfOperation' | 'documentType' | 'intendedUseOfAccount' | 'industrySector' | 'listedExchange' | 'position' | 'regulatedTrustType' | 'restrictedCountries' | 'state' | 'streetType' | 'totalEmployees' | 'unregulatedTrustType' | 'rfiTemplates' | 'estimatedMonthlyFunding' | 'occupation'}
+     * @memberof CustomerAccountCorporateApiFetchCorporateConstantsUsingGET
+     */
+    readonly category: FetchCorporateConstantsUsingGETCategoryEnum
+
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiFetchCorporateConstantsUsingGET
+     */
+    readonly clientHashId: string
+
+    /**
+     * The response will be filtered based on the value selected in this field for regulatory region of the customer.
+     * @type {'AU' | 'EU' | 'SG' | 'HK' | 'UK' | 'US' | 'CA'}
+     * @memberof CustomerAccountCorporateApiFetchCorporateConstantsUsingGET
+     */
+    readonly region: FetchCorporateConstantsUsingGETRegionEnum
+
+    /**
+     * Type of Customer being onboarded.
+     * @type {'INDIVIDUAL' | 'CORPORATE'}
+     * @memberof CustomerAccountCorporateApiFetchCorporateConstantsUsingGET
+     */
+    readonly type: FetchCorporateConstantsUsingGETTypeEnum
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiFetchCorporateConstantsUsingGET
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for fetchCorporateCustomerRFIDetails operation in CustomerAccountCorporateApi.
+ * @export
+ * @interface CustomerAccountCorporateApiFetchCorporateCustomerRFIDetailsRequest
+ */
+export interface CustomerAccountCorporateApiFetchCorporateCustomerRFIDetailsRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiFetchCorporateCustomerRFIDetails
+     */
+    readonly clientHashId: string
+
+    /**
+     * This field contains unique case ID generated and returned in Onboard API response.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiFetchCorporateCustomerRFIDetails
+     */
+    readonly caseId?: string
+
+    /**
+     * This field contains unique client ID generated and returned in Onboard API response.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiFetchCorporateCustomerRFIDetails
+     */
+    readonly clientId?: string
+
+    /**
+     * This field contains the customerHashId, For example, 909ffc5f-c8ab-4df0-bcb2-111fcdd6f735.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiFetchCorporateCustomerRFIDetails
+     */
+    readonly customerHashId?: string
+
+    /**
+     * This field contains the region code for which onboarding has been triggered, For example, AU, EU, UK, SG.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiFetchCorporateCustomerRFIDetails
+     */
+    readonly region?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiFetchCorporateCustomerRFIDetails
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for onboardCorporateCustomer operation in CustomerAccountCorporateApi.
+ * @export
+ * @interface CustomerAccountCorporateApiOnboardCorporateCustomerRequest
+ */
+export interface CustomerAccountCorporateApiOnboardCorporateCustomerRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiOnboardCorporateCustomer
+     */
+    readonly clientHashId: string
+
+    /**
+     * corporateCustomerRequestsDTO
+     * @type {CorporateCustomerRequestsDTO}
+     * @memberof CustomerAccountCorporateApiOnboardCorporateCustomer
+     */
+    readonly corporateCustomerRequestsDTO: CorporateCustomerRequestsDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiOnboardCorporateCustomer
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for publicCorporateDetailsUsingBusinessID operation in CustomerAccountCorporateApi.
+ * @export
+ * @interface CustomerAccountCorporateApiPublicCorporateDetailsUsingBusinessIDRequest
+ */
+export interface CustomerAccountCorporateApiPublicCorporateDetailsUsingBusinessIDRequest {
+    /**
+     * This field contains the business registration number of the entity.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiPublicCorporateDetailsUsingBusinessID
+     */
+    readonly businessRegistrationNumber: string
+
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiPublicCorporateDetailsUsingBusinessID
+     */
+    readonly clientHashId: string
+
+    /**
+     * This field contains the 2-letter [ISO-2 country code](doc:currency-and-country-codes).
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiPublicCorporateDetailsUsingBusinessID
+     */
+    readonly countryCode: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiPublicCorporateDetailsUsingBusinessID
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for regenerateKYCURL operation in CustomerAccountCorporateApi.
+ * @export
+ * @interface CustomerAccountCorporateApiRegenerateKYCURLRequest
+ */
+export interface CustomerAccountCorporateApiRegenerateKYCURLRequest {
+    /**
+     * The unique client hash id of customer
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiRegenerateKYCURL
+     */
+    readonly clientHashId: string
+
+    /**
+     * The unique customer hash id of customer
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiRegenerateKYCURL
+     */
+    readonly customerHashId: string
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiRegenerateKYCURL
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for respondtoRFIforCorporateCustomer operation in CustomerAccountCorporateApi.
+ * @export
+ * @interface CustomerAccountCorporateApiRespondtoRFIforCorporateCustomerRequest
+ */
+export interface CustomerAccountCorporateApiRespondtoRFIforCorporateCustomerRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiRespondtoRFIforCorporateCustomer
+     */
+    readonly clientHashId: string
+
+    /**
+     * respondRfiRequestDTO
+     * @type {RespondRfiRequestDTO}
+     * @memberof CustomerAccountCorporateApiRespondtoRFIforCorporateCustomer
+     */
+    readonly respondRfiRequestDTO: RespondRfiRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiRespondtoRFIforCorporateCustomer
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for updateCorporateCustomerUsingPOST operation in CustomerAccountCorporateApi.
+ * @export
+ * @interface CustomerAccountCorporateApiUpdateCorporateCustomerUsingPOSTRequest
+ */
+export interface CustomerAccountCorporateApiUpdateCorporateCustomerUsingPOSTRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiUpdateCorporateCustomerUsingPOST
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiUpdateCorporateCustomerUsingPOST
+     */
+    readonly customerHashId: string
+
+    /**
+     * updateCorporateCustomerRequestsDTO
+     * @type {CorporateCustomerRequestsDTO}
+     * @memberof CustomerAccountCorporateApiUpdateCorporateCustomerUsingPOST
+     */
+    readonly corporateCustomerRequestsDTO: CorporateCustomerRequestsDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiUpdateCorporateCustomerUsingPOST
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for uploadDocumentforCorporateCustomer operation in CustomerAccountCorporateApi.
+ * @export
+ * @interface CustomerAccountCorporateApiUploadDocumentforCorporateCustomerRequest
+ */
+export interface CustomerAccountCorporateApiUploadDocumentforCorporateCustomerRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiUploadDocumentforCorporateCustomer
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiUploadDocumentforCorporateCustomer
+     */
+    readonly customerHashId: string
+
+    /**
+     * corporateComplianceDocumentRequestDTO
+     * @type {CorporateComplianceDocumentRequestDTO}
+     * @memberof CustomerAccountCorporateApiUploadDocumentforCorporateCustomer
+     */
+    readonly corporateComplianceDocumentRequestDTO: CorporateComplianceDocumentRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerAccountCorporateApiUploadDocumentforCorporateCustomer
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * CustomerAccountCorporateApi - object-oriented interface
@@ -837,136 +1125,109 @@ export class CustomerAccountCorporateApi extends BaseAPI {
     /**
      * This API allows you to fetch both public and non-public exhaustive corporate details using business ID.  >ℹ️ INFO   >Every call for this API incurs a fee. Contact your Nium account manager to use it. This API only supports the corporate customer onboarding process. Avoid unnecessary API calls by using the throttling and debouncing techniques. This API should only be called after getting a successful response from [Public Corporate Details using Business ID API](/apis/reference/publiccorporatedetailsusingbusinessid).
      * @summary Exhaustive Corporate Details using Business ID
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} countryCode This field accepts the 2-letter [ISO-2 country code](https://nium-documents.s3-eu-west-1.amazonaws.com/spend-documents/Country+Code.pdf) of the corporate customer.
-     * @param {string} [searchReferenceId] This field accepts the search reference id of the corporate customer as received in response of public corporate details api.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerAccountCorporateApiExhaustiveCorporateDetailsUsingBusinessIDRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountCorporateApi
      */
-    public exhaustiveCorporateDetailsUsingBusinessID(clientHashId: string, countryCode: string, searchReferenceId?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountCorporateApiFp(this.configuration).exhaustiveCorporateDetailsUsingBusinessID(clientHashId, countryCode, searchReferenceId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public exhaustiveCorporateDetailsUsingBusinessID(requestParameters: CustomerAccountCorporateApiExhaustiveCorporateDetailsUsingBusinessIDRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountCorporateApiFp(this.configuration).exhaustiveCorporateDetailsUsingBusinessID(requestParameters.clientHashId, requestParameters.countryCode, requestParameters.searchReferenceId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API returns the acceptable values for the `category` query param to be used as input in the corporate onboarding flow. Refer to the [Fetch Corporate Constants](doc:fetch-corporate-constants-api) user guide for details on usage instructions on this API.
      * @summary Fetch corporate constants
-     * @param {FetchCorporateConstantsUsingGETCategoryEnum} category This field is used to select one of the category used during corporate customer onboarding. The API response will return list of allowed values for the selected category.
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {FetchCorporateConstantsUsingGETRegionEnum} region The response will be filtered based on the value selected in this field for regulatory region of the customer.
-     * @param {FetchCorporateConstantsUsingGETTypeEnum} type Type of Customer being onboarded.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerAccountCorporateApiFetchCorporateConstantsUsingGETRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountCorporateApi
      */
-    public fetchCorporateConstantsUsingGET(category: FetchCorporateConstantsUsingGETCategoryEnum, clientHashId: string, region: FetchCorporateConstantsUsingGETRegionEnum, type: FetchCorporateConstantsUsingGETTypeEnum, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountCorporateApiFp(this.configuration).fetchCorporateConstantsUsingGET(category, clientHashId, region, type, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public fetchCorporateConstantsUsingGET(requestParameters: CustomerAccountCorporateApiFetchCorporateConstantsUsingGETRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountCorporateApiFp(this.configuration).fetchCorporateConstantsUsingGET(requestParameters.category, requestParameters.clientHashId, requestParameters.region, requestParameters.type, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch details of RFI raised as part of corporate customer onboarding.
      * @summary Fetch Corporate Customer RFI Details
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} [caseId] This field contains unique case ID generated and returned in Onboard API response.
-     * @param {string} [clientId] This field contains unique client ID generated and returned in Onboard API response.
-     * @param {string} [customerHashId] This field contains the customerHashId, For example, 909ffc5f-c8ab-4df0-bcb2-111fcdd6f735.
-     * @param {string} [region] This field contains the region code for which onboarding has been triggered, For example, AU, EU, UK, SG.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerAccountCorporateApiFetchCorporateCustomerRFIDetailsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountCorporateApi
      */
-    public fetchCorporateCustomerRFIDetails(clientHashId: string, caseId?: string, clientId?: string, customerHashId?: string, region?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountCorporateApiFp(this.configuration).fetchCorporateCustomerRFIDetails(clientHashId, caseId, clientId, customerHashId, region, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public fetchCorporateCustomerRFIDetails(requestParameters: CustomerAccountCorporateApiFetchCorporateCustomerRFIDetailsRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountCorporateApiFp(this.configuration).fetchCorporateCustomerRFIDetails(requestParameters.clientHashId, requestParameters.caseId, requestParameters.clientId, requestParameters.customerHashId, requestParameters.region, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to onboard a corporate customer under existing client.
      * @summary Onboard Corporate Customer
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {CorporateCustomerRequestsDTO} corporateCustomerRequestsDTO corporateCustomerRequestsDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerAccountCorporateApiOnboardCorporateCustomerRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountCorporateApi
      */
-    public onboardCorporateCustomer(clientHashId: string, corporateCustomerRequestsDTO: CorporateCustomerRequestsDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountCorporateApiFp(this.configuration).onboardCorporateCustomer(clientHashId, corporateCustomerRequestsDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public onboardCorporateCustomer(requestParameters: CustomerAccountCorporateApiOnboardCorporateCustomerRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountCorporateApiFp(this.configuration).onboardCorporateCustomer(requestParameters.clientHashId, requestParameters.corporateCustomerRequestsDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API will help you to fetch the publicly available corporate details using business Id.
      * @summary Public Corporate Details using Business ID
-     * @param {string} businessRegistrationNumber This field contains the business registration number of the entity.
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} countryCode This field contains the 2-letter [ISO-2 country code](doc:currency-and-country-codes).
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerAccountCorporateApiPublicCorporateDetailsUsingBusinessIDRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountCorporateApi
      */
-    public publicCorporateDetailsUsingBusinessID(businessRegistrationNumber: string, clientHashId: string, countryCode: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountCorporateApiFp(this.configuration).publicCorporateDetailsUsingBusinessID(businessRegistrationNumber, clientHashId, countryCode, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public publicCorporateDetailsUsingBusinessID(requestParameters: CustomerAccountCorporateApiPublicCorporateDetailsUsingBusinessIDRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountCorporateApiFp(this.configuration).publicCorporateDetailsUsingBusinessID(requestParameters.businessRegistrationNumber, requestParameters.clientHashId, requestParameters.countryCode, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This api will be used to regenerate kyc url
      * @summary Regenerate KYC URL
-     * @param {string} clientHashId The unique client hash id of customer
-     * @param {string} customerHashId The unique customer hash id of customer
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {CustomerAccountCorporateApiRegenerateKYCURLRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountCorporateApi
      */
-    public regenerateKYCURL(clientHashId: string, customerHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountCorporateApiFp(this.configuration).regenerateKYCURL(clientHashId, customerHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public regenerateKYCURL(requestParameters: CustomerAccountCorporateApiRegenerateKYCURLRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountCorporateApiFp(this.configuration).regenerateKYCURL(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to respond to an RFI raised for a corporate customer. You may use this API to respond to an RFI for data or documents when the corporate customer\'s compliance status is RFI_REQUESTED.
      * @summary Respond to RFI for Corporate Customer
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {RespondRfiRequestDTO} respondRfiRequestDTO respondRfiRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerAccountCorporateApiRespondtoRFIforCorporateCustomerRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountCorporateApi
      */
-    public respondtoRFIforCorporateCustomer(clientHashId: string, respondRfiRequestDTO: RespondRfiRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountCorporateApiFp(this.configuration).respondtoRFIforCorporateCustomer(clientHashId, respondRfiRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public respondtoRFIforCorporateCustomer(requestParameters: CustomerAccountCorporateApiRespondtoRFIforCorporateCustomerRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountCorporateApiFp(this.configuration).respondtoRFIforCorporateCustomer(requestParameters.clientHashId, requestParameters.respondRfiRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to update a corporate customer under existing client.
      * @summary Update Corporate Customer
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {CorporateCustomerRequestsDTO} corporateCustomerRequestsDTO updateCorporateCustomerRequestsDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerAccountCorporateApiUpdateCorporateCustomerUsingPOSTRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountCorporateApi
      */
-    public updateCorporateCustomerUsingPOST(clientHashId: string, customerHashId: string, corporateCustomerRequestsDTO: CorporateCustomerRequestsDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountCorporateApiFp(this.configuration).updateCorporateCustomerUsingPOST(clientHashId, customerHashId, corporateCustomerRequestsDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public updateCorporateCustomerUsingPOST(requestParameters: CustomerAccountCorporateApiUpdateCorporateCustomerUsingPOSTRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountCorporateApiFp(this.configuration).updateCorporateCustomerUsingPOST(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.corporateCustomerRequestsDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to upload document for corporate customers.
      * @summary Upload Document for Corporate Customer
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {CorporateComplianceDocumentRequestDTO} corporateComplianceDocumentRequestDTO corporateComplianceDocumentRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerAccountCorporateApiUploadDocumentforCorporateCustomerRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerAccountCorporateApi
      */
-    public uploadDocumentforCorporateCustomer(clientHashId: string, customerHashId: string, corporateComplianceDocumentRequestDTO: CorporateComplianceDocumentRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerAccountCorporateApiFp(this.configuration).uploadDocumentforCorporateCustomer(clientHashId, customerHashId, corporateComplianceDocumentRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public uploadDocumentforCorporateCustomer(requestParameters: CustomerAccountCorporateApiUploadDocumentforCorporateCustomerRequest, options?: RawAxiosRequestConfig) {
+        return CustomerAccountCorporateApiFp(this.configuration).uploadDocumentforCorporateCustomer(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.corporateComplianceDocumentRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

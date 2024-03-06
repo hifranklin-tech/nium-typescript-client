@@ -209,33 +209,109 @@ export const WalletToWalletTransfersApiFactory = function (configuration?: Confi
         /**
          * This API allows you to transfer money from one wallet to another wallet within the same client family.   >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. Use the [Wallet To Wallet Transfer](ref:wallettransfer) API to achieve the same functionality.
          * @summary P2P Transfer
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {P2PTransferDTO} p2PTransferDTO p2pTransferDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {WalletToWalletTransfersApiP2PTransferRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        p2PTransfer(clientHashId: string, customerHashId: string, walletHashId: string, p2PTransferDTO: P2PTransferDTO, xRequestId?: string, options?: any): AxiosPromise<P2PTransferResponse> {
-            return localVarFp.p2PTransfer(clientHashId, customerHashId, walletHashId, p2PTransferDTO, xRequestId, options).then((request) => request(axios, basePath));
+        p2PTransfer(requestParameters: WalletToWalletTransfersApiP2PTransferRequest, options?: RawAxiosRequestConfig): AxiosPromise<P2PTransferResponse> {
+            return localVarFp.p2PTransfer(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.p2PTransferDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to transfer the money from one wallet to another wallet for customers belonging to different client.
          * @summary Wallet to Wallet Transfer
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique source wallet identifier generated simultaneously with customer creation.
-         * @param {FundTransferRequestDTO} fundTransferRequestDTO fundTransferRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {WalletToWalletTransfersApiWalletTransferRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        walletTransfer(clientHashId: string, customerHashId: string, walletHashId: string, fundTransferRequestDTO: FundTransferRequestDTO, xRequestId?: string, options?: any): AxiosPromise<FundTransferResponse> {
-            return localVarFp.walletTransfer(clientHashId, customerHashId, walletHashId, fundTransferRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        walletTransfer(requestParameters: WalletToWalletTransfersApiWalletTransferRequest, options?: RawAxiosRequestConfig): AxiosPromise<FundTransferResponse> {
+            return localVarFp.walletTransfer(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.fundTransferRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for p2PTransfer operation in WalletToWalletTransfersApi.
+ * @export
+ * @interface WalletToWalletTransfersApiP2PTransferRequest
+ */
+export interface WalletToWalletTransfersApiP2PTransferRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof WalletToWalletTransfersApiP2PTransfer
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof WalletToWalletTransfersApiP2PTransfer
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof WalletToWalletTransfersApiP2PTransfer
+     */
+    readonly walletHashId: string
+
+    /**
+     * p2pTransferDTO
+     * @type {P2PTransferDTO}
+     * @memberof WalletToWalletTransfersApiP2PTransfer
+     */
+    readonly p2PTransferDTO: P2PTransferDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof WalletToWalletTransfersApiP2PTransfer
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for walletTransfer operation in WalletToWalletTransfersApi.
+ * @export
+ * @interface WalletToWalletTransfersApiWalletTransferRequest
+ */
+export interface WalletToWalletTransfersApiWalletTransferRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof WalletToWalletTransfersApiWalletTransfer
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof WalletToWalletTransfersApiWalletTransfer
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique source wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof WalletToWalletTransfersApiWalletTransfer
+     */
+    readonly walletHashId: string
+
+    /**
+     * fundTransferRequestDTO
+     * @type {FundTransferRequestDTO}
+     * @memberof WalletToWalletTransfersApiWalletTransfer
+     */
+    readonly fundTransferRequestDTO: FundTransferRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof WalletToWalletTransfersApiWalletTransfer
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * WalletToWalletTransfersApi - object-oriented interface
@@ -247,33 +323,25 @@ export class WalletToWalletTransfersApi extends BaseAPI {
     /**
      * This API allows you to transfer money from one wallet to another wallet within the same client family.   >⚠️ WARNING   >This API version is deprecated. Eventually, a deprecated API version becomes unsupported. Use the [Wallet To Wallet Transfer](ref:wallettransfer) API to achieve the same functionality.
      * @summary P2P Transfer
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {P2PTransferDTO} p2PTransferDTO p2pTransferDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {WalletToWalletTransfersApiP2PTransferRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WalletToWalletTransfersApi
      */
-    public p2PTransfer(clientHashId: string, customerHashId: string, walletHashId: string, p2PTransferDTO: P2PTransferDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return WalletToWalletTransfersApiFp(this.configuration).p2PTransfer(clientHashId, customerHashId, walletHashId, p2PTransferDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public p2PTransfer(requestParameters: WalletToWalletTransfersApiP2PTransferRequest, options?: RawAxiosRequestConfig) {
+        return WalletToWalletTransfersApiFp(this.configuration).p2PTransfer(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.p2PTransferDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to transfer the money from one wallet to another wallet for customers belonging to different client.
      * @summary Wallet to Wallet Transfer
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique source wallet identifier generated simultaneously with customer creation.
-     * @param {FundTransferRequestDTO} fundTransferRequestDTO fundTransferRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {WalletToWalletTransfersApiWalletTransferRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WalletToWalletTransfersApi
      */
-    public walletTransfer(clientHashId: string, customerHashId: string, walletHashId: string, fundTransferRequestDTO: FundTransferRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return WalletToWalletTransfersApiFp(this.configuration).walletTransfer(clientHashId, customerHashId, walletHashId, fundTransferRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public walletTransfer(requestParameters: WalletToWalletTransfersApiWalletTransferRequest, options?: RawAxiosRequestConfig) {
+        return WalletToWalletTransfersApiFp(this.configuration).walletTransfer(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.fundTransferRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

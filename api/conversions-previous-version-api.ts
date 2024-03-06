@@ -130,19 +130,57 @@ export const ConversionsPreviousVersionApiFactory = function (configuration?: Co
         /**
          * This API allows you to transfer the balance from one currency to another within the same customer wallet.
          * @summary Balance Transfer within Wallet
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {WalletTransferDto} walletTransferDto 
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ConversionsPreviousVersionApiBalanceTransferwithinWalletRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        balanceTransferwithinWallet(clientHashId: string, customerHashId: string, walletHashId: string, walletTransferDto: WalletTransferDto, xRequestId?: string, options?: any): AxiosPromise<WalletTransferResponseDto> {
-            return localVarFp.balanceTransferwithinWallet(clientHashId, customerHashId, walletHashId, walletTransferDto, xRequestId, options).then((request) => request(axios, basePath));
+        balanceTransferwithinWallet(requestParameters: ConversionsPreviousVersionApiBalanceTransferwithinWalletRequest, options?: RawAxiosRequestConfig): AxiosPromise<WalletTransferResponseDto> {
+            return localVarFp.balanceTransferwithinWallet(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.walletTransferDto, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for balanceTransferwithinWallet operation in ConversionsPreviousVersionApi.
+ * @export
+ * @interface ConversionsPreviousVersionApiBalanceTransferwithinWalletRequest
+ */
+export interface ConversionsPreviousVersionApiBalanceTransferwithinWalletRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ConversionsPreviousVersionApiBalanceTransferwithinWallet
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof ConversionsPreviousVersionApiBalanceTransferwithinWallet
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof ConversionsPreviousVersionApiBalanceTransferwithinWallet
+     */
+    readonly walletHashId: string
+
+    /**
+     * 
+     * @type {WalletTransferDto}
+     * @memberof ConversionsPreviousVersionApiBalanceTransferwithinWallet
+     */
+    readonly walletTransferDto: WalletTransferDto
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ConversionsPreviousVersionApiBalanceTransferwithinWallet
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * ConversionsPreviousVersionApi - object-oriented interface
@@ -154,17 +192,13 @@ export class ConversionsPreviousVersionApi extends BaseAPI {
     /**
      * This API allows you to transfer the balance from one currency to another within the same customer wallet.
      * @summary Balance Transfer within Wallet
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {WalletTransferDto} walletTransferDto 
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ConversionsPreviousVersionApiBalanceTransferwithinWalletRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ConversionsPreviousVersionApi
      */
-    public balanceTransferwithinWallet(clientHashId: string, customerHashId: string, walletHashId: string, walletTransferDto: WalletTransferDto, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ConversionsPreviousVersionApiFp(this.configuration).balanceTransferwithinWallet(clientHashId, customerHashId, walletHashId, walletTransferDto, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public balanceTransferwithinWallet(requestParameters: ConversionsPreviousVersionApiBalanceTransferwithinWalletRequest, options?: RawAxiosRequestConfig) {
+        return ConversionsPreviousVersionApiFp(this.configuration).balanceTransferwithinWallet(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.walletTransferDto, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

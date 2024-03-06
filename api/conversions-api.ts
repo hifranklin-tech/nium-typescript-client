@@ -297,48 +297,168 @@ export const ConversionsApiFactory = function (configuration?: Configuration, ba
         /**
          * This API allows you to cancel a conversion prior to the execution time.
          * @summary Cancel Conversion
-         * @param {string} clientHashId Unique identifier of the client.
-         * @param {string} customerHashId Unique identifier of the customer.
-         * @param {string} walletHashId Unique identifier of the wallet.
-         * @param {string} conversionId 
-         * @param {ConversionCancelRequest} conversionCancelRequest ConversionCancelRequest
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ConversionsApiCancelConversionRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cancelConversion(clientHashId: string, customerHashId: string, walletHashId: string, conversionId: string, conversionCancelRequest: ConversionCancelRequest, xRequestId?: string, options?: any): AxiosPromise<ConversionCancelResponse> {
-            return localVarFp.cancelConversion(clientHashId, customerHashId, walletHashId, conversionId, conversionCancelRequest, xRequestId, options).then((request) => request(axios, basePath));
+        cancelConversion(requestParameters: ConversionsApiCancelConversionRequest, options?: RawAxiosRequestConfig): AxiosPromise<ConversionCancelResponse> {
+            return localVarFp.cancelConversion(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.conversionId, requestParameters.conversionCancelRequest, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to convert the balance from one currency to another within the same customer wallet either at the current market rate or using a previous exchange rate quote. This API allows you to select a settlement schedule for the conversion.
          * @summary Create Conversion
-         * @param {string} clientHashId Unique identifier of the client.
-         * @param {string} customerHashId Unique identifier of the customer.
-         * @param {string} walletHashId Unique identifier of the wallet.
-         * @param {ConversionCreationRequest} conversionCreationRequest ConversionCreationRequest
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ConversionsApiCreateConversionRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createConversion(clientHashId: string, customerHashId: string, walletHashId: string, conversionCreationRequest: ConversionCreationRequest, xRequestId?: string, options?: any): AxiosPromise<ConversionCreationResponse> {
-            return localVarFp.createConversion(clientHashId, customerHashId, walletHashId, conversionCreationRequest, xRequestId, options).then((request) => request(axios, basePath));
+        createConversion(requestParameters: ConversionsApiCreateConversionRequest, options?: RawAxiosRequestConfig): AxiosPromise<ConversionCreationResponse> {
+            return localVarFp.createConversion(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.conversionCreationRequest, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API will retrieve an existing conversion with the conversionId.
          * @summary Fetch Conversion by id
-         * @param {string} clientHashId Unique identifier of the client.
-         * @param {string} customerHashId Unique identifier of the customer.
-         * @param {string} walletHashId Unique identifier of the wallet.
-         * @param {string} conversionId 
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ConversionsApiFetchConversionRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchConversion(clientHashId: string, customerHashId: string, walletHashId: string, conversionId: string, xRequestId?: string, options?: any): AxiosPromise<ConversionCreationResponse> {
-            return localVarFp.fetchConversion(clientHashId, customerHashId, walletHashId, conversionId, xRequestId, options).then((request) => request(axios, basePath));
+        fetchConversion(requestParameters: ConversionsApiFetchConversionRequest, options?: RawAxiosRequestConfig): AxiosPromise<ConversionCreationResponse> {
+            return localVarFp.fetchConversion(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.conversionId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for cancelConversion operation in ConversionsApi.
+ * @export
+ * @interface ConversionsApiCancelConversionRequest
+ */
+export interface ConversionsApiCancelConversionRequest {
+    /**
+     * Unique identifier of the client.
+     * @type {string}
+     * @memberof ConversionsApiCancelConversion
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique identifier of the customer.
+     * @type {string}
+     * @memberof ConversionsApiCancelConversion
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique identifier of the wallet.
+     * @type {string}
+     * @memberof ConversionsApiCancelConversion
+     */
+    readonly walletHashId: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof ConversionsApiCancelConversion
+     */
+    readonly conversionId: string
+
+    /**
+     * ConversionCancelRequest
+     * @type {ConversionCancelRequest}
+     * @memberof ConversionsApiCancelConversion
+     */
+    readonly conversionCancelRequest: ConversionCancelRequest
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ConversionsApiCancelConversion
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for createConversion operation in ConversionsApi.
+ * @export
+ * @interface ConversionsApiCreateConversionRequest
+ */
+export interface ConversionsApiCreateConversionRequest {
+    /**
+     * Unique identifier of the client.
+     * @type {string}
+     * @memberof ConversionsApiCreateConversion
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique identifier of the customer.
+     * @type {string}
+     * @memberof ConversionsApiCreateConversion
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique identifier of the wallet.
+     * @type {string}
+     * @memberof ConversionsApiCreateConversion
+     */
+    readonly walletHashId: string
+
+    /**
+     * ConversionCreationRequest
+     * @type {ConversionCreationRequest}
+     * @memberof ConversionsApiCreateConversion
+     */
+    readonly conversionCreationRequest: ConversionCreationRequest
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ConversionsApiCreateConversion
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for fetchConversion operation in ConversionsApi.
+ * @export
+ * @interface ConversionsApiFetchConversionRequest
+ */
+export interface ConversionsApiFetchConversionRequest {
+    /**
+     * Unique identifier of the client.
+     * @type {string}
+     * @memberof ConversionsApiFetchConversion
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique identifier of the customer.
+     * @type {string}
+     * @memberof ConversionsApiFetchConversion
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique identifier of the wallet.
+     * @type {string}
+     * @memberof ConversionsApiFetchConversion
+     */
+    readonly walletHashId: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof ConversionsApiFetchConversion
+     */
+    readonly conversionId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ConversionsApiFetchConversion
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * ConversionsApi - object-oriented interface
@@ -350,50 +470,37 @@ export class ConversionsApi extends BaseAPI {
     /**
      * This API allows you to cancel a conversion prior to the execution time.
      * @summary Cancel Conversion
-     * @param {string} clientHashId Unique identifier of the client.
-     * @param {string} customerHashId Unique identifier of the customer.
-     * @param {string} walletHashId Unique identifier of the wallet.
-     * @param {string} conversionId 
-     * @param {ConversionCancelRequest} conversionCancelRequest ConversionCancelRequest
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ConversionsApiCancelConversionRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ConversionsApi
      */
-    public cancelConversion(clientHashId: string, customerHashId: string, walletHashId: string, conversionId: string, conversionCancelRequest: ConversionCancelRequest, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ConversionsApiFp(this.configuration).cancelConversion(clientHashId, customerHashId, walletHashId, conversionId, conversionCancelRequest, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public cancelConversion(requestParameters: ConversionsApiCancelConversionRequest, options?: RawAxiosRequestConfig) {
+        return ConversionsApiFp(this.configuration).cancelConversion(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.conversionId, requestParameters.conversionCancelRequest, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to convert the balance from one currency to another within the same customer wallet either at the current market rate or using a previous exchange rate quote. This API allows you to select a settlement schedule for the conversion.
      * @summary Create Conversion
-     * @param {string} clientHashId Unique identifier of the client.
-     * @param {string} customerHashId Unique identifier of the customer.
-     * @param {string} walletHashId Unique identifier of the wallet.
-     * @param {ConversionCreationRequest} conversionCreationRequest ConversionCreationRequest
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ConversionsApiCreateConversionRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ConversionsApi
      */
-    public createConversion(clientHashId: string, customerHashId: string, walletHashId: string, conversionCreationRequest: ConversionCreationRequest, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ConversionsApiFp(this.configuration).createConversion(clientHashId, customerHashId, walletHashId, conversionCreationRequest, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public createConversion(requestParameters: ConversionsApiCreateConversionRequest, options?: RawAxiosRequestConfig) {
+        return ConversionsApiFp(this.configuration).createConversion(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.conversionCreationRequest, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API will retrieve an existing conversion with the conversionId.
      * @summary Fetch Conversion by id
-     * @param {string} clientHashId Unique identifier of the client.
-     * @param {string} customerHashId Unique identifier of the customer.
-     * @param {string} walletHashId Unique identifier of the wallet.
-     * @param {string} conversionId 
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ConversionsApiFetchConversionRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ConversionsApi
      */
-    public fetchConversion(clientHashId: string, customerHashId: string, walletHashId: string, conversionId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ConversionsApiFp(this.configuration).fetchConversion(clientHashId, customerHashId, walletHashId, conversionId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public fetchConversion(requestParameters: ConversionsApiFetchConversionRequest, options?: RawAxiosRequestConfig) {
+        return ConversionsApiFp(this.configuration).fetchConversion(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.conversionId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

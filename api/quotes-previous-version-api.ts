@@ -231,36 +231,130 @@ export const QuotesPreviousVersionApiFactory = function (configuration?: Configu
         /**
          * This API allows you to fetch exchange rate, and lock and hold the rates till a certain amount of time.
          * @summary Exchange Rate Lock and Hold
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} destinationCurrency This field contains the [3-letter ISO-4217 currency code](doc:currency-and-country-codes) for the destination amount.
-         * @param {string} sourceCurrency This field contains the [3-letter ISO-4217 currency code](doc:currency-and-country-codes) for the source amount.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {number} [additionalFxMarkup] This field is used if client wants to apply additional Fxmarkup in the exchange rate for their customer. The value should be in percentage. For example use 0.10 for 0.1% additional markup.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {QuotesPreviousVersionApiExchangeRateLockandHoldRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        exchangeRateLockandHold(clientHashId: string, customerHashId: string, destinationCurrency: string, sourceCurrency: string, walletHashId: string, additionalFxMarkup?: number, xRequestId?: string, options?: any): AxiosPromise<FxHoldLockResponseContent> {
-            return localVarFp.exchangeRateLockandHold(clientHashId, customerHashId, destinationCurrency, sourceCurrency, walletHashId, additionalFxMarkup, xRequestId, options).then((request) => request(axios, basePath));
+        exchangeRateLockandHold(requestParameters: QuotesPreviousVersionApiExchangeRateLockandHoldRequest, options?: RawAxiosRequestConfig): AxiosPromise<FxHoldLockResponseContent> {
+            return localVarFp.exchangeRateLockandHold(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.destinationCurrency, requestParameters.sourceCurrency, requestParameters.walletHashId, requestParameters.additionalFxMarkup, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API fetches the exchange rate between source currency and destination currency. If either source or destination amount is provided, the equivalent amount will also be returned. Note that you may not send both sourceAmount and destinationAmount as query parameters together. If both are provided, sourceAmount shall be taken for conversion.
          * @summary Exchange Rate With Markup
-         * @param {string} clientHashId Unique customer identifier generated on customer creation.
-         * @param {string} sourceCurrencyCode This field contains the 3-letter [ISO-4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) for the source amount.
-         * @param {string} destinationCurrencyCode This field contains the 3-letter [ISO-4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) for the destination amount.
-         * @param {number} [sourceAmount] An amount to be converted. This field takes precedence over destinationAmount, in case both are provided.
-         * @param {number} [destinationAmount] An amount to which the source is converted. It can be used to find the necessary source amount value. If both sourceAmount and destinationAmount are provided, this field is ignored.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {QuotesPreviousVersionApiExchangeRateWithMarkupRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        exchangeRateWithMarkup(clientHashId: string, sourceCurrencyCode: string, destinationCurrencyCode: string, sourceAmount?: number, destinationAmount?: number, xRequestId?: string, options?: any): AxiosPromise<ExchangeRateV2ResponseDto> {
-            return localVarFp.exchangeRateWithMarkup(clientHashId, sourceCurrencyCode, destinationCurrencyCode, sourceAmount, destinationAmount, xRequestId, options).then((request) => request(axios, basePath));
+        exchangeRateWithMarkup(requestParameters: QuotesPreviousVersionApiExchangeRateWithMarkupRequest, options?: RawAxiosRequestConfig): AxiosPromise<ExchangeRateV2ResponseDto> {
+            return localVarFp.exchangeRateWithMarkup(requestParameters.clientHashId, requestParameters.sourceCurrencyCode, requestParameters.destinationCurrencyCode, requestParameters.sourceAmount, requestParameters.destinationAmount, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for exchangeRateLockandHold operation in QuotesPreviousVersionApi.
+ * @export
+ * @interface QuotesPreviousVersionApiExchangeRateLockandHoldRequest
+ */
+export interface QuotesPreviousVersionApiExchangeRateLockandHoldRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof QuotesPreviousVersionApiExchangeRateLockandHold
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof QuotesPreviousVersionApiExchangeRateLockandHold
+     */
+    readonly customerHashId: string
+
+    /**
+     * This field contains the [3-letter ISO-4217 currency code](doc:currency-and-country-codes) for the destination amount.
+     * @type {string}
+     * @memberof QuotesPreviousVersionApiExchangeRateLockandHold
+     */
+    readonly destinationCurrency: string
+
+    /**
+     * This field contains the [3-letter ISO-4217 currency code](doc:currency-and-country-codes) for the source amount.
+     * @type {string}
+     * @memberof QuotesPreviousVersionApiExchangeRateLockandHold
+     */
+    readonly sourceCurrency: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof QuotesPreviousVersionApiExchangeRateLockandHold
+     */
+    readonly walletHashId: string
+
+    /**
+     * This field is used if client wants to apply additional Fxmarkup in the exchange rate for their customer. The value should be in percentage. For example use 0.10 for 0.1% additional markup.
+     * @type {number}
+     * @memberof QuotesPreviousVersionApiExchangeRateLockandHold
+     */
+    readonly additionalFxMarkup?: number
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof QuotesPreviousVersionApiExchangeRateLockandHold
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for exchangeRateWithMarkup operation in QuotesPreviousVersionApi.
+ * @export
+ * @interface QuotesPreviousVersionApiExchangeRateWithMarkupRequest
+ */
+export interface QuotesPreviousVersionApiExchangeRateWithMarkupRequest {
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof QuotesPreviousVersionApiExchangeRateWithMarkup
+     */
+    readonly clientHashId: string
+
+    /**
+     * This field contains the 3-letter [ISO-4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) for the source amount.
+     * @type {string}
+     * @memberof QuotesPreviousVersionApiExchangeRateWithMarkup
+     */
+    readonly sourceCurrencyCode: string
+
+    /**
+     * This field contains the 3-letter [ISO-4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) for the destination amount.
+     * @type {string}
+     * @memberof QuotesPreviousVersionApiExchangeRateWithMarkup
+     */
+    readonly destinationCurrencyCode: string
+
+    /**
+     * An amount to be converted. This field takes precedence over destinationAmount, in case both are provided.
+     * @type {number}
+     * @memberof QuotesPreviousVersionApiExchangeRateWithMarkup
+     */
+    readonly sourceAmount?: number
+
+    /**
+     * An amount to which the source is converted. It can be used to find the necessary source amount value. If both sourceAmount and destinationAmount are provided, this field is ignored.
+     * @type {number}
+     * @memberof QuotesPreviousVersionApiExchangeRateWithMarkup
+     */
+    readonly destinationAmount?: number
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof QuotesPreviousVersionApiExchangeRateWithMarkup
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * QuotesPreviousVersionApi - object-oriented interface
@@ -272,36 +366,25 @@ export class QuotesPreviousVersionApi extends BaseAPI {
     /**
      * This API allows you to fetch exchange rate, and lock and hold the rates till a certain amount of time.
      * @summary Exchange Rate Lock and Hold
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} destinationCurrency This field contains the [3-letter ISO-4217 currency code](doc:currency-and-country-codes) for the destination amount.
-     * @param {string} sourceCurrency This field contains the [3-letter ISO-4217 currency code](doc:currency-and-country-codes) for the source amount.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {number} [additionalFxMarkup] This field is used if client wants to apply additional Fxmarkup in the exchange rate for their customer. The value should be in percentage. For example use 0.10 for 0.1% additional markup.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {QuotesPreviousVersionApiExchangeRateLockandHoldRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof QuotesPreviousVersionApi
      */
-    public exchangeRateLockandHold(clientHashId: string, customerHashId: string, destinationCurrency: string, sourceCurrency: string, walletHashId: string, additionalFxMarkup?: number, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return QuotesPreviousVersionApiFp(this.configuration).exchangeRateLockandHold(clientHashId, customerHashId, destinationCurrency, sourceCurrency, walletHashId, additionalFxMarkup, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public exchangeRateLockandHold(requestParameters: QuotesPreviousVersionApiExchangeRateLockandHoldRequest, options?: RawAxiosRequestConfig) {
+        return QuotesPreviousVersionApiFp(this.configuration).exchangeRateLockandHold(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.destinationCurrency, requestParameters.sourceCurrency, requestParameters.walletHashId, requestParameters.additionalFxMarkup, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API fetches the exchange rate between source currency and destination currency. If either source or destination amount is provided, the equivalent amount will also be returned. Note that you may not send both sourceAmount and destinationAmount as query parameters together. If both are provided, sourceAmount shall be taken for conversion.
      * @summary Exchange Rate With Markup
-     * @param {string} clientHashId Unique customer identifier generated on customer creation.
-     * @param {string} sourceCurrencyCode This field contains the 3-letter [ISO-4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) for the source amount.
-     * @param {string} destinationCurrencyCode This field contains the 3-letter [ISO-4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) for the destination amount.
-     * @param {number} [sourceAmount] An amount to be converted. This field takes precedence over destinationAmount, in case both are provided.
-     * @param {number} [destinationAmount] An amount to which the source is converted. It can be used to find the necessary source amount value. If both sourceAmount and destinationAmount are provided, this field is ignored.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {QuotesPreviousVersionApiExchangeRateWithMarkupRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof QuotesPreviousVersionApi
      */
-    public exchangeRateWithMarkup(clientHashId: string, sourceCurrencyCode: string, destinationCurrencyCode: string, sourceAmount?: number, destinationAmount?: number, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return QuotesPreviousVersionApiFp(this.configuration).exchangeRateWithMarkup(clientHashId, sourceCurrencyCode, destinationCurrencyCode, sourceAmount, destinationAmount, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public exchangeRateWithMarkup(requestParameters: QuotesPreviousVersionApiExchangeRateWithMarkupRequest, options?: RawAxiosRequestConfig) {
+        return QuotesPreviousVersionApiFp(this.configuration).exchangeRateWithMarkup(requestParameters.clientHashId, requestParameters.sourceCurrencyCode, requestParameters.destinationCurrencyCode, requestParameters.sourceAmount, requestParameters.destinationAmount, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

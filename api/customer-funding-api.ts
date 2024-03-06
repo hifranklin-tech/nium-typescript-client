@@ -477,85 +477,289 @@ export const CustomerFundingApiFactory = function (configuration?: Configuration
         /**
          * This API allows you to link account
          * @summary Add funding instrument
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
-         * @param {CustomerLinkAccountRequest} [customerLinkAccountRequest] Add a new funding instrument
+         * @param {CustomerFundingApiAddFundingInstrumentRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addFundingInstrument(clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, customerLinkAccountRequest?: CustomerLinkAccountRequest, options?: any): AxiosPromise<LinkAccountResponse> {
-            return localVarFp.addFundingInstrument(clientHashId, customerHashId, walletHashId, xRequestId, customerLinkAccountRequest, options).then((request) => request(axios, basePath));
+        addFundingInstrument(requestParameters: CustomerFundingApiAddFundingInstrumentRequest, options?: RawAxiosRequestConfig): AxiosPromise<LinkAccountResponse> {
+            return localVarFp.addFundingInstrument(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, requestParameters.customerLinkAccountRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to confirm funding instrument id
          * @summary Confirm funding instrument
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} fundingInstrumentId This field is the unique 36-character funding instrument identifier. The id is a bank account identifier when the funding channel is direct debit.
-         * @param {string} [xRequestId] Enter a unique UUID value
-         * @param {ConfirmFundingInstrumentRequestDTO} [confirmFundingInstrumentRequestDTO] Confirm funding instrument
+         * @param {CustomerFundingApiConfirmFundingInstrumentIdRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        confirmFundingInstrumentId(clientHashId: string, customerHashId: string, fundingInstrumentId: string, xRequestId?: string, confirmFundingInstrumentRequestDTO?: ConfirmFundingInstrumentRequestDTO, options?: any): AxiosPromise<AccountStatusResponse> {
-            return localVarFp.confirmFundingInstrumentId(clientHashId, customerHashId, fundingInstrumentId, xRequestId, confirmFundingInstrumentRequestDTO, options).then((request) => request(axios, basePath));
+        confirmFundingInstrumentId(requestParameters: CustomerFundingApiConfirmFundingInstrumentIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<AccountStatusResponse> {
+            return localVarFp.confirmFundingInstrumentId(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.fundingInstrumentId, requestParameters.xRequestId, requestParameters.confirmFundingInstrumentRequestDTO, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to delete a specific funding instrument based on the fundingInstrumentId.
          * @summary Delete Funding Instrument
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} fundingInstrumentId The unique 36-character alphanumeric identifier of a funding instrument.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerFundingApiDeleteFundinginstrumentRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteFundinginstrument(clientHashId: string, customerHashId: string, fundingInstrumentId: string, xRequestId?: string, options?: any): AxiosPromise<ApiResponseOfstring> {
-            return localVarFp.deleteFundinginstrument(clientHashId, customerHashId, fundingInstrumentId, xRequestId, options).then((request) => request(axios, basePath));
+        deleteFundinginstrument(requestParameters: CustomerFundingApiDeleteFundinginstrumentRequest, options?: RawAxiosRequestConfig): AxiosPromise<ApiResponseOfstring> {
+            return localVarFp.deleteFundinginstrument(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.fundingInstrumentId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to top-up into the customer\'s wallet. Refer to the [Fund wallet user guide](/docs/fund-wallet) for details on usage instructions on this API.  >ℹ️ INFO   >**Guidelines for Fund Wallet.** >1. Cards and direct_debit funding channels are restricted by default. Reach out to your Nium support specialist to enable this functionality. >2. Source and destination should be in the same currency when funding channel is bank_transfer, cards, or direct_debit. >3. No restriction on source or destination currency if funding channel is prefund. 
          * @summary Fund Wallet
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
-         * @param {WalletFundDTO} [walletFundDTO] Guidelines for Fund Wallet  1.cards as a funding channel is restricted by default. It may be enabled for a client on request. 2.Source and destination currencies should be same if funding channel is bankTransfer or cards 3.No restriction on source or destination currency if funding channel is prefund.  Fund Wallet with a Card  Customer onboarded and KYCed successfully [through Manual or eKYC flow] with e-KYC calls Fund Wallet API with funding channel as cards.
+         * @param {CustomerFundingApiFundWalletRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fundWallet(clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, walletFundDTO?: WalletFundDTO, options?: any): AxiosPromise<WalletFundResponseDTO> {
-            return localVarFp.fundWallet(clientHashId, customerHashId, walletHashId, xRequestId, walletFundDTO, options).then((request) => request(axios, basePath));
+        fundWallet(requestParameters: CustomerFundingApiFundWalletRequest, options?: RawAxiosRequestConfig): AxiosPromise<WalletFundResponseDTO> {
+            return localVarFp.fundWallet(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, requestParameters.walletFundDTO, options).then((request) => request(axios, basePath));
         },
         /**
          * Get Funding instrument details
          * @summary Get Funding instrument details
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} fundingInstrumentId Unique 36-character funding instrument identifier.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerFundingApiGetFundingInstrumentDetailsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFundingInstrumentDetails(clientHashId: string, customerHashId: string, fundingInstrumentId: string, xRequestId?: string, options?: any): AxiosPromise<AccountStatusResponse> {
-            return localVarFp.getFundingInstrumentDetails(clientHashId, customerHashId, fundingInstrumentId, xRequestId, options).then((request) => request(axios, basePath));
+        getFundingInstrumentDetails(requestParameters: CustomerFundingApiGetFundingInstrumentDetailsRequest, options?: RawAxiosRequestConfig): AxiosPromise<AccountStatusResponse> {
+            return localVarFp.getFundingInstrumentDetails(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.fundingInstrumentId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch the funding instruments that have been registered for a customer.
          * @summary Get Funding Instrument List
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {CustomerFundingApiGetFundingInstrumentListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFundingInstrumentList(clientHashId: string, customerHashId: string, xRequestId?: string, options?: any): AxiosPromise<Array<WalletFundingInstrumentsResponseDTO>> {
-            return localVarFp.getFundingInstrumentList(clientHashId, customerHashId, xRequestId, options).then((request) => request(axios, basePath));
+        getFundingInstrumentList(requestParameters: CustomerFundingApiGetFundingInstrumentListRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<WalletFundingInstrumentsResponseDTO>> {
+            return localVarFp.getFundingInstrumentList(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for addFundingInstrument operation in CustomerFundingApi.
+ * @export
+ * @interface CustomerFundingApiAddFundingInstrumentRequest
+ */
+export interface CustomerFundingApiAddFundingInstrumentRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerFundingApiAddFundingInstrument
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerFundingApiAddFundingInstrument
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof CustomerFundingApiAddFundingInstrument
+     */
+    readonly walletHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerFundingApiAddFundingInstrument
+     */
+    readonly xRequestId?: string
+
+    /**
+     * Add a new funding instrument
+     * @type {CustomerLinkAccountRequest}
+     * @memberof CustomerFundingApiAddFundingInstrument
+     */
+    readonly customerLinkAccountRequest?: CustomerLinkAccountRequest
+}
+
+/**
+ * Request parameters for confirmFundingInstrumentId operation in CustomerFundingApi.
+ * @export
+ * @interface CustomerFundingApiConfirmFundingInstrumentIdRequest
+ */
+export interface CustomerFundingApiConfirmFundingInstrumentIdRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerFundingApiConfirmFundingInstrumentId
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerFundingApiConfirmFundingInstrumentId
+     */
+    readonly customerHashId: string
+
+    /**
+     * This field is the unique 36-character funding instrument identifier. The id is a bank account identifier when the funding channel is direct debit.
+     * @type {string}
+     * @memberof CustomerFundingApiConfirmFundingInstrumentId
+     */
+    readonly fundingInstrumentId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerFundingApiConfirmFundingInstrumentId
+     */
+    readonly xRequestId?: string
+
+    /**
+     * Confirm funding instrument
+     * @type {ConfirmFundingInstrumentRequestDTO}
+     * @memberof CustomerFundingApiConfirmFundingInstrumentId
+     */
+    readonly confirmFundingInstrumentRequestDTO?: ConfirmFundingInstrumentRequestDTO
+}
+
+/**
+ * Request parameters for deleteFundinginstrument operation in CustomerFundingApi.
+ * @export
+ * @interface CustomerFundingApiDeleteFundinginstrumentRequest
+ */
+export interface CustomerFundingApiDeleteFundinginstrumentRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerFundingApiDeleteFundinginstrument
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerFundingApiDeleteFundinginstrument
+     */
+    readonly customerHashId: string
+
+    /**
+     * The unique 36-character alphanumeric identifier of a funding instrument.
+     * @type {string}
+     * @memberof CustomerFundingApiDeleteFundinginstrument
+     */
+    readonly fundingInstrumentId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerFundingApiDeleteFundinginstrument
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for fundWallet operation in CustomerFundingApi.
+ * @export
+ * @interface CustomerFundingApiFundWalletRequest
+ */
+export interface CustomerFundingApiFundWalletRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerFundingApiFundWallet
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerFundingApiFundWallet
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof CustomerFundingApiFundWallet
+     */
+    readonly walletHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerFundingApiFundWallet
+     */
+    readonly xRequestId?: string
+
+    /**
+     * Guidelines for Fund Wallet  1.cards as a funding channel is restricted by default. It may be enabled for a client on request. 2.Source and destination currencies should be same if funding channel is bankTransfer or cards 3.No restriction on source or destination currency if funding channel is prefund.  Fund Wallet with a Card  Customer onboarded and KYCed successfully [through Manual or eKYC flow] with e-KYC calls Fund Wallet API with funding channel as cards.
+     * @type {WalletFundDTO}
+     * @memberof CustomerFundingApiFundWallet
+     */
+    readonly walletFundDTO?: WalletFundDTO
+}
+
+/**
+ * Request parameters for getFundingInstrumentDetails operation in CustomerFundingApi.
+ * @export
+ * @interface CustomerFundingApiGetFundingInstrumentDetailsRequest
+ */
+export interface CustomerFundingApiGetFundingInstrumentDetailsRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerFundingApiGetFundingInstrumentDetails
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerFundingApiGetFundingInstrumentDetails
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique 36-character funding instrument identifier.
+     * @type {string}
+     * @memberof CustomerFundingApiGetFundingInstrumentDetails
+     */
+    readonly fundingInstrumentId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerFundingApiGetFundingInstrumentDetails
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for getFundingInstrumentList operation in CustomerFundingApi.
+ * @export
+ * @interface CustomerFundingApiGetFundingInstrumentListRequest
+ */
+export interface CustomerFundingApiGetFundingInstrumentListRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof CustomerFundingApiGetFundingInstrumentList
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CustomerFundingApiGetFundingInstrumentList
+     */
+    readonly customerHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof CustomerFundingApiGetFundingInstrumentList
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * CustomerFundingApi - object-oriented interface
@@ -567,93 +771,73 @@ export class CustomerFundingApi extends BaseAPI {
     /**
      * This API allows you to link account
      * @summary Add funding instrument
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
-     * @param {CustomerLinkAccountRequest} [customerLinkAccountRequest] Add a new funding instrument
+     * @param {CustomerFundingApiAddFundingInstrumentRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerFundingApi
      */
-    public addFundingInstrument(clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, customerLinkAccountRequest?: CustomerLinkAccountRequest, options?: RawAxiosRequestConfig) {
-        return CustomerFundingApiFp(this.configuration).addFundingInstrument(clientHashId, customerHashId, walletHashId, xRequestId, customerLinkAccountRequest, options).then((request) => request(this.axios, this.basePath));
+    public addFundingInstrument(requestParameters: CustomerFundingApiAddFundingInstrumentRequest, options?: RawAxiosRequestConfig) {
+        return CustomerFundingApiFp(this.configuration).addFundingInstrument(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, requestParameters.customerLinkAccountRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to confirm funding instrument id
      * @summary Confirm funding instrument
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} fundingInstrumentId This field is the unique 36-character funding instrument identifier. The id is a bank account identifier when the funding channel is direct debit.
-     * @param {string} [xRequestId] Enter a unique UUID value
-     * @param {ConfirmFundingInstrumentRequestDTO} [confirmFundingInstrumentRequestDTO] Confirm funding instrument
+     * @param {CustomerFundingApiConfirmFundingInstrumentIdRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerFundingApi
      */
-    public confirmFundingInstrumentId(clientHashId: string, customerHashId: string, fundingInstrumentId: string, xRequestId?: string, confirmFundingInstrumentRequestDTO?: ConfirmFundingInstrumentRequestDTO, options?: RawAxiosRequestConfig) {
-        return CustomerFundingApiFp(this.configuration).confirmFundingInstrumentId(clientHashId, customerHashId, fundingInstrumentId, xRequestId, confirmFundingInstrumentRequestDTO, options).then((request) => request(this.axios, this.basePath));
+    public confirmFundingInstrumentId(requestParameters: CustomerFundingApiConfirmFundingInstrumentIdRequest, options?: RawAxiosRequestConfig) {
+        return CustomerFundingApiFp(this.configuration).confirmFundingInstrumentId(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.fundingInstrumentId, requestParameters.xRequestId, requestParameters.confirmFundingInstrumentRequestDTO, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to delete a specific funding instrument based on the fundingInstrumentId.
      * @summary Delete Funding Instrument
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} fundingInstrumentId The unique 36-character alphanumeric identifier of a funding instrument.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerFundingApiDeleteFundinginstrumentRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerFundingApi
      */
-    public deleteFundinginstrument(clientHashId: string, customerHashId: string, fundingInstrumentId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerFundingApiFp(this.configuration).deleteFundinginstrument(clientHashId, customerHashId, fundingInstrumentId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public deleteFundinginstrument(requestParameters: CustomerFundingApiDeleteFundinginstrumentRequest, options?: RawAxiosRequestConfig) {
+        return CustomerFundingApiFp(this.configuration).deleteFundinginstrument(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.fundingInstrumentId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to top-up into the customer\'s wallet. Refer to the [Fund wallet user guide](/docs/fund-wallet) for details on usage instructions on this API.  >ℹ️ INFO   >**Guidelines for Fund Wallet.** >1. Cards and direct_debit funding channels are restricted by default. Reach out to your Nium support specialist to enable this functionality. >2. Source and destination should be in the same currency when funding channel is bank_transfer, cards, or direct_debit. >3. No restriction on source or destination currency if funding channel is prefund. 
      * @summary Fund Wallet
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
-     * @param {WalletFundDTO} [walletFundDTO] Guidelines for Fund Wallet  1.cards as a funding channel is restricted by default. It may be enabled for a client on request. 2.Source and destination currencies should be same if funding channel is bankTransfer or cards 3.No restriction on source or destination currency if funding channel is prefund.  Fund Wallet with a Card  Customer onboarded and KYCed successfully [through Manual or eKYC flow] with e-KYC calls Fund Wallet API with funding channel as cards.
+     * @param {CustomerFundingApiFundWalletRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerFundingApi
      */
-    public fundWallet(clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, walletFundDTO?: WalletFundDTO, options?: RawAxiosRequestConfig) {
-        return CustomerFundingApiFp(this.configuration).fundWallet(clientHashId, customerHashId, walletHashId, xRequestId, walletFundDTO, options).then((request) => request(this.axios, this.basePath));
+    public fundWallet(requestParameters: CustomerFundingApiFundWalletRequest, options?: RawAxiosRequestConfig) {
+        return CustomerFundingApiFp(this.configuration).fundWallet(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, requestParameters.walletFundDTO, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * Get Funding instrument details
      * @summary Get Funding instrument details
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} fundingInstrumentId Unique 36-character funding instrument identifier.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerFundingApiGetFundingInstrumentDetailsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerFundingApi
      */
-    public getFundingInstrumentDetails(clientHashId: string, customerHashId: string, fundingInstrumentId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerFundingApiFp(this.configuration).getFundingInstrumentDetails(clientHashId, customerHashId, fundingInstrumentId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public getFundingInstrumentDetails(requestParameters: CustomerFundingApiGetFundingInstrumentDetailsRequest, options?: RawAxiosRequestConfig) {
+        return CustomerFundingApiFp(this.configuration).getFundingInstrumentDetails(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.fundingInstrumentId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch the funding instruments that have been registered for a customer.
      * @summary Get Funding Instrument List
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {CustomerFundingApiGetFundingInstrumentListRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerFundingApi
      */
-    public getFundingInstrumentList(clientHashId: string, customerHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CustomerFundingApiFp(this.configuration).getFundingInstrumentList(clientHashId, customerHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public getFundingInstrumentList(requestParameters: CustomerFundingApiGetFundingInstrumentListRequest, options?: RawAxiosRequestConfig) {
+        return CustomerFundingApiFp(this.configuration).getFundingInstrumentList(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

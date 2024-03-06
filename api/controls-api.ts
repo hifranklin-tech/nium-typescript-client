@@ -582,105 +582,383 @@ export const ControlsApiFactory = function (configuration?: Configuration, baseP
         /**
          * This API allows you to fetch card limits.
          * @summary Fetch Card Limits
-         * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ControlsApiGetCardLimitsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCardLimits(cardHashId: string, clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, options?: any): AxiosPromise<TransactionLimitsDTO> {
-            return localVarFp.getCardLimits(cardHashId, clientHashId, customerHashId, walletHashId, xRequestId, options).then((request) => request(axios, basePath));
+        getCardLimits(requestParameters: ControlsApiGetCardLimitsRequest, options?: RawAxiosRequestConfig): AxiosPromise<TransactionLimitsDTO> {
+            return localVarFp.getCardLimits(requestParameters.cardHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API will get the restriction set at card level for all the channels, for example, instore, online, ATM, cross border, and magnetic stripe.
          * @summary Get Channel Restriction
-         * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ControlsApiGetChannelRestrictionRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChannelRestriction(cardHashId: string, clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, options?: any): AxiosPromise<ApiResponseOfTransactionChannelsResponseDTO> {
-            return localVarFp.getChannelRestriction(cardHashId, clientHashId, customerHashId, walletHashId, xRequestId, options).then((request) => request(axios, basePath));
+        getChannelRestriction(requestParameters: ControlsApiGetChannelRestrictionRequest, options?: RawAxiosRequestConfig): AxiosPromise<ApiResponseOfTransactionChannelsResponseDTO> {
+            return localVarFp.getChannelRestriction(requestParameters.cardHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch MCC based channel restrictions at the card level.
          * @summary Get MCC Channel Restrictions
-         * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ControlsApiGetMCCChannelRestrictionsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMCCChannelRestrictions(cardHashId: string, clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, options?: any): AxiosPromise<MCCRestrictionDTO> {
-            return localVarFp.getMCCChannelRestrictions(cardHashId, clientHashId, customerHashId, walletHashId, xRequestId, options).then((request) => request(axios, basePath));
+        getMCCChannelRestrictions(requestParameters: ControlsApiGetMCCChannelRestrictionsRequest, options?: RawAxiosRequestConfig): AxiosPromise<MCCRestrictionDTO> {
+            return localVarFp.getMCCChannelRestrictions(requestParameters.cardHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to fetch card level limits for all cards belonging to a customer.
          * @summary Limits For All Cards For A Customer
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ControlsApiLimitsForAllCardsForACustomerRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        limitsForAllCardsForACustomer(clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, options?: any): AxiosPromise<TransactionWalletLimitsDTO> {
-            return localVarFp.limitsForAllCardsForACustomer(clientHashId, customerHashId, walletHashId, xRequestId, options).then((request) => request(axios, basePath));
+        limitsForAllCardsForACustomer(requestParameters: ControlsApiLimitsForAllCardsForACustomerRequest, options?: RawAxiosRequestConfig): AxiosPromise<TransactionWalletLimitsDTO> {
+            return localVarFp.limitsForAllCardsForACustomer(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to set card limits.
          * @summary Card Limits
-         * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {TransactionLimitsDTO} transactionLimitsDTO transactionLimitsDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ControlsApiSetCardLimitsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setCardLimits(cardHashId: string, clientHashId: string, customerHashId: string, walletHashId: string, transactionLimitsDTO: TransactionLimitsDTO, xRequestId?: string, options?: any): AxiosPromise<WalletApiResponse2> {
-            return localVarFp.setCardLimits(cardHashId, clientHashId, customerHashId, walletHashId, transactionLimitsDTO, xRequestId, options).then((request) => request(axios, basePath));
+        setCardLimits(requestParameters: ControlsApiSetCardLimitsRequest, options?: RawAxiosRequestConfig): AxiosPromise<WalletApiResponse2> {
+            return localVarFp.setCardLimits(requestParameters.cardHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.transactionLimitsDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API will restrict transaction at card level for a given channel, for example, in instore, online, ATM, cross border and magnetic stripe.
          * @summary Update Channel Restriction
-         * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {ChannelActionRequestDTO} channelActionRequestDTO channelActionRequestDTO
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ControlsApiUpdateChannelRestrictionRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateChannelRestriction(cardHashId: string, clientHashId: string, customerHashId: string, walletHashId: string, channelActionRequestDTO: ChannelActionRequestDTO, xRequestId?: string, options?: any): AxiosPromise<WalletApiResponseOfstring> {
-            return localVarFp.updateChannelRestriction(cardHashId, clientHashId, customerHashId, walletHashId, channelActionRequestDTO, xRequestId, options).then((request) => request(axios, basePath));
+        updateChannelRestriction(requestParameters: ControlsApiUpdateChannelRestrictionRequest, options?: RawAxiosRequestConfig): AxiosPromise<WalletApiResponseOfstring> {
+            return localVarFp.updateChannelRestriction(requestParameters.cardHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.channelActionRequestDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
         /**
          * This API allows you to create MCC based channel restrictions at the card level.
          * @summary Update MCC Channel Restrictions
-         * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-         * @param {string} customerHashId Unique customer identifier generated on customer creation.
-         * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-         * @param {MCCRestrictionDTO} mCCRestrictionDTO The API will work as below: • If the status is Active and channelStrategy is WHITE_LIST, then the MCC in the list only gets processed and the rest will be blocked • If the status is Inactive then the MCC whitelist restriction will be Inactive. • If the status is Active and channelStrategy is BLACK_LIST then only the MCC in the list will get blocked and the rest will be allowed. • If the status is Inactive then the MCC blacklist restriction will be Inactive • Either blacklist or whitelist can be enabled at one point in time.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ControlsApiUpdateMCCChannelRestrictionsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateMCCChannelRestrictions(cardHashId: string, clientHashId: string, customerHashId: string, walletHashId: string, mCCRestrictionDTO: MCCRestrictionDTO, xRequestId?: string, options?: any): AxiosPromise<WalletApiResponse2> {
-            return localVarFp.updateMCCChannelRestrictions(cardHashId, clientHashId, customerHashId, walletHashId, mCCRestrictionDTO, xRequestId, options).then((request) => request(axios, basePath));
+        updateMCCChannelRestrictions(requestParameters: ControlsApiUpdateMCCChannelRestrictionsRequest, options?: RawAxiosRequestConfig): AxiosPromise<WalletApiResponse2> {
+            return localVarFp.updateMCCChannelRestrictions(requestParameters.cardHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.mCCRestrictionDTO, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for getCardLimits operation in ControlsApi.
+ * @export
+ * @interface ControlsApiGetCardLimitsRequest
+ */
+export interface ControlsApiGetCardLimitsRequest {
+    /**
+     * Unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof ControlsApiGetCardLimits
+     */
+    readonly cardHashId: string
+
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ControlsApiGetCardLimits
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof ControlsApiGetCardLimits
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof ControlsApiGetCardLimits
+     */
+    readonly walletHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ControlsApiGetCardLimits
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for getChannelRestriction operation in ControlsApi.
+ * @export
+ * @interface ControlsApiGetChannelRestrictionRequest
+ */
+export interface ControlsApiGetChannelRestrictionRequest {
+    /**
+     * Unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof ControlsApiGetChannelRestriction
+     */
+    readonly cardHashId: string
+
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ControlsApiGetChannelRestriction
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof ControlsApiGetChannelRestriction
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof ControlsApiGetChannelRestriction
+     */
+    readonly walletHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ControlsApiGetChannelRestriction
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for getMCCChannelRestrictions operation in ControlsApi.
+ * @export
+ * @interface ControlsApiGetMCCChannelRestrictionsRequest
+ */
+export interface ControlsApiGetMCCChannelRestrictionsRequest {
+    /**
+     * Unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof ControlsApiGetMCCChannelRestrictions
+     */
+    readonly cardHashId: string
+
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ControlsApiGetMCCChannelRestrictions
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof ControlsApiGetMCCChannelRestrictions
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof ControlsApiGetMCCChannelRestrictions
+     */
+    readonly walletHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ControlsApiGetMCCChannelRestrictions
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for limitsForAllCardsForACustomer operation in ControlsApi.
+ * @export
+ * @interface ControlsApiLimitsForAllCardsForACustomerRequest
+ */
+export interface ControlsApiLimitsForAllCardsForACustomerRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ControlsApiLimitsForAllCardsForACustomer
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof ControlsApiLimitsForAllCardsForACustomer
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof ControlsApiLimitsForAllCardsForACustomer
+     */
+    readonly walletHashId: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ControlsApiLimitsForAllCardsForACustomer
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for setCardLimits operation in ControlsApi.
+ * @export
+ * @interface ControlsApiSetCardLimitsRequest
+ */
+export interface ControlsApiSetCardLimitsRequest {
+    /**
+     * Unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof ControlsApiSetCardLimits
+     */
+    readonly cardHashId: string
+
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ControlsApiSetCardLimits
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof ControlsApiSetCardLimits
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof ControlsApiSetCardLimits
+     */
+    readonly walletHashId: string
+
+    /**
+     * transactionLimitsDTO
+     * @type {TransactionLimitsDTO}
+     * @memberof ControlsApiSetCardLimits
+     */
+    readonly transactionLimitsDTO: TransactionLimitsDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ControlsApiSetCardLimits
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for updateChannelRestriction operation in ControlsApi.
+ * @export
+ * @interface ControlsApiUpdateChannelRestrictionRequest
+ */
+export interface ControlsApiUpdateChannelRestrictionRequest {
+    /**
+     * Unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof ControlsApiUpdateChannelRestriction
+     */
+    readonly cardHashId: string
+
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ControlsApiUpdateChannelRestriction
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof ControlsApiUpdateChannelRestriction
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof ControlsApiUpdateChannelRestriction
+     */
+    readonly walletHashId: string
+
+    /**
+     * channelActionRequestDTO
+     * @type {ChannelActionRequestDTO}
+     * @memberof ControlsApiUpdateChannelRestriction
+     */
+    readonly channelActionRequestDTO: ChannelActionRequestDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ControlsApiUpdateChannelRestriction
+     */
+    readonly xRequestId?: string
+}
+
+/**
+ * Request parameters for updateMCCChannelRestrictions operation in ControlsApi.
+ * @export
+ * @interface ControlsApiUpdateMCCChannelRestrictionsRequest
+ */
+export interface ControlsApiUpdateMCCChannelRestrictionsRequest {
+    /**
+     * Unique card identifier generated while new/add-on card issuance.
+     * @type {string}
+     * @memberof ControlsApiUpdateMCCChannelRestrictions
+     */
+    readonly cardHashId: string
+
+    /**
+     * Unique client identifier generated and shared before API handshake.
+     * @type {string}
+     * @memberof ControlsApiUpdateMCCChannelRestrictions
+     */
+    readonly clientHashId: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof ControlsApiUpdateMCCChannelRestrictions
+     */
+    readonly customerHashId: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof ControlsApiUpdateMCCChannelRestrictions
+     */
+    readonly walletHashId: string
+
+    /**
+     * The API will work as below: • If the status is Active and channelStrategy is WHITE_LIST, then the MCC in the list only gets processed and the rest will be blocked • If the status is Inactive then the MCC whitelist restriction will be Inactive. • If the status is Active and channelStrategy is BLACK_LIST then only the MCC in the list will get blocked and the rest will be allowed. • If the status is Inactive then the MCC blacklist restriction will be Inactive • Either blacklist or whitelist can be enabled at one point in time.
+     * @type {MCCRestrictionDTO}
+     * @memberof ControlsApiUpdateMCCChannelRestrictions
+     */
+    readonly mCCRestrictionDTO: MCCRestrictionDTO
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ControlsApiUpdateMCCChannelRestrictions
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * ControlsApi - object-oriented interface
@@ -692,115 +970,85 @@ export class ControlsApi extends BaseAPI {
     /**
      * This API allows you to fetch card limits.
      * @summary Fetch Card Limits
-     * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ControlsApiGetCardLimitsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ControlsApi
      */
-    public getCardLimits(cardHashId: string, clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ControlsApiFp(this.configuration).getCardLimits(cardHashId, clientHashId, customerHashId, walletHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public getCardLimits(requestParameters: ControlsApiGetCardLimitsRequest, options?: RawAxiosRequestConfig) {
+        return ControlsApiFp(this.configuration).getCardLimits(requestParameters.cardHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API will get the restriction set at card level for all the channels, for example, instore, online, ATM, cross border, and magnetic stripe.
      * @summary Get Channel Restriction
-     * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ControlsApiGetChannelRestrictionRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ControlsApi
      */
-    public getChannelRestriction(cardHashId: string, clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ControlsApiFp(this.configuration).getChannelRestriction(cardHashId, clientHashId, customerHashId, walletHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public getChannelRestriction(requestParameters: ControlsApiGetChannelRestrictionRequest, options?: RawAxiosRequestConfig) {
+        return ControlsApiFp(this.configuration).getChannelRestriction(requestParameters.cardHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch MCC based channel restrictions at the card level.
      * @summary Get MCC Channel Restrictions
-     * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ControlsApiGetMCCChannelRestrictionsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ControlsApi
      */
-    public getMCCChannelRestrictions(cardHashId: string, clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ControlsApiFp(this.configuration).getMCCChannelRestrictions(cardHashId, clientHashId, customerHashId, walletHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public getMCCChannelRestrictions(requestParameters: ControlsApiGetMCCChannelRestrictionsRequest, options?: RawAxiosRequestConfig) {
+        return ControlsApiFp(this.configuration).getMCCChannelRestrictions(requestParameters.cardHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to fetch card level limits for all cards belonging to a customer.
      * @summary Limits For All Cards For A Customer
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ControlsApiLimitsForAllCardsForACustomerRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ControlsApi
      */
-    public limitsForAllCardsForACustomer(clientHashId: string, customerHashId: string, walletHashId: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ControlsApiFp(this.configuration).limitsForAllCardsForACustomer(clientHashId, customerHashId, walletHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public limitsForAllCardsForACustomer(requestParameters: ControlsApiLimitsForAllCardsForACustomerRequest, options?: RawAxiosRequestConfig) {
+        return ControlsApiFp(this.configuration).limitsForAllCardsForACustomer(requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to set card limits.
      * @summary Card Limits
-     * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {TransactionLimitsDTO} transactionLimitsDTO transactionLimitsDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ControlsApiSetCardLimitsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ControlsApi
      */
-    public setCardLimits(cardHashId: string, clientHashId: string, customerHashId: string, walletHashId: string, transactionLimitsDTO: TransactionLimitsDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ControlsApiFp(this.configuration).setCardLimits(cardHashId, clientHashId, customerHashId, walletHashId, transactionLimitsDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public setCardLimits(requestParameters: ControlsApiSetCardLimitsRequest, options?: RawAxiosRequestConfig) {
+        return ControlsApiFp(this.configuration).setCardLimits(requestParameters.cardHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.transactionLimitsDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API will restrict transaction at card level for a given channel, for example, in instore, online, ATM, cross border and magnetic stripe.
      * @summary Update Channel Restriction
-     * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {ChannelActionRequestDTO} channelActionRequestDTO channelActionRequestDTO
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ControlsApiUpdateChannelRestrictionRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ControlsApi
      */
-    public updateChannelRestriction(cardHashId: string, clientHashId: string, customerHashId: string, walletHashId: string, channelActionRequestDTO: ChannelActionRequestDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ControlsApiFp(this.configuration).updateChannelRestriction(cardHashId, clientHashId, customerHashId, walletHashId, channelActionRequestDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public updateChannelRestriction(requestParameters: ControlsApiUpdateChannelRestrictionRequest, options?: RawAxiosRequestConfig) {
+        return ControlsApiFp(this.configuration).updateChannelRestriction(requestParameters.cardHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.channelActionRequestDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * This API allows you to create MCC based channel restrictions at the card level.
      * @summary Update MCC Channel Restrictions
-     * @param {string} cardHashId Unique card identifier generated while new/add-on card issuance.
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake.
-     * @param {string} customerHashId Unique customer identifier generated on customer creation.
-     * @param {string} walletHashId Unique wallet identifier generated simultaneously with customer creation.
-     * @param {MCCRestrictionDTO} mCCRestrictionDTO The API will work as below: • If the status is Active and channelStrategy is WHITE_LIST, then the MCC in the list only gets processed and the rest will be blocked • If the status is Inactive then the MCC whitelist restriction will be Inactive. • If the status is Active and channelStrategy is BLACK_LIST then only the MCC in the list will get blocked and the rest will be allowed. • If the status is Inactive then the MCC blacklist restriction will be Inactive • Either blacklist or whitelist can be enabled at one point in time.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ControlsApiUpdateMCCChannelRestrictionsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ControlsApi
      */
-    public updateMCCChannelRestrictions(cardHashId: string, clientHashId: string, customerHashId: string, walletHashId: string, mCCRestrictionDTO: MCCRestrictionDTO, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ControlsApiFp(this.configuration).updateMCCChannelRestrictions(cardHashId, clientHashId, customerHashId, walletHashId, mCCRestrictionDTO, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public updateMCCChannelRestrictions(requestParameters: ControlsApiUpdateMCCChannelRestrictionsRequest, options?: RawAxiosRequestConfig) {
+        return ControlsApiFp(this.configuration).updateMCCChannelRestrictions(requestParameters.cardHashId, requestParameters.clientHashId, requestParameters.customerHashId, requestParameters.walletHashId, requestParameters.mCCRestrictionDTO, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

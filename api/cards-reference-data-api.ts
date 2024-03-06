@@ -143,20 +143,64 @@ export const CardsReferenceDataApiFactory = function (configuration?: Configurat
         /**
          * This API allows you to get the reference exchange rate.
          * @summary Reference Exchange Rate
-         * @param {string} cardScheme This field accepts the card scheme provider name: Visa Mastercard
-         * @param {string} clientHashId Unique customer identifier generated on customer creation.
-         * @param {number} fromAmount From Amount also known as transaction amount that will be converted from the fromCurrency and to the toCurrency.
-         * @param {string} fromCurrency This field contains the 3-letter [ISO-4217 currency code](doc:currency-and-country-codes) of the transaction currency. Should be one of the applicable EEA currencies (EUR, BGN, HRK, CZK, DKK, HUF, PLN, RON, SEK, GBP, ISK, CHF and NOK).
-         * @param {string} toCurrency This field contains the 3-letter [ISO-4217 currency code](doc:currency-and-country-codes) of the cardholder billing currency. Should be one of the applicable EEA currencies (EUR, BGN, HRK, CZK, DKK, HUF, PLN, RON, SEK, GBP, ISK, CHF and NOK)
-         * @param {string} [xRequestId] Enter a unique UUID value.
+         * @param {CardsReferenceDataApiReferenceExchangeRateRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        referenceExchangeRate(cardScheme: string, clientHashId: string, fromAmount: number, fromCurrency: string, toCurrency: string, xRequestId?: string, options?: any): AxiosPromise<ReferenceRateResponseDto> {
-            return localVarFp.referenceExchangeRate(cardScheme, clientHashId, fromAmount, fromCurrency, toCurrency, xRequestId, options).then((request) => request(axios, basePath));
+        referenceExchangeRate(requestParameters: CardsReferenceDataApiReferenceExchangeRateRequest, options?: RawAxiosRequestConfig): AxiosPromise<ReferenceRateResponseDto> {
+            return localVarFp.referenceExchangeRate(requestParameters.cardScheme, requestParameters.clientHashId, requestParameters.fromAmount, requestParameters.fromCurrency, requestParameters.toCurrency, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for referenceExchangeRate operation in CardsReferenceDataApi.
+ * @export
+ * @interface CardsReferenceDataApiReferenceExchangeRateRequest
+ */
+export interface CardsReferenceDataApiReferenceExchangeRateRequest {
+    /**
+     * This field accepts the card scheme provider name: Visa Mastercard
+     * @type {string}
+     * @memberof CardsReferenceDataApiReferenceExchangeRate
+     */
+    readonly cardScheme: string
+
+    /**
+     * Unique customer identifier generated on customer creation.
+     * @type {string}
+     * @memberof CardsReferenceDataApiReferenceExchangeRate
+     */
+    readonly clientHashId: string
+
+    /**
+     * From Amount also known as transaction amount that will be converted from the fromCurrency and to the toCurrency.
+     * @type {number}
+     * @memberof CardsReferenceDataApiReferenceExchangeRate
+     */
+    readonly fromAmount: number
+
+    /**
+     * This field contains the 3-letter [ISO-4217 currency code](doc:currency-and-country-codes) of the transaction currency. Should be one of the applicable EEA currencies (EUR, BGN, HRK, CZK, DKK, HUF, PLN, RON, SEK, GBP, ISK, CHF and NOK).
+     * @type {string}
+     * @memberof CardsReferenceDataApiReferenceExchangeRate
+     */
+    readonly fromCurrency: string
+
+    /**
+     * This field contains the 3-letter [ISO-4217 currency code](doc:currency-and-country-codes) of the cardholder billing currency. Should be one of the applicable EEA currencies (EUR, BGN, HRK, CZK, DKK, HUF, PLN, RON, SEK, GBP, ISK, CHF and NOK)
+     * @type {string}
+     * @memberof CardsReferenceDataApiReferenceExchangeRate
+     */
+    readonly toCurrency: string
+
+    /**
+     * Enter a unique UUID value.
+     * @type {string}
+     * @memberof CardsReferenceDataApiReferenceExchangeRate
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * CardsReferenceDataApi - object-oriented interface
@@ -168,18 +212,13 @@ export class CardsReferenceDataApi extends BaseAPI {
     /**
      * This API allows you to get the reference exchange rate.
      * @summary Reference Exchange Rate
-     * @param {string} cardScheme This field accepts the card scheme provider name: Visa Mastercard
-     * @param {string} clientHashId Unique customer identifier generated on customer creation.
-     * @param {number} fromAmount From Amount also known as transaction amount that will be converted from the fromCurrency and to the toCurrency.
-     * @param {string} fromCurrency This field contains the 3-letter [ISO-4217 currency code](doc:currency-and-country-codes) of the transaction currency. Should be one of the applicable EEA currencies (EUR, BGN, HRK, CZK, DKK, HUF, PLN, RON, SEK, GBP, ISK, CHF and NOK).
-     * @param {string} toCurrency This field contains the 3-letter [ISO-4217 currency code](doc:currency-and-country-codes) of the cardholder billing currency. Should be one of the applicable EEA currencies (EUR, BGN, HRK, CZK, DKK, HUF, PLN, RON, SEK, GBP, ISK, CHF and NOK)
-     * @param {string} [xRequestId] Enter a unique UUID value.
+     * @param {CardsReferenceDataApiReferenceExchangeRateRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CardsReferenceDataApi
      */
-    public referenceExchangeRate(cardScheme: string, clientHashId: string, fromAmount: number, fromCurrency: string, toCurrency: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return CardsReferenceDataApiFp(this.configuration).referenceExchangeRate(cardScheme, clientHashId, fromAmount, fromCurrency, toCurrency, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public referenceExchangeRate(requestParameters: CardsReferenceDataApiReferenceExchangeRateRequest, options?: RawAxiosRequestConfig) {
+        return CardsReferenceDataApiFp(this.configuration).referenceExchangeRate(requestParameters.cardScheme, requestParameters.clientHashId, requestParameters.fromAmount, requestParameters.fromCurrency, requestParameters.toCurrency, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

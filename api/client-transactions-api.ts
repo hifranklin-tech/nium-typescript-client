@@ -293,46 +293,246 @@ export const ClientTransactionsApiFactory = function (configuration?: Configurat
         /**
          * This API allows you to fetch transaction details at the client level.
          * @summary Client Transactions
-         * @param {string} clientHashId Unique client identifier generated and shared before API handshake. &gt;ℹ️ INFO  &gt;Query parameters are optional. If query parameters are not passed then by default three months transactions will be returned.
-         * @param {string} [authCode] This parameter can be used to filter the transactions based on the authorization code. In case of fund wallet transactions you can provide the systemReferenceNumber as value.
-         * @param {string} [authCurrency] This parameter can filter the transactions based on auth currency and accepts 3-letter [ISO-4217 transaction currency code](https://docs.nium.com/apis/docs/currency-and-country-codes).
-         * @param {boolean} [businessTransaction] This parameter can filter the transactions based on businessTransaction flag.
-         * @param {string} [cardHashId] This field can apply the filter based on the unique card identifier generated during new/add-on card issuance.
-         * @param {string} [childCustomerHashId] This field contains the unique child customer identifier generated when new child customer created.
-         * @param {string} [customerHashId] Unique identifier generated with customer creation.
-         * @param {string} [endDate] End date for fetching the transaction details. The format for endDate is YYYY-MM-DD.
-         * @param {string} [mcc] This parameter can filter the transactions based on 4-digit Merchant Category Codes.
-         * @param {string} [merchantCategories] This parameter describes the merchant\&#39;s type of business product or service, also known as the Merchant Category Code (MCC) such as Airlines, Restaurants etc.
-         * @param {string} [merchantCity] This parameter can filter the transactions based on the merchant city field.
-         * @param {string} [merchantCountries] This parameter can filter the transactions based on comma-separated list of 2-letter ISO merchant countries.
-         * @param {string} [merchantCountry] This parameter can filter the transactions based on the merchant country field.
-         * @param {string} [merchantName] This parameter can filter the transactions based on the merchant name field.
-         * @param {ClientTransactionsOrderEnum} [order] The sort order for the results.
-         * @param {number} [page] This API may have lot of data in response and supports pagination. Entire response data is divided into pages with size as the upper limit on the number of data. Integer values from 0 onwards are acceptable. Default page is 0.
-         * @param {string} [paymentInstrumentHashId] This parameter can filter the transactions based on comma-separated paymentInstrumentHashId.
-         * @param {string} [property] The field indicates the response parameter used to sort paginated data, with \&#39;createdAt\&#39; as the default parameter.
-         * @param {string} [settlementDate] This parameter can filter the transactions based on the settlement date of the transaction in format yyyyMMdd.
-         * @param {string} [settlementStatus] This parameter can filter the transactions based on settlement status. The detailed list of possible values is available in the response of this API.
-         * @param {number} [size] This will decide the number of elements per page. Typical values can be 1-20.
-         * @param {string} [startDate] From date for fetching the transaction details. The format for startDate is YYYY-MM-DD.
-         * @param {ClientTransactionsStatusEnum} [status] This parameter can filter the transactions based on status. The detailed list of possible values is available in the response of this API.
-         * @param {string} [systemTraceAuditNumber] This parameter can filter the transactions based on systemTraceAuditNumber.
-         * @param {string} [tagKey] This parameter can filter the transactions, based on the exact value of tagKey defined against transactions. This can be used as an independent search parameter.
-         * @param {string} [tagValue] This parameter can filter the transactions, based on the approximating value of tagValue(that may be mapped for a tagKey defined against transactions). This can be used as an independent search parameter.
-         * @param {string} [transactionCurrency] This field contains the 3-letter [ISO-4217 transaction currency code](https://www.iso.org/iso-4217-currency-codes.html).
-         * @param {string} [transactionType] This field contains the transaction can be one of the complete list of transactions mentioned in [Glossary of Transaction Types](https://docs.nium.com/baas/get-transactions#glossary-of-transaction-types).
-         * @param {string} [transactionsLabelsKey] This parameter can filter the transactions based on transactionsLabelsKey.
-         * @param {string} [transactionsLabelsValue] This parameter can filter the transactions based on transactionsLabelsValue.
-         * @param {string} [walletHashId] Unique wallet identifier generated simultaneously with customer creation.
-         * @param {string} [xRequestId] Enter a unique UUID value
+         * @param {ClientTransactionsApiClientTransactionsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        clientTransactions(clientHashId: string, authCode?: string, authCurrency?: string, businessTransaction?: boolean, cardHashId?: string, childCustomerHashId?: string, customerHashId?: string, endDate?: string, mcc?: string, merchantCategories?: string, merchantCity?: string, merchantCountries?: string, merchantCountry?: string, merchantName?: string, order?: ClientTransactionsOrderEnum, page?: number, paymentInstrumentHashId?: string, property?: string, settlementDate?: string, settlementStatus?: string, size?: number, startDate?: string, status?: ClientTransactionsStatusEnum, systemTraceAuditNumber?: string, tagKey?: string, tagValue?: string, transactionCurrency?: string, transactionType?: string, transactionsLabelsKey?: string, transactionsLabelsValue?: string, walletHashId?: string, xRequestId?: string, options?: any): AxiosPromise<ClientTransactionsResponseDTO> {
-            return localVarFp.clientTransactions(clientHashId, authCode, authCurrency, businessTransaction, cardHashId, childCustomerHashId, customerHashId, endDate, mcc, merchantCategories, merchantCity, merchantCountries, merchantCountry, merchantName, order, page, paymentInstrumentHashId, property, settlementDate, settlementStatus, size, startDate, status, systemTraceAuditNumber, tagKey, tagValue, transactionCurrency, transactionType, transactionsLabelsKey, transactionsLabelsValue, walletHashId, xRequestId, options).then((request) => request(axios, basePath));
+        clientTransactions(requestParameters: ClientTransactionsApiClientTransactionsRequest, options?: RawAxiosRequestConfig): AxiosPromise<ClientTransactionsResponseDTO> {
+            return localVarFp.clientTransactions(requestParameters.clientHashId, requestParameters.authCode, requestParameters.authCurrency, requestParameters.businessTransaction, requestParameters.cardHashId, requestParameters.childCustomerHashId, requestParameters.customerHashId, requestParameters.endDate, requestParameters.mcc, requestParameters.merchantCategories, requestParameters.merchantCity, requestParameters.merchantCountries, requestParameters.merchantCountry, requestParameters.merchantName, requestParameters.order, requestParameters.page, requestParameters.paymentInstrumentHashId, requestParameters.property, requestParameters.settlementDate, requestParameters.settlementStatus, requestParameters.size, requestParameters.startDate, requestParameters.status, requestParameters.systemTraceAuditNumber, requestParameters.tagKey, requestParameters.tagValue, requestParameters.transactionCurrency, requestParameters.transactionType, requestParameters.transactionsLabelsKey, requestParameters.transactionsLabelsValue, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(axios, basePath));
         },
     };
 };
+
+/**
+ * Request parameters for clientTransactions operation in ClientTransactionsApi.
+ * @export
+ * @interface ClientTransactionsApiClientTransactionsRequest
+ */
+export interface ClientTransactionsApiClientTransactionsRequest {
+    /**
+     * Unique client identifier generated and shared before API handshake. &gt;ℹ️ INFO  &gt;Query parameters are optional. If query parameters are not passed then by default three months transactions will be returned.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly clientHashId: string
+
+    /**
+     * This parameter can be used to filter the transactions based on the authorization code. In case of fund wallet transactions you can provide the systemReferenceNumber as value.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly authCode?: string
+
+    /**
+     * This parameter can filter the transactions based on auth currency and accepts 3-letter [ISO-4217 transaction currency code](https://docs.nium.com/apis/docs/currency-and-country-codes).
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly authCurrency?: string
+
+    /**
+     * This parameter can filter the transactions based on businessTransaction flag.
+     * @type {boolean}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly businessTransaction?: boolean
+
+    /**
+     * This field can apply the filter based on the unique card identifier generated during new/add-on card issuance.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly cardHashId?: string
+
+    /**
+     * This field contains the unique child customer identifier generated when new child customer created.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly childCustomerHashId?: string
+
+    /**
+     * Unique identifier generated with customer creation.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly customerHashId?: string
+
+    /**
+     * End date for fetching the transaction details. The format for endDate is YYYY-MM-DD.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly endDate?: string
+
+    /**
+     * This parameter can filter the transactions based on 4-digit Merchant Category Codes.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly mcc?: string
+
+    /**
+     * This parameter describes the merchant\&#39;s type of business product or service, also known as the Merchant Category Code (MCC) such as Airlines, Restaurants etc.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly merchantCategories?: string
+
+    /**
+     * This parameter can filter the transactions based on the merchant city field.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly merchantCity?: string
+
+    /**
+     * This parameter can filter the transactions based on comma-separated list of 2-letter ISO merchant countries.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly merchantCountries?: string
+
+    /**
+     * This parameter can filter the transactions based on the merchant country field.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly merchantCountry?: string
+
+    /**
+     * This parameter can filter the transactions based on the merchant name field.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly merchantName?: string
+
+    /**
+     * The sort order for the results.
+     * @type {'ASC' | 'DESC'}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly order?: ClientTransactionsOrderEnum
+
+    /**
+     * This API may have lot of data in response and supports pagination. Entire response data is divided into pages with size as the upper limit on the number of data. Integer values from 0 onwards are acceptable. Default page is 0.
+     * @type {number}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly page?: number
+
+    /**
+     * This parameter can filter the transactions based on comma-separated paymentInstrumentHashId.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly paymentInstrumentHashId?: string
+
+    /**
+     * The field indicates the response parameter used to sort paginated data, with \&#39;createdAt\&#39; as the default parameter.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly property?: string
+
+    /**
+     * This parameter can filter the transactions based on the settlement date of the transaction in format yyyyMMdd.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly settlementDate?: string
+
+    /**
+     * This parameter can filter the transactions based on settlement status. The detailed list of possible values is available in the response of this API.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly settlementStatus?: string
+
+    /**
+     * This will decide the number of elements per page. Typical values can be 1-20.
+     * @type {number}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly size?: number
+
+    /**
+     * From date for fetching the transaction details. The format for startDate is YYYY-MM-DD.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly startDate?: string
+
+    /**
+     * This parameter can filter the transactions based on status. The detailed list of possible values is available in the response of this API.
+     * @type {'NULL' | 'IN_PROGRESS' | 'ACTION_REQUIRED' | 'RFI_REQUESTED' | 'RFI_RESPONDED' | 'COMPLETED' | 'ERROR' | 'REJECT' | 'EXPIRED'}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly status?: ClientTransactionsStatusEnum
+
+    /**
+     * This parameter can filter the transactions based on systemTraceAuditNumber.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly systemTraceAuditNumber?: string
+
+    /**
+     * This parameter can filter the transactions, based on the exact value of tagKey defined against transactions. This can be used as an independent search parameter.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly tagKey?: string
+
+    /**
+     * This parameter can filter the transactions, based on the approximating value of tagValue(that may be mapped for a tagKey defined against transactions). This can be used as an independent search parameter.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly tagValue?: string
+
+    /**
+     * This field contains the 3-letter [ISO-4217 transaction currency code](https://www.iso.org/iso-4217-currency-codes.html).
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly transactionCurrency?: string
+
+    /**
+     * This field contains the transaction can be one of the complete list of transactions mentioned in [Glossary of Transaction Types](https://docs.nium.com/baas/get-transactions#glossary-of-transaction-types).
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly transactionType?: string
+
+    /**
+     * This parameter can filter the transactions based on transactionsLabelsKey.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly transactionsLabelsKey?: string
+
+    /**
+     * This parameter can filter the transactions based on transactionsLabelsValue.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly transactionsLabelsValue?: string
+
+    /**
+     * Unique wallet identifier generated simultaneously with customer creation.
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly walletHashId?: string
+
+    /**
+     * Enter a unique UUID value
+     * @type {string}
+     * @memberof ClientTransactionsApiClientTransactions
+     */
+    readonly xRequestId?: string
+}
 
 /**
  * ClientTransactionsApi - object-oriented interface
@@ -344,44 +544,13 @@ export class ClientTransactionsApi extends BaseAPI {
     /**
      * This API allows you to fetch transaction details at the client level.
      * @summary Client Transactions
-     * @param {string} clientHashId Unique client identifier generated and shared before API handshake. &gt;ℹ️ INFO  &gt;Query parameters are optional. If query parameters are not passed then by default three months transactions will be returned.
-     * @param {string} [authCode] This parameter can be used to filter the transactions based on the authorization code. In case of fund wallet transactions you can provide the systemReferenceNumber as value.
-     * @param {string} [authCurrency] This parameter can filter the transactions based on auth currency and accepts 3-letter [ISO-4217 transaction currency code](https://docs.nium.com/apis/docs/currency-and-country-codes).
-     * @param {boolean} [businessTransaction] This parameter can filter the transactions based on businessTransaction flag.
-     * @param {string} [cardHashId] This field can apply the filter based on the unique card identifier generated during new/add-on card issuance.
-     * @param {string} [childCustomerHashId] This field contains the unique child customer identifier generated when new child customer created.
-     * @param {string} [customerHashId] Unique identifier generated with customer creation.
-     * @param {string} [endDate] End date for fetching the transaction details. The format for endDate is YYYY-MM-DD.
-     * @param {string} [mcc] This parameter can filter the transactions based on 4-digit Merchant Category Codes.
-     * @param {string} [merchantCategories] This parameter describes the merchant\&#39;s type of business product or service, also known as the Merchant Category Code (MCC) such as Airlines, Restaurants etc.
-     * @param {string} [merchantCity] This parameter can filter the transactions based on the merchant city field.
-     * @param {string} [merchantCountries] This parameter can filter the transactions based on comma-separated list of 2-letter ISO merchant countries.
-     * @param {string} [merchantCountry] This parameter can filter the transactions based on the merchant country field.
-     * @param {string} [merchantName] This parameter can filter the transactions based on the merchant name field.
-     * @param {ClientTransactionsOrderEnum} [order] The sort order for the results.
-     * @param {number} [page] This API may have lot of data in response and supports pagination. Entire response data is divided into pages with size as the upper limit on the number of data. Integer values from 0 onwards are acceptable. Default page is 0.
-     * @param {string} [paymentInstrumentHashId] This parameter can filter the transactions based on comma-separated paymentInstrumentHashId.
-     * @param {string} [property] The field indicates the response parameter used to sort paginated data, with \&#39;createdAt\&#39; as the default parameter.
-     * @param {string} [settlementDate] This parameter can filter the transactions based on the settlement date of the transaction in format yyyyMMdd.
-     * @param {string} [settlementStatus] This parameter can filter the transactions based on settlement status. The detailed list of possible values is available in the response of this API.
-     * @param {number} [size] This will decide the number of elements per page. Typical values can be 1-20.
-     * @param {string} [startDate] From date for fetching the transaction details. The format for startDate is YYYY-MM-DD.
-     * @param {ClientTransactionsStatusEnum} [status] This parameter can filter the transactions based on status. The detailed list of possible values is available in the response of this API.
-     * @param {string} [systemTraceAuditNumber] This parameter can filter the transactions based on systemTraceAuditNumber.
-     * @param {string} [tagKey] This parameter can filter the transactions, based on the exact value of tagKey defined against transactions. This can be used as an independent search parameter.
-     * @param {string} [tagValue] This parameter can filter the transactions, based on the approximating value of tagValue(that may be mapped for a tagKey defined against transactions). This can be used as an independent search parameter.
-     * @param {string} [transactionCurrency] This field contains the 3-letter [ISO-4217 transaction currency code](https://www.iso.org/iso-4217-currency-codes.html).
-     * @param {string} [transactionType] This field contains the transaction can be one of the complete list of transactions mentioned in [Glossary of Transaction Types](https://docs.nium.com/baas/get-transactions#glossary-of-transaction-types).
-     * @param {string} [transactionsLabelsKey] This parameter can filter the transactions based on transactionsLabelsKey.
-     * @param {string} [transactionsLabelsValue] This parameter can filter the transactions based on transactionsLabelsValue.
-     * @param {string} [walletHashId] Unique wallet identifier generated simultaneously with customer creation.
-     * @param {string} [xRequestId] Enter a unique UUID value
+     * @param {ClientTransactionsApiClientTransactionsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ClientTransactionsApi
      */
-    public clientTransactions(clientHashId: string, authCode?: string, authCurrency?: string, businessTransaction?: boolean, cardHashId?: string, childCustomerHashId?: string, customerHashId?: string, endDate?: string, mcc?: string, merchantCategories?: string, merchantCity?: string, merchantCountries?: string, merchantCountry?: string, merchantName?: string, order?: ClientTransactionsOrderEnum, page?: number, paymentInstrumentHashId?: string, property?: string, settlementDate?: string, settlementStatus?: string, size?: number, startDate?: string, status?: ClientTransactionsStatusEnum, systemTraceAuditNumber?: string, tagKey?: string, tagValue?: string, transactionCurrency?: string, transactionType?: string, transactionsLabelsKey?: string, transactionsLabelsValue?: string, walletHashId?: string, xRequestId?: string, options?: RawAxiosRequestConfig) {
-        return ClientTransactionsApiFp(this.configuration).clientTransactions(clientHashId, authCode, authCurrency, businessTransaction, cardHashId, childCustomerHashId, customerHashId, endDate, mcc, merchantCategories, merchantCity, merchantCountries, merchantCountry, merchantName, order, page, paymentInstrumentHashId, property, settlementDate, settlementStatus, size, startDate, status, systemTraceAuditNumber, tagKey, tagValue, transactionCurrency, transactionType, transactionsLabelsKey, transactionsLabelsValue, walletHashId, xRequestId, options).then((request) => request(this.axios, this.basePath));
+    public clientTransactions(requestParameters: ClientTransactionsApiClientTransactionsRequest, options?: RawAxiosRequestConfig) {
+        return ClientTransactionsApiFp(this.configuration).clientTransactions(requestParameters.clientHashId, requestParameters.authCode, requestParameters.authCurrency, requestParameters.businessTransaction, requestParameters.cardHashId, requestParameters.childCustomerHashId, requestParameters.customerHashId, requestParameters.endDate, requestParameters.mcc, requestParameters.merchantCategories, requestParameters.merchantCity, requestParameters.merchantCountries, requestParameters.merchantCountry, requestParameters.merchantName, requestParameters.order, requestParameters.page, requestParameters.paymentInstrumentHashId, requestParameters.property, requestParameters.settlementDate, requestParameters.settlementStatus, requestParameters.size, requestParameters.startDate, requestParameters.status, requestParameters.systemTraceAuditNumber, requestParameters.tagKey, requestParameters.tagValue, requestParameters.transactionCurrency, requestParameters.transactionType, requestParameters.transactionsLabelsKey, requestParameters.transactionsLabelsValue, requestParameters.walletHashId, requestParameters.xRequestId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
