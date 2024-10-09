@@ -1,4 +1,4 @@
-## nium-client@2023.12.12
+## nium-client@2024.8.20
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install nium-client@2023.12.12 --save
+npm install nium-client@2024.8.20 --save
 ```
 
 _unPublished (not recommended):_

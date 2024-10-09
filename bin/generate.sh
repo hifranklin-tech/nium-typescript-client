@@ -4,6 +4,8 @@ openapi-generator generate \
   --input-spec ./vendor/nium-openapi/nium.yaml \
   --output . \
   --package-name=nium \
+  --skip-validate-spec \
+  --global-property apiTests=false,modelTests=false \
   --additional-properties="withNodeImports=true" \
   --additional-properties="withSeparateModelsAndApi=true" \
   --additional-properties="npmName=nium-client" \
