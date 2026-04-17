@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+set -e
+
+echo "Generating nium-client from OpenAPI spec..."
+
 openapi-generator generate \
   --generator-name typescript-axios \
   --input-spec ./vendor/nium-openapi/nium.yaml \
@@ -6,9 +10,14 @@ openapi-generator generate \
   --package-name=nium \
   --skip-validate-spec \
   --global-property apiTests=false,modelTests=false \
-  --additional-properties="withNodeImports=true" \
+  --additional-properties="withNodeImports=false" \
   --additional-properties="withSeparateModelsAndApi=true" \
   --additional-properties="npmName=nium-client" \
   --additional-properties="apiPackage=api" \
   --additional-properties="modelPackage=model" \
-  --additional-properties="useSingleRequestParameter=true" \
+  --additional-properties="useSingleRequestParameter=true"
+
+echo "Running post-generation cleanup..."
+./bin/post-generate.sh
+
+echo "✅ Generation complete!" \

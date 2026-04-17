@@ -1,4 +1,0 @@
-[submodule "vendor/nium-openapi"]
-  path = vendor/nium-openapi
-  url = https://github.com/nium-global/nium-openapi.git
-  branch = main
