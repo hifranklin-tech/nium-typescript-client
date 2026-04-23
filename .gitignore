@@ -2,4 +2,5 @@ wwwroot/*.js
 node_modules
 typings
 dist
-.turbo/
+.claude/settings.local.json
+vendor/nium-openapi/
