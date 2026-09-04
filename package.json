@@ -24,8 +24,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
-    "prepare": "npm run build"
+    "build": "npm run compile",
+    "compile": "tsc",
+    "prepublishOnly": "npm run compile"
   },
   "dependencies": {
     "axios": "1.18.1"
