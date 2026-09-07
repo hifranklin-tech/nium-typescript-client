@@ -21,7 +21,7 @@ export interface ProductNatureOfBusiness {
     /**
      * An array of industry sector codes that apply for the corporate customer\'s business. Use Fetch corporate constants API for a valid set of values using industrySector category.
      */
-    'industryCodes'?: string;
+    'industryCodes'?: Array<string>;
     /**
      * Text field description of the intended use of the account of the corporate customer. Min 20 characters.
      */

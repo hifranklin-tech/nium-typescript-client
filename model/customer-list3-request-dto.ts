@@ -58,7 +58,8 @@ export interface CustomerList3RequestDTO {
 }
 
 export const CustomerList3RequestDTOCustomerTypeEnum = {
-    IndividualCorporate: 'INDIVIDUAL, CORPORATE',
+    Individual: 'INDIVIDUAL',
+    Corporate: 'CORPORATE',
 } as const;
 
 export type CustomerList3RequestDTOCustomerTypeEnum = typeof CustomerList3RequestDTOCustomerTypeEnum[keyof typeof CustomerList3RequestDTOCustomerTypeEnum];

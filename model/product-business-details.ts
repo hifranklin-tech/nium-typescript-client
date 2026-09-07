@@ -43,6 +43,12 @@ import type { ProductRegulatoryDetails } from './product-regulatory-details';
 // May contain unused imports in some cases
 // @ts-ignore
 import type { RevenueInfo } from './revenue-info';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { ProductStakeholders } from './product-stakeholders';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { ProductTaxDetails } from './product-tax-details';
 
 export interface ProductBusinessDetails {
     /**
@@ -50,7 +56,7 @@ export interface ProductBusinessDetails {
      */
     'additionalInfo'?: { [key: string]: string; };
     'addresses'?: ProductAddresses;
-    'applicantDetails': ProductApplicantDetails;
+    'applicantDetails'?: ProductApplicantDetails;
     'associationDetails'?: ProductAssociationDetails;
     'bankAccountDetails'?: ProductBankAccountDetails;
     'businessInOtherCountries'?: Array<any>;
@@ -110,7 +116,7 @@ export interface ProductBusinessDetails {
     /**
      * An array of stakeholder objects representing individual or business entities associated with the corporate customer, such as directors or ultimate beneficial owners (UBOs).    Each stakeholder can be either a natural person or a legal entity.
      */
-    'stakeholders'?: string;
+    'stakeholders'?: Array<ProductStakeholders>;
     /**
      * The stock ticker symbol under which the corporate customer’s shares are traded on a public exchange. Applicable only if the business is publicly listed.
      */
@@ -118,7 +124,7 @@ export interface ProductBusinessDetails {
     /**
      * An array of objects containing the individual\'s tax-related information.
      */
-    'taxDetails'?: string;
+    'taxDetails'?: Array<ProductTaxDetails>;
     'ticker'?: string;
     /**
      * An alternate name the corporate customer uses to conduct business, different from their registered business name.

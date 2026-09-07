@@ -17,6 +17,7 @@ Completion: the requested version and the generated spec version are the same.
 
 - Confirm `openapi-generator version` succeeds. If it is unavailable, ask the user to install it with `brew install openapi-generator`.
 - Run `./bin/generate.sh`.
+- Run `./bin/post-generate.sh` to apply required generated-client fixes.
 - Set the package version to the requested version:
 
   ```sh
@@ -25,7 +26,7 @@ Completion: the requested version and the generated spec version are the same.
 
 - If README lacks generation prerequisites, add the Homebrew installation command and the generation command.
 
-Completion: generated source reflects the requested public spec and `package.json` has the matching version.
+Completion: generated source reflects the requested public spec, post-generation fixes are applied, and `package.json` has the matching version.
 
 ## 3. Verify the package
 

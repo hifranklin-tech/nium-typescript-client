@@ -33,6 +33,9 @@ import type { Preferences } from './preferences';
 import type { RemitterRequestDTO } from './remitter-request-dto';
 // May contain unused imports in some cases
 // @ts-ignore
+import type { RemittanceTransactionsRequestDTOBeneficiary } from './remittance-transactions-request-dtobeneficiary';
+// May contain unused imports in some cases
+// @ts-ignore
 import type { WalletDeviceDetailsDTO } from './wallet-device-details-dto';
 
 /**
@@ -47,7 +50,7 @@ export interface RemittanceTransactionsRequestDTO {
     /**
      * This object will accept the beneficiary details.
      */
-    'beneficiary': string;
+    'beneficiary': RemittanceTransactionsRequestDTOBeneficiary;
     /**
      * The bank code of a correspondent bank to route SWIFT payments through.  Use this field if you prefer to specify a bank instead of using Nium\'s automatic routing.
      */

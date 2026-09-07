@@ -13,6 +13,9 @@
  */
 
 
+// May contain unused imports in some cases
+// @ts-ignore
+import type { ProductDocument } from './product-document';
 
 /**
  * Details of the uploaded document.
@@ -21,7 +24,7 @@ export interface ProductDocumentDetail {
     /**
      * An object that accepts and contains the document(s) to be uploaded.
      */
-    'document'?: string;
+    'document'?: Array<ProductDocument>;
     /**
      * This field accepts the color of the document for Medicare cards. AU: Optional EU: Optional UK: Optional SG: Optional
      */

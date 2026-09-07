@@ -29,7 +29,7 @@ export interface ExpectedAccountUsage {
     /**
      * An array holding the intended uses of the account. Use the [Fetch Corporate Constants](/api#tag/customer-account---corporate/GET/api/v2/client/{clientHashId}/onboarding/constants) request for a list of valid values.
      */
-    'intendedUses'?: string;
+    'intendedUses'?: Array<string>;
     /**
      * Text field description of the intended use of the account of the corporate customer.  Minimum 20 characters
      */

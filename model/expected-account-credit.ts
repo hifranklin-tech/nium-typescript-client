@@ -33,10 +33,10 @@ export interface ExpectedAccountCredit {
     /**
      * Array of expected primary remitters. Can be specific companies or types of entities (e.g., Ryan Air, John Smith, employees of the corporataion).
      */
-    'topRemitters'?: Set<string>;
+    'topRemitters'?: Array<string>;
     /**
      * Top payin countries. Use the [Fetch Corporate Constants](/api#tag/customer-account---corporate/GET/api/v2/client/{clientHashId}/onboarding/constants) request for a list of valid values.
      */
-    'topTransactionCountries'?: Set<string>;
+    'topTransactionCountries'?: Array<string>;
 }
 
