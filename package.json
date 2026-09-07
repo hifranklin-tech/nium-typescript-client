@@ -1,6 +1,6 @@
 {
   "name": "@hifranklin-tech/nium-client",
-  "version": "2025.9.9",
+  "version": "2026.8.27",
   "description": "OpenAPI client for the NIUM payment platform API",
   "author": "OpenAPI-Generator Contributors",
   "repository": {

@@ -1,0 +1,45 @@
+# SGFullApplicantDetailsCreate
+
+Applicant create Details for SG region, Full KYC
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**address** | [**AddressDTO**](AddressDTO.md) |  | [default to undefined]
+**dateOfBirth** | **string** | DOB of the applicant. | [default to undefined]
+**email** | **string** | Email of the customer | [default to undefined]
+**externalId** | **string** | referenceId to identify the applicant | [optional] [default to undefined]
+**firstName** | **string** | Ffirst name of the applicant | [default to undefined]
+**lastName** | **string** | Last name of the applicant | [default to undefined]
+**middleName** | **string** | Middle name of the applicant | [optional] [default to undefined]
+**mobile** | **string** | numeric mobile number without the country code | [default to undefined]
+**mobileCountryCode** | **string** | 2 digit country code for mobile numbers | [default to undefined]
+**nationality** | **string** | nationality of the applicant | [default to undefined]
+**sharePercentage** | **string** |  | [optional] [default to undefined]
+**positions** | [**Array&lt;AUPositionDetails&gt;**](AUPositionDetails.md) | Positions held by the applicant in the company. More than one position title can be selected | [default to undefined]
+**documents** | [**Array&lt;AUFullApplicantDetailsCreateAllOfDocuments&gt;**](AUFullApplicantDetailsCreateAllOfDocuments.md) |  | [optional] [default to undefined]
+
+## Example
+
+```typescript
+import { SGFullApplicantDetailsCreate } from 'nium-client';
+
+const instance: SGFullApplicantDetailsCreate = {
+    address,
+    dateOfBirth,
+    email,
+    externalId,
+    firstName,
+    lastName,
+    middleName,
+    mobile,
+    mobileCountryCode,
+    nationality,
+    sharePercentage,
+    positions,
+    documents,
+};
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
