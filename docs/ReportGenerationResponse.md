@@ -1,0 +1,24 @@
+# ReportGenerationResponse
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**message** | **string** |  | [optional] [default to undefined]
+**reportRequestId** | **string** |  | [optional] [default to undefined]
+**status** | **string** |  | [optional] [default to undefined]
+
+## Example
+
+```typescript
+import { ReportGenerationResponse } from 'nium-client';
+
+const instance: ReportGenerationResponse = {
+    message,
+    reportRequestId,
+    status,
+};
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
