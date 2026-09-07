@@ -48,7 +48,8 @@ Completion: the build succeeds and a correctly versioned tarball exists.
 - Commit the generated upgrade on a branch named `upgrade-to-v<version>`.
 - Push the branch.
 - When the request includes a release, create and push annotated tag `v<version>`, then confirm the remote tag dereferences to the release commit before creating a GitHub release with the packed tarball attached.
-- Verify the release is published and its asset is present.
+- To repair an existing release, delete and recreate the release against its existing tag; retain the tag at its verified commit.
+- Verify the release is published, its versioned asset URL returns HTTP 200, and the uploaded asset's SHA-256 matches the local tarball.
 - Remove the local tarball after release verification.
 
 Completion: the requested commit, branch, and—when requested—tag and release exist remotely.
