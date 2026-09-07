@@ -16,8 +16,7 @@ Completion: the requested version and the generated spec version are the same.
 ## 2. Generate
 
 - Confirm `openapi-generator version` succeeds. If it is unavailable, ask the user to install it with `brew install openapi-generator`.
-- Run `./bin/generate.sh`.
-- Run `./bin/post-generate.sh` to apply required generated-client fixes.
+- Run `./bin/generate.sh`; it applies required post-generation fixes.
 - Set the package version to the requested version:
 
   ```sh
@@ -26,7 +25,7 @@ Completion: the requested version and the generated spec version are the same.
 
 - If README lacks generation prerequisites, add the Homebrew installation command and the generation command.
 
-Completion: generated source reflects the requested public spec, post-generation fixes are applied, and `package.json` has the matching version.
+Completion: generated source reflects the requested public spec with post-generation fixes applied, and `package.json` has the matching version.
 
 ## 3. Verify the package
 
@@ -48,7 +47,7 @@ Completion: the build succeeds and a correctly versioned tarball exists.
 
 - Commit the generated upgrade on a branch named `upgrade-to-v<version>`.
 - Push the branch.
-- When the request includes a release, create and push annotated tag `v<version>`, then create a GitHub release with the packed tarball attached.
+- When the request includes a release, create and push annotated tag `v<version>`, then confirm the remote tag dereferences to the release commit before creating a GitHub release with the packed tarball attached.
 - Verify the release is published and its asset is present.
 - Remove the local tarball after release verification.
 
