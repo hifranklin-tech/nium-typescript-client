@@ -12,6 +12,12 @@ replacements = {
             "    Individual: 'INDIVIDUAL',\n    Corporate: 'CORPORATE'",
         ),
     ],
+    "model/block-and-replace-card-request-dto.ts": [
+        (
+            "    FraudLostStolenDamaged: 'fraud, lost, stolen, damaged'",
+            "    Fraud: 'fraud',\n    Lost: 'lost',\n    Stolen: 'stolen',\n    Damaged: 'damaged'",
+        ),
+    ],
     "model/expected-account-credit.ts": [
         ("'topRemitters'?: Set<string>;", "'topRemitters'?: Array<string>;"),
         ("'topTransactionCountries'?: Set<string>;", "'topTransactionCountries'?: Array<string>;"),
