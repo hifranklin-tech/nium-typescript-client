@@ -47,7 +47,10 @@ export interface BlockCodeDTO {
 }
 
 export const BlockCodeDTOReasonEnum = {
-    FraudCardLostCardStolendamaged: 'fraud, cardLost, cardStolen,damaged'
+    Fraud: 'fraud',
+    CardLost: 'cardLost',
+    CardStolen: 'cardStolen',
+    Damaged: 'damaged',
 } as const;
 
 export type BlockCodeDTOReasonEnum = typeof BlockCodeDTOReasonEnum[keyof typeof BlockCodeDTOReasonEnum];

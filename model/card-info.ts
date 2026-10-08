@@ -57,7 +57,11 @@ export interface CardInfo {
 }
 
 export const CardInfoCardStatusEnum = {
-    InactiveactivevirtualActivetempBlockpBlock: 'INACTIVE,ACTIVE,VIRTUAL_ACTIVE,TEMP_BLOCK,P_BLOCK',
+    Inactive: 'INACTIVE',
+    Active: 'ACTIVE',
+    VirtualActive: 'VIRTUAL_ACTIVE',
+    TempBlock: 'TEMP_BLOCK',
+    PBlock: 'P_BLOCK',
 } as const;
 
 export type CardInfoCardStatusEnum = typeof CardInfoCardStatusEnum[keyof typeof CardInfoCardStatusEnum];

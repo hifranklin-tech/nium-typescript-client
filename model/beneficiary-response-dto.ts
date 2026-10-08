@@ -188,7 +188,10 @@ export interface BeneficiaryResponseDTO {
 }
 
 export const BeneficiaryResponseDTOBeneficiaryBankAccountTypeEnum = {
-    CurrentSavingMaestraChecking: 'Current,Saving,Maestra,Checking',
+    Current: 'Current',
+    Saving: 'Saving',
+    Maestra: 'Maestra',
+    Checking: 'Checking',
 } as const;
 
 export type BeneficiaryResponseDTOBeneficiaryBankAccountTypeEnum = typeof BeneficiaryResponseDTOBeneficiaryBankAccountTypeEnum[keyof typeof BeneficiaryResponseDTOBeneficiaryBankAccountTypeEnum];

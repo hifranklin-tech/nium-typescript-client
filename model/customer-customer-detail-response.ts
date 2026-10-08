@@ -314,27 +314,54 @@ export interface CustomerCustomerDetailResponse {
 }
 
 export const CustomerCustomerDetailResponseBlockReasonEnum = {
-    CustomerRequestclientRequestdeceasedaccountClosuresuspiciousActivityfraudulentActivitypotentialSanctionsanctionedCustomer: 'CUSTOMER_REQUEST,CLIENT_REQUEST,DECEASED,ACCOUNT_CLOSURE,SUSPICIOUS_ACTIVITY,FRAUDULENT_ACTIVITY,POTENTIAL_SANCTION,SANCTIONED_CUSTOMER',
+    CustomerRequest: 'CUSTOMER_REQUEST',
+    ClientRequest: 'CLIENT_REQUEST',
+    Deceased: 'DECEASED',
+    AccountClosure: 'ACCOUNT_CLOSURE',
+    SuspiciousActivity: 'SUSPICIOUS_ACTIVITY',
+    FraudulentActivity: 'FRAUDULENT_ACTIVITY',
+    PotentialSanction: 'POTENTIAL_SANCTION',
+    SanctionedCustomer: 'SANCTIONED_CUSTOMER',
 } as const;
 
 export type CustomerCustomerDetailResponseBlockReasonEnum = typeof CustomerCustomerDetailResponseBlockReasonEnum[keyof typeof CustomerCustomerDetailResponseBlockReasonEnum];
 export const CustomerCustomerDetailResponseComplianceStatusEnum = {
-    InitiatedinProgressactionRequiredrfiRequestedcompletedrejecterrorexpiredclosed: 'INITIATED,IN_PROGRESS,ACTION_REQUIRED,RFI_REQUESTED,COMPLETED,REJECT,ERROR,EXPIRED,CLOSED',
+    Initiated: 'INITIATED',
+    InProgress: 'IN_PROGRESS',
+    ActionRequired: 'ACTION_REQUIRED',
+    RfiRequested: 'RFI_REQUESTED',
+    Completed: 'COMPLETED',
+    Reject: 'REJECT',
+    Error: 'ERROR',
+    Expired: 'EXPIRED',
+    Closed: 'CLOSED',
 } as const;
 
 export type CustomerCustomerDetailResponseComplianceStatusEnum = typeof CustomerCustomerDetailResponseComplianceStatusEnum[keyof typeof CustomerCustomerDetailResponseComplianceStatusEnum];
 export const CustomerCustomerDetailResponseEstimatedMonthlyFundingEnum = {
-    _100010005000500110000100012000020000: '<1000 ,1000-5000 , 5001-10000,10001-20000,>20000',
+    _1000: '<1000',
+    _10005000: '1000-5000',
+    _500110000: '5001-10000',
+    _1000120000: '10001-20000',
+    _20000: '>20000',
 } as const;
 
 export type CustomerCustomerDetailResponseEstimatedMonthlyFundingEnum = typeof CustomerCustomerDetailResponseEstimatedMonthlyFundingEnum[keyof typeof CustomerCustomerDetailResponseEstimatedMonthlyFundingEnum];
 export const CustomerCustomerDetailResponseRegulatoryRegionEnum = {
-    Sgeuauhkuk: 'SG,EU,AU,HK,UK',
+    Sg: 'SG',
+    Eu: 'EU',
+    Au: 'AU',
+    Hk: 'HK',
+    Uk: 'UK',
 } as const;
 
 export type CustomerCustomerDetailResponseRegulatoryRegionEnum = typeof CustomerCustomerDetailResponseRegulatoryRegionEnum[keyof typeof CustomerCustomerDetailResponseRegulatoryRegionEnum];
 export const CustomerCustomerDetailResponseStatusEnum = {
-    PendingClearFailedSuspendedBlocked: 'Pending,Clear,Failed,Suspended,Blocked',
+    Pending: 'Pending',
+    Clear: 'Clear',
+    Failed: 'Failed',
+    Suspended: 'Suspended',
+    Blocked: 'Blocked',
 } as const;
 
 export type CustomerCustomerDetailResponseStatusEnum = typeof CustomerCustomerDetailResponseStatusEnum[keyof typeof CustomerCustomerDetailResponseStatusEnum];

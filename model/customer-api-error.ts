@@ -30,7 +30,13 @@ export interface CustomerApiError {
 }
 
 export const CustomerApiErrorStatusEnum = {
-    _200Ok400BadRequest403Forbidden404NotFound500InternalServerError502BadGateway503ServiceUnavailable: '200 OK,400 BAD_REQUEST,403 FORBIDDEN,404 NOT_FOUND,500 INTERNAL_SERVER_ERROR,502 BAD_GATEWAY,503 SERVICE_UNAVAILABLE',
+    _200Ok: '200 OK',
+    _400BadRequest: '400 BAD_REQUEST',
+    _403Forbidden: '403 FORBIDDEN',
+    _404NotFound: '404 NOT_FOUND',
+    _500InternalServerError: '500 INTERNAL_SERVER_ERROR',
+    _502BadGateway: '502 BAD_GATEWAY',
+    _503ServiceUnavailable: '503 SERVICE_UNAVAILABLE',
 } as const;
 
 export type CustomerApiErrorStatusEnum = typeof CustomerApiErrorStatusEnum[keyof typeof CustomerApiErrorStatusEnum];

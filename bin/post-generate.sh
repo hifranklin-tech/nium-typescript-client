@@ -6,18 +6,6 @@ python3 <<'PY'
 from pathlib import Path
 
 replacements = {
-    "model/customer-list3-request-dto.ts": [
-        (
-            "    IndividualCorporate: 'INDIVIDUAL, CORPORATE'",
-            "    Individual: 'INDIVIDUAL',\n    Corporate: 'CORPORATE'",
-        ),
-    ],
-    "model/block-and-replace-card-request-dto.ts": [
-        (
-            "    FraudLostStolenDamaged: 'fraud, lost, stolen, damaged'",
-            "    Fraud: 'fraud',\n    Lost: 'lost',\n    Stolen: 'stolen',\n    Damaged: 'damaged'",
-        ),
-    ],
     "model/expected-account-credit.ts": [
         ("'topRemitters'?: Set<string>;", "'topRemitters'?: Array<string>;"),
         ("'topTransactionCountries'?: Set<string>;", "'topTransactionCountries'?: Array<string>;"),
@@ -76,6 +64,9 @@ for file_name, file_replacements in replacements.items():
         content = content.replace(old, new, 1)
     path.write_text(content)
 PY
+
+# Split enums the spec lists as one comma-separated string into their separate values.
+python3 bin/split-joined-enums.py
 
 # Fix missing oneOf discriminator type files.
 # openapi-generator inlines oneOf types with a single variant instead of generating

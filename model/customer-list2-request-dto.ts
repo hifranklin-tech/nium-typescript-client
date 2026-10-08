@@ -50,7 +50,8 @@ export interface CustomerList2RequestDTO {
 }
 
 export const CustomerList2RequestDTOOrderEnum = {
-    AscDesc: 'ASC, DESC',
+    Asc: 'ASC',
+    Desc: 'DESC',
 } as const;
 
 export type CustomerList2RequestDTOOrderEnum = typeof CustomerList2RequestDTOOrderEnum[keyof typeof CustomerList2RequestDTOOrderEnum];

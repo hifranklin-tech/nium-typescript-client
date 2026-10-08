@@ -46,7 +46,16 @@ export interface PartialSearchDTO2 {
 }
 
 export const PartialSearchDTO2RoutingCodeTypeEnum = {
-    IfscswiftAchCodebsbCodesortCodebankCodelocationIdbranchCodebranchNametransitNumber: 'IFSC,SWIFT, ACH CODE,BSB CODE,SORT CODE,BANK CODE,LOCATION ID,BRANCH CODE,BRANCH NAME,TRANSIT NUMBER',
+    Ifsc: 'IFSC',
+    Swift: 'SWIFT',
+    AchCode: 'ACH CODE',
+    BsbCode: 'BSB CODE',
+    SortCode: 'SORT CODE',
+    BankCode: 'BANK CODE',
+    LocationId: 'LOCATION ID',
+    BranchCode: 'BRANCH CODE',
+    BranchName: 'BRANCH NAME',
+    TransitNumber: 'TRANSIT NUMBER',
 } as const;
 
 export type PartialSearchDTO2RoutingCodeTypeEnum = typeof PartialSearchDTO2RoutingCodeTypeEnum[keyof typeof PartialSearchDTO2RoutingCodeTypeEnum];

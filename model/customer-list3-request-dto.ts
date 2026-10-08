@@ -64,7 +64,8 @@ export const CustomerList3RequestDTOCustomerTypeEnum = {
 
 export type CustomerList3RequestDTOCustomerTypeEnum = typeof CustomerList3RequestDTOCustomerTypeEnum[keyof typeof CustomerList3RequestDTOCustomerTypeEnum];
 export const CustomerList3RequestDTOOrderEnum = {
-    AscDesc: 'ASC, DESC',
+    Asc: 'ASC',
+    Desc: 'DESC',
 } as const;
 
 export type CustomerList3RequestDTOOrderEnum = typeof CustomerList3RequestDTOOrderEnum[keyof typeof CustomerList3RequestDTOOrderEnum];
