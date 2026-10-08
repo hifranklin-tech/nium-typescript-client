@@ -2,11 +2,14 @@
 """Normalize generated model types the Nium spec gets wrong.
 
 The spec lists some enums as one comma-separated string such as 'ASC, DESC', leaves a space
-before some values such as ' go', and repeats some values. The generator copies all three
-into the model enums. This splits joined values, trims each value, and drops repeated values.
-Members whose value does not change keep the generator's name; new members are named the way
-the generator names them. Values with '<', '>' or a number range get names that keep that
-meaning, such as LessThan1000 and _1000To5000, instead of the generator's _1000 and _10005000.
+before some values such as ' go', and repeats some values, and the generator copies all three
+into the model enums. It also names values that start with a digit or symbol with a leading
+underscore, such as _200Ok for '200 OK' and _10005000 for '1000-5000'.
+
+Each such enum is rewritten: joined values are split, values are trimmed, repeats are dropped,
+and every key repeats its value. HTTP statuses keep only their text ('200 OK' is OK), '<' and '>'
+are spelled LESS_THAN and MORE_THAN, a number range reads 1000_TO_5000, and a key that starts
+with a digit is quoted. Every other enum keeps the generator's names.
 
 It also types JSON array fields the generator declared as Set<T> as Array<T>.
 """
@@ -15,36 +18,45 @@ from pathlib import Path
 
 ENUM = re.compile(r"(export const \w+ = \{\n)(.*?)(\n\} as const;)", re.S)
 MEMBER = re.compile(r"^\s+(\w+): '([^']*)',?$")
-
-
 SYMBOLIC = re.compile(r"[<>]|\d-\d")
+HTTP_STATUS = re.compile(r"\d{3} ([A-Za-z_ ]+)")
 
 
-def member_name(value):
-    spelled = re.sub(r"(?<=\d)-(?=\d)", " to ", value).replace("<", "less than ").replace(">", "more than ")
-    words = [w for w in re.split(r"[^A-Za-z0-9]+", spelled) if w]
-    name = "".join(w.capitalize() if w.isupper() or w.isdigit() else w[0].upper() + w[1:] for w in words)
-    return f"_{name}" if name[:1].isdigit() else name
+def member_key(value):
+    status = HTTP_STATUS.fullmatch(value)
+    text = status.group(1) if status else (
+        re.sub(r"(?<=\d)-(?=\d)", "_TO_", value).replace("<", "LESS_THAN_").replace(">", "MORE_THAN_")
+    )
+    key = re.sub(r"[^A-Za-z0-9]+", "_", text).strip("_")
+    return f"'{key}'" if key[:1].isdigit() else key
+
+
+def needs_rewrite(members):
+    values = [value for _, value in members]
+    return (
+        len(values) != len(set(values))
+        or any("," in value or value != value.strip() or SYMBOLIC.search(value) for value in values)
+        or any(name.startswith("_") for name, _ in members)
+    )
 
 
 def normalize_enum(match):
     head, body, tail = match.groups()
-    members = [MEMBER.match(line) for line in body.split("\n")]
-    if not all(members):
+    parsed = [MEMBER.match(line) for line in body.split("\n")]
+    if not all(parsed):
         return match.group(0)
-    normalized = {}
-    for m in members:
-        name, raw = m.groups()
+    members = [m.groups() for m in parsed]
+    if not needs_rewrite(members):
+        return match.group(0)
+    values = []
+    for _, raw in members:
         for value in (v.strip() for v in raw.split(",")):
-            if value and value not in normalized:
-                normalized[value] = name if value == raw and not SYMBOLIC.search(value) else member_name(value)
-    if [(n, v) for v, n in normalized.items()] == [m.groups() for m in members]:
-        return match.group(0)
-    names = list(normalized.values())
-    if len(set(names)) != len(names):
-        raise RuntimeError(f"Normalized enum member names collide: {names}")
-    lines = [f"    {n}: '{v}'" for v, n in normalized.items()]
-    return head + ",\n".join(lines) + "," + tail
+            if value and value not in values:
+                values.append(value)
+    keys = [member_key(v) for v in values]
+    if len(set(keys)) != len(keys):
+        raise RuntimeError(f"Normalized enum keys collide: {keys}")
+    return head + ",\n".join(f"    {k}: '{v}'" for k, v in zip(keys, values)) + "," + tail
 
 
 changed = 0

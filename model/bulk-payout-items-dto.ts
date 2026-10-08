@@ -92,10 +92,10 @@ export interface BulkPayoutItemsDto {
 }
 
 export const BulkPayoutItemsDtoExemptionCodeEnum = {
-    _01: '01',
-    _02: '02',
-    _03: '03',
-    _04: '04',
+    '01': '01',
+    '02': '02',
+    '03': '03',
+    '04': '04',
 } as const;
 
 export type BulkPayoutItemsDtoExemptionCodeEnum = typeof BulkPayoutItemsDtoExemptionCodeEnum[keyof typeof BulkPayoutItemsDtoExemptionCodeEnum];

@@ -41,13 +41,13 @@ export interface PayoutCustomerApiError {
 }
 
 export const PayoutCustomerApiErrorStatusEnum = {
-    _200Ok: '200 OK',
-    _400BadRequest: '400 BAD_REQUEST',
-    _403Forbidden: '403 FORBIDDEN',
-    _404NotFound: '404 NOT_FOUND',
-    _500InternalServerError: '500 INTERNAL_SERVER_ERROR',
-    _502BadGateway: '502 BAD_GATEWAY',
-    _503ServiceUnavailable: '503 SERVICE_UNAVAILABLE'
+    OK: '200 OK',
+    BAD_REQUEST: '400 BAD_REQUEST',
+    FORBIDDEN: '403 FORBIDDEN',
+    NOT_FOUND: '404 NOT_FOUND',
+    INTERNAL_SERVER_ERROR: '500 INTERNAL_SERVER_ERROR',
+    BAD_GATEWAY: '502 BAD_GATEWAY',
+    SERVICE_UNAVAILABLE: '503 SERVICE_UNAVAILABLE',
 } as const;
 
 export type PayoutCustomerApiErrorStatusEnum = typeof PayoutCustomerApiErrorStatusEnum[keyof typeof PayoutCustomerApiErrorStatusEnum];

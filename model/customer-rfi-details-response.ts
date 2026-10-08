@@ -61,8 +61,8 @@ export interface CustomerRfiDetailsResponse {
 }
 
 export const CustomerRfiDetailsResponseRfiTypeEnum = {
-    Internal: 'INTERNAL',
-    External: 'EXTERNAL',
+    INTERNAL: 'INTERNAL',
+    EXTERNAL: 'EXTERNAL',
 } as const;
 
 export type CustomerRfiDetailsResponseRfiTypeEnum = typeof CustomerRfiDetailsResponseRfiTypeEnum[keyof typeof CustomerRfiDetailsResponseRfiTypeEnum];

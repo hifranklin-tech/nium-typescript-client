@@ -96,14 +96,14 @@ export interface CustomerDetailsResponseV2DTO {
 }
 
 export const CustomerDetailsResponseV2DTOBlockReasonEnum = {
-    CustomerRequest: 'CUSTOMER_REQUEST',
-    ClientRequest: 'CLIENT_REQUEST',
-    Deceased: 'DECEASED',
-    AccountClosure: 'ACCOUNT_CLOSURE',
-    SuspiciousActivity: 'SUSPICIOUS_ACTIVITY',
-    FraudulentActivity: 'FRAUDULENT_ACTIVITY',
-    PotentialSanction: 'POTENTIAL_SANCTION',
-    SanctionedCustomer: 'SANCTIONED_CUSTOMER',
+    CUSTOMER_REQUEST: 'CUSTOMER_REQUEST',
+    CLIENT_REQUEST: 'CLIENT_REQUEST',
+    DECEASED: 'DECEASED',
+    ACCOUNT_CLOSURE: 'ACCOUNT_CLOSURE',
+    SUSPICIOUS_ACTIVITY: 'SUSPICIOUS_ACTIVITY',
+    FRAUDULENT_ACTIVITY: 'FRAUDULENT_ACTIVITY',
+    POTENTIAL_SANCTION: 'POTENTIAL_SANCTION',
+    SANCTIONED_CUSTOMER: 'SANCTIONED_CUSTOMER',
 } as const;
 
 export type CustomerDetailsResponseV2DTOBlockReasonEnum = typeof CustomerDetailsResponseV2DTOBlockReasonEnum[keyof typeof CustomerDetailsResponseV2DTOBlockReasonEnum];

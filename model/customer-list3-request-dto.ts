@@ -58,14 +58,14 @@ export interface CustomerList3RequestDTO {
 }
 
 export const CustomerList3RequestDTOCustomerTypeEnum = {
-    Individual: 'INDIVIDUAL',
-    Corporate: 'CORPORATE',
+    INDIVIDUAL: 'INDIVIDUAL',
+    CORPORATE: 'CORPORATE',
 } as const;
 
 export type CustomerList3RequestDTOCustomerTypeEnum = typeof CustomerList3RequestDTOCustomerTypeEnum[keyof typeof CustomerList3RequestDTOCustomerTypeEnum];
 export const CustomerList3RequestDTOOrderEnum = {
-    Asc: 'ASC',
-    Desc: 'DESC',
+    ASC: 'ASC',
+    DESC: 'DESC',
 } as const;
 
 export type CustomerList3RequestDTOOrderEnum = typeof CustomerList3RequestDTOOrderEnum[keyof typeof CustomerList3RequestDTOOrderEnum];

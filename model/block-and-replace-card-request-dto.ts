@@ -57,10 +57,10 @@ export interface BlockAndReplaceCardRequestDTO {
 }
 
 export const BlockAndReplaceCardRequestDTOReasonEnum = {
-    Fraud: 'fraud',
-    Lost: 'lost',
-    Stolen: 'stolen',
-    Damaged: 'damaged',
+    fraud: 'fraud',
+    lost: 'lost',
+    stolen: 'stolen',
+    damaged: 'damaged',
 } as const;
 
 export type BlockAndReplaceCardRequestDTOReasonEnum = typeof BlockAndReplaceCardRequestDTOReasonEnum[keyof typeof BlockAndReplaceCardRequestDTOReasonEnum];

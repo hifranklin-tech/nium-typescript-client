@@ -47,10 +47,10 @@ export interface BlockCodeDTO {
 }
 
 export const BlockCodeDTOReasonEnum = {
-    Fraud: 'fraud',
-    CardLost: 'cardLost',
-    CardStolen: 'cardStolen',
-    Damaged: 'damaged',
+    fraud: 'fraud',
+    cardLost: 'cardLost',
+    cardStolen: 'cardStolen',
+    damaged: 'damaged',
 } as const;
 
 export type BlockCodeDTOReasonEnum = typeof BlockCodeDTOReasonEnum[keyof typeof BlockCodeDTOReasonEnum];

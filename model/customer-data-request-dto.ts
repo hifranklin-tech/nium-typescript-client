@@ -353,11 +353,11 @@ export interface CustomerDataRequestDTO {
 }
 
 export const CustomerDataRequestDTOEstimatedMonthlyFundingEnum = {
-    LessThan1000: '<1000',
-    _1000To5000: '1000-5000',
-    _5001To10000: '5001-10000',
-    _10001To20000: '10001-20000',
-    MoreThan20000: '>20000',
+    LESS_THAN_1000: '<1000',
+    '1000_TO_5000': '1000-5000',
+    '5001_TO_10000': '5001-10000',
+    '10001_TO_20000': '10001-20000',
+    MORE_THAN_20000: '>20000',
 } as const;
 
 export type CustomerDataRequestDTOEstimatedMonthlyFundingEnum = typeof CustomerDataRequestDTOEstimatedMonthlyFundingEnum[keyof typeof CustomerDataRequestDTOEstimatedMonthlyFundingEnum];

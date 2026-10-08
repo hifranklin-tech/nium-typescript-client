@@ -19,12 +19,12 @@
  */
 
 export const LockPeriod = {
-    _5Mins: '5_mins',
-    _15Mins: '15_mins',
-    _1Hour: '1_hour',
-    _4Hours: '4_hours',
-    _8Hours: '8_hours',
-    _24Hours: '24_hours',
+    '5_mins': '5_mins',
+    '15_mins': '15_mins',
+    '1_hour': '1_hour',
+    '4_hours': '4_hours',
+    '8_hours': '8_hours',
+    '24_hours': '24_hours',
 } as const;
 
 export type LockPeriod = typeof LockPeriod[keyof typeof LockPeriod];

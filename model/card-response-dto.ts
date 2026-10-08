@@ -170,26 +170,26 @@ export interface CardResponseDTO {
 }
 
 export const CardResponseDTOCardStatusEnum = {
-    Inactive: 'INACTIVE',
-    Active: 'ACTIVE',
-    VirtualActive: 'VIRTUAL_ACTIVE',
-    TempBlock: 'TEMP_BLOCK',
-    PBlock: 'P_BLOCK',
+    INACTIVE: 'INACTIVE',
+    ACTIVE: 'ACTIVE',
+    VIRTUAL_ACTIVE: 'VIRTUAL_ACTIVE',
+    TEMP_BLOCK: 'TEMP_BLOCK',
+    P_BLOCK: 'P_BLOCK',
 } as const;
 
 export type CardResponseDTOCardStatusEnum = typeof CardResponseDTOCardStatusEnum[keyof typeof CardResponseDTOCardStatusEnum];
 export const CardResponseDTOBlockReasonEnum = {
-    Fraud: 'fraud',
-    CardLost: 'cardLost',
-    CardStolen: 'cardStolen',
-    Damaged: 'damaged',
+    fraud: 'fraud',
+    cardLost: 'cardLost',
+    cardStolen: 'cardStolen',
+    damaged: 'damaged',
 } as const;
 
 export type CardResponseDTOBlockReasonEnum = typeof CardResponseDTOBlockReasonEnum[keyof typeof CardResponseDTOBlockReasonEnum];
 export const CardResponseDTOIssuanceModeEnum = {
-    NormalDeliveryLocal: 'NORMAL_DELIVERY_LOCAL',
-    ExpressDeliveryLocal: 'EXPRESS_DELIVERY_LOCAL',
-    InternationalDelivery: 'INTERNATIONAL_DELIVERY',
+    NORMAL_DELIVERY_LOCAL: 'NORMAL_DELIVERY_LOCAL',
+    EXPRESS_DELIVERY_LOCAL: 'EXPRESS_DELIVERY_LOCAL',
+    INTERNATIONAL_DELIVERY: 'INTERNATIONAL_DELIVERY',
 } as const;
 
 export type CardResponseDTOIssuanceModeEnum = typeof CardResponseDTOIssuanceModeEnum[keyof typeof CardResponseDTOIssuanceModeEnum];

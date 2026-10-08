@@ -57,24 +57,24 @@ export interface CardTokensDTO {
 }
 
 export const CardTokensDTOProviderTypeEnum = {
-    GooglePay: 'googlePay',
-    ApplePay: 'applePay',
-    SamsungPay: 'samsungPay',
-    Unknown: 'unknown',
+    googlePay: 'googlePay',
+    applePay: 'applePay',
+    samsungPay: 'samsungPay',
+    unknown: 'unknown',
 } as const;
 
 export type CardTokensDTOProviderTypeEnum = typeof CardTokensDTOProviderTypeEnum[keyof typeof CardTokensDTOProviderTypeEnum];
 export const CardTokensDTOStatusEnum = {
-    Active: 'ACTIVE',
-    Suspended: 'SUSPENDED',
-    Deactivated: 'DEACTIVATED',
-    Unknown: 'UNKNOWN',
+    ACTIVE: 'ACTIVE',
+    SUSPENDED: 'SUSPENDED',
+    DEACTIVATED: 'DEACTIVATED',
+    UNKNOWN: 'UNKNOWN',
 } as const;
 
 export type CardTokensDTOStatusEnum = typeof CardTokensDTOStatusEnum[keyof typeof CardTokensDTOStatusEnum];
 export const CardTokensDTOTokenRequesterIdEnum = {
-    GooglePay: 'googlePay',
-    ApplePay: 'applePay',
+    googlePay: 'googlePay',
+    applePay: 'applePay',
 } as const;
 
 export type CardTokensDTOTokenRequesterIdEnum = typeof CardTokensDTOTokenRequesterIdEnum[keyof typeof CardTokensDTOTokenRequesterIdEnum];

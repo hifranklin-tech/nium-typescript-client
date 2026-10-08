@@ -70,8 +70,8 @@ export const SupportedCorridorsSearchDTOCustomerTypeEnum = {
 
 export type SupportedCorridorsSearchDTOCustomerTypeEnum = typeof SupportedCorridorsSearchDTOCustomerTypeEnum[keyof typeof SupportedCorridorsSearchDTOCustomerTypeEnum];
 export const SupportedCorridorsSearchDTOOrderEnum = {
-    Asc: 'ASC',
-    Desc: 'DESC',
+    ASC: 'ASC',
+    DESC: 'DESC',
 } as const;
 
 export type SupportedCorridorsSearchDTOOrderEnum = typeof SupportedCorridorsSearchDTOOrderEnum[keyof typeof SupportedCorridorsSearchDTOOrderEnum];

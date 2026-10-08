@@ -314,45 +314,45 @@ export interface CustomerCustomerDetailResponse {
 }
 
 export const CustomerCustomerDetailResponseBlockReasonEnum = {
-    CustomerRequest: 'CUSTOMER_REQUEST',
-    ClientRequest: 'CLIENT_REQUEST',
-    Deceased: 'DECEASED',
-    AccountClosure: 'ACCOUNT_CLOSURE',
-    SuspiciousActivity: 'SUSPICIOUS_ACTIVITY',
-    FraudulentActivity: 'FRAUDULENT_ACTIVITY',
-    PotentialSanction: 'POTENTIAL_SANCTION',
-    SanctionedCustomer: 'SANCTIONED_CUSTOMER',
+    CUSTOMER_REQUEST: 'CUSTOMER_REQUEST',
+    CLIENT_REQUEST: 'CLIENT_REQUEST',
+    DECEASED: 'DECEASED',
+    ACCOUNT_CLOSURE: 'ACCOUNT_CLOSURE',
+    SUSPICIOUS_ACTIVITY: 'SUSPICIOUS_ACTIVITY',
+    FRAUDULENT_ACTIVITY: 'FRAUDULENT_ACTIVITY',
+    POTENTIAL_SANCTION: 'POTENTIAL_SANCTION',
+    SANCTIONED_CUSTOMER: 'SANCTIONED_CUSTOMER',
 } as const;
 
 export type CustomerCustomerDetailResponseBlockReasonEnum = typeof CustomerCustomerDetailResponseBlockReasonEnum[keyof typeof CustomerCustomerDetailResponseBlockReasonEnum];
 export const CustomerCustomerDetailResponseComplianceStatusEnum = {
-    Initiated: 'INITIATED',
-    InProgress: 'IN_PROGRESS',
-    ActionRequired: 'ACTION_REQUIRED',
-    RfiRequested: 'RFI_REQUESTED',
-    Completed: 'COMPLETED',
-    Reject: 'REJECT',
-    Error: 'ERROR',
-    Expired: 'EXPIRED',
-    Closed: 'CLOSED',
+    INITIATED: 'INITIATED',
+    IN_PROGRESS: 'IN_PROGRESS',
+    ACTION_REQUIRED: 'ACTION_REQUIRED',
+    RFI_REQUESTED: 'RFI_REQUESTED',
+    COMPLETED: 'COMPLETED',
+    REJECT: 'REJECT',
+    ERROR: 'ERROR',
+    EXPIRED: 'EXPIRED',
+    CLOSED: 'CLOSED',
 } as const;
 
 export type CustomerCustomerDetailResponseComplianceStatusEnum = typeof CustomerCustomerDetailResponseComplianceStatusEnum[keyof typeof CustomerCustomerDetailResponseComplianceStatusEnum];
 export const CustomerCustomerDetailResponseEstimatedMonthlyFundingEnum = {
-    LessThan1000: '<1000',
-    _1000To5000: '1000-5000',
-    _5001To10000: '5001-10000',
-    _10001To20000: '10001-20000',
-    MoreThan20000: '>20000',
+    LESS_THAN_1000: '<1000',
+    '1000_TO_5000': '1000-5000',
+    '5001_TO_10000': '5001-10000',
+    '10001_TO_20000': '10001-20000',
+    MORE_THAN_20000: '>20000',
 } as const;
 
 export type CustomerCustomerDetailResponseEstimatedMonthlyFundingEnum = typeof CustomerCustomerDetailResponseEstimatedMonthlyFundingEnum[keyof typeof CustomerCustomerDetailResponseEstimatedMonthlyFundingEnum];
 export const CustomerCustomerDetailResponseRegulatoryRegionEnum = {
-    Sg: 'SG',
-    Eu: 'EU',
-    Au: 'AU',
-    Hk: 'HK',
-    Uk: 'UK',
+    SG: 'SG',
+    EU: 'EU',
+    AU: 'AU',
+    HK: 'HK',
+    UK: 'UK',
 } as const;
 
 export type CustomerCustomerDetailResponseRegulatoryRegionEnum = typeof CustomerCustomerDetailResponseRegulatoryRegionEnum[keyof typeof CustomerCustomerDetailResponseRegulatoryRegionEnum];
