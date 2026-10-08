@@ -15,7 +15,7 @@
 
 
 export interface NatureOfBusinessDTO {
-    'industryCodes'?: Set<string>;
+    'industryCodes'?: Array<string>;
     'industryDescription'?: string;
 }
 

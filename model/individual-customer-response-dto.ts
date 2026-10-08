@@ -138,11 +138,11 @@ export interface IndividualCustomerResponseDTO {
 }
 
 export const IndividualCustomerResponseDTOEstimatedMonthlyFundingEnum = {
-    _1000: '<1000',
-    _10005000: '1000-5000',
-    _500110000: '5001-10000',
-    _1000120000: '10001-20000',
-    _20000: '>20000',
+    LessThan1000: '<1000',
+    _1000To5000: '1000-5000',
+    _5001To10000: '5001-10000',
+    _10001To20000: '10001-20000',
+    MoreThan20000: '>20000',
 } as const;
 
 export type IndividualCustomerResponseDTOEstimatedMonthlyFundingEnum = typeof IndividualCustomerResponseDTOEstimatedMonthlyFundingEnum[keyof typeof IndividualCustomerResponseDTOEstimatedMonthlyFundingEnum];

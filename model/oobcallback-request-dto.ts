@@ -52,7 +52,6 @@ export const OOBCallbackRequestDTOStatusEnum = {
     StolenCard: 'STOLEN_CARD',
     CardExpired: 'CARD_EXPIRED',
     Fraud: 'FRAUD',
-    TempBlock2: 'TEMP_BLOCK',
 } as const;
 
 export type OOBCallbackRequestDTOStatusEnum = typeof OOBCallbackRequestDTOStatusEnum[keyof typeof OOBCallbackRequestDTOStatusEnum];

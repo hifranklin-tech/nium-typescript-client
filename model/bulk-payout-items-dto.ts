@@ -96,10 +96,6 @@ export const BulkPayoutItemsDtoExemptionCodeEnum = {
     _02: '02',
     _03: '03',
     _04: '04',
-    _012: '01',
-    _022: '02',
-    _032: '03',
-    _042: '04',
 } as const;
 
 export type BulkPayoutItemsDtoExemptionCodeEnum = typeof BulkPayoutItemsDtoExemptionCodeEnum[keyof typeof BulkPayoutItemsDtoExemptionCodeEnum];

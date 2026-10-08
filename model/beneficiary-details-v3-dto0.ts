@@ -81,11 +81,11 @@ export type BeneficiaryDetailsV3DtoAccountTypeEnum = typeof BeneficiaryDetailsV3
 export const BeneficiaryDetailsV3DtoEntityTypeEnum = {
     SoleProprietorship: 'sole_proprietorship',
     Partnership: 'partnership',
-    PrivatelyOwnedCompany: ' privately_owned_company',
-    PubliclyOwnedCompany: ' publicly_owned_company',
-    GovernmentOwnedEntity: ' government_owned_entity',
-    Go: ' go',
-    FinancialInstitution: ' financial_institution',
+    PrivatelyOwnedCompany: 'privately_owned_company',
+    PubliclyOwnedCompany: 'publicly_owned_company',
+    GovernmentOwnedEntity: 'government_owned_entity',
+    Go: 'go',
+    FinancialInstitution: 'financial_institution',
 } as const;
 
 export type BeneficiaryDetailsV3DtoEntityTypeEnum = typeof BeneficiaryDetailsV3DtoEntityTypeEnum[keyof typeof BeneficiaryDetailsV3DtoEntityTypeEnum];

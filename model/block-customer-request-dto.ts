@@ -35,9 +35,6 @@ export const BlockCustomerRequestDTOActionEnum = {
     Unblock: 'UNBLOCK',
     Terminate: 'TERMINATE',
     Close: 'CLOSE',
-    TemporaryBlock2: 'TEMPORARY_BLOCK',
-    PermanentBlock2: 'PERMANENT_BLOCK',
-    Unblock2: 'UNBLOCK',
 } as const;
 
 export type BlockCustomerRequestDTOActionEnum = typeof BlockCustomerRequestDTOActionEnum[keyof typeof BlockCustomerRequestDTOActionEnum];
@@ -66,19 +63,6 @@ export const BlockCustomerRequestDTOReasonEnum = {
     PositivePepMatch: 'POSITIVE_PEP_MATCH',
     PositiveSanctionsMatch: 'POSITIVE_SANCTIONS_MATCH',
     PositiveAdverseMedia: 'POSITIVE_ADVERSE_MEDIA',
-    CustomerRequest2: 'CUSTOMER_REQUEST',
-    ClientRequest2: 'CLIENT_REQUEST',
-    Deceased2: 'DECEASED',
-    AccountClosure2: 'ACCOUNT_CLOSURE',
-    SuspiciousActivity2: 'SUSPICIOUS_ACTIVITY',
-    FraudulentActivity2: 'FRAUDULENT_ACTIVITY',
-    PotentialSanction2: 'POTENTIAL_SANCTION',
-    SanctionedCustomer2: 'SANCTIONED_CUSTOMER',
-    BlacklistedCustomer2: 'BLACKLISTED_CUSTOMER',
-    NoObjection2: 'NO_OBJECTION',
-    UnresponsiveCustomer2: 'UNRESPONSIVE_CUSTOMER',
-    Dormancy2: 'DORMANCY',
-    Other2: 'OTHER',
 } as const;
 
 export type BlockCustomerRequestDTOReasonEnum = typeof BlockCustomerRequestDTOReasonEnum[keyof typeof BlockCustomerRequestDTOReasonEnum];

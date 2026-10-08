@@ -40,7 +40,6 @@ export const FundTransferResponseStatusEnum = {
     Failed: 'FAILED',
     Success: 'SUCCESS',
     Failure: 'FAILURE',
-    Success2: 'SUCCESS',
     PartiallySuccess: 'PARTIALLY SUCCESS',
     Sync: 'SYNC',
     NotSync: 'NOT SYNC',

@@ -33,10 +33,10 @@ export interface ExpectedAccountDebit {
     /**
      * Array of expected primary beneficiaries. Can be specific companies or types of entities (e.g., Ryan Air, John Smith, employees of the corporation).
      */
-    'topBeneficiaries'?: Set<string>;
+    'topBeneficiaries'?: Array<string>;
     /**
      * Array of top payout countries. Use the [Fetch Corporate Constants](/api#tag/customer-account---corporate/GET/api/v2/client/{clientHashId}/onboarding/constants) request for a list of valid values.
      */
-    'topTransactionCountries'?: Set<string>;
+    'topTransactionCountries'?: Array<string>;
 }
 
