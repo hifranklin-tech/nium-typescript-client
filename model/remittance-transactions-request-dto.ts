@@ -91,10 +91,10 @@ export interface RemittanceTransactionsRequestDTO {
 }
 
 export const RemittanceTransactionsRequestDTOExemptionCodeEnum = {
-    _01: '01',
-    _02: '02',
-    _03: '03',
-    _04: '04',
+    '01': '01',
+    '02': '02',
+    '03': '03',
+    '04': '04',
 } as const;
 
 export type RemittanceTransactionsRequestDTOExemptionCodeEnum = typeof RemittanceTransactionsRequestDTOExemptionCodeEnum[keyof typeof RemittanceTransactionsRequestDTOExemptionCodeEnum];

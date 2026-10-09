@@ -6,16 +6,6 @@ python3 <<'PY'
 from pathlib import Path
 
 replacements = {
-    "model/customer-list3-request-dto.ts": [
-        (
-            "    IndividualCorporate: 'INDIVIDUAL, CORPORATE'",
-            "    Individual: 'INDIVIDUAL',\n    Corporate: 'CORPORATE'",
-        ),
-    ],
-    "model/expected-account-credit.ts": [
-        ("'topRemitters'?: Set<string>;", "'topRemitters'?: Array<string>;"),
-        ("'topTransactionCountries'?: Set<string>;", "'topTransactionCountries'?: Array<string>;"),
-    ],
     "model/expected-account-usage.ts": [
         ("'intendedUses'?: string;", "'intendedUses'?: Array<string>;"),
     ],
@@ -70,6 +60,10 @@ for file_name, file_replacements in replacements.items():
         content = content.replace(old, new, 1)
     path.write_text(content)
 PY
+
+# Split comma-joined enum values, trim stray spaces, drop repeated values, name symbolic values,
+# and type Set<T> fields as Array<T>.
+python3 bin/normalize-models.py
 
 # Fix missing oneOf discriminator type files.
 # openapi-generator inlines oneOf types with a single variant instead of generating

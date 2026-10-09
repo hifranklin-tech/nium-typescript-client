@@ -220,7 +220,13 @@ export const ClientDetailResponseDTO2RefundAccountTypeEnum = {
 
 export type ClientDetailResponseDTO2RefundAccountTypeEnum = typeof ClientDetailResponseDTO2RefundAccountTypeEnum[keyof typeof ClientDetailResponseDTO2RefundAccountTypeEnum];
 export const ClientDetailResponseDTO2RegulatoryRegionEnum = {
-    Sgeuauhkukusca: 'SG,EU,AU,HK,UK,US,CA',
+    SG: 'SG',
+    EU: 'EU',
+    AU: 'AU',
+    HK: 'HK',
+    UK: 'UK',
+    US: 'US',
+    CA: 'CA',
 } as const;
 
 export type ClientDetailResponseDTO2RegulatoryRegionEnum = typeof ClientDetailResponseDTO2RegulatoryRegionEnum[keyof typeof ClientDetailResponseDTO2RegulatoryRegionEnum];

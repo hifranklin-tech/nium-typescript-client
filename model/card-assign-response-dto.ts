@@ -30,7 +30,8 @@ export interface CardAssignResponseDTO {
 }
 
 export const CardAssignResponseDTOCardActivationStatusEnum = {
-    VirtualActiveinactive: 'VIRTUAL_ACTIVE,INACTIVE',
+    VIRTUAL_ACTIVE: 'VIRTUAL_ACTIVE',
+    INACTIVE: 'INACTIVE',
 } as const;
 
 export type CardAssignResponseDTOCardActivationStatusEnum = typeof CardAssignResponseDTOCardActivationStatusEnum[keyof typeof CardAssignResponseDTOCardActivationStatusEnum];

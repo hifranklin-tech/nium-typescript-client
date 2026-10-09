@@ -19,12 +19,12 @@
  */
 
 export const ConversionSchedule = {
-    Immediate: 'immediate',
-    EndOfDay: 'end_of_day',
-    NextDay: 'next_day',
-    _2Days: '2_days',
-    _3Days: '3_days',
-    _7Days: '7_days',
+    immediate: 'immediate',
+    end_of_day: 'end_of_day',
+    next_day: 'next_day',
+    '2_days': '2_days',
+    '3_days': '3_days',
+    '7_days': '7_days',
 } as const;
 
 export type ConversionSchedule = typeof ConversionSchedule[keyof typeof ConversionSchedule];

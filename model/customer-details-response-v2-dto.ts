@@ -96,7 +96,14 @@ export interface CustomerDetailsResponseV2DTO {
 }
 
 export const CustomerDetailsResponseV2DTOBlockReasonEnum = {
-    CustomerRequestclientRequestdeceasedaccountClosuresuspiciousActivityfraudulentActivitypotentialSanctionsanctionedCustomer: 'CUSTOMER_REQUEST,CLIENT_REQUEST,DECEASED,ACCOUNT_CLOSURE,SUSPICIOUS_ACTIVITY,FRAUDULENT_ACTIVITY,POTENTIAL_SANCTION,SANCTIONED_CUSTOMER',
+    CUSTOMER_REQUEST: 'CUSTOMER_REQUEST',
+    CLIENT_REQUEST: 'CLIENT_REQUEST',
+    DECEASED: 'DECEASED',
+    ACCOUNT_CLOSURE: 'ACCOUNT_CLOSURE',
+    SUSPICIOUS_ACTIVITY: 'SUSPICIOUS_ACTIVITY',
+    FRAUDULENT_ACTIVITY: 'FRAUDULENT_ACTIVITY',
+    POTENTIAL_SANCTION: 'POTENTIAL_SANCTION',
+    SANCTIONED_CUSTOMER: 'SANCTIONED_CUSTOMER',
 } as const;
 
 export type CustomerDetailsResponseV2DTOBlockReasonEnum = typeof CustomerDetailsResponseV2DTOBlockReasonEnum[keyof typeof CustomerDetailsResponseV2DTOBlockReasonEnum];
@@ -107,7 +114,11 @@ export const CustomerDetailsResponseV2DTOCustomerTypeEnum = {
 
 export type CustomerDetailsResponseV2DTOCustomerTypeEnum = typeof CustomerDetailsResponseV2DTOCustomerTypeEnum[keyof typeof CustomerDetailsResponseV2DTOCustomerTypeEnum];
 export const CustomerDetailsResponseV2DTOStatusEnum = {
-    PendingClearFailedSuspendedBlocked: 'Pending,Clear,Failed,Suspended,Blocked',
+    Pending: 'Pending',
+    Clear: 'Clear',
+    Failed: 'Failed',
+    Suspended: 'Suspended',
+    Blocked: 'Blocked',
 } as const;
 
 export type CustomerDetailsResponseV2DTOStatusEnum = typeof CustomerDetailsResponseV2DTOStatusEnum[keyof typeof CustomerDetailsResponseV2DTOStatusEnum];

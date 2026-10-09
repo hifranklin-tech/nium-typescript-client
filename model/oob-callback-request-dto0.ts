@@ -34,7 +34,8 @@ export interface OobCallbackRequestDTO {
 }
 
 export const OobCallbackRequestDTOStatusCodeEnum = {
-    _001002: '001, 002',
+    '001': '001',
+    '002': '002',
 } as const;
 
 export type OobCallbackRequestDTOStatusCodeEnum = typeof OobCallbackRequestDTOStatusCodeEnum[keyof typeof OobCallbackRequestDTOStatusCodeEnum];

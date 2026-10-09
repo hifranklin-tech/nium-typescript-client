@@ -42,12 +42,22 @@ export interface PartialSearchDTO {
 }
 
 export const PartialSearchDTORoutingCodeTypeEnum = {
-    IfscswiftAchCodebsbCodesortCodebankCodelocationIdbranchCodebranchNametransitNumber: 'IFSC,SWIFT, ACH CODE,BSB CODE,SORT CODE,BANK CODE,LOCATION ID,BRANCH CODE,BRANCH NAME,TRANSIT NUMBER',
+    IFSC: 'IFSC',
+    SWIFT: 'SWIFT',
+    ACH_CODE: 'ACH CODE',
+    BSB_CODE: 'BSB CODE',
+    SORT_CODE: 'SORT CODE',
+    BANK_CODE: 'BANK CODE',
+    LOCATION_ID: 'LOCATION ID',
+    BRANCH_CODE: 'BRANCH CODE',
+    BRANCH_NAME: 'BRANCH NAME',
+    TRANSIT_NUMBER: 'TRANSIT NUMBER',
 } as const;
 
 export type PartialSearchDTORoutingCodeTypeEnum = typeof PartialSearchDTORoutingCodeTypeEnum[keyof typeof PartialSearchDTORoutingCodeTypeEnum];
 export const PartialSearchDTOSearchKeyEnum = {
-    BankNamebranchName: 'bank_name,branch_name',
+    bank_name: 'bank_name',
+    branch_name: 'branch_name',
 } as const;
 
 export type PartialSearchDTOSearchKeyEnum = typeof PartialSearchDTOSearchKeyEnum[keyof typeof PartialSearchDTOSearchKeyEnum];

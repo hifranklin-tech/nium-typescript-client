@@ -19,8 +19,8 @@
  */
 
 export const Window = {
-    _1Day: '1_day',
-    _1Hour: '1_hour',
+    '1_day': '1_day',
+    '1_hour': '1_hour',
 } as const;
 
 export type Window = typeof Window[keyof typeof Window];
